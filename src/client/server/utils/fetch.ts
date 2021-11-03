@@ -15,7 +15,7 @@ if (torProxy) {
   agent = new SocksProxyAgent(torProxy) as any;
 }
 
-export const fetchWithProxy = (url: string, options?: {}) => {
+export const fetchWithProxy = (url: string, options?: any) => {
   return agent ? fetch(url, { agent, ...options }) : fetch(url, options);
 };
 

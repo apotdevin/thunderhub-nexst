@@ -169,7 +169,7 @@ export const ChatBubble = ({ message }: ChatBubbleProps) => {
       }
     } else if (contentType === 'paymentrequest') {
       showButton = true;
-      const messageSplit = chatMessage?.split(',') || '';
+      const messageSplit = chatMessage?.split(',') || [''];
       amount = verified
         ? Number(messageSplit[0])
         : Math.abs(Number(messageSplit[0]) / 1000); // This is only for Juggernaut compatibility.
