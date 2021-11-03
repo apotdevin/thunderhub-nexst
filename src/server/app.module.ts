@@ -3,10 +3,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import configuration from './config/configuration';
 import { MainModule } from './modules/api/main/main.module';
+import { LegacyModule } from './modules/legacy/legacy.module';
 import { ViewModule } from './modules/view/view.module';
 
 @Module({
   imports: [
+    LegacyModule,
     MainModule,
     ViewModule,
     ConfigModule.forRoot({

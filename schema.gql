@@ -3,5 +3,6 @@
 # ------------------------------------------------------
 
 type Query {
+  getBaseCanConnect: Boolean!
   getHello: String!
 }
