@@ -50,7 +50,7 @@ export const invoiceTypes = gql`
 
   type newInvoiceType {
     chain_address: String
-    created_at: DateTime!
+    created_at: String!
     description: String!
     id: String!
     request: String!

@@ -20,10 +20,6 @@ export const generalTypes = gql`
     is_ok_to_verify_bytes_signatures: Boolean
     is_ok_to_verify_messages: Boolean
   }
-
-  scalar Date
-  scalar Time
-  scalar DateTime
 `;
 
 export const queryTypes = gql`
