@@ -11,7 +11,7 @@ import {
   DarkSubTitle,
   Separation,
   Sub4Title,
-} from '../../components/generic/Styled';
+} from '../../../components/generic/Styled';
 import { ChangeDetails } from '../../../components/modal/changeDetails/ChangeDetails';
 import { CloseChannel } from '../../../components/modal/closeChannel/CloseChannel';
 import Modal from '../../../components/modal/ReactModal';

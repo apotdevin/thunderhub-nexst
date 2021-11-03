@@ -12,10 +12,7 @@ import Modal from '../../../../components/modal/ReactModal';
 import dynamic from 'next/dynamic';
 import { LoadingCard } from '../../../../components/loading/LoadingCard';
 import { usePayMutation } from '../../../../graphql/mutations/__generated__/pay.generated';
-import {
-  SingleLine,
-  Separation,
-} from '../../../../../../components/generic/Styled';
+import { SingleLine, Separation } from '../../../../components/generic/Styled';
 
 const QRCodeReader = dynamic(() => import('../../../../components/qrReader'), {
   ssr: false,

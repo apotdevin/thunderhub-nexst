@@ -1,7 +1,7 @@
 import React from 'react';
-import { useGetPeersQuery } from '../../../src/graphql/queries/__generated__/getPeers.generated';
-import { shorten } from '../../../src/components/generic/helpers';
-import { PeerType } from '../../../src/graphql/types';
+import { useGetPeersQuery } from '../../../../src/graphql/queries/__generated__/getPeers.generated';
+import { shorten } from '../../../../src/components/generic/helpers';
+import { PeerType } from '../../../../src/graphql/types';
 import { SelectWithDeco } from '../SelectWithDeco';
 import { ValueProp } from '..';
 

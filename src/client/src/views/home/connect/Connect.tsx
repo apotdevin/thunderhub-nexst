@@ -3,10 +3,10 @@ import { toast } from 'react-toastify';
 import { Radio, Copy, X } from 'react-feather';
 import styled from 'styled-components';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
-import { renderLine } from '../../components/generic/helpers';
-import { NodeInfoType } from '../../graphql/types';
-import { useGetNodeInfoQuery } from '../../graphql/queries/__generated__/getNodeInfo.generated';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
+import { renderLine } from '../../../components/generic/helpers';
+import { NodeInfoType } from '../../../graphql/types';
+import { useGetNodeInfoQuery } from '../../../graphql/queries/__generated__/getNodeInfo.generated';
 import { getErrorContent } from '../../../utils/error';
 import { LoadingCard } from '../../../components/loading/LoadingCard';
 import {

@@ -8,14 +8,14 @@ import { Copy } from 'react-feather';
 import {
   NoWrapTitle,
   ResponsiveLine,
-} from '../../../../../../components/generic/Styled';
-import { getErrorContent } from '../../../../../../utils/error';
-import { ColorButton } from '../../../../../../components/buttons/colorButton/ColorButton';
+} from '../../../../components/generic/Styled';
+import { getErrorContent } from '../../../../utils/error';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
 import {
   MultiButton,
   SingleButton,
-} from '../../../../../../components/buttons/multiButton/MultiButton';
-import { mediaWidths } from '../../../../../../styles/Themes';
+} from '../../../../components/buttons/multiButton/MultiButton';
+import { mediaWidths } from '../../../../styles/Themes';
 
 const Responsive = styled.div`
   display: flex;

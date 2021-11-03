@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Globe, Cpu } from 'react-feather';
-import { useGetNetworkInfoQuery } from '../../graphql/queries/__generated__/getNetworkInfo.generated';
+import { useGetNetworkInfoQuery } from '../../../graphql/queries/__generated__/getNetworkInfo.generated';
 import {
   Card,
   CardWithTitle,

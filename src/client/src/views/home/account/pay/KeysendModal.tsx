@@ -11,8 +11,8 @@ import {
   SubTitle,
   Separation,
   DarkSubTitle,
-} from '../../../../../../components/generic/Styled';
-import { LoadingCard } from '../../../../../../components/loading/LoadingCard';
+} from '../../../../components/generic/Styled';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
 
 export const WithMargin = styled.div`
   margin-right: 4px;

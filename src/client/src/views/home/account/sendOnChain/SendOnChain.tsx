@@ -10,19 +10,19 @@ import {
   Separation,
   SingleLine,
   SubTitle,
-} from '../../../../../../components/generic/Styled';
-import { getErrorContent } from '../../../../../../utils/error';
-import { Input } from '../../../../../../components/input';
+} from '../../../../components/generic/Styled';
+import { getErrorContent } from '../../../../utils/error';
+import { Input } from '../../../../components/input';
 import {
   MultiButton,
   SingleButton,
-} from '../../../../../../components/buttons/multiButton/MultiButton';
-import { Price, getPrice } from '../../../../../../components/price/Price';
-import { useConfigState } from '../../../../../../context/ConfigContext';
-import Modal from '../../../../../../components/modal/ReactModal';
-import { ColorButton } from '../../../../../../components/buttons/colorButton/ColorButton';
-import { renderLine } from '../../../../../../components/generic/helpers';
-import { usePriceState } from '../../../../../../context/PriceContext';
+} from '../../../../components/buttons/multiButton/MultiButton';
+import { Price, getPrice } from '../../../../components/price/Price';
+import { useConfigState } from '../../../../context/ConfigContext';
+import Modal from '../../../../components/modal/ReactModal';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { renderLine } from '../../../../components/generic/helpers';
+import { usePriceState } from '../../../../context/PriceContext';
 
 const QRCodeReader = dynamic(() => import('../../../../components/qrReader'), {
   ssr: false,
