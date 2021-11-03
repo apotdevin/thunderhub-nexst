@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import { nodeTypes } from './node/types';
 import { nodeResolvers } from './node/resolvers';
 import { authResolvers } from './auth/resolvers';
