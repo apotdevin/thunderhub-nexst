@@ -7,19 +7,19 @@ import {
   getInvoices,
   verifyMessage,
 } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { to, toWithError } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
+import { to, toWithError } from '../../../server/helpers/async';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
 
 import {
   createCustomRecords,
   decodeMessage,
-} from 'server/helpers/customRecords';
-import { logger } from 'server/helpers/logger';
+} from '../../../server/helpers/customRecords';
+import { logger } from '../../../server/helpers/logger';
 import {
   GetInvoicesType,
   GetWalletInfoType,
-} from 'server/types/ln-service.types';
+} from '../../../server/types/ln-service.types';
 
 export const chatResolvers = {
   Query: {

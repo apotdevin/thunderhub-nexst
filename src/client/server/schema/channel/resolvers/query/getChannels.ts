@@ -1,10 +1,10 @@
 import { getChannels as getLnChannels, getWalletInfo } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { to } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { to } from '../../../../../server/helpers/async';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
 
-import { getChannelAge } from 'server/schema/health/helpers';
-import { GetChannelsType } from 'server/types/ln-service.types';
+import { getChannelAge } from '../../../../../server/schema/health/helpers';
+import { GetChannelsType } from '../../../../../server/types/ln-service.types';
 
 export const getChannels = async (
   _: undefined,

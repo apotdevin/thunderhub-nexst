@@ -1,12 +1,12 @@
 import { getNode, getChannel } from 'ln-service';
-import { logger } from 'server/helpers/logger';
-import { toWithError } from 'server/helpers/async';
+import { logger } from '../../server/helpers/logger';
+import { toWithError } from '../../server/helpers/async';
 import {
   LndObject,
   GetChannelType,
   GetNodeType,
   ChannelType,
-} from 'server/types/ln-service.types';
+} from '../../server/types/ln-service.types';
 
 const errorNode = {
   alias: 'Partner node not found',

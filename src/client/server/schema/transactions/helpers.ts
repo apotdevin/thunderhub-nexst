@@ -1,7 +1,7 @@
 import { compareDesc } from 'date-fns';
 import { getChannel, getNode, getPayments, getInvoices } from 'ln-service';
-import { to, toWithError } from 'server/helpers/async';
-import { logger } from 'server/helpers/logger';
+import { to, toWithError } from '../../../server/helpers/async';
+import { logger } from '../../../server/helpers/logger';
 import {
   ChannelType,
   GetChannelType,
@@ -9,14 +9,14 @@ import {
   GetNodeType,
   GetPaymentsType,
   LndObject,
-} from 'server/types/ln-service.types';
+} from '../../../server/types/ln-service.types';
 
 // Limit the amount of transactions that are fetched
 const FETCH_LIMIT = 50000;
 const BATCH_SIZE = 250;
 
 export const getNodeFromChannel = async (
-  lnd: {},
+  lnd: any,
   channelId: string,
   public_key: string,
   closedChannels: ChannelType[]

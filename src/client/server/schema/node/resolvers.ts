@@ -8,8 +8,8 @@ import {
   getChainBalance,
   getPendingChainBalance,
 } from 'ln-service';
-import { to, toWithError } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
+import { to, toWithError } from '../../../server/helpers/async';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
 import {
   ClosedChannelsType,
   LndObject,
@@ -19,7 +19,7 @@ import {
   GetChannelsType,
   GetChainBalanceType,
   GetPendingChainBalanceType,
-} from 'server/types/ln-service.types';
+} from '../../../server/types/ln-service.types';
 import { ContextType } from '../../types/apiTypes';
 import { logger } from '../../helpers/logger';
 

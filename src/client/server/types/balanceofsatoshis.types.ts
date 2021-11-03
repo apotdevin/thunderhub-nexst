@@ -1,1 +1,1 @@
-export type RebalanceResponseType = { rebalance: [{}, {}, {}] };
+export type RebalanceResponseType = { rebalance: [any, any, any] };

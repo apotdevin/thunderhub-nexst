@@ -1,4 +1,4 @@
-import { LndObject } from 'server/types/ln-service.types';
+import { LndObject } from '../../server/types/ln-service.types';
 
 export class SavedLnd {
   hash: string | null;

@@ -1,9 +1,12 @@
 import { getChannels, getChannel, getWalletInfo } from 'ln-service';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to, toWithError } from 'server/helpers/async';
-import { logger } from 'server/helpers/logger';
-import { ContextType } from 'server/types/apiTypes';
-import { GetChannelsType, GetChannelType } from 'server/types/ln-service.types';
+import { requestLimiter } from '../../../../server/helpers/rateLimiter';
+import { to, toWithError } from '../../../../server/helpers/async';
+import { logger } from '../../../../server/helpers/logger';
+import { ContextType } from '../../../../server/types/apiTypes';
+import {
+  GetChannelsType,
+  GetChannelType,
+} from '../../../../server/types/ln-service.types';
 import { getFeeScore, getAverage, getMyFeeScore } from '../helpers';
 
 type ChannelFeesType = {
@@ -15,7 +18,11 @@ type ChannelFeesType = {
   myFeeRate: number;
 };
 
-export default async (_: undefined, __: undefined, context: ContextType) => {
+const FeeHealthResolver = async (
+  _: undefined,
+  __: undefined,
+  context: ContextType
+) => {
   await requestLimiter(context.ip, 'getFeeHealth');
 
   const { lnd } = context;
@@ -131,3 +138,5 @@ export default async (_: undefined, __: undefined, context: ContextType) => {
     channels: health,
   };
 };
+
+export default FeeHealthResolver;

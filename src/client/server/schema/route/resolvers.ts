@@ -3,11 +3,14 @@ import {
   getWalletInfo,
   probeForRoute,
 } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { toWithError, to } from 'server/helpers/async';
-import { LndObject, ProbeForRouteType } from 'server/types/ln-service.types';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { toWithError, to } from '../../../server/helpers/async';
+import {
+  LndObject,
+  ProbeForRouteType,
+} from '../../../server/types/ln-service.types';
 
 type RouteParent = {
   lnd: LndObject;

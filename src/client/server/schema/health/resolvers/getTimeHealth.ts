@@ -1,13 +1,17 @@
 import { getChannels } from 'ln-service';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to } from 'server/helpers/async';
-import { ContextType } from 'server/types/apiTypes';
-import { GetChannelsType } from 'server/types/ln-service.types';
+import { requestLimiter } from '../../../../server/helpers/rateLimiter';
+import { to } from '../../../../server/helpers/async';
+import { ContextType } from '../../../../server/types/apiTypes';
+import { GetChannelsType } from '../../../../server/types/ln-service.types';
 import { getAverage } from '../helpers';
 
 const halfMonthInMilliSeconds = 1296000000;
 
-export default async (_: undefined, __: any, context: ContextType) => {
+const TimeHealthResolver = async (
+  _: undefined,
+  __: any,
+  context: ContextType
+) => {
   await requestLimiter(context.ip, 'getTimeHealth');
 
   const { lnd } = context;
@@ -48,3 +52,5 @@ export default async (_: undefined, __: any, context: ContextType) => {
     channels: health,
   };
 };
+
+export default TimeHealthResolver;

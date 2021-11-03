@@ -1,8 +1,8 @@
 import { randomBytes } from 'crypto';
-import { to } from 'server/helpers/async';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { ContextType } from 'server/types/apiTypes';
+import { to } from '../../../server/helpers/async';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
 import {
   createInvoice,
   decodePaymentRequest,
@@ -15,9 +15,9 @@ import {
   DecodedType,
   GetWalletInfoType,
   PayInvoiceType,
-} from 'server/types/ln-service.types';
-import { lnAuthUrlGenerator } from 'server/helpers/lnAuth';
-import { fetchWithProxy } from 'server/utils/fetch';
+} from '../../../server/types/ln-service.types';
+import { lnAuthUrlGenerator } from '../../../server/helpers/lnAuth';
+import { fetchWithProxy } from '../../../server/utils/fetch';
 
 type LnUrlPayResponseType = {
   pr?: string;

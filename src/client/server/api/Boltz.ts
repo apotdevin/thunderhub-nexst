@@ -1,6 +1,6 @@
-import { logger } from 'server/helpers/logger';
-import { appUrls } from 'server/utils/appUrls';
-import { fetchWithProxy } from 'server/utils/fetch';
+import { logger } from '../../server/helpers/logger';
+import { appUrls } from '../../server/utils/appUrls';
+import { fetchWithProxy } from '../../server/utils/fetch';
 
 export const BoltzApi = {
   getPairs: async () => {

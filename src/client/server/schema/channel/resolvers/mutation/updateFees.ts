@@ -1,8 +1,8 @@
 import { updateRoutingFees } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to } from 'server/helpers/async';
-import { logger } from 'server/helpers/logger';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
+import { to } from '../../../../../server/helpers/async';
+import { logger } from '../../../../../server/helpers/logger';
 
 type ParamsType = {
   transaction_id: string;

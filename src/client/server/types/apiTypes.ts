@@ -1,5 +1,5 @@
 import { ServerResponse } from 'http';
-import { ParsedAccount } from 'server/helpers/fileHelpers';
+import { ParsedAccount } from '../../server/helpers/fileHelpers';
 import { LndObject } from './ln-service.types';
 
 export type SSOType = {

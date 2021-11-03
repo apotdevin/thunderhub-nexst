@@ -1,17 +1,21 @@
 import { getForwards, getChannels, getWalletInfo } from 'ln-service';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to } from 'server/helpers/async';
+import { requestLimiter } from '../../../../server/helpers/rateLimiter';
+import { to } from '../../../../server/helpers/async';
 import { subMonths } from 'date-fns';
-import { ContextType } from 'server/types/apiTypes';
+import { ContextType } from '../../../../server/types/apiTypes';
 import {
   GetChannelsType,
   GetForwardsType,
-} from 'server/types/ln-service.types';
+} from '../../../../server/types/ln-service.types';
 import { getChannelVolume, getChannelIdInfo, getAverage } from '../helpers';
 
 const monthInBlocks = 4380;
 
-export default async (_: undefined, __: undefined, context: ContextType) => {
+const VolumeHealthResolver = async (
+  _: undefined,
+  __: undefined,
+  context: ContextType
+) => {
   await requestLimiter(context.ip, 'getVolumeHealth');
 
   const { lnd } = context;
@@ -75,3 +79,5 @@ export default async (_: undefined, __: undefined, context: ContextType) => {
 
   return { score: globalAverage, channels: health };
 };
+
+export default VolumeHealthResolver;

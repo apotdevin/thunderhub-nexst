@@ -1,7 +1,10 @@
-import { logger } from 'server/helpers/logger';
-import { toWithError } from 'server/helpers/async';
+import { logger } from '../../../server/helpers/logger';
+import { toWithError } from '../../../server/helpers/async';
 import { getChannel as getLnChannel } from 'ln-service';
-import { ChannelType, GetChannelType } from 'server/types/ln-service.types';
+import {
+  ChannelType,
+  GetChannelType,
+} from '../../../server/types/ln-service.types';
 import { openChannel } from './resolvers/mutation/openChannel';
 import { closeChannel } from './resolvers/mutation/closeChannel';
 import { updateFees } from './resolvers/mutation/updateFees';
@@ -14,8 +17,8 @@ import { getChannel } from './resolvers/query/getChannel';
 type ParentType = {
   id: string;
   partner_fee_info: {
-    lnd: {};
-    localKey: String;
+    lnd: any;
+    localKey: string;
   };
 };
 

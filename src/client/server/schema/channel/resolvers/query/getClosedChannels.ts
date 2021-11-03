@@ -2,10 +2,10 @@ import {
   getClosedChannels as getLnClosedChannels,
   getWalletInfo,
 } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { to } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { getChannelAge } from 'server/schema/health/helpers';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { to } from '../../../../../server/helpers/async';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
+import { getChannelAge } from '../../../../../server/schema/health/helpers';
 
 interface ChannelListProps {
   channels: ChannelProps[];

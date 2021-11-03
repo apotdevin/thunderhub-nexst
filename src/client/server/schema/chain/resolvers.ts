@@ -4,15 +4,15 @@ import {
   sendToChainAddress,
   createChainAddress,
 } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { requestLimiter } from 'server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
 import { sortBy } from 'lodash';
-import { to } from 'server/helpers/async';
+import { to } from '../../../server/helpers/async';
 import {
   GetChainTransactionsType,
   GetUtxosType,
   SendToChainAddressType,
-} from 'server/types/ln-service.types';
+} from '../../../server/types/ln-service.types';
 
 export const chainResolvers = {
   Query: {

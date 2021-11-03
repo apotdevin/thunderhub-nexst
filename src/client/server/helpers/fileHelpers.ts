@@ -2,7 +2,7 @@ import fs from 'fs';
 import crypto from 'crypto';
 import path from 'path';
 import os from 'os';
-import { logger } from 'server/helpers/logger';
+import { logger } from '../../server/helpers/logger';
 import yaml from 'js-yaml';
 import { getUUID } from './auth';
 import { hashPassword } from './crypto';

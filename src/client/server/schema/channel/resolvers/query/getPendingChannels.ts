@@ -1,8 +1,8 @@
 import { getPendingChannels as getLnPendingChannels } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { to } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { GetPendingChannelsType } from 'server/types/ln-service.types';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { to } from '../../../../../server/helpers/async';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
+import { GetPendingChannelsType } from '../../../../../server/types/ln-service.types';
 
 export const getPendingChannels = async (
   _: undefined,

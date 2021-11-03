@@ -1,41 +1,41 @@
 import fs from 'fs';
-import { ContextType } from 'server/types/apiTypes';
-import { to, toWithError } from 'server/helpers/async';
-import { logger } from 'server/helpers/logger';
+import { ContextType } from '../../../server/types/apiTypes';
+import { to, toWithError } from '../../../server/helpers/async';
+import { logger } from '../../../server/helpers/logger';
 import { rebalance } from 'balanceofsatoshis/swaps';
 import { pay } from 'balanceofsatoshis/network';
 import { getAccountingReport } from 'balanceofsatoshis/balances';
 import { fetchRequest } from 'balanceofsatoshis/commands';
-import { RebalanceResponseType } from 'server/types/balanceofsatoshis.types';
-import { getErrorMsg } from 'server/helpers/helpers';
+import { RebalanceResponseType } from '../../../server/types/balanceofsatoshis.types';
+import { getErrorMsg } from '../../../server/helpers/helpers';
 
 type PayType = {
-  max_fee: Number;
-  max_paths: Number;
-  request: String;
-  message?: String;
-  out?: String[];
+  max_fee: number;
+  max_paths: number;
+  request: string;
+  message?: string;
+  out?: string[];
 };
 
 type RebalanceType = {
-  avoid?: String[];
-  in_through?: String;
-  max_fee?: Number;
-  max_fee_rate?: Number;
-  max_rebalance?: Number;
-  timeout_minutes?: Number;
-  node?: String;
-  out_channels?: String[];
-  out_through?: String;
-  out_inbound?: Number;
+  avoid?: string[];
+  in_through?: string;
+  max_fee?: number;
+  max_fee_rate?: number;
+  max_rebalance?: number;
+  timeout_minutes?: number;
+  node?: string;
+  out_channels?: string[];
+  out_through?: string;
+  out_inbound?: number;
 };
 
 type AccountingType = {
-  category?: String;
-  currency?: String;
-  fiat?: String;
-  month?: String;
-  year?: String;
+  category?: string;
+  currency?: string;
+  fiat?: string;
+  month?: string;
+  year?: string;
 };
 
 export const bosResolvers = {

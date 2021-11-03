@@ -1,5 +1,5 @@
 import { ServerResponse } from 'http';
-import { ContextType } from 'server/types/apiTypes';
+import { ContextType } from '../../server/types/apiTypes';
 
 export const ContextMock: ContextType = {
   lnd: {},

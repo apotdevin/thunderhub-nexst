@@ -1,7 +1,7 @@
 import { getWalletVersion } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { to } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
+import { to } from '../../../server/helpers/async';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
 
 export const walletResolvers = {
   Query: {

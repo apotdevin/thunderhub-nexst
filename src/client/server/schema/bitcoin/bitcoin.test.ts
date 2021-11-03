@@ -1,8 +1,8 @@
-import testServer from 'server/tests/testServer';
+import testServer from '../../../server/tests/testServer';
 import fetchMock from 'jest-fetch-mock';
 import { GraphQLError } from 'graphql';
-import { GET_BITCOIN_PRICE } from 'src/graphql/queries/getBitcoinPrice';
-import { GET_BITCOIN_FEES } from 'src/graphql/queries/getBitcoinFees';
+import { GET_BITCOIN_PRICE } from '../../../src/graphql/queries/getBitcoinPrice';
+import { GET_BITCOIN_FEES } from '../../../src/graphql/queries/getBitcoinFees';
 
 describe('Bitcoin Resolvers', () => {
   beforeEach(() => {

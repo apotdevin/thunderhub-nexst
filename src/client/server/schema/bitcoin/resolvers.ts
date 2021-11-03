@@ -1,8 +1,8 @@
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { appUrls } from 'server/utils/appUrls';
-import { fetchWithProxy } from 'server/utils/fetch';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { appUrls } from '../../../server/utils/appUrls';
+import { fetchWithProxy } from '../../../server/utils/fetch';
 
 export const bitcoinResolvers = {
   Query: {

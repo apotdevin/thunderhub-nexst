@@ -8,20 +8,23 @@ import {
   createInvoice as createInvoiceRequest,
   subscribeToInvoice,
 } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { getErrorMsg } from 'server/helpers/helpers';
-import { to, toWithError } from 'server/helpers/async';
-import { CreateInvoiceType, DecodedType } from 'server/types/ln-service.types';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { getErrorMsg } from '../../../server/helpers/helpers';
+import { to, toWithError } from '../../../server/helpers/async';
+import {
+  CreateInvoiceType,
+  DecodedType,
+} from '../../../server/types/ln-service.types';
 
 const KEYSEND_TYPE = '5482373484';
 
 type PayType = {
-  max_fee: Number;
-  max_paths: Number;
-  request: String;
-  out?: String[];
+  max_fee: number;
+  max_paths: number;
+  request: string;
+  out?: string[];
 };
 
 export const invoiceResolvers = {

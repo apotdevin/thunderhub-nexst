@@ -76,7 +76,7 @@ type DecodeMessageType = {
 export const decodeMessage = ({
   type,
   value,
-}: DecodeMessageType): { [key: string]: string } | {} => {
+}: DecodeMessageType): { [key: string]: string } => {
   switch (type) {
     case MESSAGE_TYPE:
       return { message: bufferHexToUtf(value) };

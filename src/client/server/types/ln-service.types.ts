@@ -1,4 +1,4 @@
-export type LndObject = {};
+export type LndObject = any;
 
 export type PayInvoiceType = {
   fee: number;
@@ -110,9 +110,9 @@ export type DiffieHellmanComputeSecretType = {
 
 export type GetNodeType = { alias: string; color: string };
 
-export type UtxoType = {};
+export type UtxoType = any;
 
-export type ChainTransaction = {};
+export type ChainTransaction = any;
 
 export type ProbeForRouteType = { route?: { hops: [{ public_key: string }] } };
 

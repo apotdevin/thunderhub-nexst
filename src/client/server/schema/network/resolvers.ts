@@ -1,7 +1,7 @@
 import { getNetworkInfo } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to } from 'server/helpers/async';
+import { ContextType } from '../../../server/types/apiTypes';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { to } from '../../../server/helpers/async';
 
 interface NetworkInfoProps {
   average_channel_size: number;

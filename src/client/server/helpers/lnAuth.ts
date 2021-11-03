@@ -3,15 +3,15 @@ import {
   LndObject,
   DiffieHellmanComputeSecretType,
   GetWalletInfoType,
-} from 'server/types/ln-service.types';
+} from '../../server/types/ln-service.types';
 import hmacSHA256 from 'crypto-js/hmac-sha256';
 import { enc } from 'crypto-js';
 import * as bip39 from 'bip39';
 import * as bip32 from 'bip32';
 import * as secp256k1 from 'secp256k1';
-import { appUrls } from 'server/utils/appUrls';
-import { decodeLnUrl } from 'src/utils/url';
-import { fetchWithProxy } from 'server/utils/fetch';
+import { appUrls } from '../../server/utils/appUrls';
+import { decodeLnUrl } from '../../src/utils/url';
+import { fetchWithProxy } from '../../server/utils/fetch';
 import { to } from './async';
 import { logger } from './logger';
 

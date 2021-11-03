@@ -1,8 +1,8 @@
 import { getChannel as getLnChannel } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { to } from 'server/helpers/async';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { GetChannelType } from 'server/types/ln-service.types';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { to } from '../../../../../server/helpers/async';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
+import { GetChannelType } from '../../../../../server/types/ln-service.types';
 
 export const getChannel = async (
   _: undefined,

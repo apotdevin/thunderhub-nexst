@@ -1,9 +1,9 @@
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { ContextType } from 'server/types/apiTypes';
-import { toWithError } from 'server/helpers/async';
-import { appUrls } from 'server/utils/appUrls';
-import { logger } from 'server/helpers/logger';
-import { fetchWithProxy } from 'server/utils/fetch';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
+import { toWithError } from '../../../server/helpers/async';
+import { appUrls } from '../../../server/utils/appUrls';
+import { logger } from '../../../server/helpers/logger';
+import { fetchWithProxy } from '../../../server/utils/fetch';
 
 export const githubResolvers = {
   Query: {

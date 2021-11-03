@@ -1,6 +1,6 @@
 import { authenticatedLndGrpc } from 'ln-service';
-import { SSOType } from 'server/types/apiTypes';
-import { LndObject } from 'server/types/ln-service.types';
+import { SSOType } from '../../server/types/apiTypes';
+import { LndObject } from '../../server/types/ln-service.types';
 import { v5 as uuidv5 } from 'uuid';
 import { getSHA256Hash } from './crypto';
 import { ParsedAccount } from './fileHelpers';

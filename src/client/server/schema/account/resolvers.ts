@@ -1,7 +1,7 @@
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { saved } from 'server/helpers/auth';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { saved } from '../../../server/helpers/auth';
 
 export const accountResolvers = {
   Query: {

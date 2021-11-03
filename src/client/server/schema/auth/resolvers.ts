@@ -1,15 +1,18 @@
 import getConfig from 'next/config';
 import jwt from 'jsonwebtoken';
-import { readCookie, refreshCookie } from 'server/helpers/fileHelpers';
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
+import { readCookie, refreshCookie } from '../../../server/helpers/fileHelpers';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
 import cookieLib from 'cookie';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { appConstants } from 'server/utils/appConstants';
-import { GetWalletInfoType } from 'server/types/ln-service.types';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { appConstants } from '../../../server/utils/appConstants';
+import { GetWalletInfoType } from '../../../server/types/ln-service.types';
 import { authenticatedLndGrpc, getWalletInfo } from 'ln-service';
-import { toWithError } from 'server/helpers/async';
-import { decodeMacaroon, isCorrectPassword } from 'server/helpers/crypto';
+import { toWithError } from '../../../server/helpers/async';
+import {
+  decodeMacaroon,
+  isCorrectPassword,
+} from '../../../server/helpers/crypto';
 
 const { serverRuntimeConfig } = getConfig() || {};
 const { cookiePath, nodeEnv, dangerousNoSSOAuth } = serverRuntimeConfig || {};

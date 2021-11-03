@@ -1,6 +1,6 @@
-import testServer from 'server/tests/testServer';
-import { GET_SERVER_ACCOUNTS } from 'src/graphql/queries/getServerAccounts';
-import { ContextMockNoSSO } from 'server/tests/testMocks';
+import testServer from '../../../server/tests/testServer';
+import { GET_SERVER_ACCOUNTS } from '../../../src/graphql/queries/getServerAccounts';
+import { ContextMockNoSSO } from '../../../server/tests/testMocks';
 
 jest.mock('ln-service');
 

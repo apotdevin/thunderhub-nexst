@@ -1,18 +1,18 @@
-import { getLnMarketsAuth } from 'server/helpers/lnAuth';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { ContextType } from 'server/types/apiTypes';
-import { appConstants } from 'server/utils/appConstants';
-import { appUrls } from 'server/utils/appUrls';
+import { getLnMarketsAuth } from '../../../server/helpers/lnAuth';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
+import { appConstants } from '../../../server/utils/appConstants';
+import { appUrls } from '../../../server/utils/appUrls';
 import cookie from 'cookie';
-import { LnMarketsApi } from 'server/api/LnMarkets';
+import { LnMarketsApi } from '../../../server/api/LnMarkets';
 import { pay, decodePaymentRequest, createInvoice } from 'ln-service';
-import { to } from 'server/helpers/async';
+import { to } from '../../../server/helpers/async';
 import {
   CreateInvoiceType,
   DecodedType,
   PayInvoiceType,
-} from 'server/types/ln-service.types';
+} from '../../../server/types/ln-service.types';
 
 export const lnMarketsResolvers = {
   Query: {

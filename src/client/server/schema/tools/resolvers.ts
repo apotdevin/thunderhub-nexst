@@ -6,12 +6,12 @@ import {
   verifyMessage,
   signMessage,
 } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { getErrorMsg } from 'server/helpers/helpers';
-import { toWithError } from 'server/helpers/async';
-import { ChannelType } from 'server/types/ln-service.types';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { getErrorMsg } from '../../../server/helpers/helpers';
+import { toWithError } from '../../../server/helpers/async';
+import { ChannelType } from '../../../server/types/ln-service.types';
 
 export const toolsResolvers = {
   Query: {

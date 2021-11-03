@@ -7,7 +7,7 @@ import {
   NormalizedCacheObject,
 } from '@apollo/client';
 import getConfig from 'next/config';
-import possibleTypes from 'src/graphql/fragmentTypes.json';
+import possibleTypes from '../src/graphql/fragmentTypes.json';
 
 const { publicRuntimeConfig } = getConfig();
 const { apiUrl: uri } = publicRuntimeConfig;

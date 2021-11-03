@@ -1,8 +1,8 @@
-import { ContextType } from 'server/types/apiTypes';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to } from 'server/helpers/async';
+import { ContextType } from '../../../server/types/apiTypes';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { to } from '../../../server/helpers/async';
 import { grantAccess } from 'ln-service';
-import { logger } from 'server/helpers/logger';
+import { logger } from '../../../server/helpers/logger';
 
 export type PermissionsType = {
   is_ok_to_adjust_peers: boolean;

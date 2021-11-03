@@ -1,19 +1,19 @@
-import { getIp } from 'server/helpers/helpers';
+import { getIp } from '../../server/helpers/helpers';
 import jwt from 'jsonwebtoken';
-import { logger } from 'server/helpers/logger';
+import { logger } from '../../server/helpers/logger';
 import {
   readMacaroons,
   readFile,
   getAccounts,
-} from 'server/helpers/fileHelpers';
+} from '../../server/helpers/fileHelpers';
 import getConfig from 'next/config';
-import { ContextType, SSOType } from 'server/types/apiTypes';
+import { ContextType, SSOType } from '../../server/types/apiTypes';
 import cookie from 'cookie';
-import { LndObject } from 'server/types/ln-service.types';
-import { getAuthLnd } from 'server/helpers/auth';
-import { appConstants } from 'server/utils/appConstants';
-import { secret } from 'pages/api/v1';
-import { ResolverContext } from 'config/client';
+import { LndObject } from '../../server/types/ln-service.types';
+import { getAuthLnd } from '../../server/helpers/auth';
+import { appConstants } from '../../server/utils/appConstants';
+import { secret } from '../../pages/api/v1';
+import { ResolverContext } from '../../config/client';
 
 const { serverRuntimeConfig } = getConfig();
 const { macaroonPath, lnCertPath, lnServerUrl, accountConfigPath } =

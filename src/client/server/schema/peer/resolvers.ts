@@ -1,9 +1,9 @@
 import { getPeers, removePeer, addPeer } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { getErrorMsg } from 'server/helpers/helpers';
-import { to } from 'server/helpers/async';
+import { ContextType } from '../../../server/types/apiTypes';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { getErrorMsg } from '../../../server/helpers/helpers';
+import { to } from '../../../server/helpers/async';
 
 interface PeerProps {
   bytes_received: number;

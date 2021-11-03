@@ -1,9 +1,9 @@
 import { openChannel as lnOpenChannel, addPeer } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { to } from 'server/helpers/async';
-import { OpenChannelType } from 'server/types/ln-service.types';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { logger } from '../../../../../server/helpers/logger';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
+import { to } from '../../../../../server/helpers/async';
+import { OpenChannelType } from '../../../../../server/types/ln-service.types';
 
 type OpenChannelParams = {
   isPrivate: boolean;

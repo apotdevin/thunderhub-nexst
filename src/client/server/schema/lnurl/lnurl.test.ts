@@ -1,7 +1,7 @@
-import testServer from 'server/tests/testServer';
+import testServer from '../../../server/tests/testServer';
 import fetchMock from 'jest-fetch-mock';
 import { GraphQLError } from 'graphql';
-import { WITHDRAW_LN_URL } from 'src/graphql/mutations/lnUrl';
+import { WITHDRAW_LN_URL } from '../../../src/graphql/mutations/lnUrl';
 
 jest.mock('ln-service');
 

@@ -3,7 +3,7 @@ import getConfig from 'next/config';
 import { SocksProxyAgent } from 'socks-proxy-agent';
 import fetch from 'node-fetch';
 import { GraphQLError } from 'graphql';
-import { logger } from 'server/helpers/logger';
+import { logger } from '../../server/helpers/logger';
 
 const { serverRuntimeConfig } = getConfig() || { serverRuntimeConfig: {} };
 const { torProxy } = serverRuntimeConfig;

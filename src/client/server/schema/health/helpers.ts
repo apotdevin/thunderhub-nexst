@@ -1,5 +1,5 @@
 import { groupBy } from 'lodash';
-import { ForwardType } from 'server/types/ln-service.types';
+import { ForwardType } from '../../../server/types/ln-service.types';
 
 type GroupedObject = {
   [key: string]: ForwardType[];

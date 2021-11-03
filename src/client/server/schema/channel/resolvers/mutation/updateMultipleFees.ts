@@ -1,8 +1,8 @@
 import { updateRoutingFees } from 'ln-service';
-import { ContextType } from 'server/types/apiTypes';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { logger } from 'server/helpers/logger';
-import { toWithError } from 'server/helpers/async';
+import { ContextType } from '../../../../../server/types/apiTypes';
+import { requestLimiter } from '../../../../../server/helpers/rateLimiter';
+import { logger } from '../../../../../server/helpers/logger';
+import { toWithError } from '../../../../../server/helpers/async';
 
 export const updateMultipleFees = async (
   _: undefined,

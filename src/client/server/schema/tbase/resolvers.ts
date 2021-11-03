@@ -1,10 +1,10 @@
-import { ContextType } from 'server/types/apiTypes';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { appUrls } from 'server/utils/appUrls';
-import { logger } from 'server/helpers/logger';
-import { appConstants } from 'server/utils/appConstants';
+import { ContextType } from '../../../server/types/apiTypes';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { appUrls } from '../../../server/utils/appUrls';
+import { logger } from '../../../server/helpers/logger';
+import { appConstants } from '../../../server/utils/appConstants';
 import cookieLib from 'cookie';
-import { graphqlFetchWithProxy } from 'server/utils/fetch';
+import { graphqlFetchWithProxy } from '../../../server/utils/fetch';
 
 const getBaseCanConnectQuery = `
   {

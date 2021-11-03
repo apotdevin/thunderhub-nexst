@@ -1,15 +1,15 @@
-import { BoltzApi } from 'server/api/Boltz';
-import { to, toWithError } from 'server/helpers/async';
-import { logger } from 'server/helpers/logger';
-import { requestLimiter } from 'server/helpers/rateLimiter';
-import { ContextType } from 'server/types/apiTypes';
+import { BoltzApi } from '../../../server/api/Boltz';
+import { to, toWithError } from '../../../server/helpers/async';
+import { logger } from '../../../server/helpers/logger';
+import { requestLimiter } from '../../../server/helpers/rateLimiter';
+import { ContextType } from '../../../server/types/apiTypes';
 import { createChainAddress, decodePaymentRequest } from 'ln-service';
 import { constructClaimTransaction, detectSwap } from 'boltz-core';
 import {
   CreateChainAddressType,
   DecodedType,
-} from 'server/types/ln-service.types';
-import { getPreimageAndHash } from 'server/helpers/crypto';
+} from '../../../server/types/ln-service.types';
+import { getPreimageAndHash } from '../../../server/helpers/crypto';
 import { address, ECPair, Network, networks, Transaction } from 'bitcoinjs-lib';
 import { GraphQLError } from 'graphql';
 
