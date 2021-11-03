@@ -1,17 +1,17 @@
 import { toast } from 'react-toastify';
-import { renderLine } from 'src/components/generic/helpers';
+import { renderLine } from '../../components/generic/helpers';
 import {
   Card,
   CardWithTitle,
   DarkSubTitle,
   Separation,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { Price } from 'src/components/price/Price';
+} from '../../components/generic/Styled';
+import { LoadingCard } from '../../components/loading/LoadingCard';
+import { Price } from '../../components/price/Price';
 
-import { useGetLnMarketsUserInfoQuery } from 'src/graphql/queries/__generated__/getLnMarketsUserInfo.generated';
-import { getErrorContent } from 'src/utils/error';
+import { useGetLnMarketsUserInfoQuery } from '../../graphql/queries/__generated__/getLnMarketsUserInfo.generated';
+import { getErrorContent } from '../../utils/error';
 
 export const UserInfo = () => {
   const { data, loading } = useGetLnMarketsUserInfoQuery({

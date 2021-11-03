@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { DarkSubTitle } from 'src/components/generic/Styled';
-import { chartColors, mediaWidths } from 'src/styles/Themes';
+import { DarkSubTitle } from '../../components/generic/Styled';
+import { chartColors, mediaWidths } from '../../styles/Themes';
 
 export const ScoreLine = styled.div`
   display: flex;

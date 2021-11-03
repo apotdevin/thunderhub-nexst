@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { chartColors } from 'src/styles/Themes';
+import { chartColors } from '../../styles/Themes';
 import { CheckCircle, AlertCircle, XCircle } from 'react-feather';
 
 export const getProgressColor = (score: number | null | undefined): string => {

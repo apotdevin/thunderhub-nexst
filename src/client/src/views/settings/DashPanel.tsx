@@ -1,10 +1,10 @@
 import { groupBy } from 'lodash';
 import { Fragment } from 'react';
 import { Layouts } from 'react-grid-layout';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Card, SubTitle } from 'src/components/generic/Styled';
-import { Link } from 'src/components/link/Link';
-import { useLocalStorage } from 'src/hooks/UseLocalStorage';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import { Card, SubTitle } from '../../components/generic/Styled';
+import { Link } from '../../components/link/Link';
+import { useLocalStorage } from '../../hooks/UseLocalStorage';
 import styled from 'styled-components';
 import { StoredWidget } from '../dashboard';
 import { widgetList } from '../dashboard/widgets/widgetList';

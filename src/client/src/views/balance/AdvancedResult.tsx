@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { BosRebalanceResultType } from 'src/graphql/types';
+import { BosRebalanceResultType } from '../../graphql/types';
 import {
   SubCard,
   Separation,
   ResponsiveLine,
-} from 'src/components/generic/Styled';
-import { renderLine } from 'src/components/generic/helpers';
+} from '../../components/generic/Styled';
+import { renderLine } from '../../components/generic/helpers';
 import { ChevronsUp, ChevronsDown } from 'react-feather';
-import { chartColors } from 'src/styles/Themes';
-import { Price } from 'src/components/price/Price';
-import { btcToSat } from 'src/utils/helpers';
+import { chartColors } from '../../styles/Themes';
+import { Price } from '../../components/price/Price';
+import { btcToSat } from '../../utils/helpers';
 import {
   FullWidthSubCard,
   RebalanceTitle,

@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
 import {
   Separation,
   SingleLine,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import Modal from 'src/components/modal/ReactModal';
+} from '../../components/generic/Styled';
+import { InputWithDeco } from '../../components/input/InputWithDeco';
+import Modal from '../../components/modal/ReactModal';
 import {
   useLnMarketsDepositMutation,
   useLnMarketsWithdrawMutation,
-} from 'src/graphql/mutations/__generated__/lnMarkets.generated';
+} from '../../graphql/mutations/__generated__/lnMarkets.generated';
 
 export const DepositWithdraw = () => {
   const [type, setType] = useState<string>('none');

@@ -6,7 +6,7 @@ import {
   textColor,
   inputBorderColor,
   themeColors,
-} from 'src/styles/Themes';
+} from '../../../src/styles/Themes';
 
 type WrapperProps = {
   maxWidth?: string;

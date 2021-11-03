@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { MessagesType } from 'src/graphql/types';
+import { MessagesType } from '../../src/graphql/types';
 
 export interface SentChatProps extends MessagesType {
   isSent?: boolean;

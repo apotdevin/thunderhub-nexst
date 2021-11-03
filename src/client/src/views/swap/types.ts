@@ -3,7 +3,7 @@ import {
   CreateBoltzReverseSwapType,
   DecodeType,
   NodeType,
-} from 'src/graphql/types';
+} from '../../graphql/types';
 
 export type CreateBoltzReverseSwap = Pick<
   CreateBoltzReverseSwapType,

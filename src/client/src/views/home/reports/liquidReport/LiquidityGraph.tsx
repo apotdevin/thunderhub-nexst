@@ -1,15 +1,15 @@
-import { HorizontalBarChart } from 'src/components/chart/HorizontalBarChart';
+import { HorizontalBarChart } from '../../../../components/chart/HorizontalBarChart';
 import {
   Card,
   CardWithTitle,
   DarkSubTitle,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useGetLiquidReportQuery } from 'src/graphql/queries/__generated__/getChannelReport.generated';
-import { chartColors } from 'src/styles/Themes';
+} from '../../../../components/generic/Styled';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
+import { useGetLiquidReportQuery } from '../../../../graphql/queries/__generated__/getChannelReport.generated';
+import { chartColors } from '../../../../styles/Themes';
 import styled from 'styled-components';
-import { WarningText } from 'src/views/stats/styles';
+import { WarningText } from '../../../../views/stats/styles';
 
 const S = {
   row: styled.div`

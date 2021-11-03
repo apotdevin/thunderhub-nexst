@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
-import { SettingsLine } from 'pages/settings';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { SettingsLine } from '../../../pages/settings';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
 import {
   Card,
   CardWithTitle,
   Sub4Title,
   SubTitle,
-} from 'src/components/generic/Styled';
+} from '../../components/generic/Styled';
 
 export const DashboardSettings = () => {
   const { push } = useRouter();

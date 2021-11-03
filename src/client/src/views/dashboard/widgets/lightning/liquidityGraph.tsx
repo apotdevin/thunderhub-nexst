@@ -1,7 +1,7 @@
-import { HorizontalBarChart } from 'src/components/chart/HorizontalBarChart';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useGetLiquidReportQuery } from 'src/graphql/queries/__generated__/getChannelReport.generated';
-import { chartColors } from 'src/styles/Themes';
+import { HorizontalBarChart } from '../../../../components/chart/HorizontalBarChart';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
+import { useGetLiquidReportQuery } from '../../../../graphql/queries/__generated__/getChannelReport.generated';
+import { chartColors } from '../../../../styles/Themes';
 import styled from 'styled-components';
 
 const S = {

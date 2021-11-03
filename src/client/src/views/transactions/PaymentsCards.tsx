@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { PaymentType } from 'src/graphql/types';
-import { mediaWidths } from 'src/styles/Themes';
+import { PaymentType } from '../../graphql/types';
+import { mediaWidths } from '../../styles/Themes';
 import {
   Separation,
   SubCard,

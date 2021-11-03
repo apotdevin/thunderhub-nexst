@@ -2,10 +2,10 @@ import {
   renderLine,
   getNodeLink,
   getAddressLink,
-} from 'src/components/generic/helpers';
-import { Card, Separation, SubTitle } from 'src/components/generic/Styled';
-import { Price } from 'src/components/price/Price';
-import { chartColors } from 'src/styles/Themes';
+} from '../../components/generic/helpers';
+import { Card, Separation, SubTitle } from '../../components/generic/Styled';
+import { Price } from '../../components/price/Price';
+import { chartColors } from '../../styles/Themes';
 import styled from 'styled-components';
 import { Pay } from '../home/account/pay/Pay';
 import { useSwapsDispatch, useSwapsState } from './SwapContext';

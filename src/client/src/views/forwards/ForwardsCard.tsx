@@ -1,5 +1,5 @@
 import React from 'react';
-import { Forward } from 'src/graphql/types';
+import { Forward } from '../../graphql/types';
 import {
   Separation,
   SubCard,

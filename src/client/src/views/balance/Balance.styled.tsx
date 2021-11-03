@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SubCard, SingleLine } from 'src/components/generic/Styled';
+import { SubCard, SingleLine } from '../../components/generic/Styled';
 import { mediaWidths, themeColors } from '../../styles/Themes';
 
 export const FullWidthSubCard = styled(SubCard)`

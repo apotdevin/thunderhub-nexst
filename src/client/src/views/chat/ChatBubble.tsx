@@ -3,9 +3,9 @@ import { ThemeSet } from 'styled-theming';
 import { toast } from 'react-toastify';
 import { Circle } from 'react-feather';
 import ScaleLoader from 'react-spinners/ScaleLoader';
-import { useSendMessageMutation } from 'src/graphql/mutations/__generated__/sendMessage.generated';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
-import { useAccount } from 'src/hooks/UseAccount';
+import { useSendMessageMutation } from '../../graphql/mutations/__generated__/sendMessage.generated';
+import { useMutationResultWithReset } from '../../hooks/UseMutationWithReset';
+import { useAccount } from '../../hooks/UseAccount';
 import {
   chatBubbleColor,
   chatSentBubbleColor,

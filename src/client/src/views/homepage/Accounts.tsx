@@ -2,14 +2,14 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import { Lock, Unlock, ChevronDown, ChevronUp } from 'react-feather';
-import { chartColors } from 'src/styles/Themes';
+import { chartColors } from '../../styles/Themes';
 import { useRouter } from 'next/router';
-import { Link } from 'src/components/link/Link';
-import { useGetServerAccountsQuery } from 'src/graphql/queries/__generated__/getServerAccounts.generated';
-import { ServerAccountType } from 'src/graphql/types';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useLogoutMutation } from 'src/graphql/mutations/__generated__/logout.generated';
-import { useGetNodeInfoLazyQuery } from 'src/graphql/queries/__generated__/getNodeInfo.generated';
+import { Link } from '../../components/link/Link';
+import { useGetServerAccountsQuery } from '../../graphql/queries/__generated__/getServerAccounts.generated';
+import { ServerAccountType } from '../../graphql/types';
+import { LoadingCard } from '../../components/loading/LoadingCard';
+import { useLogoutMutation } from '../../graphql/mutations/__generated__/logout.generated';
+import { useGetNodeInfoLazyQuery } from '../../graphql/queries/__generated__/getNodeInfo.generated';
 import { Section } from '../../components/section/Section';
 import {
   Card,

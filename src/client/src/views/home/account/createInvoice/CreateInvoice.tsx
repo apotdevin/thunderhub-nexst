@@ -4,15 +4,15 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import QRCode from 'qrcode.react';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { useCreateInvoiceMutation } from 'src/graphql/mutations/__generated__/createInvoice.generated';
-import { Title } from 'src/layouts/footer/Footer.styled';
-import { Link } from 'src/components/link/Link';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { formatSeconds } from 'src/utils/helpers';
+import { useCreateInvoiceMutation } from '../../../../graphql/mutations/__generated__/createInvoice.generated';
+import { Title } from '../../../../layouts/footer/Footer.styled';
+import { Link } from '../../../../components/link/Link';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { formatSeconds } from '../../../../utils/helpers';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
+} from '../../../../components/buttons/multiButton/MultiButton';
 import { getErrorContent } from '../../../../utils/error';
 import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
 import { mediaWidths, chartColors } from '../../../../styles/Themes';

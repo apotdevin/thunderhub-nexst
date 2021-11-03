@@ -1,6 +1,10 @@
-import { Card, CardWithTitle, SubTitle } from 'src/components/generic/Styled';
-import { Table } from 'src/components/table';
-import { useBitcoinFees } from 'src/hooks/UseBitcoinFees';
+import {
+  Card,
+  CardWithTitle,
+  SubTitle,
+} from '../../../../components/generic/Styled';
+import { Table } from '../../../../components/table';
+import { useBitcoinFees } from '../../../../hooks/UseBitcoinFees';
 
 export const MempoolReport = () => {
   const { fast, halfHour, hour, minimum, dontShow } = useBitcoinFees();

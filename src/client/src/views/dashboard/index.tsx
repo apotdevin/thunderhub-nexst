@@ -1,16 +1,16 @@
 import { Layouts, Responsive as ResponsiveGridLayout } from 'react-grid-layout';
 import styled, { css } from 'styled-components';
-import { defaultGrid } from 'src/utils/gridConstants';
-import { useLocalStorage } from 'src/hooks/UseLocalStorage';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import { defaultGrid } from '../../utils/gridConstants';
+import { useLocalStorage } from '../../hooks/UseLocalStorage';
+import { LoadingCard } from '../../components/loading/LoadingCard';
 import { useRef } from 'react';
-import useElementSize from 'src/hooks/UseElementSize';
-import { Card, SubTitle } from 'src/components/generic/Styled';
-import { textColor } from 'src/styles/Themes';
-import { Link } from 'src/components/link/Link';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useDashDispatch, useDashState } from 'src/context/DashContext';
-import Modal from 'src/components/modal/ReactModal';
+import useElementSize from '../../hooks/UseElementSize';
+import { Card, SubTitle } from '../../components/generic/Styled';
+import { textColor } from '../../styles/Themes';
+import { Link } from '../../components/link/Link';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import { useDashDispatch, useDashState } from '../../context/DashContext';
+import Modal from '../../components/modal/ReactModal';
 import { getWidgets } from './widgets/helpers';
 import { DashboardModal } from './modal';
 

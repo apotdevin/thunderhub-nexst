@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { GetTransactionsType } from 'src/graphql/types';
+import { GetTransactionsType } from '../../../graphql/types';
 import {
   Separation,
   SubCard,

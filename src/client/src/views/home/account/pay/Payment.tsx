@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
+} from '../../../../components/buttons/multiButton/MultiButton';
 import {
   Sub4Title,
   ResponsiveLine,
   NoWrapTitle,
-} from '../../../../components/generic/Styled';
-import { Input } from '../../../../components/input';
-import Modal from '../../../../components/modal/ReactModal';
-import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
-import { isLightningInvoice } from '../../../../utils/helpers';
+} from '../../../../../../components/generic/Styled';
+import { Input } from '../../../../../../components/input';
+import Modal from '../../../../../../components/modal/ReactModal';
+import { ColorButton } from '../../../../../../components/buttons/colorButton/ColorButton';
+import { isLightningInvoice } from '../../../../../../utils/helpers';
 import { KeysendModal } from './KeysendModal';
 import { Pay } from './Pay';
 

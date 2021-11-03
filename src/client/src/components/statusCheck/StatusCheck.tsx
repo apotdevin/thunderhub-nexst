@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import getConfig from 'next/config';
-import { useGetNodeInfoQuery } from 'src/graphql/queries/__generated__/getNodeInfo.generated';
+import { useGetNodeInfoQuery } from '../../../src/graphql/queries/__generated__/getNodeInfo.generated';
 
 const { publicRuntimeConfig } = getConfig();
 const { logoutUrl } = publicRuntimeConfig;

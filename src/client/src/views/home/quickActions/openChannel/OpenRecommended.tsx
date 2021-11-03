@@ -1,18 +1,21 @@
 import * as React from 'react';
-import { BaseNodesType } from 'src/graphql/types';
-import { useGetNodeQuery } from 'src/graphql/queries/__generated__/getNode.generated';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import { BaseNodesType } from '../../../../graphql/types';
+import { useGetNodeQuery } from '../../../../graphql/queries/__generated__/getNode.generated';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
 import {
   DarkSubTitle,
   Separation,
   Sub4Title,
-} from 'src/components/generic/Styled';
-import { renderLine, getNodeLink } from 'src/components/generic/helpers';
-import { useGetPeersQuery } from 'src/graphql/queries/__generated__/getPeers.generated';
-import { useAddPeerMutation } from 'src/graphql/mutations/__generated__/addPeer.generated';
+} from '../../../../components/generic/Styled';
+import {
+  renderLine,
+  getNodeLink,
+} from '../../../../components/generic/helpers';
+import { useGetPeersQuery } from '../../../../graphql/queries/__generated__/getPeers.generated';
+import { useAddPeerMutation } from '../../../../graphql/mutations/__generated__/addPeer.generated';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { getErrorContent } from '../../../../utils/error';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
 import { OpenChannelCard } from './OpenChannel';
 
 type OpenProps = {

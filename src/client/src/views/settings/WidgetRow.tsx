@@ -2,8 +2,8 @@ import { FC } from 'react';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
-import { DarkSubTitle } from 'src/components/generic/Styled';
+} from '../../components/buttons/multiButton/MultiButton';
+import { DarkSubTitle } from '../../components/generic/Styled';
 import styled from 'styled-components';
 import { NormalizedWidgets } from './DashPanel';
 

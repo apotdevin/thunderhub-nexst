@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DarkSubTitle } from 'src/components/generic/Styled';
+import { DarkSubTitle } from '../../../../components/generic/Styled';
 import styled from 'styled-components';
 
 const Wrapper = styled(DarkSubTitle)`

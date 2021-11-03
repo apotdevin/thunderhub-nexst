@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { renderLine } from 'src/components/generic/helpers';
-import { Separation, SubTitle } from 'src/components/generic/Styled';
-import { FormatFnType } from 'src/components/price/Price';
-import { useConfigState } from 'src/context/ConfigContext';
-import { ChannelType } from 'src/graphql/types';
+import { renderLine } from '../../../components/generic/helpers';
+import { Separation, SubTitle } from '../../../components/generic/Styled';
+import { FormatFnType } from '../../../components/price/Price';
+import { useConfigState } from '../../../context/ConfigContext';
+import { ChannelType } from '../../../graphql/types';
 
 const MAX_HTLCS = 483;
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   SingleButton,
   MultiButton,
-} from 'src/components/buttons/multiButton/MultiButton';
+} from '../../../components/buttons/multiButton/MultiButton';
 import {
   useConfigState,
   useConfigDispatch,
@@ -12,19 +12,19 @@ import {
   sortDirectionTypes,
   extraColumnsType,
   maxSatValueType,
-} from 'src/context/ConfigContext';
+} from '../../../context/ConfigContext';
 import {
   Card,
   Sub4Title,
   ResponsiveLine,
   Separation,
   SingleLine,
-} from 'src/components/generic/Styled';
+} from '../../../components/generic/Styled';
 import styled from 'styled-components';
-import { DetailsChange } from 'src/components/details/detailsChange';
-import { OpenChannel } from 'src/views/home/quickActions/openChannel';
+import { DetailsChange } from '../../../components/details/detailsChange';
+import { OpenChannel } from '../../../views/home/quickActions/openChannel';
 import { X } from 'react-feather';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 
 const MarginLine = styled(ResponsiveLine)`
   margin: 8px 0;

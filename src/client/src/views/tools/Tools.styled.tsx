@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ResponsiveLine } from 'src/components/generic/Styled';
+import { ResponsiveLine } from '../../components/generic/Styled';
 
 export const NoWrap = styled.div`
   margin-right: 16px;

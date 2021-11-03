@@ -1,5 +1,5 @@
-import { Table } from 'src/components/table';
-import { useBitcoinFees } from 'src/hooks/UseBitcoinFees';
+import { Table } from '../../../../components/table';
+import { useBitcoinFees } from '../../../../hooks/UseBitcoinFees';
 import styled from 'styled-components';
 
 const S = {

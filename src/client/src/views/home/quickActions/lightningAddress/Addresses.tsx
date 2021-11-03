@@ -1,9 +1,9 @@
-import { useLocalStorage } from 'src/hooks/UseLocalStorage';
-import { Separation, Sub4Title } from 'src/components/generic/Styled';
+import { useLocalStorage } from '../../../../hooks/UseLocalStorage';
+import { Separation, Sub4Title } from '../../../../components/generic/Styled';
 import styled from 'styled-components';
-import { cardBorderColor, subCardColor } from 'src/styles/Themes';
+import { cardBorderColor, subCardColor } from '../../../../styles/Themes';
 import { FC } from 'react';
-import { useGetLightningAddressesQuery } from 'src/graphql/queries/__generated__/getLightningAddresses.generated';
+import { useGetLightningAddressesQuery } from '../../../../graphql/queries/__generated__/getLightningAddresses.generated';
 
 const S = {
   wrapper: styled.div`

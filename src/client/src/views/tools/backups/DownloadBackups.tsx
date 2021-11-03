@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useGetBackupsLazyQuery } from 'src/graphql/queries/__generated__/getBackups.generated';
+import { useGetBackupsLazyQuery } from '../../../graphql/queries/__generated__/getBackups.generated';
 import { format } from 'date-fns';
-import { useNodeInfo } from 'src/hooks/UseNodeInfo';
+import { useNodeInfo } from '../../../hooks/UseNodeInfo';
 import { DarkSubTitle, SingleLine } from '../../../components/generic/Styled';
 import { saveToPc } from '../../../utils/helpers';
 import { getErrorContent } from '../../../utils/error';

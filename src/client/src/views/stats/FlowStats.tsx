@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useGetVolumeHealthQuery } from 'src/graphql/queries/__generated__/getVolumeHealth.generated';
+import { useGetVolumeHealthQuery } from '../../graphql/queries/__generated__/getVolumeHealth.generated';
 import {
   SubCard,
   DarkSubTitle,
   SubTitle,
   Separation,
   ResponsiveLine,
-} from 'src/components/generic/Styled';
+} from '../../components/generic/Styled';
 import { sortBy } from 'lodash';
-import { renderLine } from 'src/components/generic/helpers';
-import { ChannelHealth } from 'src/graphql/types';
+import { renderLine } from '../../components/generic/helpers';
+import { ChannelHealth } from '../../graphql/types';
 import { useStatsDispatch } from './context';
 import { ScoreLine, Clickable, WarningText } from './styles';
 import { StatWrapper } from './Wrapper';

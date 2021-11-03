@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Separation } from 'src/components/generic/Styled';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { Title } from 'src/components/typography/Styled';
-import { useFetchLnUrlMutation } from 'src/graphql/mutations/__generated__/lnUrl.generated';
-import { getErrorContent } from 'src/utils/error';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { Separation } from '../../../../components/generic/Styled';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
+import { Title } from '../../../../components/typography/Styled';
+import { useFetchLnUrlMutation } from '../../../../graphql/mutations/__generated__/lnUrl.generated';
+import { getErrorContent } from '../../../../utils/error';
 import styled from 'styled-components';
 import { LnChannel } from './LnChannel';
 import { LnPay } from './LnPay';

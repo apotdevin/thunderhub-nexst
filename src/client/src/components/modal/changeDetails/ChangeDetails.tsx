@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useUpdateFeesMutation } from 'src/graphql/mutations/__generated__/updateFees.generated';
-import { getErrorContent } from 'src/utils/error';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Input } from 'src/components/input';
+import { useUpdateFeesMutation } from '../../../../src/graphql/mutations/__generated__/updateFees.generated';
+import { getErrorContent } from '../../../../src/utils/error';
+import { InputWithDeco } from '../../../../src/components/input/InputWithDeco';
+import { ColorButton } from '../../../../src/components/buttons/colorButton/ColorButton';
+import { Input } from '../../../../src/components/input';
 
 type ChangeDetailsType = {
   callback: () => void;

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Card } from 'src/components/generic/Styled';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import Modal from 'src/components/modal/ReactModal';
-import { useGetLightningAddressInfoLazyQuery } from 'src/graphql/queries/__generated__/getLightningAddressInfo.generated';
-import { useLocalStorage } from 'src/hooks/UseLocalStorage';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { Card } from '../../../../components/generic/Styled';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import Modal from '../../../../components/modal/ReactModal';
+import { useGetLightningAddressInfoLazyQuery } from '../../../../graphql/queries/__generated__/getLightningAddressInfo.generated';
+import { useLocalStorage } from '../../../../hooks/UseLocalStorage';
+import { useMutationResultWithReset } from '../../../../hooks/UseMutationWithReset';
 import { LnPay } from '../lnurl/LnPay';
 import { PreviousAddresses, AmbossAddresses } from './Addresses';
 

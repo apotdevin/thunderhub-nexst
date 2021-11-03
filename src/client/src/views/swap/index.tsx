@@ -1,17 +1,17 @@
 import { toast } from 'react-toastify';
-import { renderLine } from 'src/components/generic/helpers';
+import { renderLine } from '../../components/generic/helpers';
 import {
   Card,
   DarkSubTitle,
   SingleLine,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { Link } from 'src/components/link/Link';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { Price } from 'src/components/price/Price';
-import { Subtitle } from 'src/components/typography/Styled';
-import { useGetBoltzInfoQuery } from 'src/graphql/queries/__generated__/getBoltzInfo.generated';
-import { getErrorContent } from 'src/utils/error';
+} from '../../components/generic/Styled';
+import { Link } from '../../components/link/Link';
+import { LoadingCard } from '../../components/loading/LoadingCard';
+import { Price } from '../../components/price/Price';
+import { Subtitle } from '../../components/typography/Styled';
+import { useGetBoltzInfoQuery } from '../../graphql/queries/__generated__/getBoltzInfo.generated';
+import { getErrorContent } from '../../utils/error';
 import { SwapsProvider } from './SwapContext';
 import { StartSwap } from './StartSwap';
 import { SwapStatus } from './SwapStatus';

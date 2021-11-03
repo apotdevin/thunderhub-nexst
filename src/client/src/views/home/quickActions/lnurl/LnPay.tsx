@@ -1,15 +1,15 @@
 import { FC, useState } from 'react';
-import { PayRequest } from 'src/graphql/types';
+import { PayRequest } from '../../../../graphql/types';
 import styled from 'styled-components';
-import { Title } from 'src/components/typography/Styled';
-import { Separation } from 'src/components/generic/Styled';
-import { renderLine } from 'src/components/generic/helpers';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { usePayLnUrlMutation } from 'src/graphql/mutations/__generated__/lnUrl.generated';
-import { Link } from 'src/components/link/Link';
+import { Title } from '../../../../components/typography/Styled';
+import { Separation } from '../../../../components/generic/Styled';
+import { renderLine } from '../../../../components/generic/helpers';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { usePayLnUrlMutation } from '../../../../graphql/mutations/__generated__/lnUrl.generated';
+import { Link } from '../../../../components/link/Link';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
+import { getErrorContent } from '../../../../utils/error';
 
 const ModalText = styled.div`
   width: 100%;

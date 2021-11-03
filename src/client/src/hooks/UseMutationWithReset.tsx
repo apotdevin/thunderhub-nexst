@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const useMutationResultWithReset = <T extends {}>(
+export const useMutationResultWithReset = <T,>(
   data: T | undefined | null
 ): [T | undefined | null, () => void] => {
   const current = React.useRef(data);

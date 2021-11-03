@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import { LoadingCard } from '../../../components/loading/LoadingCard';
 import {
   SubCard,
   DarkSubTitle,
   SingleLine,
-} from 'src/components/generic/Styled';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+} from '../../../components/generic/Styled';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 import { Plus, Minus } from 'react-feather';
-import { useGetChannelsQuery } from 'src/graphql/queries/__generated__/getChannels.generated';
-import { themeColors, chartColors } from 'src/styles/Themes';
+import { useGetChannelsQuery } from '../../../graphql/queries/__generated__/getChannels.generated';
+import { themeColors, chartColors } from '../../../styles/Themes';
 import { RebalanceIdType } from '../AdvancedBalance';
 
 type ModalChannelsType = {

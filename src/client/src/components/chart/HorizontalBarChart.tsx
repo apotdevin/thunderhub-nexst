@@ -3,7 +3,7 @@ import { BarGroupHorizontal, Bar } from '@visx/shape';
 import { AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { ParentSize } from '@visx/responsive';
-import { chartColors } from 'src/styles/Themes';
+import { chartColors } from '../../../src/styles/Themes';
 import { ThemeContext } from 'styled-components';
 import { useContext } from 'react';
 import { TooltipWithBounds, defaultStyles, useTooltip } from '@visx/tooltip';

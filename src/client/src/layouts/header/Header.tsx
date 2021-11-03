@@ -10,9 +10,9 @@ import {
   Activity,
 } from 'react-feather';
 import { useRouter } from 'next/router';
-import { useBaseConnect } from 'src/hooks/UseBaseConnect';
-import { LogoutButton } from 'src/components/logoutButton';
-import { useConfigState } from 'src/context/ConfigContext';
+import { useBaseConnect } from '../../hooks/UseBaseConnect';
+import { LogoutButton } from '../../components/logoutButton';
+import { useConfigState } from '../../context/ConfigContext';
 import { headerColor, headerTextColor } from '../../styles/Themes';
 import { SingleLine } from '../../components/generic/Styled';
 import { BurgerMenu } from '../../components/burgerMenu/BurgerMenu';

@@ -1,11 +1,11 @@
 import React, { FC, useEffect } from 'react';
 import { LogOut } from 'react-feather';
 import { useRouter } from 'next/router';
-import { useLogoutMutation } from 'src/graphql/mutations/__generated__/logout.generated';
+import { useLogoutMutation } from '../../../src/graphql/mutations/__generated__/logout.generated';
 import { useApolloClient } from '@apollo/client';
-import { HeaderNavButton } from 'src/layouts/header/Header.styled';
+import { HeaderNavButton } from '../../../src/layouts/header/Header.styled';
 import styled from 'styled-components';
-import { themeColors } from 'src/styles/Themes';
+import { themeColors } from '../../../src/styles/Themes';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import getConfig from 'next/config';
 import { useChatDispatch } from '../../context/ChatContext';

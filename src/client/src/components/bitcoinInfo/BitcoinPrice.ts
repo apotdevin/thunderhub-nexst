@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useGetBitcoinPriceQuery } from 'src/graphql/queries/__generated__/getBitcoinPrice.generated';
+import { useGetBitcoinPriceQuery } from '../../../src/graphql/queries/__generated__/getBitcoinPrice.generated';
 import { usePriceDispatch } from '../../context/PriceContext';
 import { useConfigState } from '../../context/ConfigContext';
 

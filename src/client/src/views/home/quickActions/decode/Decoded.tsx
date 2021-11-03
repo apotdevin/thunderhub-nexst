@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { toast } from 'react-toastify';
-import { useDecodeRequestQuery } from 'src/graphql/queries/__generated__/decodeRequest.generated';
+import { useDecodeRequestQuery } from '../../../../graphql/queries/__generated__/decodeRequest.generated';
 import {
   Separation,
   Sub4Title,
   DarkSubTitle,
-} from 'src/components/generic/Styled';
-import { useConfigState } from 'src/context/ConfigContext';
-import { usePriceState } from 'src/context/PriceContext';
+} from '../../../../components/generic/Styled';
+import { useConfigState } from '../../../../context/ConfigContext';
+import { usePriceState } from '../../../../context/PriceContext';
 import { getErrorContent } from '../../../../utils/error';
 import { LoadingCard } from '../../../../components/loading/LoadingCard';
 import {

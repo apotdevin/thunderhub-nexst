@@ -4,7 +4,7 @@ import { AxisBottom, AxisLeft } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { timeParse, timeFormat } from 'd3-time-format';
 import { ParentSize } from '@visx/responsive';
-import { chartColors } from 'src/styles/Themes';
+import { chartColors } from '../../../src/styles/Themes';
 import { ThemeContext } from 'styled-components';
 import { useContext } from 'react';
 import { TooltipWithBounds, defaultStyles, useTooltip } from '@visx/tooltip';

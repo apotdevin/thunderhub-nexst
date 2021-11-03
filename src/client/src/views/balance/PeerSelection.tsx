@@ -1,9 +1,9 @@
 import React from 'react';
-import { shorten } from 'src/components/generic/helpers';
-import { ChannelType } from 'src/graphql/types';
-import { useGetChannelsQuery } from 'src/graphql/queries/__generated__/getChannels.generated';
-import { ValueProp } from 'src/components/select';
-import { SelectWithDecoAndValue } from 'src/components/select/SelectWithDeco';
+import { shorten } from '../../components/generic/helpers';
+import { ChannelType } from '../../graphql/types';
+import { useGetChannelsQuery } from '../../graphql/queries/__generated__/getChannels.generated';
+import { ValueProp } from '../../components/select';
+import { SelectWithDecoAndValue } from '../../components/select/SelectWithDeco';
 import { sortBy, groupBy } from 'lodash';
 import { ChannelInfo } from './ChannelInfo';
 

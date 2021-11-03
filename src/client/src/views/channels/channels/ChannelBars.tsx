@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { BalanceBars, SumBar } from 'src/components/balance';
-import { ProgressBar } from 'src/components/generic/CardGeneric';
-import { FormatFnType } from 'src/components/price/Price';
-import { useConfigState } from 'src/context/ConfigContext';
-import { ChannelType } from 'src/graphql/types';
-import { getPercent } from 'src/utils/helpers';
+import { BalanceBars, SumBar } from '../../../components/balance';
+import { ProgressBar } from '../../../components/generic/CardGeneric';
+import { FormatFnType } from '../../../components/price/Price';
+import { useConfigState } from '../../../context/ConfigContext';
+import { ChannelType } from '../../../graphql/types';
+import { getPercent } from '../../../utils/helpers';
 import { ChannelStatsColumn, ChannelStatsLine } from './Channel.style';
 import { WUMBO_MIN_SIZE } from './Channels';
 

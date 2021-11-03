@@ -6,15 +6,15 @@ import {
   SingleLine,
   DarkSubTitle,
   Separation,
-} from 'src/components/generic/Styled';
-import { useGetAccountingReportLazyQuery } from 'src/graphql/queries/__generated__/getAccountingReport.generated';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+} from '../../../components/generic/Styled';
+import { useGetAccountingReportLazyQuery } from '../../../graphql/queries/__generated__/getAccountingReport.generated';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
+} from '../../../components/buttons/multiButton/MultiButton';
 import { X } from 'react-feather';
-import { saveToPc } from 'src/utils/helpers';
+import { saveToPc } from '../../../utils/helpers';
 import { ToolsResponsiveLine } from '../Tools.styled';
 
 type ReportType =

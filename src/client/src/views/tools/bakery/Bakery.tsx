@@ -8,19 +8,19 @@ import {
   ResponsiveLine,
   Separation,
   Sub4Title,
-} from 'src/components/generic/Styled';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+} from '../../../components/generic/Styled';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 import {
   SingleButton,
   MultiButton,
-} from 'src/components/buttons/multiButton/MultiButton';
-import { PermissionsType } from 'server/schema/macaroon/resolvers';
-import { useCreateMacaroonMutation } from 'src/graphql/mutations/__generated__/createMacaroon.generated';
+} from '../../../components/buttons/multiButton/MultiButton';
+import { PermissionsType } from '../../../../server/schema/macaroon/resolvers';
+import { useCreateMacaroonMutation } from '../../../graphql/mutations/__generated__/createMacaroon.generated';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
-import Modal from 'src/components/modal/ReactModal';
-import { shorten } from 'src/components/generic/helpers';
+import { getErrorContent } from '../../../utils/error';
+import { useMutationResultWithReset } from '../../../hooks/UseMutationWithReset';
+import Modal from '../../../components/modal/ReactModal';
+import { shorten } from '../../../components/generic/helpers';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Copy } from 'react-feather';
 

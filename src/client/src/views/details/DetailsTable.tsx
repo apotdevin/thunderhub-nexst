@@ -1,8 +1,8 @@
 import React, { useMemo, useRef, useEffect } from 'react';
 import { useTable, useSortBy, useRowSelect } from 'react-table';
-import { separationColor } from 'src/styles/Themes';
-import { saveToPc } from 'src/utils/helpers';
-import { ChannelType } from 'src/graphql/types';
+import { separationColor } from '../../styles/Themes';
+import { saveToPc } from '../../utils/helpers';
+import { ChannelType } from '../../graphql/types';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
 

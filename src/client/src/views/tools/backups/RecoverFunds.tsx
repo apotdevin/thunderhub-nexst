@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { X } from 'react-feather';
-import { useRecoverFundsLazyQuery } from 'src/graphql/queries/__generated__/recoverFunds.generated';
+import { useRecoverFundsLazyQuery } from '../../../graphql/queries/__generated__/recoverFunds.generated';
 import { getErrorContent } from '../../../utils/error';
 import { SingleLine, DarkSubTitle } from '../../../components/generic/Styled';
 import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';

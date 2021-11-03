@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useGetPendingChannelsQuery } from 'src/graphql/queries/__generated__/getPendingChannels.generated';
-import { PendingChannelType } from 'src/graphql/types';
+import { useGetPendingChannelsQuery } from '../../../graphql/queries/__generated__/getPendingChannels.generated';
+import { PendingChannelType } from '../../../graphql/types';
 import { Card } from '../../../components/generic/Styled';
 import { getErrorContent } from '../../../utils/error';
 import { LoadingCard } from '../../../components/loading/LoadingCard';

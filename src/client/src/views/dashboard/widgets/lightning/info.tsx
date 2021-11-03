@@ -1,5 +1,5 @@
-import { useGetLiquidReportQuery } from 'src/graphql/queries/__generated__/getChannelReport.generated';
-import { useNodeInfo } from 'src/hooks/UseNodeInfo';
+import { useGetLiquidReportQuery } from '../../../../graphql/queries/__generated__/getChannelReport.generated';
+import { useNodeInfo } from '../../../../hooks/UseNodeInfo';
 import styled from 'styled-components';
 
 const S = {

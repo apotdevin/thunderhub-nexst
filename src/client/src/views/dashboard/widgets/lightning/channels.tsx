@@ -1,4 +1,4 @@
-import { Channels } from 'src/views/channels/channels/Channels';
+import { Channels } from '../../../../views/channels/channels/Channels';
 import styled from 'styled-components';
 
 const S = {

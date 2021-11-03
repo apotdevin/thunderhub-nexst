@@ -2,11 +2,14 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Activity } from 'react-feather';
 import { toast } from 'react-toastify';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useConfigDispatch, useConfigState } from 'src/context/ConfigContext';
-import { useLnMarketsLoginMutation } from 'src/graphql/mutations/__generated__/lnMarkets.generated';
-import { useGetLnMarketsStatusQuery } from 'src/graphql/queries/__generated__/getLnMarketsStatus.generated';
-import { getErrorContent } from 'src/utils/error';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
+import {
+  useConfigDispatch,
+  useConfigState,
+} from '../../../../context/ConfigContext';
+import { useLnMarketsLoginMutation } from '../../../../graphql/mutations/__generated__/lnMarkets.generated';
+import { useGetLnMarketsStatusQuery } from '../../../../graphql/queries/__generated__/getLnMarketsStatus.generated';
+import { getErrorContent } from '../../../../utils/error';
 import getConfig from 'next/config';
 import { QuickCard, QuickTitle } from '../QuickActions';
 

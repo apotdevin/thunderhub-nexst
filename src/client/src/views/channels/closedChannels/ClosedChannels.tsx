@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useGetClosedChannelsQuery } from 'src/graphql/queries/__generated__/getClosedChannels.generated';
-import { ClosedChannelType } from 'src/graphql/types';
+import { useGetClosedChannelsQuery } from '../../../graphql/queries/__generated__/getClosedChannels.generated';
+import { ClosedChannelType } from '../../../graphql/types';
 import { Card } from '../../../components/generic/Styled';
 import { getErrorContent } from '../../../utils/error';
 import { LoadingCard } from '../../../components/loading/LoadingCard';

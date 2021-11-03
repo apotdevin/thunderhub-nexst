@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
-import { PendingChannelType } from 'src/graphql/types';
+import { PendingChannelType } from '../../../graphql/types';
 import { blockToTime, getPercent } from '../../../utils/helpers';
 import {
   Progress,

@@ -1,23 +1,23 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
-import { renderLine } from 'src/components/generic/helpers';
+} from '../../components/buttons/multiButton/MultiButton';
+import { renderLine } from '../../components/generic/helpers';
 import {
   DarkSubTitle,
   Separation,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { Input } from 'src/components/input';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { useConfigState } from 'src/context/ConfigContext';
-import { useClaimBoltzTransactionMutation } from 'src/graphql/mutations/__generated__/claimBoltzTransaction.generated';
-import { useBitcoinFees } from 'src/hooks/UseBitcoinFees';
-import { chartColors } from 'src/styles/Themes';
-import { getErrorContent } from 'src/utils/error';
+} from '../../components/generic/Styled';
+import { Input } from '../../components/input';
+import { InputWithDeco } from '../../components/input/InputWithDeco';
+import { useConfigState } from '../../context/ConfigContext';
+import { useClaimBoltzTransactionMutation } from '../../graphql/mutations/__generated__/claimBoltzTransaction.generated';
+import { useBitcoinFees } from '../../hooks/UseBitcoinFees';
+import { chartColors } from '../../styles/Themes';
+import { getErrorContent } from '../../utils/error';
 import styled from 'styled-components';
 import { WarningText } from '../stats/styles';
 import { useSwapsDispatch, useSwapsState } from './SwapContext';

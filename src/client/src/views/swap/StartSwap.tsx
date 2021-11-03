@@ -1,27 +1,27 @@
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
+import { InputWithDeco } from '../../components/input/InputWithDeco';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
+} from '../../components/buttons/multiButton/MultiButton';
 import {
   Card,
   DarkSubTitle,
   Separation,
   SingleLine,
   SubTitle,
-} from 'src/components/generic/Styled';
+} from '../../components/generic/Styled';
 import { useEffect, useState } from 'react';
-import { Slider } from 'src/components/slider';
+import { Slider } from '../../components/slider';
 import { Edit2, X } from 'react-feather';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
 import styled from 'styled-components';
-import { mediaWidths } from 'src/styles/Themes';
-import { Input } from 'src/components/input';
-import { useCreateBoltzReverseSwapMutation } from 'src/graphql/mutations/__generated__/createBoltzReverseSwap.generated';
+import { mediaWidths } from '../../styles/Themes';
+import { Input } from '../../components/input';
+import { useCreateBoltzReverseSwapMutation } from '../../graphql/mutations/__generated__/createBoltzReverseSwap.generated';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
-import { saveToPc } from 'src/utils/helpers';
+import { getErrorContent } from '../../utils/error';
+import { useMutationResultWithReset } from '../../hooks/UseMutationWithReset';
+import { saveToPc } from '../../utils/helpers';
 import { useSwapsDispatch } from './SwapContext';
 
 type StartSwapProps = {

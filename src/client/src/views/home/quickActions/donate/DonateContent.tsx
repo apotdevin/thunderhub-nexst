@@ -1,20 +1,24 @@
 import * as React from 'react';
-import { SubTitle, Separation, Sub4Title } from 'src/components/generic/Styled';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import Modal from 'src/components/modal/ReactModal';
-import { Emoji } from 'src/components/emoji/Emoji';
-import { useCreateBaseInvoiceMutation } from 'src/graphql/mutations/__generated__/createBaseInvoice.generated';
+import {
+  SubTitle,
+  Separation,
+  Sub4Title,
+} from '../../../../components/generic/Styled';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import Modal from '../../../../components/modal/ReactModal';
+import { Emoji } from '../../../../components/emoji/Emoji';
+import { useCreateBaseInvoiceMutation } from '../../../../graphql/mutations/__generated__/createBaseInvoice.generated';
 import {
   SingleButton,
   MultiButton,
-} from 'src/components/buttons/multiButton/MultiButton';
+} from '../../../../components/buttons/multiButton/MultiButton';
 import styled from 'styled-components';
-import { chartColors, mediaWidths } from 'src/styles/Themes';
-import { useGetNodeInfoQuery } from 'src/graphql/queries/__generated__/getNodeInfo.generated';
-import { useCreateThunderPointsMutation } from 'src/graphql/mutations/__generated__/createThunderPoints.generated';
+import { chartColors, mediaWidths } from '../../../../styles/Themes';
+import { useGetNodeInfoQuery } from '../../../../graphql/queries/__generated__/getNodeInfo.generated';
+import { useCreateThunderPointsMutation } from '../../../../graphql/mutations/__generated__/createThunderPoints.generated';
 import { toast } from 'react-toastify';
-import { useBaseConnect } from 'src/hooks/UseBaseConnect';
+import { useBaseConnect } from '../../../../hooks/UseBaseConnect';
 import { Pay } from '../../account/pay/Pay';
 
 const StyledText = styled.div`

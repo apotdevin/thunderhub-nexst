@@ -6,13 +6,13 @@ import {
   CardWithTitle,
   DarkSubTitle,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { Table } from 'src/components/table';
-import { getFormatDate, renderLine } from 'src/components/generic/helpers';
+} from '../../components/generic/Styled';
+import { LoadingCard } from '../../components/loading/LoadingCard';
+import { Table } from '../../components/table';
+import { getFormatDate, renderLine } from '../../components/generic/helpers';
 import numeral from 'numeral';
-import { useAmbossUser } from 'src/hooks/UseAmbossUser';
-import { useGetNodeBosHistoryQuery } from 'src/graphql/queries/__generated__/getNodeBosHistory.generated';
+import { useAmbossUser } from '../../hooks/UseAmbossUser';
+import { useGetNodeBosHistoryQuery } from '../../graphql/queries/__generated__/getNodeBosHistory.generated';
 import { toast } from 'react-toastify';
 
 export const NodeScores: FC = () => {

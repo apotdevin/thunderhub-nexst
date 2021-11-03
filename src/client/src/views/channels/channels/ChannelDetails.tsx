@@ -1,28 +1,28 @@
 import { FC, useState } from 'react';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 import {
   getDateDif,
   getFormatDate,
   getNodeLink,
   getTransactionLink,
   renderLine,
-} from 'src/components/generic/helpers';
+} from '../../../components/generic/helpers';
 import {
   DarkSubTitle,
   Separation,
   Sub4Title,
-} from 'src/components/generic/Styled';
-import { ChangeDetails } from 'src/components/modal/changeDetails/ChangeDetails';
-import { CloseChannel } from 'src/components/modal/closeChannel/CloseChannel';
-import Modal from 'src/components/modal/ReactModal';
-import { ChannelType } from 'src/graphql/types';
+} from '../../components/generic/Styled';
+import { ChangeDetails } from '../../../components/modal/changeDetails/ChangeDetails';
+import { CloseChannel } from '../../../components/modal/closeChannel/CloseChannel';
+import Modal from '../../../components/modal/ReactModal';
+import { ChannelType } from '../../../graphql/types';
 import {
   blockToTime,
   formatSats,
   formatSeconds,
   getPercent,
-} from 'src/utils/helpers';
-import { FormatFnType } from 'src/components/price/Price';
+} from '../../../utils/helpers';
+import { FormatFnType } from '../../../components/price/Price';
 import { ChannelBosScore } from './ChannelBosScore';
 import { WUMBO_MIN_SIZE } from './Channels';
 import { WumboTag } from './Channel.style';

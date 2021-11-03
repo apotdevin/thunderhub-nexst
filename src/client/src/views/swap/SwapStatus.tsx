@@ -1,18 +1,18 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Trash } from 'react-feather';
 import ReactTooltip from 'react-tooltip';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { getTransactionLink } from 'src/components/generic/helpers';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import { getTransactionLink } from '../../components/generic/helpers';
 import {
   Card,
   DarkSubTitle,
   Separation,
   SingleLine,
   SubTitle,
-} from 'src/components/generic/Styled';
-import Modal from 'src/components/modal/ReactModal';
-import { useGetBoltzSwapStatusLazyQuery } from 'src/graphql/queries/__generated__/getBoltzSwapStatus.generated';
-import { chartColors, themeColors } from 'src/styles/Themes';
+} from '../../components/generic/Styled';
+import Modal from '../../components/modal/ReactModal';
+import { useGetBoltzSwapStatusLazyQuery } from '../../graphql/queries/__generated__/getBoltzSwapStatus.generated';
+import { chartColors, themeColors } from '../../styles/Themes';
 import styled from 'styled-components';
 import { SwapClaim } from './SwapClaim';
 import { useSwapsDispatch, useSwapsState } from './SwapContext';

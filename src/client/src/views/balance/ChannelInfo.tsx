@@ -3,11 +3,11 @@ import {
   DarkSubTitle,
   Separation,
   SubCard,
-} from 'src/components/generic/Styled';
-import { Price } from 'src/components/price/Price';
+} from '../../components/generic/Styled';
+import { Price } from '../../components/price/Price';
 import styled from 'styled-components';
-import { BalanceBars } from 'src/components/balance';
-import { renderLine } from 'src/components/generic/helpers';
+import { BalanceBars } from '../../components/balance';
+import { renderLine } from '../../components/generic/helpers';
 import { ReducedOptionsItem } from './PeerSelection';
 
 type ChannelInfoProps = {

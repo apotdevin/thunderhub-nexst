@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useLoginAmbossMutation } from 'src/graphql/mutations/__generated__/loginAmboss.generated';
-import { useGetAmbossLoginTokenLazyQuery } from 'src/graphql/queries/__generated__/getAmbossLoginToken.generated';
-import { useAmbossUser } from 'src/hooks/UseAmbossUser';
+import { useLoginAmbossMutation } from '../../../../graphql/mutations/__generated__/loginAmboss.generated';
+import { useGetAmbossLoginTokenLazyQuery } from '../../../../graphql/queries/__generated__/getAmbossLoginToken.generated';
+import { useAmbossUser } from '../../../../hooks/UseAmbossUser';
 import {
   cardBorderColor,
   cardColor,
   mediaWidths,
   unSelectedNavButton,
-} from 'src/styles/Themes';
+} from '../../../../styles/Themes';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { appendBasePath } from 'src/utils/basePath';
+import { appendBasePath } from '../../../../utils/basePath';
 
 const QuickTitle = styled.div`
   font-size: 12px;

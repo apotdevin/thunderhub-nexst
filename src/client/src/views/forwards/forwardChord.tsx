@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { Forward } from 'src/graphql/types';
+import { getErrorContent } from '../../utils/error';
+import { Forward } from '../../graphql/types';
 import { ParentSize } from '@visx/responsive';
 import {
   ChordGraph,
   SingleGroupProps,
   SingleChordProps,
-} from 'src/components/chord';
+} from '../../components/chord';
 import styled from 'styled-components';
-import { renderLine } from 'src/components/generic/helpers';
-import { DarkSubTitle } from 'src/components/generic/Styled';
-import { mediaWidths } from 'src/styles/Themes';
-import { usePriceState } from 'src/context/PriceContext';
-import { getPrice } from 'src/components/price/Price';
-import { useConfigState } from 'src/context/ConfigContext';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
+import { renderLine } from '../../components/generic/helpers';
+import { DarkSubTitle } from '../../components/generic/Styled';
+import { mediaWidths } from '../../styles/Themes';
+import { usePriceState } from '../../context/PriceContext';
+import { getPrice } from '../../components/price/Price';
+import { useConfigState } from '../../context/ConfigContext';
+import { useGetForwardsQuery } from '../../graphql/queries/__generated__/getForwards.generated';
 import { ChannelAlias } from '../home/reports/forwardReport/ChannelAlias';
 import { getChordMatrix } from './helpers';
 

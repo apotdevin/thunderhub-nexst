@@ -6,7 +6,7 @@ import {
   useAsyncDebounce,
   useGlobalFilter,
 } from 'react-table';
-import { separationColor } from 'src/styles/Themes';
+import { separationColor } from '../../../src/styles/Themes';
 import { Input } from '../input';
 
 type StyledTableProps = {

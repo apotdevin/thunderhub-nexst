@@ -1,11 +1,11 @@
-import { useDashDispatch, useDashState } from 'src/context/DashContext';
-import { CreateInvoiceCard } from 'src/views/home/account/createInvoice/CreateInvoice';
-import { PayCard } from 'src/views/home/account/pay/Payment';
-import { ReceiveOnChainCard } from 'src/views/home/account/receiveOnChain/ReceiveOnChain';
-import { SendOnChainCard } from 'src/views/home/account/sendOnChain/SendOnChain';
-import { SupportBar } from 'src/views/home/quickActions/donate/DonateContent';
-import { OpenChannel } from 'src/views/home/quickActions/openChannel';
-import { SignMessage } from 'src/views/tools/messages/SignMessage';
+import { useDashDispatch, useDashState } from '../../../context/DashContext';
+import { CreateInvoiceCard } from '../../../views/home/account/createInvoice/CreateInvoice';
+import { PayCard } from '../../../views/home/account/pay/Payment';
+import { ReceiveOnChainCard } from '../../../views/home/account/receiveOnChain/ReceiveOnChain';
+import { SendOnChainCard } from '../../../views/home/account/sendOnChain/SendOnChain';
+import { SupportBar } from '../../../views/home/quickActions/donate/DonateContent';
+import { OpenChannel } from '../../../views/home/quickActions/openChannel';
+import { SignMessage } from '../../../views/tools/messages/SignMessage';
 
 export const DashboardModal = () => {
   const { modalType } = useDashState();

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { toast } from 'react-toastify';
-import { useSendMessageMutation } from 'src/graphql/mutations/__generated__/sendMessage.generated';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useAccount } from 'src/hooks/UseAccount';
+import { useSendMessageMutation } from '../../graphql/mutations/__generated__/sendMessage.generated';
+import { useMutationResultWithReset } from '../../hooks/UseMutationWithReset';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import { useAccount } from '../../hooks/UseAccount';
 import { Input } from '../../components/input';
 import { SingleLine } from '../../components/generic/Styled';
 import { useChatState, useChatDispatch } from '../../context/ChatContext';

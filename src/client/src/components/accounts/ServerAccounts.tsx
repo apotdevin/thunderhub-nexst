@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
-import { getUrlParam } from 'src/utils/url';
+import { getUrlParam } from '../../../src/utils/url';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
+import { getErrorContent } from '../../../src/utils/error';
 import getConfig from 'next/config';
-import { useGetAuthTokenMutation } from 'src/graphql/mutations/__generated__/getAuthToken.generated';
+import { useGetAuthTokenMutation } from '../../../src/graphql/mutations/__generated__/getAuthToken.generated';
 
 const { publicRuntimeConfig } = getConfig();
 const { logoutUrl } = publicRuntimeConfig;

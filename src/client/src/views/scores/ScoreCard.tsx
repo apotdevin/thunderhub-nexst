@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import { FC } from 'react';
-import { getNodeLink, renderLine } from 'src/components/generic/helpers';
-import { Link } from 'src/components/link/Link';
-import { BosScore } from 'src/graphql/types';
-import { themeColors } from 'src/styles/Themes';
+import { getNodeLink, renderLine } from '../../components/generic/helpers';
+import { Link } from '../../components/link/Link';
+import { BosScore } from '../../graphql/types';
+import { themeColors } from '../../styles/Themes';
 import styled from 'styled-components';
 
 type ScoreCardProps = {

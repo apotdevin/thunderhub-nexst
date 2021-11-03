@@ -1,6 +1,9 @@
 import { Star, Sun, Moon } from 'react-feather';
-import { SingleButton } from 'src/components/buttons/multiButton/MultiButton';
-import { useConfigDispatch, useConfigState } from 'src/context/ConfigContext';
+import { SingleButton } from '../../../../components/buttons/multiButton/MultiButton';
+import {
+  useConfigDispatch,
+  useConfigState,
+} from '../../../../context/ConfigContext';
 import styled from 'styled-components';
 
 const S = {

@@ -1,5 +1,5 @@
-import { extraColumnsType } from 'src/context/ConfigContext';
-import { chartColors, themeColors } from 'src/styles/Themes';
+import { extraColumnsType } from '../../../context/ConfigContext';
+import { chartColors, themeColors } from '../../../styles/Themes';
 
 export const getTitleColor = (
   active: boolean,

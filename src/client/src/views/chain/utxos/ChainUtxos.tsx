@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useGetUtxosQuery } from 'src/graphql/queries/__generated__/getUtxos.generated';
-import { GetUtxosType } from 'src/graphql/types';
+import { useGetUtxosQuery } from '../../../graphql/queries/__generated__/getUtxos.generated';
+import { GetUtxosType } from '../../../graphql/types';
 import {
   SubTitle,
   Card,

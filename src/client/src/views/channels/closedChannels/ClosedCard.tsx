@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ClosedChannelType } from 'src/graphql/types';
-import { blockToTime } from 'src/utils/helpers';
+import { ClosedChannelType } from '../../../graphql/types';
+import { blockToTime } from '../../../utils/helpers';
 import { NodeTitle, MainInfo } from '../../../components/generic/CardGeneric';
 import {
   SubCard,

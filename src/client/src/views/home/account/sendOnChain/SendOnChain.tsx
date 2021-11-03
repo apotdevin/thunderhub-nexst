@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { usePayAddressMutation } from 'src/graphql/mutations/__generated__/sendToAddress.generated';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { useBitcoinFees } from 'src/hooks/UseBitcoinFees';
+import { usePayAddressMutation } from '../../../../graphql/mutations/__generated__/sendToAddress.generated';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { useBitcoinFees } from '../../../../hooks/UseBitcoinFees';
 import dynamic from 'next/dynamic';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
 import { Camera } from 'react-feather';
 import {
   Separation,
   SingleLine,
   SubTitle,
-} from '../../../../components/generic/Styled';
-import { getErrorContent } from '../../../../utils/error';
-import { Input } from '../../../../components/input';
+} from '../../../../../../components/generic/Styled';
+import { getErrorContent } from '../../../../../../utils/error';
+import { Input } from '../../../../../../components/input';
 import {
   MultiButton,
   SingleButton,
-} from '../../../../components/buttons/multiButton/MultiButton';
-import { Price, getPrice } from '../../../../components/price/Price';
-import { useConfigState } from '../../../../context/ConfigContext';
-import Modal from '../../../../components/modal/ReactModal';
-import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
-import { renderLine } from '../../../../components/generic/helpers';
-import { usePriceState } from '../../../../context/PriceContext';
+} from '../../../../../../components/buttons/multiButton/MultiButton';
+import { Price, getPrice } from '../../../../../../components/price/Price';
+import { useConfigState } from '../../../../../../context/ConfigContext';
+import Modal from '../../../../../../components/modal/ReactModal';
+import { ColorButton } from '../../../../../../components/buttons/colorButton/ColorButton';
+import { renderLine } from '../../../../../../components/generic/helpers';
+import { usePriceState } from '../../../../../../context/PriceContext';
 
-const QRCodeReader = dynamic(() => import('src/components/qrReader'), {
+const QRCodeReader = dynamic(() => import('../../../../components/qrReader'), {
   ssr: false,
   loading: function Loading() {
     return <LoadingCard noCard={true} />;

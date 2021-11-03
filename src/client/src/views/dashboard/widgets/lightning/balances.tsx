@@ -1,6 +1,6 @@
-import { Price } from 'src/components/price/Price';
-import { useNodeBalances } from 'src/hooks/UseNodeBalances';
-import { unSelectedNavButton } from 'src/styles/Themes';
+import { Price } from '../../../../components/price/Price';
+import { useNodeBalances } from '../../../../hooks/UseNodeBalances';
+import { unSelectedNavButton } from '../../../../styles/Themes';
 import styled from 'styled-components';
 import Big from 'big.js';
 

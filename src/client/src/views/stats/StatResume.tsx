@@ -4,8 +4,8 @@ import {
   buildStyles,
 } from 'react-circular-progressbar';
 import styled from 'styled-components';
-import { DarkSubTitle } from 'src/components/generic/Styled';
-import { mediaWidths } from 'src/styles/Themes';
+import { DarkSubTitle } from '../../components/generic/Styled';
+import { mediaWidths } from '../../styles/Themes';
 import { useStatsState } from './context';
 import { StatsTitle } from './styles';
 import { getProgressColor } from './helpers';

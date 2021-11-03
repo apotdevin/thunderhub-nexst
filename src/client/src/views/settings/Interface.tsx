@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import Modal from 'src/components/modal/ReactModal';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import Modal from '../../components/modal/ReactModal';
 import numeral from 'numeral';
-import { themeColors } from 'src/styles/Themes';
+import { themeColors } from '../../styles/Themes';
 import {
   CardWithTitle,
   SubTitle,

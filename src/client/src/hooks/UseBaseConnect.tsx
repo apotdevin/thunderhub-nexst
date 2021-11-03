@@ -1,4 +1,4 @@
-import { useGetBaseCanConnectQuery } from 'src/graphql/queries/__generated__/getBaseCanConnect.generated';
+import { useGetBaseCanConnectQuery } from '../../src/graphql/queries/__generated__/getBaseCanConnect.generated';
 
 export const useBaseConnect = () => {
   const { loading, error, data } = useGetBaseCanConnectQuery({

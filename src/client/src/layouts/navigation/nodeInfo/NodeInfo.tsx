@@ -2,10 +2,10 @@ import React from 'react';
 import { Zap, Anchor, Circle } from 'react-feather';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
-import { getPrice, Price } from 'src/components/price/Price';
-import { addEllipsis, renderLine } from 'src/components/generic/helpers';
-import { useNodeInfo } from 'src/hooks/UseNodeInfo';
-import { useNodeBalances } from 'src/hooks/UseNodeBalances';
+import { getPrice, Price } from '../../../components/price/Price';
+import { addEllipsis, renderLine } from '../../../components/generic/helpers';
+import { useNodeInfo } from '../../../hooks/UseNodeInfo';
+import { useNodeBalances } from '../../../hooks/UseNodeBalances';
 import Big from 'big.js';
 import { unSelectedNavButton } from '../../../styles/Themes';
 import {

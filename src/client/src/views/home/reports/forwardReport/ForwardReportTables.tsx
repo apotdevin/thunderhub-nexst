@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Table } from 'src/components/table';
+import { Table } from '../../../../components/table';
 import { ChannelAlias } from './ChannelAlias';
 
 export type RouteType = {

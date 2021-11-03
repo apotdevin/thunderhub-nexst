@@ -6,7 +6,7 @@ import {
   colorButtonBorder,
   chartColors,
   disabledTextColor,
-} from 'src/styles/Themes';
+} from '../../../styles/Themes';
 
 export const ChannelIconPadding = styled.div`
   display: flex;

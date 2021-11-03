@@ -1,7 +1,7 @@
 import React, { FC, SVGAttributes } from 'react';
 import { Sun, Moon, ChevronLeft, ChevronRight, Star } from 'react-feather';
 import styled from 'styled-components';
-import { SatoshiSymbol } from 'src/components/satoshi/Satoshi';
+import { SatoshiSymbol } from '../../../components/satoshi/Satoshi';
 import { Separation, SingleLine } from '../../../components/generic/Styled';
 import {
   useConfigState,

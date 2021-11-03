@@ -1,17 +1,20 @@
 import { FC, useEffect, useState } from 'react';
-import { WithdrawRequest } from 'src/graphql/types';
+import { WithdrawRequest } from '../../../../graphql/types';
 import styled from 'styled-components';
-import { Title } from 'src/components/typography/Styled';
-import { DarkSubTitle, Separation } from 'src/components/generic/Styled';
-import { renderLine } from 'src/components/generic/helpers';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useWithdrawLnUrlMutation } from 'src/graphql/mutations/__generated__/lnUrl.generated';
-import { useGetInvoiceStatusChangeLazyQuery } from 'src/graphql/queries/__generated__/getInvoiceStatusChange.generated';
-import { chartColors } from 'src/styles/Themes';
+import { Title } from '../../../../components/typography/Styled';
+import {
+  DarkSubTitle,
+  Separation,
+} from '../../../../components/generic/Styled';
+import { renderLine } from '../../../../components/generic/helpers';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { useWithdrawLnUrlMutation } from '../../../../graphql/mutations/__generated__/lnUrl.generated';
+import { useGetInvoiceStatusChangeLazyQuery } from '../../../../graphql/queries/__generated__/getInvoiceStatusChange.generated';
+import { chartColors } from '../../../../styles/Themes';
 import { CheckCircle } from 'react-feather';
-import { Link } from 'src/components/link/Link';
-import { getErrorContent } from 'src/utils/error';
+import { Link } from '../../../../components/link/Link';
+import { getErrorContent } from '../../../../utils/error';
 import { toast } from 'react-toastify';
 import { Timer } from '../../account/createInvoice/Timer';
 

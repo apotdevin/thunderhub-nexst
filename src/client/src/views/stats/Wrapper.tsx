@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, SubTitle } from 'src/components/generic/Styled';
+import { Card, SubTitle } from '../../components/generic/Styled';
 import { ChevronDown, ChevronUp } from 'react-feather';
 import { StatHeaderLine } from './styles';
 

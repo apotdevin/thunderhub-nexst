@@ -7,7 +7,7 @@ import {
   cardBorderColor,
   unSelectedNavButton,
   mediaWidths,
-} from 'src/styles/Themes';
+} from '../../../../styles/Themes';
 
 const QuickTitle = styled.div`
   font-size: 12px;

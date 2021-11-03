@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetUtxosType } from 'src/graphql/types';
+import { GetUtxosType } from '../../../graphql/types';
 import { Separation, SubCard } from '../../../components/generic/Styled';
 import { MainInfo } from '../../../components/generic/CardGeneric';
 import {

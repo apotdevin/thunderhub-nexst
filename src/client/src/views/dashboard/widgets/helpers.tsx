@@ -5,9 +5,9 @@ import {
   subHours,
 } from 'date-fns';
 import { groupBy } from 'lodash';
-import { GetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
-import { Transaction } from 'src/graphql/types';
-import { defaultGrid } from 'src/utils/gridConstants';
+import { GetForwardsQuery } from '../../../graphql/queries/__generated__/getForwards.generated';
+import { Transaction } from '../../../graphql/types';
+import { defaultGrid } from '../../../utils/gridConstants';
 import { StoredWidget } from '..';
 import { widgetList, WidgetProps } from './widgetList';
 

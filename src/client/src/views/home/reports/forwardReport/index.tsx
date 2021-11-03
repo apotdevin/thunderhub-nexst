@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SmallSelectWithValue } from 'src/components/select';
+import { SmallSelectWithValue } from '../../../../components/select';
 import styled from 'styled-components';
 import {
   CardWithTitle,

@@ -1,5 +1,5 @@
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useDashDispatch } from 'src/context/DashContext';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { useDashDispatch } from '../../../../context/DashContext';
 
 export const PayInvoice = () => {
   const dispatch = useDashDispatch();

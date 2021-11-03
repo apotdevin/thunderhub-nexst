@@ -8,11 +8,11 @@ import {
   ChevronsDown,
   X,
 } from 'react-feather';
-import { ChannelType } from 'src/graphql/types';
+import { ChannelType } from '../../../graphql/types';
 import {
   useRebalanceState,
   useRebalanceDispatch,
-} from 'src/context/RebalanceContext';
+} from '../../../context/RebalanceContext';
 import differenceInDays from 'date-fns/differenceInDays';
 import { MainInfo } from '../../../components/generic/CardGeneric';
 import { SubCard, DarkSubTitle } from '../../../components/generic/Styled';

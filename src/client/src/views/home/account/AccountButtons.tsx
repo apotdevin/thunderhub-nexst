@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Anchor, X, Zap } from 'react-feather';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Card } from 'src/components/generic/Styled';
-import { mediaWidths } from 'src/styles/Themes';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { Card } from '../../../../components/generic/Styled';
+import { mediaWidths } from '../../../../styles/Themes';
 import styled from 'styled-components';
 import { CreateInvoiceCard } from './createInvoice/CreateInvoice';
 import { PayCard } from './pay/Payment';

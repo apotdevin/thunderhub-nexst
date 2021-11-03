@@ -1,8 +1,8 @@
-import { getDateDif } from 'src/components/generic/helpers';
-import { Price } from 'src/components/price/Price';
-import { Table } from 'src/components/table';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
-import { ChannelAlias } from 'src/views/home/reports/forwardReport/ChannelAlias';
+import { getDateDif } from '../../../../components/generic/helpers';
+import { Price } from '../../../../components/price/Price';
+import { Table } from '../../../../components/table';
+import { useGetForwardsQuery } from '../../../../graphql/queries/__generated__/getForwards.generated';
+import { ChannelAlias } from '../../../../views/home/reports/forwardReport/ChannelAlias';
 import styled from 'styled-components';
 
 const S = {

@@ -2,12 +2,12 @@ import { ParentSize } from '@visx/responsive';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { chartColors, mediaWidths, themeColors } from 'src/styles/Themes';
-import { getErrorContent } from 'src/utils/error';
+import { LoadingCard } from '../../components/loading/LoadingCard';
+import { chartColors, mediaWidths, themeColors } from '../../styles/Themes';
+import { getErrorContent } from '../../utils/error';
 import styled from 'styled-components';
 import { isArray } from 'lodash';
-import { useGetNodeBosHistoryQuery } from 'src/graphql/queries/__generated__/getNodeBosHistory.generated';
+import { useGetNodeBosHistoryQuery } from '../../graphql/queries/__generated__/getNodeBosHistory.generated';
 import { useAmbossUser } from '../../hooks/UseAmbossUser';
 import { AreaGraph } from './AreaGraph';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useAccount } from 'src/hooks/UseAccount';
+import { useAccount } from '../../../hooks/UseAccount';
 import {
   CardWithTitle,
   CardTitle,

@@ -1,7 +1,7 @@
 import { differenceInCalendarDays, differenceInHours, subDays } from 'date-fns';
 import { sortBy, groupBy } from 'lodash';
-import { GetClosedChannelsQuery } from 'src/graphql/queries/__generated__/getClosedChannels.generated';
-import { Forward } from 'src/graphql/types';
+import { GetClosedChannelsQuery } from '../../../../graphql/queries/__generated__/getClosedChannels.generated';
+import { Forward } from '../../../../graphql/types';
 
 type ListProps = {
   [key: string]: Forward[];

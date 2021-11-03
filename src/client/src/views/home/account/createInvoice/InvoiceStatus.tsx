@@ -1,4 +1,4 @@
-import { useGetInvoiceStatusChangeQuery } from 'src/graphql/queries/__generated__/getInvoiceStatusChange.generated';
+import { useGetInvoiceStatusChangeQuery } from '../../../../graphql/queries/__generated__/getInvoiceStatusChange.generated';
 import { useEffect } from 'react';
 type InvoiceProps = {
   id: string;

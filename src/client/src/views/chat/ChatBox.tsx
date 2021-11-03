@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { sortBy } from 'lodash';
-import { MessagesType } from 'src/graphql/types';
-import { SentChatProps } from 'src/context/ChatContext';
+import { MessagesType } from '../../graphql/types';
+import { SentChatProps } from '../../context/ChatContext';
 import {
   getMessageDate,
   getIsDifferentDay,

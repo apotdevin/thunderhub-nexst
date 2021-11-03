@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SmallSelectWithValue } from 'src/components/select';
-import { useGetResumeQuery } from 'src/graphql/queries/__generated__/getResume.generated';
-import { renderLine } from 'src/components/generic/helpers';
-import { Price } from 'src/components/price/Price';
-import { mediaWidths } from 'src/styles/Themes';
+import { SmallSelectWithValue } from '../../../../components/select';
+import { useGetResumeQuery } from '../../../../graphql/queries/__generated__/getResume.generated';
+import { renderLine } from '../../../../components/generic/helpers';
+import { Price } from '../../../../components/price/Price';
+import { mediaWidths } from '../../../../styles/Themes';
 import {
   CardWithTitle,
   SubTitle,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { useGetChainTransactionsQuery } from 'src/graphql/queries/__generated__/getChainTransactions.generated';
-import { GetTransactionsType } from 'src/graphql/types';
+import { useGetChainTransactionsQuery } from '../../../graphql/queries/__generated__/getChainTransactions.generated';
+import { GetTransactionsType } from '../../../graphql/types';
 import {
   SubTitle,
   Card,

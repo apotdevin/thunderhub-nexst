@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useGetWalletInfoQuery } from 'src/graphql/queries/__generated__/getWalletInfo.generated';
+import { useGetWalletInfoQuery } from '../../graphql/queries/__generated__/getWalletInfo.generated';
 import {
   CardWithTitle,
   SubTitle,

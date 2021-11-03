@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AlertCircle } from 'react-feather';
 import { useRouter } from 'next/router';
-import { useLogoutMutation } from 'src/graphql/mutations/__generated__/logout.generated';
+import { useLogoutMutation } from '../../graphql/mutations/__generated__/logout.generated';
 import getConfig from 'next/config';
 import {
   Card,

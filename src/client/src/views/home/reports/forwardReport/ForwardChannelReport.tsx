@@ -4,10 +4,10 @@ import { GitCommit, ArrowDown, ArrowUp } from 'react-feather';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
-import { Forward } from 'src/graphql/types';
+} from '../../../../components/buttons/multiButton/MultiButton';
+import { Forward } from '../../../../graphql/types';
 import styled from 'styled-components';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
+import { useGetForwardsQuery } from '../../../../graphql/queries/__generated__/getForwards.generated';
 import { getErrorContent } from '../../../../utils/error';
 import { SingleLine, SubTitle } from '../../../../components/generic/Styled';
 import { LoadingCard } from '../../../../components/loading/LoadingCard';

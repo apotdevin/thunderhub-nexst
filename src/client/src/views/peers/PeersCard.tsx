@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ArrowDown, ArrowUp } from 'react-feather';
 import ReactTooltip from 'react-tooltip';
-import { PeerType } from 'src/graphql/types';
+import { PeerType } from '../../graphql/types';
 import {
   SubCard,
   Separation,

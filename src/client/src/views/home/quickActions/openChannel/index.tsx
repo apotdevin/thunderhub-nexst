@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { useGetBaseNodesQuery } from 'src/graphql/queries/__generated__/getBaseNodes.generated';
+import { useGetBaseNodesQuery } from '../../../../graphql/queries/__generated__/getBaseNodes.generated';
 import {
   Separation,
   SingleLine,
   DarkSubTitle,
-} from 'src/components/generic/Styled';
-import { animated, useTransition } from 'react-spring';
+} from '../../../../components/generic/Styled';
 import styled from 'styled-components';
-import { themeColors, backgroundColor, mediaWidths } from 'src/styles/Themes';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import {
+  themeColors,
+  backgroundColor,
+  mediaWidths,
+} from '../../../../styles/Themes';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
 import {
   Cpu,
   ShoppingCart,
@@ -23,8 +26,8 @@ import {
   Box,
   X,
 } from 'react-feather';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { BaseNodesType } from 'src/graphql/types';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { BaseNodesType } from '../../../../graphql/types';
 import { OpenChannelCard } from './OpenChannel';
 import { OpenRecommended } from './OpenRecommended';
 
@@ -33,7 +36,7 @@ const IconStyle = styled.div`
   color: ${themeColors.blue2};
 `;
 
-const Item = styled(animated.div)`
+const Item = styled.div`
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -89,16 +92,6 @@ export const OpenChannel = ({ setOpenCard }: OpenChannelProps) => {
     }
   }, [loading, data]);
 
-  const transitions = useTransition(
-    open && data?.getBaseNodes ? data.getBaseNodes : [],
-    {
-      trail: 400 / (data?.getBaseNodes?.length || 1),
-      from: { opacity: 0, transform: 'scale(0)' },
-      enter: { opacity: 1, transform: 'scale(1)' },
-      leave: { opacity: 0, transform: 'scale(0)' },
-    }
-  );
-
   if (loading) {
     return <LoadingCard noCard={true} />;
   }
@@ -142,10 +135,13 @@ export const OpenChannel = ({ setOpenCard }: OpenChannelProps) => {
       return (
         <>
           <Container>
-            {transitions(
-              (style, item) =>
+            {(data?.getBaseNodes || []).map(
+              (item, index) =>
                 item && (
-                  <Item style={style} onClick={() => setPartner(item)}>
+                  <Item
+                    key={`${index}-${item.name}`}
+                    onClick={() => setPartner(item)}
+                  >
                     <IconStyle>{getIcon(item?.name || '')}</IconStyle>
                     {item.name}
                   </Item>

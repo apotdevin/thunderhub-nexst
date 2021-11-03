@@ -1,6 +1,6 @@
 import { Heart } from 'react-feather';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useDashDispatch } from 'src/context/DashContext';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { useDashDispatch } from '../../../../context/DashContext';
 import styled from 'styled-components';
 
 const S = {

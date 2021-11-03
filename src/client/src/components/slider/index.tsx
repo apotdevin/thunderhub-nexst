@@ -3,7 +3,7 @@ import {
   sliderBackgroundColor,
   sliderThumbColor,
   themeColors,
-} from 'src/styles/Themes';
+} from '../../../src/styles/Themes';
 import styled from 'styled-components';
 
 const StyledSlider = styled(ReactSlider)<{ maxWidth?: string }>`

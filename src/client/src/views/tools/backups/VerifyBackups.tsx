@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { X } from 'react-feather';
-import { useVerifyBackupsLazyQuery } from 'src/graphql/queries/__generated__/verifyBackups.generated';
+import { useVerifyBackupsLazyQuery } from '../../../graphql/queries/__generated__/verifyBackups.generated';
 import { getErrorContent } from '../../../utils/error';
 import {
   SingleLine,

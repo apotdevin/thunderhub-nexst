@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { mediaWidths } from 'src/styles/Themes';
+import { mediaWidths } from '../../../src/styles/Themes';
 
 const StyledSpacer = styled.div`
   height: 32px;

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { ChannelType } from 'src/graphql/types';
+import { ChannelType } from '../../src/graphql/types';
 
 type State = {
   inChannel: ChannelType | null;

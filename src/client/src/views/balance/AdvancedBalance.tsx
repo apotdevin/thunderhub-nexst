@@ -1,24 +1,24 @@
 import { useReducer, useState } from 'react';
-import { useBosRebalanceMutation } from 'src/graphql/mutations/__generated__/bosRebalance.generated';
+import { useBosRebalanceMutation } from '../../graphql/mutations/__generated__/bosRebalance.generated';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { Card, Separation, SingleLine } from 'src/components/generic/Styled';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
+import { getErrorContent } from '../../utils/error';
+import { Card, Separation, SingleLine } from '../../components/generic/Styled';
+import { InputWithDeco } from '../../components/input/InputWithDeco';
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import Modal from 'src/components/modal/ReactModal';
+} from '../../components/buttons/multiButton/MultiButton';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import Modal from '../../components/modal/ReactModal';
 import { Plus, Minus } from 'react-feather';
-import { chartColors } from 'src/styles/Themes';
-import { ViewSwitch } from 'src/components/viewSwitch/ViewSwitch';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
+import { chartColors } from '../../styles/Themes';
+import { ViewSwitch } from '../../components/viewSwitch/ViewSwitch';
+import { useMutationResultWithReset } from '../../hooks/UseMutationWithReset';
 import {
   useRebalanceState,
   useRebalanceDispatch,
-} from 'src/context/RebalanceContext';
-import { Text } from 'src/components/typography/Styled';
+} from '../../context/RebalanceContext';
+import { Text } from '../../components/typography/Styled';
 import { AdvancedResult } from './AdvancedResult';
 import { ModalNodes } from './Modals/ModalNodes';
 import {

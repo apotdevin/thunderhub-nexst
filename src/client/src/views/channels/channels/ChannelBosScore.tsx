@@ -3,16 +3,16 @@ import {
   getDateDif,
   getFormatDate,
   renderLine,
-} from 'src/components/generic/helpers';
-import { DarkSubTitle, Separation } from 'src/components/generic/Styled';
-import { Link } from 'src/components/link/Link';
-import { BosScore } from 'src/graphql/types';
+} from '../../../components/generic/helpers';
+import { DarkSubTitle, Separation } from '../../../components/generic/Styled';
+import { Link } from '../../../components/link/Link';
+import { BosScore } from '../../../graphql/types';
 import numeral from 'numeral';
-import { useAmbossUser } from 'src/hooks/UseAmbossUser';
-import { useLoginAmbossMutation } from 'src/graphql/mutations/__generated__/loginAmboss.generated';
+import { useAmbossUser } from '../../../hooks/UseAmbossUser';
+import { useLoginAmbossMutation } from '../../../graphql/mutations/__generated__/loginAmboss.generated';
 import { toast } from 'react-toastify';
-import { useGetAmbossLoginTokenLazyQuery } from 'src/graphql/queries/__generated__/getAmbossLoginToken.generated';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { useGetAmbossLoginTokenLazyQuery } from '../../../graphql/queries/__generated__/getAmbossLoginToken.generated';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 
 export const ChannelBosScore: FC<{ score?: BosScore | null }> = ({ score }) => {
   const { user } = useAmbossUser();

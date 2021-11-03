@@ -1,5 +1,5 @@
-import { useGetNodeInfoQuery } from 'src/graphql/queries/__generated__/getNodeInfo.generated';
-import { getVersion } from 'src/utils/version';
+import { useGetNodeInfoQuery } from '../../src/graphql/queries/__generated__/getNodeInfo.generated';
+import { getVersion } from '../../src/utils/version';
 
 type StatusState = {
   alias: string;

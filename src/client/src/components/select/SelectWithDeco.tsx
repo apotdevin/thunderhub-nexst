@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { mediaWidths, themeColors } from 'src/styles/Themes';
+import { mediaWidths, themeColors } from '../../../src/styles/Themes';
 import ScaleLoader from 'react-spinners/ScaleLoader';
 import { SingleLine } from '../generic/Styled';
 import { Select, SelectWithValue, ValueProp } from '.';

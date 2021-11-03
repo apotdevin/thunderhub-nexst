@@ -1,8 +1,8 @@
 import React from 'react';
-import { BasePointsType } from 'src/graphql/types';
+import { BasePointsType } from '../../graphql/types';
 import styled from 'styled-components';
-import { DarkSubTitle } from 'src/components/generic/Styled';
-import { themeColors } from 'src/styles/Themes';
+import { DarkSubTitle } from '../../components/generic/Styled';
+import { themeColors } from '../../styles/Themes';
 
 type LeaderCardProps = {
   color?: string;

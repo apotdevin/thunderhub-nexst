@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useGetNodeLazyQuery } from 'src/graphql/queries/__generated__/getNode.generated';
-import { useAccount } from 'src/hooks/UseAccount';
+import { useGetNodeLazyQuery } from '../../graphql/queries/__generated__/getNode.generated';
+import { useAccount } from '../../hooks/UseAccount';
 import {
   useChatDispatch,
   useChatState,

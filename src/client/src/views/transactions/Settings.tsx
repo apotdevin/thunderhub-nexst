@@ -1,9 +1,9 @@
 import {
   MultiButton,
   SingleButton,
-} from 'src/components/buttons/multiButton/MultiButton';
-import { SingleLine } from 'src/components/generic/Styled';
-import { useLocalStorage } from 'src/hooks/UseLocalStorage';
+} from '../../components/buttons/multiButton/MultiButton';
+import { SingleLine } from '../../components/generic/Styled';
+import { useLocalStorage } from '../../hooks/UseLocalStorage';
 import styled from 'styled-components';
 
 const NoWrapText = styled.div`

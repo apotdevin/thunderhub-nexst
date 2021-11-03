@@ -1,10 +1,10 @@
 import { FC, useMemo } from 'react';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
+import { useGetForwardsQuery } from '../../../../graphql/queries/__generated__/getForwards.generated';
 import styled from 'styled-components';
 import { differenceInDays } from 'date-fns';
-import { Price } from 'src/components/price/Price';
-import { mediaWidths } from 'src/styles/Themes';
-import { DarkSubTitle } from 'src/components/generic/Styled';
+import { Price } from '../../../../components/price/Price';
+import { mediaWidths } from '../../../../styles/Themes';
+import { DarkSubTitle } from '../../../../components/generic/Styled';
 
 type ArrayType = { fee: number; tokens: number };
 

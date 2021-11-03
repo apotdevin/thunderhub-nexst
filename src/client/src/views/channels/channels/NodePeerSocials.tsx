@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { renderLine } from 'src/components/generic/helpers';
-import { DarkSubTitle, SmallLink } from 'src/components/generic/Styled';
-import { useGetNodeSocialInfoQuery } from 'src/graphql/queries/__generated__/getNodeSocialInfo.generated';
-import { useAmbossUser } from 'src/hooks/UseAmbossUser';
+import { renderLine } from '../../../components/generic/helpers';
+import { DarkSubTitle, SmallLink } from '../../../components/generic/Styled';
+import { useGetNodeSocialInfoQuery } from '../../../graphql/queries/__generated__/getNodeSocialInfo.generated';
+import { useAmbossUser } from '../../../hooks/UseAmbossUser';
 
 export const NodePeerSocials: FC<{ pubkey: string }> = ({ pubkey }) => {
   const { user } = useAmbossUser();

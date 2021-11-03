@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { useGetPeersQuery } from 'src/graphql/queries/__generated__/getPeers.generated';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import { useGetPeersQuery } from '../../../graphql/queries/__generated__/getPeers.generated';
+import { LoadingCard } from '../../../components/loading/LoadingCard';
 import {
   SubCard,
   DarkSubTitle,
   SingleLine,
-} from 'src/components/generic/Styled';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+} from '../../../components/generic/Styled';
+import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 import { Plus, Minus } from 'react-feather';
-import { shorten } from 'src/components/generic/helpers';
-import { Input } from 'src/components/input';
-import { useGetNodeLazyQuery } from 'src/graphql/queries/__generated__/getNode.generated';
-import { useMutationResultWithReset } from 'src/hooks/UseMutationWithReset';
+import { shorten } from '../../../components/generic/helpers';
+import { Input } from '../../../components/input';
+import { useGetNodeLazyQuery } from '../../../graphql/queries/__generated__/getNode.generated';
+import { useMutationResultWithReset } from '../../../hooks/UseMutationWithReset';
 import { toast } from 'react-toastify';
-import { themeColors, chartColors } from 'src/styles/Themes';
+import { themeColors, chartColors } from '../../../styles/Themes';
 import { RebalanceIdType, ActionType } from '../AdvancedBalance';
 
 type ModalNodesType = {

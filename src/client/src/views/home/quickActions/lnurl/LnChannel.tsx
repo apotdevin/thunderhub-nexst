@@ -1,13 +1,16 @@
 import { FC } from 'react';
-import { ChannelRequest } from 'src/graphql/types';
+import { ChannelRequest } from '../../../../graphql/types';
 import styled from 'styled-components';
-import { Title } from 'src/components/typography/Styled';
-import { Separation } from 'src/components/generic/Styled';
-import { getNodeLink, renderLine } from 'src/components/generic/helpers';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useChannelLnUrlMutation } from 'src/graphql/mutations/__generated__/lnUrl.generated';
+import { Title } from '../../../../components/typography/Styled';
+import { Separation } from '../../../../components/generic/Styled';
+import {
+  getNodeLink,
+  renderLine,
+} from '../../../../components/generic/helpers';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { useChannelLnUrlMutation } from '../../../../graphql/mutations/__generated__/lnUrl.generated';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
+import { getErrorContent } from '../../../../utils/error';
 
 const ModalText = styled.div`
   width: 100%;

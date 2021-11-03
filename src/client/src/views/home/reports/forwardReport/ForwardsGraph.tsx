@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { BarChart } from 'src/components/chart/BarChart';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
-import { chartColors } from 'src/styles/Themes';
-import { getByTime } from 'src/views/dashboard/widgets/helpers';
+import { BarChart } from '../../../../components/chart/BarChart';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
+import { useGetForwardsQuery } from '../../../../graphql/queries/__generated__/getForwards.generated';
+import { chartColors } from '../../../../styles/Themes';
+import { getByTime } from '../../../../views/dashboard/widgets/helpers';
 import styled from 'styled-components';
 
 const S = {

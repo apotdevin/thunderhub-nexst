@@ -11,7 +11,7 @@ import {
 import { WithTooltipProvidedProps } from '@visx/tooltip/lib/enhancers/withTooltip';
 import { localPoint } from '@visx/event';
 import { max, extent, bisector } from 'd3-array';
-import { chartColors, themeColors } from 'src/styles/Themes';
+import { chartColors, themeColors } from '../../styles/Themes';
 import format from 'date-fns/format';
 import numeral from 'numeral';
 

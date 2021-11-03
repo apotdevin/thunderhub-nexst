@@ -1,5 +1,5 @@
 import { sortBy } from 'lodash';
-import { Forward } from 'src/graphql/types';
+import { Forward } from '../../graphql/types';
 
 export const getChordMatrix = (order: string, forwardArray: Forward[]) => {
   const cleaned = forwardArray.map(f => {
@@ -21,7 +21,10 @@ export const getChordMatrix = (order: string, forwardArray: Forward[]) => {
   const incomingNodes = cleaned.map(f => f.incoming_channel);
   const outgoingNodes = cleaned.map(f => f.outgoing_channel);
 
-  const uniqueNodes = [...new Set(incomingNodes), ...new Set(outgoingNodes)];
+  const uniqueNodes = [
+    ...Array.from(new Set(incomingNodes)),
+    ...Array.from(new Set(outgoingNodes)),
+  ];
   const nodeLength = uniqueNodes.length;
 
   const matrix = new Array(nodeLength);
@@ -64,7 +67,10 @@ export const sortByNode = (order: string, forwardArray: Forward[]) => {
   const incomingNodes = cleaned.map(f => f.incoming_channel);
   const outgoingNodes = cleaned.map(f => f.outgoing_channel);
 
-  const uniqueNodes = [...new Set(incomingNodes), ...new Set(outgoingNodes)];
+  const uniqueNodes = [
+    ...Array.from(new Set(incomingNodes)),
+    ...Array.from(new Set(outgoingNodes)),
+  ];
   const nodeLength = uniqueNodes.length;
 
   const incoming = new Array(nodeLength).fill(0);

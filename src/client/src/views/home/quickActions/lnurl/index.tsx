@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Card } from 'src/components/generic/Styled';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import Modal from 'src/components/modal/ReactModal';
-import { useAuthLnUrlMutation } from 'src/graphql/mutations/__generated__/lnUrl.generated';
-import { getErrorContent } from 'src/utils/error';
-import { decodeLnUrl } from 'src/utils/url';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { Card } from '../../../../components/generic/Styled';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import Modal from '../../../../components/modal/ReactModal';
+import { useAuthLnUrlMutation } from '../../../../graphql/mutations/__generated__/lnUrl.generated';
+import { getErrorContent } from '../../../../utils/error';
+import { decodeLnUrl } from '../../../../utils/url';
 import { LnUrlModal } from './lnUrlModal';
 
 export const LnUrlCard = () => {

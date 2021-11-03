@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import { useFileReader } from 'src/hooks/UseFileReader';
+import { useFileReader } from '../../../../src/hooks/UseFileReader';
 import { toast } from 'react-toastify';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useGetChannelsQuery } from 'src/graphql/queries/__generated__/getChannels.generated';
+import { LoadingCard } from '../../../../src/components/loading/LoadingCard';
+import { useGetChannelsQuery } from '../../../../src/graphql/queries/__generated__/getChannels.generated';
 import { CheckCircle, XCircle } from 'react-feather';
 import {
   Separation,
   SingleLine,
   DarkSubTitle,
-} from 'src/components/generic/Styled';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+} from '../../../../src/components/generic/Styled';
+import { ColorButton } from '../../../../src/components/buttons/colorButton/ColorButton';
 import styled from 'styled-components';
 
 const LightSubTitle = styled.div`

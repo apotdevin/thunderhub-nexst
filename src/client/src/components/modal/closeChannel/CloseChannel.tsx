@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { AlertTriangle } from 'react-feather';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
-import { useCloseChannelMutation } from 'src/graphql/mutations/__generated__/closeChannel.generated';
-import { useBitcoinFees } from 'src/hooks/UseBitcoinFees';
-import { useConfigState } from 'src/context/ConfigContext';
-import { renderLine } from 'src/components/generic/helpers';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { chartColors } from 'src/styles/Themes';
+import { useCloseChannelMutation } from '../../../../src/graphql/mutations/__generated__/closeChannel.generated';
+import { useBitcoinFees } from '../../../../src/hooks/UseBitcoinFees';
+import { useConfigState } from '../../../../src/context/ConfigContext';
+import { renderLine } from '../../../../src/components/generic/helpers';
+import { InputWithDeco } from '../../../../src/components/input/InputWithDeco';
+import { chartColors } from '../../../../src/styles/Themes';
 import {
   Separation,
   SingleLine,
@@ -113,7 +113,10 @@ export const CloseChannel = ({
         withMargin={'16px 4px 4px'}
         color={'red'}
         onClick={() => {
-          let details: { target: number } | { tokens: number } | {} =
+          let details:
+            | { target: number }
+            | { tokens: number }
+            | Record<string, unknown> =
             isType === 'target' ? { target: amount } : { tokens: amount };
 
           if (isForce) {

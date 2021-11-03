@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 
 export const SatoshiSymbol = forwardRef<any, any>(
-  ({ color = 'currentColor', size = 16, children, ...rest }, ref) => {
+  ({ color = 'currentColor', size = 16, ...rest }, ref) => {
     return (
       <svg
         ref={ref}

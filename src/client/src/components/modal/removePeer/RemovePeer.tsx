@@ -2,7 +2,7 @@ import React from 'react';
 import { AlertTriangle } from 'react-feather';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
-import { useRemovePeerMutation } from 'src/graphql/mutations/__generated__/removePeer.generated';
+import { useRemovePeerMutation } from '../../../../src/graphql/mutations/__generated__/removePeer.generated';
 import { SubTitle } from '../../generic/Styled';
 import { getErrorContent } from '../../../utils/error';
 import { ColorButton } from '../../buttons/colorButton/ColorButton';

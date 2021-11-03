@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { X } from 'react-feather';
 import { toast } from 'react-toastify';
-import { useAddPeerMutation } from 'src/graphql/mutations/__generated__/addPeer.generated';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
+import { useAddPeerMutation } from '../../graphql/mutations/__generated__/addPeer.generated';
+import { InputWithDeco } from '../../components/input/InputWithDeco';
 import {
   CardWithTitle,
   SubTitle,

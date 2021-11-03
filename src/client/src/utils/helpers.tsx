@@ -1,6 +1,6 @@
 import numeral from 'numeral';
-import { SatoshiSymbol } from 'src/components/satoshi/Satoshi';
-import { unSelectedNavButton } from 'src/styles/Themes';
+import { SatoshiSymbol } from '../components/satoshi/Satoshi';
+import { unSelectedNavButton } from '../styles/Themes';
 import styled from 'styled-components';
 
 const DarkUnit = styled.span`

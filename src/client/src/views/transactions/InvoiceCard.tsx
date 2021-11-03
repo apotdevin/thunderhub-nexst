@@ -1,11 +1,11 @@
 import React, { FC, Fragment } from 'react';
-import { InvoiceType } from 'src/graphql/types';
+import { InvoiceType } from '../../graphql/types';
 import { MessageCircle } from 'react-feather';
 import styled from 'styled-components';
-import { mediaWidths, themeColors } from 'src/styles/Themes';
-import { useGetChannelQuery } from 'src/graphql/queries/__generated__/getChannel.generated';
-import { useNodeInfo } from 'src/hooks/UseNodeInfo';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+import { mediaWidths, themeColors } from '../../styles/Themes';
+import { useGetChannelQuery } from '../../graphql/queries/__generated__/getChannel.generated';
+import { useNodeInfo } from '../../hooks/UseNodeInfo';
+import { LoadingCard } from '../../components/loading/LoadingCard';
 import { Price } from '../../components/price/Price';
 import {
   getStatusDot,

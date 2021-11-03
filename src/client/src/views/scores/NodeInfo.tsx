@@ -1,24 +1,24 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { useGetNodeQuery } from 'src/graphql/queries/__generated__/getNode.generated';
+import { useGetNodeQuery } from '../../graphql/queries/__generated__/getNode.generated';
 import { isArray } from 'lodash';
 import {
   Card,
   CardWithTitle,
   DarkSubTitle,
   SubTitle,
-} from 'src/components/generic/Styled';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
+} from '../../components/generic/Styled';
+import { LoadingCard } from '../../components/loading/LoadingCard';
 import {
   getDateDif,
   getFormatDate,
   renderLine,
-} from 'src/components/generic/helpers';
-import { Price } from 'src/components/price/Price';
+} from '../../components/generic/helpers';
+import { Price } from '../../components/price/Price';
 
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { useAmbossUser } from 'src/hooks/UseAmbossUser';
+import { getErrorContent } from '../../utils/error';
+import { useAmbossUser } from '../../hooks/UseAmbossUser';
 
 export const NodeInfo = () => {
   const { user } = useAmbossUser();

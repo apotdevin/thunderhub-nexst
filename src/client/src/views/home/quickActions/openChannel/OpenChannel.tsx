@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Settings, X } from 'react-feather';
 import { toast } from 'react-toastify';
-import { useOpenChannelMutation } from 'src/graphql/mutations/__generated__/openChannel.generated';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useBitcoinFees } from 'src/hooks/UseBitcoinFees';
-import { useConfigState } from 'src/context/ConfigContext';
-import { PeerSelect } from 'src/components/select/specific/PeerSelect';
-import { WarningText } from 'src/views/stats/styles';
+import { useOpenChannelMutation } from '../../../../graphql/mutations/__generated__/openChannel.generated';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { useBitcoinFees } from '../../../../hooks/UseBitcoinFees';
+import { useConfigState } from '../../../../context/ConfigContext';
+import { PeerSelect } from '../../../../components/select/specific/PeerSelect';
+import { WarningText } from '../../../../views/stats/styles';
 import styled from 'styled-components';
 import {
   DarkSubTitle,

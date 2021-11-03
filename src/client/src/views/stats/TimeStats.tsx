@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { useGetTimeHealthQuery } from 'src/graphql/queries/__generated__/getTimeHealth.generated';
+import { useGetTimeHealthQuery } from '../../graphql/queries/__generated__/getTimeHealth.generated';
 import {
   SubCard,
   SubTitle,
   DarkSubTitle,
   Separation,
   ResponsiveLine,
-} from 'src/components/generic/Styled';
-import { ChannelTimeHealth } from 'src/graphql/types';
+} from '../../components/generic/Styled';
+import { ChannelTimeHealth } from '../../graphql/types';
 import { sortBy } from 'lodash';
-import { renderLine } from 'src/components/generic/helpers';
-import { formatSeconds } from 'src/utils/helpers';
+import { renderLine } from '../../components/generic/helpers';
+import { formatSeconds } from '../../utils/helpers';
 import { useStatsDispatch } from './context';
 import { ScoreLine, WarningText, Clickable } from './styles';
 import { StatWrapper } from './Wrapper';

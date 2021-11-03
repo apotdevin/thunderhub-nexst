@@ -19,7 +19,7 @@ import {
   Grid,
 } from 'react-feather';
 import { useRouter } from 'next/router';
-import { useBaseConnect } from 'src/hooks/UseBaseConnect';
+import { useBaseConnect } from '../../hooks/UseBaseConnect';
 import {
   unSelectedNavButton,
   navBackgroundColor,

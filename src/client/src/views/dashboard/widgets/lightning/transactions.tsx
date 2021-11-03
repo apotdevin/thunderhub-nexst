@@ -1,9 +1,9 @@
 import { ArrowDown, ArrowUp } from 'react-feather';
-import { getDateDif, shorten } from 'src/components/generic/helpers';
-import { Price } from 'src/components/price/Price';
-import { Table } from 'src/components/table';
-import { useGetResumeQuery } from 'src/graphql/queries/__generated__/getResume.generated';
-import { chartColors } from 'src/styles/Themes';
+import { getDateDif, shorten } from '../../../../components/generic/helpers';
+import { Price } from '../../../../components/price/Price';
+import { Table } from '../../../../components/table';
+import { useGetResumeQuery } from '../../../../graphql/queries/__generated__/getResume.generated';
+import { chartColors } from '../../../../styles/Themes';
 import styled from 'styled-components';
 
 const S = {

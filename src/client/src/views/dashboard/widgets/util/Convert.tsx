@@ -1,8 +1,8 @@
 import numeral from 'numeral';
 import { useState } from 'react';
-import { Input } from 'src/components/input';
-import { SelectWithValue } from 'src/components/select';
-import { usePriceState } from 'src/context/PriceContext';
+import { Input } from '../../../../components/input';
+import { SelectWithValue } from '../../../../components/select';
+import { usePriceState } from '../../../../context/PriceContext';
 import styled from 'styled-components';
 
 const S = {

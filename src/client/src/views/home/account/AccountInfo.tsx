@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Zap, Anchor, Pocket } from 'react-feather';
-import { useNodeBalances } from 'src/hooks/UseNodeBalances';
+import { useNodeBalances } from '../../../../hooks/UseNodeBalances';
 import Big from 'big.js';
-import { renderLine } from 'src/components/generic/helpers';
+import { renderLine } from '../../../../components/generic/helpers';
 import {
   Card,
   CardWithTitle,
@@ -12,9 +12,9 @@ import {
   DarkSubTitle,
   ResponsiveLine,
   SingleLine,
-} from '../../../components/generic/Styled';
-import { Price } from '../../../components/price/Price';
-import { mediaWidths } from '../../../styles/Themes';
+} from '../../../../../components/generic/Styled';
+import { Price } from '../../../../../components/price/Price';
+import { mediaWidths } from '../../../../../styles/Themes';
 
 const S = {
   grid: styled.div`

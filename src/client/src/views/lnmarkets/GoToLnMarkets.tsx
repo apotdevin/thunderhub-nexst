@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { useGetLnMarketsUrlLazyQuery } from 'src/graphql/queries/__generated__/getLnMarketsUrl.generated';
+import { ColorButton } from '../../components/buttons/colorButton/ColorButton';
+import { useGetLnMarketsUrlLazyQuery } from '../../graphql/queries/__generated__/getLnMarketsUrl.generated';
 
 export const GoToLnMarkets = () => {
   const [getUrl, { data, loading }] = useGetLnMarketsUrlLazyQuery();

@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import ScaleLoader from 'react-spinners/ScaleLoader';
-import { useGetChannelQuery } from 'src/graphql/queries/__generated__/getChannel.generated';
-import { useGetClosedChannelsQuery } from 'src/graphql/queries/__generated__/getClosedChannels.generated';
-import { useNodeInfo } from 'src/hooks/UseNodeInfo';
-import { themeColors } from 'src/styles/Themes';
+import { useGetChannelQuery } from '../../../../graphql/queries/__generated__/getChannel.generated';
+import { useGetClosedChannelsQuery } from '../../../../graphql/queries/__generated__/getClosedChannels.generated';
+import { useNodeInfo } from '../../../../hooks/UseNodeInfo';
+import { themeColors } from '../../../../styles/Themes';
 import ReactTooltip from 'react-tooltip';
 import { Info } from 'react-feather';
 import styled from 'styled-components';

@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { toast } from 'react-toastify';
-import { ProgressBar } from 'src/components/generic/CardGeneric';
-import { SingleLine } from 'src/components/generic/Styled';
-import { getPrice } from 'src/components/price/Price';
-import { Table } from 'src/components/table';
-import { useConfigState } from 'src/context/ConfigContext';
-import { usePriceState } from 'src/context/PriceContext';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
-import { Forward } from 'src/graphql/types';
-import { getErrorContent } from 'src/utils/error';
+import { ProgressBar } from '../../components/generic/CardGeneric';
+import { SingleLine } from '../../components/generic/Styled';
+import { getPrice } from '../../components/price/Price';
+import { Table } from '../../components/table';
+import { useConfigState } from '../../context/ConfigContext';
+import { usePriceState } from '../../context/PriceContext';
+import { useGetForwardsQuery } from '../../graphql/queries/__generated__/getForwards.generated';
+import { Forward } from '../../graphql/types';
+import { getErrorContent } from '../../utils/error';
 import { ChannelAlias } from '../home/reports/forwardReport/ChannelAlias';
 import { sortByNode } from './helpers';
 

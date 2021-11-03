@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useGetFeeHealthQuery } from 'src/graphql/queries/__generated__/getFeeHealth.generated';
+import { useGetFeeHealthQuery } from '../../graphql/queries/__generated__/getFeeHealth.generated';
 import {
   SubCard,
   DarkSubTitle,
   Separation,
   ResponsiveLine,
-} from 'src/components/generic/Styled';
-import { ChannelFeeHealth } from 'src/graphql/types';
+} from '../../components/generic/Styled';
+import { ChannelFeeHealth } from '../../graphql/types';
 import { sortBy } from 'lodash';
-import { renderLine } from 'src/components/generic/helpers';
+import { renderLine } from '../../components/generic/helpers';
 import { useStatsDispatch } from './context';
 import { ScoreLine, Clickable, WarningText } from './styles';
 import { StatWrapper } from './Wrapper';

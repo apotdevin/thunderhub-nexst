@@ -1,18 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useGetNodeQuery } from 'src/graphql/queries/__generated__/getNode.generated';
-import { useKeysendMutation } from 'src/graphql/mutations/__generated__/keysend.generated';
+import { useGetNodeQuery } from '../../../../graphql/queries/__generated__/getNode.generated';
+import { useKeysendMutation } from '../../../../graphql/mutations/__generated__/keysend.generated';
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { getErrorContent } from '../../../../utils/error';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
 import {
   SingleLine,
   SubTitle,
   Separation,
   DarkSubTitle,
-} from '../../../../components/generic/Styled';
-import { LoadingCard } from '../../../../components/loading/LoadingCard';
+} from '../../../../../../components/generic/Styled';
+import { LoadingCard } from '../../../../../../components/loading/LoadingCard';
 
 export const WithMargin = styled.div`
   margin-right: 4px;

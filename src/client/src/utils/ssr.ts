@@ -1,9 +1,9 @@
 import { NextPageContext } from 'next';
-import { initializeApollo } from 'config/client';
-import { parseCookies } from 'src/utils/cookies';
+import { initializeApollo } from '../../config/client';
+import { parseCookies } from '../utils/cookies';
 import { DocumentNode } from 'graphql';
-import { appConstants } from 'server/utils/appConstants';
-import { GET_AUTH_TOKEN } from 'src/graphql/mutations/getAuthToken';
+import { appConstants } from '../../server/utils/appConstants';
+import { GET_AUTH_TOKEN } from '../graphql/mutations/getAuthToken';
 import getConfig from 'next/config';
 
 const { publicRuntimeConfig } = getConfig();
@@ -35,7 +35,7 @@ const cookieProps = (
 
 type QueryProps = {
   document: DocumentNode;
-  variables: {};
+  variables: any;
 };
 
 const isNotDocumentNode = (

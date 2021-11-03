@@ -1,5 +1,5 @@
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { Link } from 'src/components/link/Link';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
+import { Link } from '../../../../components/link/Link';
 import styled from 'styled-components';
 
 const S = {

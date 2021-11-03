@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { X, Copy } from 'react-feather';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { useSignMessageLazyQuery } from 'src/graphql/queries/__generated__/signMessage.generated';
+import { useSignMessageLazyQuery } from '../../../graphql/queries/__generated__/signMessage.generated';
 import { Input } from '../../../components/input';
 import { ColorButton } from '../../../components/buttons/colorButton/ColorButton';
 import {

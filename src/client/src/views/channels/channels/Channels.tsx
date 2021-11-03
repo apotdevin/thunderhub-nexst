@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'react-toastify';
-import { useGetChannelsQuery } from 'src/graphql/queries/__generated__/getChannels.generated';
-import { useConfigState } from 'src/context/ConfigContext';
+import { useGetChannelsQuery } from '../../../graphql/queries/__generated__/getChannels.generated';
+import { useConfigState } from '../../../context/ConfigContext';
 import { sortBy } from 'lodash';
-import { getPercent } from 'src/utils/helpers';
-import { ChannelType } from 'src/graphql/types';
-import { useRebalanceState } from 'src/context/RebalanceContext';
+import { getPercent } from '../../../utils/helpers';
+import { ChannelType } from '../../../graphql/types';
+import { useRebalanceState } from '../../../context/RebalanceContext';
 import { useRouter } from 'next/router';
 import { getErrorContent } from '../../../utils/error';
 import { LoadingCard } from '../../../components/loading/LoadingCard';

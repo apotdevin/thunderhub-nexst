@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { toast } from 'react-toastify';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { useGetForwardsQuery } from 'src/graphql/queries/__generated__/getForwards.generated';
-import { Forward } from 'src/graphql/types';
-import { getErrorContent } from 'src/utils/error';
+import { LoadingCard } from '../../components/loading/LoadingCard';
+import { useGetForwardsQuery } from '../../graphql/queries/__generated__/getForwards.generated';
+import { Forward } from '../../graphql/types';
+import { getErrorContent } from '../../utils/error';
 import { ForwardCard } from './ForwardsCard';
 
 type ForwardProps = {

@@ -1,20 +1,23 @@
 import { toast } from 'react-toastify';
-import { getErrorContent } from 'src/utils/error';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
+import { getErrorContent } from '../../../../utils/error';
+import { ColorButton } from '../../../../components/buttons/colorButton/ColorButton';
 import { useEffect, useState } from 'react';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ChannelSelect } from 'src/components/select/specific/ChannelSelect';
-import { useDecodeRequestLazyQuery } from 'src/graphql/queries/__generated__/decodeRequest.generated';
-import { renderLine } from 'src/components/generic/helpers';
-import { Price } from 'src/components/price/Price';
+import { InputWithDeco } from '../../../../components/input/InputWithDeco';
+import { ChannelSelect } from '../../../../components/select/specific/ChannelSelect';
+import { useDecodeRequestLazyQuery } from '../../../../graphql/queries/__generated__/decodeRequest.generated';
+import { renderLine } from '../../../../components/generic/helpers';
+import { Price } from '../../../../components/price/Price';
 import { Camera } from 'react-feather';
-import Modal from 'src/components/modal/ReactModal';
+import Modal from '../../../../components/modal/ReactModal';
 import dynamic from 'next/dynamic';
-import { LoadingCard } from 'src/components/loading/LoadingCard';
-import { usePayMutation } from 'src/graphql/mutations/__generated__/pay.generated';
-import { SingleLine, Separation } from '../../../../components/generic/Styled';
+import { LoadingCard } from '../../../../components/loading/LoadingCard';
+import { usePayMutation } from '../../../../graphql/mutations/__generated__/pay.generated';
+import {
+  SingleLine,
+  Separation,
+} from '../../../../../../components/generic/Styled';
 
-const QRCodeReader = dynamic(() => import('src/components/qrReader'), {
+const QRCodeReader = dynamic(() => import('../../../../components/qrReader'), {
   ssr: false,
   loading: function Loading() {
     return <LoadingCard noCard={true} />;

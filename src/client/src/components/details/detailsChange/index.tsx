@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ChevronRight } from 'react-feather';
-import { useUpdateFeesMutation } from 'src/graphql/mutations/__generated__/updateFees.generated';
-import { Input } from 'src/components/input';
-import { InputWithDeco } from 'src/components/input/InputWithDeco';
-import { ColorButton } from 'src/components/buttons/colorButton/ColorButton';
-import { getErrorContent } from 'src/utils/error';
+import { useUpdateFeesMutation } from '../../../../src/graphql/mutations/__generated__/updateFees.generated';
+import { Input } from '../../../../src/components/input';
+import { InputWithDeco } from '../../../../src/components/input/InputWithDeco';
+import { ColorButton } from '../../../../src/components/buttons/colorButton/ColorButton';
+import { getErrorContent } from '../../../../src/utils/error';
 import { RightAlign } from '../../generic/Styled';
 
 type DetailsChangeProps = {
