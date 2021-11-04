@@ -37,14 +37,12 @@ export class AccountsService {
 
     if (!accounts.length) return;
 
-    const mapped = accounts.reduce((p, account) => {
+    accounts.forEach(account => {
       const { socket, cert, macaroon } = account;
       const hash = getSHA256Hash(JSON.stringify({ socket, cert, macaroon }));
       const { lnd } = authenticatedLndGrpc({ socket, cert, macaroon });
 
-      return { ...p, [hash]: { ...account, hash, lnd } };
+      this.accounts[hash] = { ...account, hash, lnd };
     }, {});
-
-    this.accounts = { ...this.accounts, ...mapped };
   }
 }
