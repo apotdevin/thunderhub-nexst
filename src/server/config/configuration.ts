@@ -6,6 +6,11 @@ type SSOConfig = {
   macaroonPath: string;
 };
 
+type Throttler = {
+  ttl: number;
+  limit: number;
+};
+
 type ConfigType = {
   isProduction: boolean;
   playground: boolean;
@@ -14,6 +19,7 @@ type ConfigType = {
   cookiePath: string;
   accountConfigPath: string;
   sso: SSOConfig;
+  throttler: Throttler;
 };
 
 export default (): ConfigType => {
@@ -33,12 +39,18 @@ export default (): ConfigType => {
     macaroonPath: process.env.SSO_MACAROON_PATH || '',
   };
 
+  const throttler = {
+    ttl: Number(process.env.THROTTLE_TTL) || 10,
+    limit: Number(process.env.THROTTLE_LIMIT) || 10,
+  };
+
   const config: ConfigType = {
     isProduction,
     playground: !isProduction,
     logLevel: process.env.LOG_LEVEL,
     cookiePath: process.env.COOKIE_PATH || '',
     accountConfigPath: process.env.ACCOUNT_CONFIG_PATH || '',
+    throttler,
     sso,
     jwtSecret,
   };
