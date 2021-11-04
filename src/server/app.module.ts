@@ -8,6 +8,8 @@ import { ViewModule } from './modules/view/view.module';
 import { WinstonModule } from 'nest-winston';
 import winston from 'winston';
 import { AuthenticationModule } from './modules/security/security.module';
+import { FilesModule } from './modules/files/files.module';
+import { AccountsModule } from './modules/accounts/accounts.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { AuthenticationModule } from './modules/security/security.module';
     MainModule,
     ViewModule,
     AuthenticationModule,
+    FilesModule,
+    AccountsModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
