@@ -10,6 +10,8 @@ import { FilesModule } from './modules/files/files.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
 import { NodeModule } from './modules/node/node.module';
 import { ApiModule } from './modules/api/api.module';
+import { getAuthToken } from './utils/request';
+import jwt from 'jsonwebtoken';
 
 export type ContextType = {
   req: any;
@@ -47,7 +49,19 @@ export type JwtObjectType = {
           origin: true,
           credentials: true,
         },
-        context: ({ req, res }): ContextType => ({ req, res }),
+        context: ({ req, res }): ContextType => {
+          const token = getAuthToken(req);
+
+          if (!token) return { req, res };
+
+          const secret = config.get('jwtSecret');
+          try {
+            const authToken = jwt.verify(token, secret) as JwtObjectType;
+            return { req, res, authToken };
+          } catch (error) {
+            return { req, res };
+          }
+        },
       }),
     }),
     WinstonModule.forRootAsync({

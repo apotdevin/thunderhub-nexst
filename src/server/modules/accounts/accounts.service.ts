@@ -2,7 +2,6 @@ import { Injectable, Inject } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { FilesService } from '../files/files.service';
 import { authenticatedLndGrpc } from 'ln-service';
-import { getSHA256Hash } from 'src/server/utils/crypto';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
 import { EnrichedAccount } from './accounts.types';
@@ -35,7 +34,7 @@ export class AccountsService {
       }
 
       const sso = {
-        name: '',
+        name: 'SSO Account',
         id: '',
         password: '',
         encrypted: false,
@@ -44,10 +43,9 @@ export class AccountsService {
         socket: ssoUrl,
         cert: ssoCert,
       };
-      const ssoHash = getSHA256Hash(JSON.stringify(sso));
       const { lnd } = authenticatedLndGrpc(sso);
 
-      this.accounts['sso'] = { ...sso, hash: ssoHash, lnd };
+      this.accounts['sso'] = { ...sso, hash: 'sso', lnd };
     }
 
     const accounts = this.filesService.getAccounts(accountConfigPath);
@@ -56,14 +54,18 @@ export class AccountsService {
 
     accounts.forEach(account => {
       const { socket, cert, macaroon } = account;
-      const hash = getSHA256Hash(JSON.stringify({ socket, cert, macaroon }));
       const { lnd } = authenticatedLndGrpc({ socket, cert, macaroon });
 
-      this.accounts[hash] = { ...account, hash, lnd };
-    }, {});
+      this.accounts[account.hash] = { ...account, lnd };
+    });
   }
 
   getAccount(id: string) {
+    if (!id) return null;
     return this.accounts[id] || null;
+  }
+
+  getAllAccounts() {
+    return this.accounts;
   }
 }

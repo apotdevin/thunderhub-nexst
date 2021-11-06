@@ -3,11 +3,15 @@ import { IncomingMessage, ServerResponse } from 'http';
 import { useMemo } from 'react';
 import {
   ApolloClient,
+  createHttpLink,
+  from,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
 import getConfig from 'next/config';
 import possibleTypes from '../src/graphql/fragmentTypes.json';
+import { onError } from '@apollo/client/link/error';
+import { setContext } from '@apollo/client/link/context';
 
 const { publicRuntimeConfig } = getConfig();
 const { apiUrl: uri } = publicRuntimeConfig;
@@ -19,29 +23,36 @@ export type ResolverContext = {
   res?: ServerResponse;
 };
 
-function createIsomorphLink(context: ResolverContext = {}) {
-  if (typeof window === 'undefined') {
-    const { SchemaLink } = require('@apollo/client/link/schema');
-    const { schema } = require('../server/schema');
-    const { getContext } = require('../server/schema/context');
-    return new SchemaLink({
-      schema,
-      context: getContext(context),
-    });
-  } else {
-    const { HttpLink } = require('@apollo/client/link/http');
-    return new HttpLink({
-      uri,
-      credentials: 'same-origin',
-    });
-  }
-}
+function createApolloClient(authToken: string) {
+  const httpLink = createHttpLink({ uri, credentials: 'include' });
 
-function createApolloClient(context?: ResolverContext) {
+  const authLink = setContext((_, { headers }) => {
+    return {
+      headers: {
+        ...headers,
+        authorization: authToken ? `Bearer ${authToken}` : '',
+      },
+    };
+  });
+
+  const link = from([
+    onError(({ graphQLErrors, networkError }) => {
+      if (process.env.NODE_ENV === 'production') return;
+      if (graphQLErrors)
+        graphQLErrors.forEach(({ message, locations, path }) =>
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          )
+        );
+      if (networkError) console.log(`[Network error]: ${networkError}`);
+    }),
+    authLink.concat(httpLink),
+  ]);
+
   return new ApolloClient({
     credentials: 'same-origin',
     ssrMode: typeof window === 'undefined',
-    link: createIsomorphLink(context),
+    link,
     cache: new InMemoryCache({
       ...possibleTypes,
     }),
@@ -54,10 +65,10 @@ function createApolloClient(context?: ResolverContext) {
 }
 
 export function initializeApollo(
-  initialState: NormalizedCacheObject | null = null,
-  context?: ResolverContext
+  authToken: string,
+  initialState: NormalizedCacheObject | null = null
 ) {
-  const _apolloClient = apolloClient ?? createApolloClient(context);
+  const _apolloClient = apolloClient ?? createApolloClient(authToken);
 
   if (initialState) {
     const existingCache = _apolloClient.extract();
@@ -69,7 +80,13 @@ export function initializeApollo(
   return _apolloClient;
 }
 
-export function useApollo(initialState: NormalizedCacheObject | null) {
-  const store = useMemo(() => initializeApollo(initialState), [initialState]);
+export function useApollo(
+  authToken: string,
+  initialState: NormalizedCacheObject | null
+) {
+  const store = useMemo(
+    () => initializeApollo(authToken, initialState),
+    [authToken, initialState]
+  );
   return store;
 }

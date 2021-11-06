@@ -9,6 +9,15 @@ type Mutation {
 }
 
 type Query {
+  getAccount: Boolean!
   getBaseCanConnect: Boolean!
   getHello: String!
+  getServerAccounts: [ServerAccount!]!
+}
+
+type ServerAccount {
+  id: String!
+  loggedIn: Boolean!
+  name: String!
+  type: String!
 }

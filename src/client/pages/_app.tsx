@@ -42,9 +42,9 @@ const Wrapper: React.FC = ({ children }) => {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { initialApolloState, initialConfig, hasToken } = pageProps;
+  const { initialApolloState, initialConfig, hasToken, authToken } = pageProps;
 
-  const apolloClient = useApollo(initialApolloState);
+  const apolloClient = useApollo(authToken, initialApolloState);
 
   return (
     <ApolloProvider client={apolloClient}>

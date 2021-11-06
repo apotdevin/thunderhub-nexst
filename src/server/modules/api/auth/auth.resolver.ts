@@ -84,7 +84,7 @@ export class AuthResolver {
       }
 
       const jwtSecret = this.configService.get('jwtSecret');
-      const token = jwt.sign({ id: 'sso' }, jwtSecret);
+      const token = jwt.sign({ sub: 'sso' }, jwtSecret);
 
       res.setHeader(
         'Set-Cookie',
@@ -154,7 +154,7 @@ export class AuthResolver {
     }
 
     const jwtSecret = this.configService.get('jwtSecret');
-    const token = jwt.sign({ id }, jwtSecret);
+    const token = jwt.sign({ sub: id }, jwtSecret);
 
     res.setHeader(
       'Set-Cookie',
@@ -167,6 +167,7 @@ export class AuthResolver {
     return info?.version || '';
   }
 
+  @Public()
   @Mutation(() => Boolean)
   async logout(@Context() { res }: ContextType) {
     const cookies = [];

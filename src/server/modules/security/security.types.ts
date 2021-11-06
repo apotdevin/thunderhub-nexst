@@ -16,7 +16,7 @@ export class UserId {
   @Field()
   admin: boolean;
   @Field()
-  api_key: string;
+  id: string;
 }
 
 @ObjectType()
