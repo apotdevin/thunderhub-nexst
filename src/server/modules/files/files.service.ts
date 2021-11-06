@@ -15,19 +15,13 @@ import {
   UnresolvedAccountType,
 } from './files.types';
 import yaml from 'js-yaml';
-import { hashPassword } from 'src/server/utils/crypto';
+import { getSHA256Hash, hashPassword } from 'src/server/utils/crypto';
 import { resolveEnvVarsInAccount } from 'src/server/utils/env';
-import { v5 as uuidv5 } from 'uuid';
-
-const THUNDERHUB_NAMESPACE = '00000000-0000-0000-0000-000000000000';
 
 const isValidNetwork = (network: string | null): network is BitcoinNetwork =>
   network === 'mainnet' || network === 'regtest' || network === 'testnet';
 
 export const PRE_PASS_STRING = 'thunderhub-';
-
-export const getUUID = (text: string): string =>
-  uuidv5(text, THUNDERHUB_NAMESPACE);
 
 @Injectable()
 export class FilesService {
@@ -271,7 +265,9 @@ export class FilesService {
       return null;
     }
 
-    const id = getUUID(`${name}${serverUrl}${macaroon}${cert}`);
+    const hash = getSHA256Hash(
+      JSON.stringify({ name, serverUrl, macaroon, cert })
+    );
 
     const encryptedProps = encrypted
       ? { encrypted: true, encryptedMacaroon: macaroon }
@@ -279,8 +275,8 @@ export class FilesService {
 
     return {
       name: name || '',
-      id,
       socket: serverUrl || '',
+      hash,
       macaroon,
       cert: cert || '',
       password: password || masterPassword || '',

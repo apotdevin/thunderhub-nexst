@@ -29,7 +29,7 @@ export type UnresolvedAccountType = {
 
 export type ParsedAccount = {
   name: string;
-  id: string;
+  hash: string;
   socket: string;
   macaroon: string;
   cert: string;

@@ -12,7 +12,7 @@ import { appConstants } from 'src/server/utils/appConstants';
 import { NodeService } from '../../node/node.service';
 import { toWithError } from 'src/server/utils/async';
 import { decodeMacaroon, isCorrectPassword } from 'src/server/utils/crypto';
-import { CurrentIp } from '../../security/security.decorators';
+import { CurrentIp, Public } from '../../security/security.decorators';
 
 @Resolver()
 export class AuthResolver {
@@ -24,6 +24,7 @@ export class AuthResolver {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger
   ) {}
 
+  @Public()
   @Mutation(() => Boolean)
   async getAuthToken(
     @Args('cookie') cookie: string,
@@ -100,6 +101,7 @@ export class AuthResolver {
     return false;
   }
 
+  @Public()
   @Mutation(() => String)
   async getSessionToken(
     @Args('id') id: string,

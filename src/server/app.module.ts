@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import configuration from './config/configuration';
-import { MainModule } from './modules/api/main/main.module';
-import { LegacyModule } from './modules/legacy/legacy.module';
 import { ViewModule } from './modules/view/view.module';
 import { WinstonModule } from 'nest-winston';
 import winston from 'winston';
@@ -11,6 +9,7 @@ import { AuthenticationModule } from './modules/security/security.module';
 import { FilesModule } from './modules/files/files.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
 import { NodeModule } from './modules/node/node.module';
+import { ApiModule } from './modules/api/api.module';
 
 export type ContextType = {
   req: any;
@@ -27,8 +26,7 @@ export type JwtObjectType = {
 
 @Module({
   imports: [
-    LegacyModule,
-    MainModule,
+    ApiModule,
     ViewModule,
     NodeModule,
     AuthenticationModule,
