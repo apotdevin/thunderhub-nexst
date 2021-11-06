@@ -9,7 +9,7 @@ type Mutation {
 }
 
 type Query {
-  getAccount: Boolean!
+  getAccount: ServerAccount!
   getBaseCanConnect: Boolean!
   getHello: String!
   getServerAccounts: [ServerAccount!]!

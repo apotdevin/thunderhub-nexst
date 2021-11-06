@@ -4,8 +4,6 @@ import { nodeTypes } from './node/types';
 import { nodeResolvers } from './node/resolvers';
 import { authResolvers } from './auth/resolvers';
 import { generalTypes, queryTypes, mutationTypes } from './types';
-import { accountResolvers } from './account/resolvers';
-import { accountTypes } from './account/types';
 import { bitcoinResolvers } from './bitcoin/resolvers';
 import { bitcoinTypes } from './bitcoin/types';
 import { peerTypes } from './peer/types';
@@ -53,7 +51,6 @@ const typeDefs = [
   queryTypes,
   mutationTypes,
   nodeTypes,
-  accountTypes,
   bitcoinTypes,
   peerTypes,
   chainTypes,
@@ -78,7 +75,6 @@ const typeDefs = [
 const resolvers = merge(
   nodeResolvers,
   authResolvers,
-  accountResolvers,
   bitcoinResolvers,
   peerResolvers,
   routeResolvers,

@@ -24,8 +24,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     }
 
     const id: UserId = {
-      owner: true,
-      admin: true,
       id: payload.sub || '',
     };
 

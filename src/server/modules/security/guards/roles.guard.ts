@@ -37,18 +37,6 @@ export class RolesGuard implements CanActivate {
       return false;
     }
 
-    const adminOrOwner = user.admin || user.owner;
-
-    // If the endpoint needs owner role but user is not owner
-    if (decorator.includes(Role.Owner) && !user.owner) {
-      return false;
-    }
-
-    // If the endpoint needs admin role but user is not admin
-    if (decorator.includes(Role.Admin) && !adminOrOwner) {
-      return false;
-    }
-
     return true;
   }
 
