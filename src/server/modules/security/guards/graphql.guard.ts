@@ -1,4 +1,4 @@
-import { ExecutionContext, Injectable } from '@nestjs/common';
+import { ContextType, ExecutionContext, Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { IS_PUBLIC_KEY } from '../security.decorators';
@@ -22,7 +22,9 @@ export class GqlAuthGuard extends AuthGuard('jwt') {
   }
 
   getRequest(context: ExecutionContext) {
-    const ctx = GqlExecutionContext.create(context);
-    return ctx.getContext().req;
+    if (context.getType<ContextType | 'graphql'>() === 'graphql') {
+      return GqlExecutionContext.create(context).getContext().req;
+    }
+    return context.switchToHttp().getRequest();
   }
 }
