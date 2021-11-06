@@ -11,7 +11,6 @@ import {
   AccountType,
   BitcoinNetwork,
   EncodingType,
-  EncryptedAccount,
   ParsedAccount,
   UnresolvedAccountType,
 } from './files.types';
@@ -274,16 +273,9 @@ export class FilesService {
 
     const id = getUUID(`${name}${serverUrl}${macaroon}${cert}`);
 
-    let encryptedProps: EncryptedAccount = {
-      encrypted: false,
-    };
-
-    if (encrypted) {
-      encryptedProps = {
-        encrypted: true,
-        encryptedMacaroon: macaroon,
-      };
-    }
+    const encryptedProps = encrypted
+      ? { encrypted: true, encryptedMacaroon: macaroon }
+      : { encrypted: false, encryptedMacaroon: '' };
 
     return {
       name: name || '',

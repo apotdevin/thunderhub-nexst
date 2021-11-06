@@ -2,6 +2,12 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Mutation {
+  getAuthToken(cookie: String!): Boolean!
+  getSessionToken(id: String!, password: String!): String!
+  logout: Boolean!
+}
+
 type Query {
   getBaseCanConnect: Boolean!
   getHello: String!

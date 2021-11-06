@@ -4,11 +4,16 @@ type SSOConfig = {
   serverUrl: string;
   certPath: string;
   macaroonPath: string;
+  dangerousNoSSOAuth: boolean;
 };
 
 type Throttler = {
   ttl: number;
   limit: number;
+};
+
+type Urls = {
+  mempool: string;
 };
 
 type ConfigType = {
@@ -20,6 +25,7 @@ type ConfigType = {
   accountConfigPath: string;
   sso: SSOConfig;
   throttler: Throttler;
+  urls: Urls;
 };
 
 export default (): ConfigType => {
@@ -33,10 +39,16 @@ export default (): ConfigType => {
     `Getting ${isProduction ? 'production' : 'development'} env variables.`
   );
 
+  const urls = {
+    mempool: process.env.MEMPOOL_URL || 'https://mempool.space',
+  };
+
   const sso = {
     serverUrl: process.env.SSO_SERVER_URL || '',
     certPath: process.env.SSO_CERT_PATH || '',
     macaroonPath: process.env.SSO_MACAROON_PATH || '',
+    dangerousNoSSOAuth:
+      process.env.DANGEROUS_NO_SSO_AUTH === 'true' ? true : false,
   };
 
   const throttler = {
@@ -52,6 +64,7 @@ export default (): ConfigType => {
     accountConfigPath: process.env.ACCOUNT_CONFIG_PATH || '',
     throttler,
     sso,
+    urls,
     jwtSecret,
   };
 

@@ -10,12 +10,27 @@ import winston from 'winston';
 import { AuthenticationModule } from './modules/security/security.module';
 import { FilesModule } from './modules/files/files.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
+import { NodeModule } from './modules/node/node.module';
+
+export type ContextType = {
+  req: any;
+  res: any;
+  authToken?: JwtObjectType;
+};
+
+export type JwtObjectType = {
+  iat: number;
+  exp: number;
+  iss: string;
+  sub: string;
+};
 
 @Module({
   imports: [
     LegacyModule,
     MainModule,
     ViewModule,
+    NodeModule,
     AuthenticationModule,
     FilesModule,
     AccountsModule,
@@ -34,6 +49,7 @@ import { AccountsModule } from './modules/accounts/accounts.module';
           origin: true,
           credentials: true,
         },
+        context: ({ req, res }): ContextType => ({ req, res }),
       }),
     }),
     WinstonModule.forRootAsync({

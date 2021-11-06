@@ -34,16 +34,9 @@ export type ParsedAccount = {
   macaroon: string;
   cert: string;
   password: string;
-} & EncryptedAccount;
-
-export type EncryptedAccount =
-  | {
-      encrypted: true;
-      encryptedMacaroon: string;
-    }
-  | {
-      encrypted: false;
-    };
+  encrypted: boolean;
+  encryptedMacaroon: string;
+};
 
 export type AccountConfigType = {
   hashed: boolean | null;
