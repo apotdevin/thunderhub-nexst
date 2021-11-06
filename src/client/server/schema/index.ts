@@ -2,7 +2,6 @@ import { merge } from 'lodash';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { nodeTypes } from './node/types';
 import { nodeResolvers } from './node/resolvers';
-import { authResolvers } from './auth/resolvers';
 import { generalTypes, queryTypes, mutationTypes } from './types';
 import { bitcoinResolvers } from './bitcoin/resolvers';
 import { bitcoinTypes } from './bitcoin/types';
@@ -74,7 +73,6 @@ const typeDefs = [
 
 const resolvers = merge(
   nodeResolvers,
-  authResolvers,
   bitcoinResolvers,
   peerResolvers,
   routeResolvers,
