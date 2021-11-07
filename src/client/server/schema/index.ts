@@ -2,8 +2,6 @@ import { merge } from 'lodash';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { generalTypes, queryTypes, mutationTypes } from './types';
 import { routeResolvers } from './route/resolvers';
-import { chainTypes } from './chain/types';
-import { chainResolvers } from './chain/resolvers';
 import { chatTypes } from './chat/types';
 import { chatResolvers } from './chat/resolvers';
 import { widgetResolvers } from './widgets/resolvers';
@@ -33,7 +31,6 @@ const typeDefs = [
   generalTypes,
   queryTypes,
   mutationTypes,
-  chainTypes,
   chatTypes,
   widgetTypes,
   channelTypes,
@@ -50,7 +47,6 @@ const typeDefs = [
 
 const resolvers = merge(
   routeResolvers,
-  chainResolvers,
   chatResolvers,
   widgetResolvers,
   invoiceResolvers,

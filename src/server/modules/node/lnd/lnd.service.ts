@@ -3,16 +3,20 @@ import {
   BackupChannel,
   ClosedChannelsType,
   GetChainBalanceType,
+  GetChainTransactionsType,
   GetChannelBalanceType,
   GetChannelsType,
   GetNodeType,
   GetPeers,
   GetPendingChainBalanceType,
   GetPendingChannelsType,
+  GetUtxosType,
   GetWalletInfoType,
   GrantAccess,
   NetworkInfo,
   Permissions,
+  SendToChainAddressType,
+  SendToChainParams,
   SignMessage,
   VerifyMessage,
 } from './lnd.types';
@@ -35,6 +39,10 @@ import {
   getNetworkInfo,
   getPeers,
   addPeer,
+  getChainTransactions,
+  getUtxos,
+  createChainAddress,
+  sendToChainAddress,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -187,5 +195,34 @@ export class LndService {
 
   async removePeer(account: EnrichedAccount, public_key: string) {
     return to<void>(getPeers({ lnd: account.lnd, public_key }));
+  }
+
+  async getChainTransactions(account: EnrichedAccount) {
+    return to<GetChainTransactionsType>(
+      getChainTransactions({ lnd: account.lnd })
+    );
+  }
+
+  async getUtxos(account: EnrichedAccount) {
+    return to<GetUtxosType>(getUtxos({ lnd: account.lnd }));
+  }
+
+  async createChainAddress(account: EnrichedAccount) {
+    return to<{ address: string }>(
+      createChainAddress({
+        lnd: account.lnd,
+        is_unused: true,
+        format: 'p2wpkh',
+      })
+    );
+  }
+
+  async sendToChainAddress(
+    account: EnrichedAccount,
+    options: SendToChainParams
+  ) {
+    return to<SendToChainAddressType>(
+      sendToChainAddress({ lnd: account.lnd, ...options })
+    );
   }
 }

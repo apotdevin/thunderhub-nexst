@@ -238,3 +238,11 @@ export type Peer = {
 };
 
 export type GetPeers = { peers: Peer[] };
+
+export type SendToChainParams = {
+  address: string;
+  fee_tokens_per_vbyte?: number;
+  is_send_all?: boolean;
+  target_confirmations?: number;
+  tokens?: number;
+};

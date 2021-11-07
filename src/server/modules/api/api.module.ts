@@ -12,6 +12,7 @@ import { ToolsModule } from './tools/tools.module';
 import { MacaroonModule } from './macaroon/macaroon.module';
 import { NetworkModule } from './network/network.module';
 import { PeerModule } from './peer/peer.module';
+import { ChainModule } from './chain/chain.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { PeerModule } from './peer/peer.module';
     MacaroonModule,
     NetworkModule,
     PeerModule,
+    ChainModule,
   ],
 })
 export class ApiModule {}

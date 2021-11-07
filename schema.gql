@@ -78,6 +78,7 @@ type LightningNodeSocialInfo {
 
 type Mutation {
   addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
+  createAddress: String!
   createBaseInvoice(amount: Float!): BaseInvoice!
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
@@ -86,6 +87,7 @@ type Mutation {
   loginAmboss: Boolean!
   logout: Boolean!
   removePeer(publicKey: String): Boolean!
+  sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): String!
 }
 
 type NetworkInfo {
@@ -198,6 +200,7 @@ type Query {
   getBitcoinFees: BitcoinFee!
   getBitcoinPrice: String!
   getBosScores: [BosScore!]!
+  getChainTransactions: String!
   getHello: String!
   getLatestVersion: String!
   getLightningAddresses: [LightningAddress!]!
@@ -209,6 +212,7 @@ type Query {
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getPeers: [Peer!]!
   getServerAccounts: [ServerAccount!]!
+  getUtxos: String!
   getWalletInfo: Wallet!
   recoverFunds(backup: String!): Boolean!
   signMessage(message: String!): String!

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AccountsService } from '../accounts/accounts.service';
 import { LndService } from './lnd/lnd.service';
-import { BackupChannel, Permissions } from './lnd/lnd.types';
+import { BackupChannel, Permissions, SendToChainParams } from './lnd/lnd.types';
 
 @Injectable()
 export class NodeService {
@@ -127,5 +127,29 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.removePeer(account, public_key);
+  }
+
+  async getChainTransactions(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getChainTransactions(account);
+  }
+
+  async getUtxos(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getUtxos(account);
+  }
+
+  async createChainAddress(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.createChainAddress(account);
+  }
+
+  async sendToChainAddress(id: string, options: SendToChainParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.sendToChainAddress(account, options);
   }
 }
