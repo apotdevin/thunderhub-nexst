@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { BaseModule } from './base/base.module';
 import { BitcoinModule } from './bitcoin/bitcoin.module';
 import { MainModule } from './main/main.module';
+import { GithubModule } from './github/github.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { MainModule } from './main/main.module';
     AmbossModule,
     BitcoinModule,
     NodeModule,
+    GithubModule,
   ],
 })
 export class ApiModule {}

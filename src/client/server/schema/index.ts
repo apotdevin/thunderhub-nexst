@@ -22,7 +22,6 @@ import { networkTypes } from './network/types';
 import { transactionTypes } from './transactions/types';
 import { healthResolvers } from './health/resolvers';
 import { healthTypes } from './health/types';
-import { githubResolvers } from './github/resolvers';
 import { routeTypes } from './route/types';
 import { macaroonResolvers } from './macaroon/resolvers';
 import { networkResolvers } from './network/resolvers';
@@ -77,7 +76,6 @@ const resolvers = merge(
   walletResolvers,
   transactionResolvers,
   healthResolvers,
-  githubResolvers,
   macaroonResolvers,
   networkResolvers,
   bosResolvers,

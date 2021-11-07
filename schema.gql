@@ -125,6 +125,7 @@ type Query {
   getBitcoinPrice: String!
   getBosScores: [BosScore!]!
   getHello: String!
+  getLatestVersion: String!
   getLightningAddresses: [LightningAddress!]!
   getNode(publicKey: String!, withoutChannels: Boolean!): Node!
   getNodeBalances: Balances!
