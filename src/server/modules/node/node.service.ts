@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AccountsService } from '../accounts/accounts.service';
 import { LndService } from './lnd/lnd.service';
+import { BackupChannel } from './lnd/lnd.types';
 
 @Injectable()
 export class NodeService {
@@ -61,5 +62,35 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.getNode(account, pubkey, withoutChannels);
+  }
+
+  async verifyBackups(id: string, backup: string, channels: BackupChannel[]) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.verifyBackups(account, backup, channels);
+  }
+
+  async recoverFundsFromChannels(id: string, backup: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.recoverFundsFromChannels(account, backup);
+  }
+
+  async getBackups(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getBackups(account);
+  }
+
+  async verifyMessage(id: string, message: string, signature: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.verifyMessage(account, message, signature);
+  }
+
+  async signMessage(id: string, message: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.signMessage(account, message);
   }
 }

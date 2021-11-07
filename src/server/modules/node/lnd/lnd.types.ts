@@ -178,3 +178,8 @@ export type PendingChannelType = {
 };
 
 export type GetPendingChannelsType = { pending_channels: PendingChannelType[] };
+
+export type BackupChannel = {
+  transaction_id: string;
+  transaction_vout: number;
+};

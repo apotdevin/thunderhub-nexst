@@ -120,6 +120,7 @@ type Query {
   getAccount: ServerAccount!
   getAmbossLoginToken: String!
   getAmbossUser: AmbossUser!
+  getBackups: String!
   getBaseCanConnect: Boolean!
   getBitcoinFees: BitcoinFee!
   getBitcoinPrice: String!
@@ -134,6 +135,10 @@ type Query {
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getServerAccounts: [ServerAccount!]!
   getWalletInfo: Wallet!
+  recoverFunds(backup: String!): Boolean!
+  signMessage(message: String!): String!
+  verifyBackups(backup: String!): Boolean!
+  verifyMessage(message: String!, signature: String!): String!
 }
 
 type ServerAccount {

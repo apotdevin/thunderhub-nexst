@@ -6,7 +6,6 @@ import { peerResolvers } from './peer/resolvers';
 import { routeResolvers } from './route/resolvers';
 import { chainTypes } from './chain/types';
 import { chainResolvers } from './chain/resolvers';
-import { toolsResolvers } from './tools/resolvers';
 import { chatTypes } from './chat/types';
 import { chatResolvers } from './chat/resolvers';
 import { widgetResolvers } from './widgets/resolvers';
@@ -65,7 +64,6 @@ const resolvers = merge(
   peerResolvers,
   routeResolvers,
   chainResolvers,
-  toolsResolvers,
   chatResolvers,
   widgetResolvers,
   invoiceResolvers,

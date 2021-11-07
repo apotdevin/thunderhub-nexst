@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
+  BackupChannel,
   ClosedChannelsType,
   GetChainBalanceType,
   GetChannelBalanceType,
@@ -19,6 +20,11 @@ import {
   getPendingChainBalance,
   getChannelBalance,
   getWalletVersion,
+  verifyBackups,
+  recoverFundsFromChannels,
+  getBackups,
+  verifyMessage,
+  signMessage,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -100,6 +106,51 @@ export class LndService {
         public_key,
         is_omitting_channels,
       })
+    );
+  }
+
+  async verifyBackups(
+    account: EnrichedAccount,
+    backup: string,
+    channels: BackupChannel[]
+  ) {
+    return to<{ is_valid: boolean }>(
+      verifyBackups({
+        lnd: account.lnd,
+        backup,
+        channels,
+      })
+    );
+  }
+
+  async recoverFundsFromChannels(account: EnrichedAccount, backup: string) {
+    return to<void>(
+      recoverFundsFromChannels({
+        lnd: account.lnd,
+        backup,
+      })
+    );
+  }
+
+  async getBackups(account: EnrichedAccount) {
+    return to<{ backup: string; channels: BackupChannel[] }>(
+      getBackups({ lnd: account.lnd })
+    );
+  }
+
+  async verifyMessage(
+    account: EnrichedAccount,
+    message: string,
+    signature: string
+  ) {
+    return to<{ signed_by: string }>(
+      verifyMessage({ lnd: account.lnd, message, signature })
+    );
+  }
+
+  async signMessage(account: EnrichedAccount, message: string) {
+    return to<{ signature: string }>(
+      signMessage({ lnd: account.lnd, message })
     );
   }
 }
