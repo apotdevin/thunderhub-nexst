@@ -105,4 +105,27 @@ export class NodeService {
     if (!account) throw new Error('Node account not found');
     return this.lndService.getNetworkInfo(account);
   }
+
+  async getPeers(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getPeers(account);
+  }
+
+  async addPeer(
+    id: string,
+    public_key: string,
+    socket: string,
+    is_temporary: boolean
+  ) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.addPeer(account, public_key, socket, is_temporary);
+  }
+
+  async removePeer(id: string, public_key: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.removePeer(account, public_key);
+  }
 }

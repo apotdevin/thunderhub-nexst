@@ -224,3 +224,17 @@ export type NetworkInfo = {
   not_recently_updated_policy_count: number;
   total_capacity: number;
 };
+
+export type Peer = {
+  bytes_received: number;
+  bytes_sent: number;
+  is_inbound: boolean;
+  is_sync_peer: boolean;
+  ping_time: number;
+  public_key: string;
+  socket: string;
+  tokens_received: number;
+  tokens_sent: number;
+};
+
+export type GetPeers = { peers: Peer[] };

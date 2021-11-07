@@ -6,6 +6,7 @@ import {
   GetChannelBalanceType,
   GetChannelsType,
   GetNodeType,
+  GetPeers,
   GetPendingChainBalanceType,
   GetPendingChannelsType,
   GetWalletInfoType,
@@ -32,6 +33,8 @@ import {
   signMessage,
   grantAccess,
   getNetworkInfo,
+  getPeers,
+  addPeer,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -165,5 +168,24 @@ export class LndService {
 
   async getNetworkInfo(account: EnrichedAccount) {
     return to<NetworkInfo>(getNetworkInfo({ lnd: account.lnd }));
+  }
+
+  async getPeers(account: EnrichedAccount) {
+    return to<GetPeers>(getPeers({ lnd: account.lnd }));
+  }
+
+  async addPeer(
+    account: EnrichedAccount,
+    public_key: string,
+    socket: string,
+    is_temporary: boolean
+  ) {
+    return to<void>(
+      addPeer({ lnd: account.lnd, public_key, socket, is_temporary })
+    );
+  }
+
+  async removePeer(account: EnrichedAccount, public_key: string) {
+    return to<void>(getPeers({ lnd: account.lnd, public_key }));
   }
 }

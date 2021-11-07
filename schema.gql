@@ -77,6 +77,7 @@ type LightningNodeSocialInfo {
 }
 
 type Mutation {
+  addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
   createBaseInvoice(amount: Float!): BaseInvoice!
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
@@ -84,6 +85,7 @@ type Mutation {
   getSessionToken(id: String!, password: String!): String!
   loginAmboss: Boolean!
   logout: Boolean!
+  removePeer(publicKey: String): Boolean!
 }
 
 type NetworkInfo {
@@ -172,6 +174,19 @@ type OnChainBalance {
   pending: String!
 }
 
+type Peer {
+  bytes_received: Float!
+  bytes_sent: Float!
+  is_inbound: Boolean!
+  is_sync_peer: Boolean
+  partner_node_info: Node!
+  ping_time: Float!
+  public_key: String!
+  socket: String!
+  tokens_received: Float!
+  tokens_sent: Float!
+}
+
 type Query {
   getAccount: ServerAccount!
   getAmbossLoginToken: String!
@@ -192,6 +207,7 @@ type Query {
   getNodeBosHistory(pubkey: String!): NodeBosHistory!
   getNodeInfo: NodeInfo!
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
+  getPeers: [Peer!]!
   getServerAccounts: [ServerAccount!]!
   getWalletInfo: Wallet!
   recoverFunds(backup: String!): Boolean!

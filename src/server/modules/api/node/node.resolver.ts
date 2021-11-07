@@ -1,4 +1,4 @@
-import { Args, Query, ResolveField, Resolver } from '@nestjs/graphql';
+import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { NodeService } from '../../node/node.service';
 import { CurrentUser } from '../../security/security.decorators';
 import { UserId } from '../../security/security.types';
@@ -106,7 +106,41 @@ export class NodeResolver {
   @Query(() => Node)
   async getNode(
     @Args('withoutChannels') withoutChannels: boolean,
-    @Args('publicKey') publicKey: string,
+    @Args('publicKey') publicKey: string
+  ) {
+    return { publicKey, withoutChannels };
+  }
+
+  @Query(() => NodeInfo)
+  async getNodeInfo(@CurrentUser() { id }: UserId) {
+    const info = await this.nodeService.getWalletInfo(id);
+    const closedChannels = await this.nodeService.getClosedChannels(id);
+    const { pending_channels } = await this.nodeService.getPendingChannels(id);
+
+    const pending_channels_count = pending_channels.length;
+
+    return {
+      ...info,
+      pending_channels_count,
+      closed_channels_count: closedChannels?.channels?.length || 0,
+    };
+  }
+}
+
+@Resolver(Node)
+export class NodeFieldResolver {
+  constructor(
+    private nodeService: NodeService,
+    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger
+  ) {}
+
+  @ResolveField()
+  async node(
+    @Parent()
+    {
+      publicKey,
+      withoutChannels = true,
+    }: { publicKey: string; withoutChannels: boolean },
     @CurrentUser() { id }: UserId
   ) {
     if (!publicKey) {
@@ -123,21 +157,6 @@ export class NodeResolver {
       return errorNode;
     }
 
-    return { node: { ...info, public_key: publicKey } };
-  }
-
-  @Query(() => NodeInfo)
-  async getNodeInfo(@CurrentUser() { id }: UserId) {
-    const info = await this.nodeService.getWalletInfo(id);
-    const closedChannels = await this.nodeService.getClosedChannels(id);
-    const { pending_channels } = await this.nodeService.getPendingChannels(id);
-
-    const pending_channels_count = pending_channels.length;
-
-    return {
-      ...info,
-      pending_channels_count,
-      closed_channels_count: closedChannels?.channels?.length || 0,
-    };
+    return { ...info, public_key: publicKey };
   }
 }

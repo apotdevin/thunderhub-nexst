@@ -1,8 +1,6 @@
 import { merge } from 'lodash';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { generalTypes, queryTypes, mutationTypes } from './types';
-import { peerTypes } from './peer/types';
-import { peerResolvers } from './peer/resolvers';
 import { routeResolvers } from './route/resolvers';
 import { chainTypes } from './chain/types';
 import { chainResolvers } from './chain/resolvers';
@@ -15,12 +13,10 @@ import { channelResolvers } from './channel/resolvers';
 import { transactionResolvers } from './transactions/resolvers';
 import { channelTypes } from './channel/types';
 import { invoiceTypes } from './invoice/types';
-import { networkTypes } from './network/types';
 import { transactionTypes } from './transactions/types';
 import { healthResolvers } from './health/resolvers';
 import { healthTypes } from './health/types';
 import { routeTypes } from './route/types';
-import { networkResolvers } from './network/resolvers';
 import { bosResolvers } from './bos/resolvers';
 import { bosTypes } from './bos/types';
 import { lnUrlResolvers } from './lnurl/resolvers';
@@ -37,13 +33,11 @@ const typeDefs = [
   generalTypes,
   queryTypes,
   mutationTypes,
-  peerTypes,
   chainTypes,
   chatTypes,
   widgetTypes,
   channelTypes,
   invoiceTypes,
-  networkTypes,
   transactionTypes,
   healthTypes,
   routeTypes,
@@ -55,7 +49,6 @@ const typeDefs = [
 ];
 
 const resolvers = merge(
-  peerResolvers,
   routeResolvers,
   chainResolvers,
   chatResolvers,
@@ -64,7 +57,6 @@ const resolvers = merge(
   channelResolvers,
   transactionResolvers,
   healthResolvers,
-  networkResolvers,
   bosResolvers,
   lnUrlResolvers,
   lnMarketsResolvers,

@@ -3,6 +3,7 @@ import { NodeModule as NodeServiceModule } from '../../node/node.module';
 import {
   BalancesResolver,
   LightningBalanceResolver,
+  NodeFieldResolver,
   NodeResolver,
   OnChainBalanceResolver,
 } from './node.resolver';
@@ -14,6 +15,7 @@ import {
     BalancesResolver,
     OnChainBalanceResolver,
     LightningBalanceResolver,
+    NodeFieldResolver,
   ],
 })
 export class NodeModule {}

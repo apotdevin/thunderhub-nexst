@@ -13,6 +13,7 @@ const NEXT_ROUTES = [
   // Routes
   '',
   'login',
+  'peers',
 ];
 
 @Public()
