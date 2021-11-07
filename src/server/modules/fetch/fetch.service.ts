@@ -4,7 +4,7 @@ import { Logger } from 'winston';
 import { ConfigService } from '@nestjs/config';
 import { Agent } from 'https';
 import { SocksProxyAgent } from 'socks-proxy-agent';
-import { GraphQLError } from 'graphql';
+import { DocumentNode, GraphQLError, print } from 'graphql';
 
 @Injectable()
 export class FetchService {
@@ -30,7 +30,7 @@ export class FetchService {
 
   async graphqlFetchWithProxy(
     url: string,
-    query: string,
+    query: DocumentNode,
     variables?: { [key: string]: string | number | string[] | boolean },
     headers?: { [key: string]: string | number | string[] | boolean }
   ): Promise<{
@@ -44,7 +44,7 @@ export class FetchService {
         'Content-Type': 'application/json',
         ...(headers || {}),
       },
-      body: JSON.stringify({ query, variables }),
+      body: JSON.stringify({ query: print(query), variables }),
     })
       .then(res => res.json() as any)
       .then(result => {

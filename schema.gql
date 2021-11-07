@@ -17,6 +17,23 @@ type Balances {
   onchain: OnChainBalance!
 }
 
+type BaseInvoice {
+  id: String!
+  request: String!
+}
+
+type BaseNode {
+  _id: String
+  name: String
+  public_key: String!
+  socket: String!
+}
+
+type BasePoints {
+  alias: String!
+  amount: Float!
+}
+
 type BitcoinFee {
   fast: Float!
   halfHour: Float!
@@ -55,6 +72,8 @@ type LightningNodeSocialInfo {
 }
 
 type Mutation {
+  createBaseInvoice(amount: Float!): BaseInvoice!
+  createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
   getAuthToken(cookie: String!): Boolean!
   getSessionToken(id: String!, password: String!): String!
   loginAmboss: Boolean!
@@ -122,6 +141,8 @@ type Query {
   getAmbossUser: AmbossUser!
   getBackups: String!
   getBaseCanConnect: Boolean!
+  getBaseNodes: [BaseNode!]!
+  getBasePoints: [BasePoints!]!
   getBitcoinFees: BitcoinFee!
   getBitcoinPrice: String!
   getBosScores: [BosScore!]!

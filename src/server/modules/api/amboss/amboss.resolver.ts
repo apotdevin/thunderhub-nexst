@@ -1,7 +1,6 @@
 import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { FetchService } from '../../fetch/fetch.service';
 import { gql } from 'graphql-tag';
-import { print } from 'graphql';
 import { appUrls } from 'src/server/utils/appUrls';
 import { ContextType } from 'src/server/app.module';
 import { appConstants } from 'src/server/utils/appConstants';
@@ -155,7 +154,7 @@ export class AmbossResolver {
   async getAmbossUser(@Context() { ambossAuth }: ContextType) {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getUserQuery),
+      getUserQuery,
       undefined,
       {
         authorization: ambossAuth ? `Bearer ${ambossAuth}` : '',
@@ -173,7 +172,7 @@ export class AmbossResolver {
   async getAmbossLoginToken(@Context() { ambossAuth }: ContextType) {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getLoginTokenQuery),
+      getLoginTokenQuery,
       { seconds: ONE_MONTH_SECONDS },
       {
         authorization: ambossAuth ? `Bearer ${ambossAuth}` : '',
@@ -194,7 +193,7 @@ export class AmbossResolver {
   ) {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getNodeBosHistoryQuery),
+      getNodeBosHistoryQuery,
       { pubkey },
       {
         authorization: ambossAuth ? `Bearer ${ambossAuth}` : '',
@@ -215,7 +214,7 @@ export class AmbossResolver {
   async getBosScores() {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getBosScoresQuery)
+      getBosScoresQuery
     );
 
     if (!data?.getBosScores || error) {
@@ -232,7 +231,7 @@ export class AmbossResolver {
   async getLightningAddresses() {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getLightningAddresses)
+      getLightningAddresses
     );
 
     if (!data?.getLightningAddresses || error) {
@@ -252,7 +251,7 @@ export class AmbossResolver {
   ) {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getNodeSocialInfo),
+      getNodeSocialInfo,
       { pubkey },
       {
         authorization: ambossAuth ? `Bearer ${ambossAuth}` : '',
@@ -273,7 +272,7 @@ export class AmbossResolver {
   async loginAmboss(@Context() { res }: ContextType) {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,
-      print(getSignInfoQuery)
+      getSignInfoQuery
     );
 
     if (!data?.getSignInfo || error) {
@@ -314,7 +313,7 @@ export class AmbossResolver {
     const { data: loginData, error: loginError } =
       await this.fetchService.graphqlFetchWithProxy(
         appUrls.amboss,
-        print(loginMutation),
+        loginMutation,
         params
       );
 

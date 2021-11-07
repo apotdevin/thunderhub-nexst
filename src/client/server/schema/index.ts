@@ -24,8 +24,6 @@ import { macaroonResolvers } from './macaroon/resolvers';
 import { networkResolvers } from './network/resolvers';
 import { bosResolvers } from './bos/resolvers';
 import { bosTypes } from './bos/types';
-import { tbaseResolvers } from './tbase/resolvers';
-import { tbaseTypes } from './tbase/types';
 import { lnUrlResolvers } from './lnurl/resolvers';
 import { lnUrlTypes } from './lnurl/types';
 import { lnMarketsResolvers } from './lnmarkets/resolvers';
@@ -52,7 +50,6 @@ const typeDefs = [
   healthTypes,
   routeTypes,
   bosTypes,
-  tbaseTypes,
   lnUrlTypes,
   lnMarketsTypes,
   boltzTypes,
@@ -73,7 +70,6 @@ const resolvers = merge(
   macaroonResolvers,
   networkResolvers,
   bosResolvers,
-  tbaseResolvers,
   lnUrlResolvers,
   lnMarketsResolvers,
   boltzResolvers,
