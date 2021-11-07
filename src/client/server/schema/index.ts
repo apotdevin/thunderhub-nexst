@@ -3,8 +3,6 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { nodeTypes } from './node/types';
 import { nodeResolvers } from './node/resolvers';
 import { generalTypes, queryTypes, mutationTypes } from './types';
-import { bitcoinResolvers } from './bitcoin/resolvers';
-import { bitcoinTypes } from './bitcoin/types';
 import { peerTypes } from './peer/types';
 import { peerResolvers } from './peer/resolvers';
 import { routeResolvers } from './route/resolvers';
@@ -50,7 +48,6 @@ const typeDefs = [
   queryTypes,
   mutationTypes,
   nodeTypes,
-  bitcoinTypes,
   peerTypes,
   chainTypes,
   chatTypes,
@@ -73,7 +70,6 @@ const typeDefs = [
 
 const resolvers = merge(
   nodeResolvers,
-  bitcoinResolvers,
   peerResolvers,
   routeResolvers,
   chainResolvers,

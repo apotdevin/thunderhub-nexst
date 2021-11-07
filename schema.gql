@@ -12,6 +12,13 @@ type AmbossUser {
   subscription: AmbossSubscription!
 }
 
+type BitcoinFee {
+  fast: Float!
+  halfHour: Float!
+  hour: Float!
+  minimum: Float!
+}
+
 type BosScore {
   alias: String!
   position: Float!
@@ -65,6 +72,8 @@ type Query {
   getAmbossLoginToken: String!
   getAmbossUser: AmbossUser!
   getBaseCanConnect: Boolean!
+  getBitcoinFees: BitcoinFee!
+  getBitcoinPrice: String!
   getBosScores: [BosScore!]!
   getHello: String!
   getLightningAddresses: [LightningAddress!]!
