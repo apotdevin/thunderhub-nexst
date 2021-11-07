@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AccountsService } from '../accounts/accounts.service';
 import { LndService } from './lnd/lnd.service';
-import { BackupChannel } from './lnd/lnd.types';
+import { BackupChannel, Permissions } from './lnd/lnd.types';
 
 @Injectable()
 export class NodeService {
@@ -92,5 +92,17 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.signMessage(account, message);
+  }
+
+  async grantAccess(id: string, permissions: Permissions) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.grantAccess(account, permissions);
+  }
+
+  async getNetworkInfo(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getNetworkInfo(account);
   }
 }

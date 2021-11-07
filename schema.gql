@@ -55,6 +55,11 @@ type BosScoreInfo {
   last: BosScore
 }
 
+type CreateMacaroon {
+  base: String!
+  hex: String!
+}
+
 type LightningAddress {
   lightning_address: String!
   pubkey: String!
@@ -73,11 +78,32 @@ type LightningNodeSocialInfo {
 
 type Mutation {
   createBaseInvoice(amount: Float!): BaseInvoice!
+  createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
   getAuthToken(cookie: String!): Boolean!
   getSessionToken(id: String!, password: String!): String!
   loginAmboss: Boolean!
   logout: Boolean!
+}
+
+input NetworkInfoInput {
+  is_ok_to_adjust_peers: Boolean!
+  is_ok_to_create_chain_addresses: Boolean!
+  is_ok_to_create_invoices: Boolean!
+  is_ok_to_create_macaroons: Boolean!
+  is_ok_to_derive_keys: Boolean!
+  is_ok_to_get_chain_transactions: Boolean!
+  is_ok_to_get_invoices: Boolean!
+  is_ok_to_get_payments: Boolean!
+  is_ok_to_get_peers: Boolean!
+  is_ok_to_get_wallet_info: Boolean!
+  is_ok_to_pay: Boolean!
+  is_ok_to_send_to_chain_addresses: Boolean!
+  is_ok_to_sign_bytes: Boolean!
+  is_ok_to_sign_messages: Boolean!
+  is_ok_to_stop_daemon: Boolean!
+  is_ok_to_verify_bytes_signatures: Boolean!
+  is_ok_to_verify_messages: Boolean!
 }
 
 type Node {

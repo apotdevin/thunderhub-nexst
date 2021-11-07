@@ -20,7 +20,6 @@ import { transactionTypes } from './transactions/types';
 import { healthResolvers } from './health/resolvers';
 import { healthTypes } from './health/types';
 import { routeTypes } from './route/types';
-import { macaroonResolvers } from './macaroon/resolvers';
 import { networkResolvers } from './network/resolvers';
 import { bosResolvers } from './bos/resolvers';
 import { bosTypes } from './bos/types';
@@ -31,7 +30,6 @@ import { lnMarketsTypes } from './lnmarkets/types';
 import { boltzResolvers } from './boltz/resolvers';
 import { boltzTypes } from './boltz/types';
 import { forwardsResolver } from './forwards/resolvers';
-import { macaroonTypes } from './macaroon/types';
 import { ambossTypes } from './amboss/types';
 import { ambossResolvers } from './amboss/resolvers';
 
@@ -53,7 +51,6 @@ const typeDefs = [
   lnUrlTypes,
   lnMarketsTypes,
   boltzTypes,
-  macaroonTypes,
   ambossTypes,
 ];
 
@@ -67,7 +64,6 @@ const resolvers = merge(
   channelResolvers,
   transactionResolvers,
   healthResolvers,
-  macaroonResolvers,
   networkResolvers,
   bosResolvers,
   lnUrlResolvers,

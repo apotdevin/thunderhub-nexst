@@ -9,6 +9,11 @@ import {
   GetPendingChainBalanceType,
   GetPendingChannelsType,
   GetWalletInfoType,
+  GrantAccess,
+  NetworkInfo,
+  Permissions,
+  SignMessage,
+  VerifyMessage,
 } from './lnd.types';
 import {
   getWalletInfo,
@@ -25,6 +30,8 @@ import {
   getBackups,
   verifyMessage,
   signMessage,
+  grantAccess,
+  getNetworkInfo,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -143,14 +150,20 @@ export class LndService {
     message: string,
     signature: string
   ) {
-    return to<{ signed_by: string }>(
+    return to<VerifyMessage>(
       verifyMessage({ lnd: account.lnd, message, signature })
     );
   }
 
   async signMessage(account: EnrichedAccount, message: string) {
-    return to<{ signature: string }>(
-      signMessage({ lnd: account.lnd, message })
-    );
+    return to<SignMessage>(signMessage({ lnd: account.lnd, message }));
+  }
+
+  async grantAccess(account: EnrichedAccount, permissions: Permissions) {
+    return to<GrantAccess>(grantAccess({ lnd: account.lnd, ...permissions }));
+  }
+
+  async getNetworkInfo(account: EnrichedAccount) {
+    return to<NetworkInfo>(getNetworkInfo({ lnd: account.lnd }));
   }
 }

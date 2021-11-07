@@ -183,3 +183,44 @@ export type BackupChannel = {
   transaction_id: string;
   transaction_vout: number;
 };
+
+export type Permissions = {
+  is_ok_to_adjust_peers: boolean;
+  is_ok_to_create_chain_addresses: boolean;
+  is_ok_to_create_invoices: boolean;
+  is_ok_to_create_macaroons: boolean;
+  is_ok_to_derive_keys: boolean;
+  is_ok_to_get_chain_transactions: boolean;
+  is_ok_to_get_invoices: boolean;
+  is_ok_to_get_wallet_info: boolean;
+  is_ok_to_get_payments: boolean;
+  is_ok_to_get_peers: boolean;
+  is_ok_to_pay: boolean;
+  is_ok_to_send_to_chain_addresses: boolean;
+  is_ok_to_sign_bytes: boolean;
+  is_ok_to_sign_messages: boolean;
+  is_ok_to_stop_daemon: boolean;
+  is_ok_to_verify_bytes_signatures: boolean;
+  is_ok_to_verify_messages: boolean;
+};
+
+export type VerifyMessage = {
+  signed_by: string;
+};
+
+export type SignMessage = {
+  signature: string;
+};
+
+export type GrantAccess = { macaroon: string; permissions: string[] };
+
+export type NetworkInfo = {
+  average_channel_size: number;
+  channel_count: number;
+  max_channel_size: number;
+  median_channel_size: number;
+  min_channel_size: number;
+  node_count: number;
+  not_recently_updated_policy_count: number;
+  total_capacity: number;
+};

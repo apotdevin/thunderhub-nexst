@@ -9,6 +9,7 @@ import { MainModule } from './main/main.module';
 import { GithubModule } from './github/github.module';
 import { WalletModule } from './wallet/wallet.module';
 import { ToolsModule } from './tools/tools.module';
+import { MacaroonModule } from './macaroon/macaroon.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ToolsModule } from './tools/tools.module';
     GithubModule,
     WalletModule,
     ToolsModule,
+    MacaroonModule,
   ],
 })
 export class ApiModule {}
