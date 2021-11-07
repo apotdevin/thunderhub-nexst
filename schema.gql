@@ -86,6 +86,17 @@ type Mutation {
   logout: Boolean!
 }
 
+type NetworkInfo {
+  averageChannelSize: Float!
+  channelCount: Float!
+  maxChannelSize: Float!
+  medianChannelSize: Float!
+  minChannelSize: Float!
+  nodeCount: Float!
+  notRecentlyUpdatedPolicyCount: Float!
+  totalCapacity: Float!
+}
+
 input NetworkInfoInput {
   is_ok_to_adjust_peers: Boolean!
   is_ok_to_create_chain_addresses: Boolean!
@@ -175,6 +186,7 @@ type Query {
   getHello: String!
   getLatestVersion: String!
   getLightningAddresses: [LightningAddress!]!
+  getNetworkInfo: NetworkInfo!
   getNode(publicKey: String!, withoutChannels: Boolean!): Node!
   getNodeBalances: Balances!
   getNodeBosHistory(pubkey: String!): NodeBosHistory!

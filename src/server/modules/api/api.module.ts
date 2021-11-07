@@ -10,6 +10,7 @@ import { GithubModule } from './github/github.module';
 import { WalletModule } from './wallet/wallet.module';
 import { ToolsModule } from './tools/tools.module';
 import { MacaroonModule } from './macaroon/macaroon.module';
+import { NetworkModule } from './network/network.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { MacaroonModule } from './macaroon/macaroon.module';
     WalletModule,
     ToolsModule,
     MacaroonModule,
+    NetworkModule,
   ],
 })
 export class ApiModule {}
