@@ -18,6 +18,7 @@ import {
   getChainBalance,
   getPendingChainBalance,
   getChannelBalance,
+  getWalletVersion,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -27,6 +28,14 @@ export class LndService {
   async getWalletInfo(account: EnrichedAccount) {
     return to<GetWalletInfoType>(
       getWalletInfo({
+        lnd: account.lnd,
+      })
+    );
+  }
+
+  async getWalletVersion(account: EnrichedAccount) {
+    return to(
+      getWalletVersion({
         lnd: account.lnd,
       })
     );

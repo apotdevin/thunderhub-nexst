@@ -15,6 +15,12 @@ export class NodeService {
     return this.lndService.getWalletInfo(account);
   }
 
+  async getWalletVersion(id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getWalletVersion(account);
+  }
+
   async getClosedChannels(id: string) {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');

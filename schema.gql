@@ -133,6 +133,7 @@ type Query {
   getNodeInfo: NodeInfo!
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getServerAccounts: [ServerAccount!]!
+  getWalletInfo: Wallet!
 }
 
 type ServerAccount {
@@ -140,4 +141,16 @@ type ServerAccount {
   loggedIn: Boolean!
   name: String!
   type: String!
+}
+
+type Wallet {
+  build_tags: [String!]!
+  commit_hash: String!
+  is_autopilotrpc_enabled: Boolean!
+  is_chainrpc_enabled: Boolean!
+  is_invoicesrpc_enabled: Boolean!
+  is_signrpc_enabled: Boolean!
+  is_walletrpc_enabled: Boolean!
+  is_watchtowerrpc_enabled: Boolean!
+  is_wtclientrpc_enabled: Boolean!
 }

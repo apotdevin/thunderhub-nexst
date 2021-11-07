@@ -13,10 +13,8 @@ import { widgetResolvers } from './widgets/resolvers';
 import { widgetTypes } from './widgets/types';
 import { invoiceResolvers } from './invoice/resolvers';
 import { channelResolvers } from './channel/resolvers';
-import { walletResolvers } from './wallet/resolvers';
 import { transactionResolvers } from './transactions/resolvers';
 import { channelTypes } from './channel/types';
-import { walletTypes } from './wallet/types';
 import { invoiceTypes } from './invoice/types';
 import { networkTypes } from './network/types';
 import { transactionTypes } from './transactions/types';
@@ -49,7 +47,6 @@ const typeDefs = [
   chatTypes,
   widgetTypes,
   channelTypes,
-  walletTypes,
   invoiceTypes,
   networkTypes,
   transactionTypes,
@@ -73,7 +70,6 @@ const resolvers = merge(
   widgetResolvers,
   invoiceResolvers,
   channelResolvers,
-  walletResolvers,
   transactionResolvers,
   healthResolvers,
   macaroonResolvers,
