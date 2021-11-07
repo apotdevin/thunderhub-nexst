@@ -136,6 +136,11 @@ export type GetPaymentsType = { payments: PaymentType[]; next?: string };
 
 export type GetChainBalanceType = { chain_balance: number };
 
+export type GetChannelBalanceType = {
+  channel_balance: number;
+  pending_balance: number;
+};
+
 export type GetPendingChainBalanceType = { pending_chain_balance: number };
 
 export type GetChainTransactionsType = { transactions: ChainTransaction[] };

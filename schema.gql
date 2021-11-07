@@ -12,6 +12,11 @@ type AmbossUser {
   subscription: AmbossSubscription!
 }
 
+type Balances {
+  lightning: LightningBalance!
+  onchain: OnChainBalance!
+}
+
 type BitcoinFee {
   fast: Float!
   halfHour: Float!
@@ -38,6 +43,13 @@ type LightningAddress {
   pubkey: String!
 }
 
+type LightningBalance {
+  active: String!
+  commit: String!
+  confirmed: String!
+  pending: String!
+}
+
 type LightningNodeSocialInfo {
   socials: NodeSocial!
 }
@@ -49,9 +61,31 @@ type Mutation {
   logout: Boolean!
 }
 
+type Node {
+  node: NodeType!
+}
+
 type NodeBosHistory {
   info: BosScoreInfo!
   scores: [BosScore!]!
+}
+
+type NodeInfo {
+  active_channels_count: Float!
+  alias: String!
+  chains: [String!]!
+  closed_channels_count: Float!
+  color: String!
+  current_block_hash: String!
+  current_block_height: Float!
+  is_synced_to_chain: Boolean!
+  is_synced_to_graph: Boolean!
+  latest_block_at: String!
+  peers_count: Float!
+  pending_channels_count: Float!
+  public_key: String!
+  uris: [String!]!
+  version: String!
 }
 
 type NodeSocial {
@@ -67,6 +101,21 @@ type NodeSocialInfo {
   website: String!
 }
 
+type NodeType {
+  alias: String!
+  capacity: String
+  channel_count: Float
+  color: String
+  public_key: String
+  updated_at: String
+}
+
+type OnChainBalance {
+  closing: String!
+  confirmed: String!
+  pending: String!
+}
+
 type Query {
   getAccount: ServerAccount!
   getAmbossLoginToken: String!
@@ -77,7 +126,10 @@ type Query {
   getBosScores: [BosScore!]!
   getHello: String!
   getLightningAddresses: [LightningAddress!]!
+  getNode(publicKey: String!, withoutChannels: Boolean!): Node!
+  getNodeBalances: Balances!
   getNodeBosHistory(pubkey: String!): NodeBosHistory!
+  getNodeInfo: NodeInfo!
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getServerAccounts: [ServerAccount!]!
 }

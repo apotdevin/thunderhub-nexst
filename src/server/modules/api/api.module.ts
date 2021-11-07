@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { NodeModule } from './node/node.module';
 import { AccountModule } from './account/account.module';
 import { AmbossModule } from './amboss/amboss.module';
 import { AuthModule } from './auth/auth.module';
@@ -14,6 +15,7 @@ import { MainModule } from './main/main.module';
     AccountModule,
     AmbossModule,
     BitcoinModule,
+    NodeModule,
   ],
 })
 export class ApiModule {}
