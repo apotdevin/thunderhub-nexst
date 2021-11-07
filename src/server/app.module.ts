@@ -1,22 +1,28 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import configuration from './config/configuration';
 import { ViewModule } from './modules/view/view.module';
 import { WinstonModule } from 'nest-winston';
-import winston from 'winston';
 import { AuthenticationModule } from './modules/security/security.module';
 import { FilesModule } from './modules/files/files.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
 import { NodeModule } from './modules/node/node.module';
 import { ApiModule } from './modules/api/api.module';
 import { getAuthToken } from './utils/request';
+import { FetchModule } from './modules/fetch/fetch.module';
+import { appConstants } from './utils/appConstants';
+import configuration from './config/configuration';
+import winston from 'winston';
 import jwt from 'jsonwebtoken';
+import cookie from 'cookie';
 
 export type ContextType = {
   req: any;
   res: any;
   authToken?: JwtObjectType;
+  lnMarketsAuth: string | null;
+  tokenAuth: string | null;
+  ambossAuth: string | null;
 };
 
 export type JwtObjectType = {
@@ -34,6 +40,7 @@ export type JwtObjectType = {
     AuthenticationModule,
     FilesModule,
     AccountsModule,
+    FetchModule,
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
@@ -50,16 +57,33 @@ export type JwtObjectType = {
           credentials: true,
         },
         context: ({ req, res }): ContextType => {
+          const cookies = cookie.parse(req.headers.cookie ?? '') || {};
+
           const token = getAuthToken(req);
 
-          if (!token) return { req, res };
+          const lnMarketsAuth = cookies[appConstants.lnMarketsAuth];
+          const tokenAuth = cookies[appConstants.tokenCookieName];
+          const ambossAuth = cookies[appConstants.ambossCookieName];
+
+          const context = {
+            req,
+            res,
+            lnMarketsAuth,
+            tokenAuth,
+            ambossAuth,
+          };
+
+          if (!token) return context;
 
           const secret = config.get('jwtSecret');
           try {
             const authToken = jwt.verify(token, secret) as JwtObjectType;
-            return { req, res, authToken };
+            return {
+              ...context,
+              authToken,
+            };
           } catch (error) {
-            return { req, res };
+            return context;
           }
         },
       }),

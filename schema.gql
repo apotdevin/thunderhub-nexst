@@ -2,16 +2,74 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AmbossSubscription {
+  end_date: String!
+  subscribed: Boolean!
+  upgradable: Boolean!
+}
+
+type AmbossUser {
+  subscription: AmbossSubscription!
+}
+
+type BosScore {
+  alias: String!
+  position: Float!
+  public_key: String!
+  score: Float!
+  updated: String!
+}
+
+type BosScoreInfo {
+  count: Float!
+  first: BosScore!
+  last: BosScore!
+}
+
+type LightningAddress {
+  lightning_address: String!
+  pubkey: String!
+}
+
+type LightningNodeSocialInfo {
+  socials: NodeSocial!
+}
+
 type Mutation {
   getAuthToken(cookie: String!): Boolean!
   getSessionToken(id: String!, password: String!): String!
+  loginAmboss: Boolean!
   logout: Boolean!
+}
+
+type NodeBosHistory {
+  info: BosScoreInfo!
+  scores: [BosScore!]!
+}
+
+type NodeSocial {
+  info: NodeSocialInfo!
+}
+
+type NodeSocialInfo {
+  email: String!
+  private: Boolean!
+  telegram: String!
+  twitter: String!
+  twitter_verified: Boolean!
+  website: String!
 }
 
 type Query {
   getAccount: ServerAccount!
+  getAmbossLoginToken: String!
+  getAmbossUser: AmbossUser!
   getBaseCanConnect: Boolean!
+  getBosScores: [BosScore!]!
   getHello: String!
+  getLightningAddresses: [LightningAddress!]!
+  getNodeBosHistory(pubkey: String!): NodeBosHistory!
+  getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getServerAccounts: [ServerAccount!]!
 }
 

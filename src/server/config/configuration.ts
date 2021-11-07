@@ -23,6 +23,7 @@ type ConfigType = {
   jwtSecret: string;
   cookiePath: string;
   accountConfigPath: string;
+  torProxy: string;
   sso: SSOConfig;
   throttler: Throttler;
   urls: Urls;
@@ -62,6 +63,7 @@ export default (): ConfigType => {
     logLevel: process.env.LOG_LEVEL,
     cookiePath: process.env.COOKIE_PATH || '',
     accountConfigPath: process.env.ACCOUNT_CONFIG_PATH || '',
+    torProxy: process.env.TOR_PROXY_SERVER || '',
     throttler,
     sso,
     urls,
