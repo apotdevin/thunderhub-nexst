@@ -12,7 +12,7 @@ export class AmbossSubscription {
 
 @ObjectType()
 export class AmbossUser {
-  @Field(() => AmbossSubscription)
+  @Field(() => AmbossSubscription, { nullable: true })
   subscription: AmbossSubscription;
 }
 
@@ -34,9 +34,9 @@ export class BosScore {
 export class BosScoreInfo {
   @Field()
   count: number;
-  @Field(() => BosScore)
+  @Field(() => BosScore, { nullable: true })
   first: BosScore;
-  @Field(() => BosScore)
+  @Field(() => BosScore, { nullable: true })
   last: BosScore;
 }
 
@@ -58,28 +58,28 @@ export class LightningAddress {
 
 @ObjectType()
 export class NodeSocialInfo {
-  @Field()
+  @Field({ nullable: true })
   private: boolean;
-  @Field()
+  @Field({ nullable: true })
   telegram: string;
-  @Field()
+  @Field({ nullable: true })
   twitter: string;
-  @Field()
+  @Field({ nullable: true })
   twitter_verified: boolean;
-  @Field()
+  @Field({ nullable: true })
   website: string;
-  @Field()
+  @Field({ nullable: true })
   email: string;
 }
 
 @ObjectType()
 export class NodeSocial {
-  @Field(() => NodeSocialInfo)
+  @Field(() => NodeSocialInfo, { nullable: true })
   info: NodeSocialInfo;
 }
 
 @ObjectType()
 export class LightningNodeSocialInfo {
-  @Field(() => NodeSocial)
+  @Field(() => NodeSocial, { nullable: true })
   socials: NodeSocial;
 }

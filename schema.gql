@@ -9,7 +9,7 @@ type AmbossSubscription {
 }
 
 type AmbossUser {
-  subscription: AmbossSubscription!
+  subscription: AmbossSubscription
 }
 
 type Balances {
@@ -34,8 +34,8 @@ type BosScore {
 
 type BosScoreInfo {
   count: Float!
-  first: BosScore!
-  last: BosScore!
+  first: BosScore
+  last: BosScore
 }
 
 type LightningAddress {
@@ -51,7 +51,7 @@ type LightningBalance {
 }
 
 type LightningNodeSocialInfo {
-  socials: NodeSocial!
+  socials: NodeSocial
 }
 
 type Mutation {
@@ -89,16 +89,16 @@ type NodeInfo {
 }
 
 type NodeSocial {
-  info: NodeSocialInfo!
+  info: NodeSocialInfo
 }
 
 type NodeSocialInfo {
-  email: String!
-  private: Boolean!
-  telegram: String!
-  twitter: String!
-  twitter_verified: Boolean!
-  website: String!
+  email: String
+  private: Boolean
+  telegram: String
+  twitter: String
+  twitter_verified: Boolean
+  website: String
 }
 
 type NodeType {
