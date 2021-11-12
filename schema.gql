@@ -55,6 +55,17 @@ type BosScoreInfo {
   last: BosScore
 }
 
+type ChannelReport {
+  commit: Float!
+  incomingPendingHtlc: Float!
+  local: Float!
+  maxIn: Float!
+  maxOut: Float!
+  outgoingPendingHtlc: Float!
+  remote: Float!
+  totalPendingHtlc: Float!
+}
+
 type CreateMacaroon {
   base: String!
   hex: String!
@@ -201,6 +212,7 @@ type Query {
   getBitcoinPrice: String!
   getBosScores: [BosScore!]!
   getChainTransactions: String!
+  getChannelReport: ChannelReport!
   getHello: String!
   getLatestVersion: String!
   getLightningAddresses: [LightningAddress!]!
