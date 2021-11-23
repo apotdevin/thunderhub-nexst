@@ -60,6 +60,37 @@ type BosScoreInfo {
   last: BosScore
 }
 
+type Channel {
+  bosScore: BosScore!
+  capacity: Float!
+  channel_age: Float!
+  commit_transaction_fee: Float!
+  commit_transaction_weight: Float!
+  id: String!
+  is_active: Boolean!
+  is_closing: Boolean!
+  is_opening: Boolean!
+  is_partner_initiated: Boolean!
+  is_private: Boolean!
+  is_static_remote_key: Boolean
+  local_balance: Float!
+  local_reserve: Float!
+  partner_fee_info: SingleChannel!
+  partner_node_info: Node!
+  partner_public_key: String!
+  pending_payments: [PendingPayment!]!
+  pending_resume: PendingResume!
+  received: Float!
+  remote_balance: Float!
+  remote_reserve: Float!
+  sent: Float!
+  time_offline: Float
+  time_online: Float
+  transaction_id: String!
+  transaction_vout: Float!
+  unsettled_balance: Float!
+}
+
 type ChannelReport {
   commit: Float!
   incomingPendingHtlc: Float!
@@ -76,6 +107,25 @@ type ChannelRequest {
   k1: String
   tag: String
   uri: String
+}
+
+type ClosedChannel {
+  capacity: Float!
+  channel_age: Float!
+  close_confirm_height: Float
+  close_transaction_id: String
+  final_local_balance: Float!
+  final_time_locked_balance: Float!
+  id: String
+  is_breach_close: Boolean!
+  is_cooperative_close: Boolean!
+  is_funding_cancel: Boolean!
+  is_local_force_close: Boolean!
+  is_remote_force_close: Boolean!
+  partner_node_info: Node!
+  partner_public_key: String!
+  transaction_id: String!
+  transaction_vout: Float!
 }
 
 type CreateMacaroon {
@@ -103,6 +153,7 @@ union LnUrlRequest = ChannelRequest | PayRequest | WithdrawRequest
 
 type Mutation {
   addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
+  closeChannel(forceClose: Boolean!, id: String!, targetConfirmations: Float!, tokensPerVByte: Float!): OpenOrCloseChannel!
   createAddress: String!
   createBaseInvoice(amount: Float!): BaseInvoice!
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
@@ -116,6 +167,7 @@ type Mutation {
   lnUrlWithdraw(amount: Float!, callback: String!, description: String!, k1: String!): String!
   loginAmboss: Boolean!
   logout: Boolean!
+  openChannel(amount: Float!, isPrivate: Boolean, partnerPublicKey: String!, pushTokens: Float = 0, tokensPerVByte: Float): OpenOrCloseChannel!
   removePeer(publicKey: String): Boolean!
   sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): String!
 }
@@ -178,6 +230,17 @@ type NodeInfo {
   version: String!
 }
 
+type NodePolicy {
+  base_fee_mtokens: String
+  cltv_delta: Float
+  fee_rate: Float
+  is_disabled: Boolean
+  max_htlc_mtokens: String
+  min_htlc_mtokens: String
+  node: Node
+  updated_at: String
+}
+
 type NodeSocial {
   info: NodeSocialInfo
 }
@@ -206,6 +269,11 @@ type OnChainBalance {
   pending: String!
 }
 
+type OpenOrCloseChannel {
+  transactionId: String!
+  transactionOutputIndex: String!
+}
+
 type PayRequest {
   callback: String
   commentAllowed: Float
@@ -228,6 +296,54 @@ type Peer {
   tokens_sent: Float!
 }
 
+type PendingChannel {
+  close_transaction_id: String
+  is_active: Boolean!
+  is_closing: Boolean!
+  is_opening: Boolean!
+  is_timelocked: Boolean!
+  local_balance: Float!
+  local_reserve: Float!
+  partner_node_info: Node!
+  partner_public_key: String!
+  received: Float!
+  remote_balance: Float!
+  remote_reserve: Float!
+  sent: Float!
+  timelock_blocks: Float
+  timelock_expiration: Float
+  transaction_fee: Float
+  transaction_id: String!
+  transaction_vout: Float!
+}
+
+type PendingPayment {
+  id: String!
+  is_outgoing: Boolean!
+  timeout: Float!
+  tokens: Float!
+}
+
+type PendingResume {
+  incoming_amount: Float!
+  incoming_tokens: Float!
+  outgoing_amount: Float!
+  outgoing_tokens: Float!
+  total_amount: Float!
+  total_tokens: Float!
+}
+
+type Policy {
+  base_fee_mtokens: String
+  cltv_delta: Float
+  fee_rate: Float
+  is_disabled: Boolean
+  max_htlc_mtokens: String
+  min_htlc_mtokens: String
+  public_key: String!
+  updated_at: String
+}
+
 type Query {
   getAccount: ServerAccount!
   getAmbossLoginToken: String!
@@ -240,7 +356,10 @@ type Query {
   getBitcoinPrice: String!
   getBosScores: [BosScore!]!
   getChainTransactions: String!
+  getChannel(id: String!, pubkey: String!): SingleChannel!
   getChannelReport: ChannelReport!
+  getChannels(active: Boolean): [Channel!]!
+  getClosedChannels: [ClosedChannel!]!
   getHello: String!
   getLatestVersion: String!
   getLightningAddressInfo(address: String!): PayRequest!
@@ -252,6 +371,7 @@ type Query {
   getNodeInfo: NodeInfo!
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getPeers: [Peer!]!
+  getPendingChannels: [PendingChannel!]!
   getServerAccounts: [ServerAccount!]!
   getUtxos: String!
   getWalletInfo: Wallet!
@@ -266,6 +386,17 @@ type ServerAccount {
   loggedIn: Boolean!
   name: String!
   type: String!
+}
+
+type SingleChannel {
+  capacity: Float!
+  id: String!
+  node_policies: NodePolicy
+  partner_node_policies: NodePolicy
+  policies: [Policy!]!
+  transaction_id: String!
+  transaction_vout: Float!
+  updated_at: String
 }
 
 type Wallet {

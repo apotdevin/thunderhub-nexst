@@ -51,10 +51,6 @@ export type GetPublicKeyType = {
   public_key: string;
 };
 
-export type ClosedChannelsType = {
-  channels: [];
-};
-
 export type CreateInvoiceType = {
   chain_address?: string;
   created_at: string;
@@ -69,11 +65,6 @@ export type CreateInvoiceType = {
 export type CreateInvoiceParams = {
   tokens: number;
   description?: string;
-};
-
-export type CloseChannelType = {
-  transaction_id: string;
-  transaction_vout: number;
 };
 
 export type OpenChannelType = {
@@ -111,6 +102,7 @@ export type GetWalletInfoType = {
   alias: string;
   public_key: string;
   version: string;
+  current_block_height: number;
 };
 
 export type DiffieHellmanComputeSecretType = {
@@ -136,6 +128,8 @@ export type GetChannelType = {
 export type GetClosedChannelsType = { channels: ChannelType[] };
 
 export type GetChannelsType = { channels: ChannelType[] };
+
+export type GetChannelsParams = { is_active?: boolean };
 
 export type GetForwardsType = { forwards: ForwardType[]; next?: string };
 
@@ -264,4 +258,29 @@ export type DiffieHellmanComputeSecretParams = {
 
 export type DiffieHellmanComputeSecretResult = {
   secret: string;
+};
+
+export type CloseChannelParams = {
+  id: string;
+  target_confirmations: number;
+  tokens_per_vbyte: number;
+  is_force_close: boolean;
+};
+
+export type CloseChannel = {
+  transaction_id: string;
+  transaction_vout: number;
+};
+
+export type OpenChannel = {
+  transaction_id: string;
+  transaction_vout: number;
+};
+
+export type OpenChannelParams = {
+  is_private: boolean;
+  local_tokens: number;
+  partner_public_key: string;
+  chain_fee_tokens_per_vbyte: number;
+  give_tokens: number;
 };

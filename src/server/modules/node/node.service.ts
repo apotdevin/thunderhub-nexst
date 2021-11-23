@@ -3,8 +3,11 @@ import { AccountsService } from '../accounts/accounts.service';
 import { LndService } from './lnd/lnd.service';
 import {
   BackupChannel,
+  CloseChannelParams,
   CreateInvoiceParams,
   DiffieHellmanComputeSecretParams,
+  GetChannelsParams,
+  OpenChannelParams,
   PayInvoiceParams,
   Permissions,
   SendToChainParams,
@@ -41,10 +44,10 @@ export class NodeService {
     return this.lndService.getPendingChannels(account);
   }
 
-  async getChannels(id: string) {
+  async getChannels(id: string, options?: GetChannelsParams) {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
-    return this.lndService.getChannels(account);
+    return this.lndService.getChannels(account, options);
   }
 
   async getChannelBalance(id: string) {
@@ -185,5 +188,23 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.createInvoice(account, options);
+  }
+
+  async getChannel(id: string, channel_id: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getChannel(account, channel_id);
+  }
+
+  async closeChannel(id: string, options: CloseChannelParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.closeChannel(account, options);
+  }
+
+  async openChannel(id: string, options: OpenChannelParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.openChannel(account, options);
   }
 }

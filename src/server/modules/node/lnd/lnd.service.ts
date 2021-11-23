@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import {
   BackupChannel,
-  ClosedChannelsType,
+  CloseChannel,
+  CloseChannelParams,
   CreateInvoiceParams,
   CreateInvoiceType,
   DecodedType,
@@ -10,7 +11,10 @@ import {
   GetChainBalanceType,
   GetChainTransactionsType,
   GetChannelBalanceType,
+  GetChannelsParams,
   GetChannelsType,
+  GetChannelType,
+  GetClosedChannelsType,
   GetNodeType,
   GetPeers,
   GetPendingChainBalanceType,
@@ -19,6 +23,8 @@ import {
   GetWalletInfoType,
   GrantAccess,
   NetworkInfo,
+  OpenChannel,
+  OpenChannelParams,
   PayInvoiceParams,
   PayInvoiceType,
   Permissions,
@@ -54,6 +60,9 @@ import {
   decodePaymentRequest,
   pay,
   createInvoice,
+  getChannel,
+  closeChannel,
+  openChannel,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -77,7 +86,7 @@ export class LndService {
   }
 
   async getClosedChannels(account: EnrichedAccount) {
-    return to<ClosedChannelsType>(
+    return to<GetClosedChannelsType>(
       getClosedChannels({
         lnd: account.lnd,
       })
@@ -92,10 +101,11 @@ export class LndService {
     );
   }
 
-  async getChannels(account: EnrichedAccount) {
+  async getChannels(account: EnrichedAccount, options?: GetChannelsParams) {
     return to<GetChannelsType>(
       getChannels({
         lnd: account.lnd,
+        ...options,
       })
     );
   }
@@ -258,5 +268,17 @@ export class LndService {
     return to<CreateInvoiceType>(
       createInvoice({ lnd: account.lnd, ...options })
     );
+  }
+
+  async getChannel(account: EnrichedAccount, id: string) {
+    return to<GetChannelType>(getChannel({ lnd: account.lnd, id }));
+  }
+
+  async closeChannel(account: EnrichedAccount, options: CloseChannelParams) {
+    return to<CloseChannel>(closeChannel({ lnd: account.lnd, ...options }));
+  }
+
+  async openChannel(account: EnrichedAccount, options: OpenChannelParams) {
+    return to<OpenChannel>(openChannel({ lnd: account.lnd, ...options }));
   }
 }
