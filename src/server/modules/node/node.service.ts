@@ -1,7 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { AccountsService } from '../accounts/accounts.service';
 import { LndService } from './lnd/lnd.service';
-import { BackupChannel, Permissions, SendToChainParams } from './lnd/lnd.types';
+import {
+  BackupChannel,
+  CreateInvoiceParams,
+  DiffieHellmanComputeSecretParams,
+  PayInvoiceParams,
+  Permissions,
+  SendToChainParams,
+} from './lnd/lnd.types';
 
 @Injectable()
 export class NodeService {
@@ -151,5 +158,32 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.sendToChainAddress(account, options);
+  }
+
+  async diffieHellmanComputeSecret(
+    id: string,
+    options: DiffieHellmanComputeSecretParams
+  ) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.diffieHellmanComputeSecret(account, options);
+  }
+
+  async decodePaymentRequest(id: string, request: string) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.decodePaymentRequest(account, request);
+  }
+
+  async pay(id: string, options: PayInvoiceParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.pay(account, options);
+  }
+
+  async createInvoice(id: string, options: CreateInvoiceParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.createInvoice(account, options);
   }
 }

@@ -2,6 +2,11 @@ import { Injectable } from '@nestjs/common';
 import {
   BackupChannel,
   ClosedChannelsType,
+  CreateInvoiceParams,
+  CreateInvoiceType,
+  DecodedType,
+  DiffieHellmanComputeSecretParams,
+  DiffieHellmanComputeSecretResult,
   GetChainBalanceType,
   GetChainTransactionsType,
   GetChannelBalanceType,
@@ -14,6 +19,8 @@ import {
   GetWalletInfoType,
   GrantAccess,
   NetworkInfo,
+  PayInvoiceParams,
+  PayInvoiceType,
   Permissions,
   SendToChainAddressType,
   SendToChainParams,
@@ -21,6 +28,7 @@ import {
   VerifyMessage,
 } from './lnd.types';
 import {
+  diffieHellmanComputeSecret,
   getWalletInfo,
   getClosedChannels,
   getPendingChannels,
@@ -43,6 +51,9 @@ import {
   getUtxos,
   createChainAddress,
   sendToChainAddress,
+  decodePaymentRequest,
+  pay,
+  createInvoice,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -223,6 +234,29 @@ export class LndService {
   ) {
     return to<SendToChainAddressType>(
       sendToChainAddress({ lnd: account.lnd, ...options })
+    );
+  }
+
+  async diffieHellmanComputeSecret(
+    account: EnrichedAccount,
+    options: DiffieHellmanComputeSecretParams
+  ) {
+    return to<DiffieHellmanComputeSecretResult>(
+      diffieHellmanComputeSecret({ lnd: account.lnd, ...options })
+    );
+  }
+
+  async decodePaymentRequest(account: EnrichedAccount, request: string) {
+    return to<DecodedType>(decodePaymentRequest({ lnd: account.lnd, request }));
+  }
+
+  async pay(account: EnrichedAccount, options: PayInvoiceParams) {
+    return to<PayInvoiceType>(pay({ lnd: account.lnd, ...options }));
+  }
+
+  async createInvoice(account: EnrichedAccount, options: CreateInvoiceParams) {
+    return to<CreateInvoiceType>(
+      createInvoice({ lnd: account.lnd, ...options })
     );
   }
 }

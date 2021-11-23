@@ -22,6 +22,10 @@ export type PayInvoiceType = {
   tokens: number;
 };
 
+export type PayInvoiceParams = {
+  request: string;
+};
+
 export type ChannelType = {
   id: string;
   tokens: number;
@@ -60,6 +64,11 @@ export type CreateInvoiceType = {
   request: string;
   secret: string;
   tokens?: number;
+};
+
+export type CreateInvoiceParams = {
+  tokens: number;
+  description?: string;
 };
 
 export type CloseChannelType = {
@@ -245,4 +254,14 @@ export type SendToChainParams = {
   is_send_all?: boolean;
   target_confirmations?: number;
   tokens?: number;
+};
+
+export type DiffieHellmanComputeSecretParams = {
+  key_family?: number;
+  key_index?: number;
+  partner_public_key: string;
+};
+
+export type DiffieHellmanComputeSecretResult = {
+  secret: string;
 };

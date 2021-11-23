@@ -12,6 +12,11 @@ type AmbossUser {
   subscription: AmbossSubscription
 }
 
+type AuthResponse {
+  message: String!
+  status: String!
+}
+
 type Balances {
   lightning: LightningBalance!
   onchain: OnChainBalance!
@@ -66,6 +71,13 @@ type ChannelReport {
   totalPendingHtlc: Float!
 }
 
+type ChannelRequest {
+  callback: String
+  k1: String
+  tag: String
+  uri: String
+}
+
 type CreateMacaroon {
   base: String!
   hex: String!
@@ -87,14 +99,21 @@ type LightningNodeSocialInfo {
   socials: NodeSocial
 }
 
+union LnUrlRequest = ChannelRequest | PayRequest | WithdrawRequest
+
 type Mutation {
   addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
   createAddress: String!
   createBaseInvoice(amount: Float!): BaseInvoice!
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
+  fetchLnUrl(url: String!): LnUrlRequest!
   getAuthToken(cookie: String!): Boolean!
   getSessionToken(id: String!, password: String!): String!
+  lnUrlAuth(url: String!): AuthResponse!
+  lnUrlChannel(callback: String!, k1: String!, uri: String!): String!
+  lnUrlPay(amount: Float!, callback: String!, comment: String!): String!
+  lnUrlWithdraw(amount: Float!, callback: String!, description: String!, k1: String!): String!
   loginAmboss: Boolean!
   logout: Boolean!
   removePeer(publicKey: String): Boolean!
@@ -187,6 +206,15 @@ type OnChainBalance {
   pending: String!
 }
 
+type PayRequest {
+  callback: String
+  commentAllowed: Float
+  maxSendable: String
+  metadata: String
+  minSendable: String
+  tag: String
+}
+
 type Peer {
   bytes_received: Float!
   bytes_sent: Float!
@@ -215,6 +243,7 @@ type Query {
   getChannelReport: ChannelReport!
   getHello: String!
   getLatestVersion: String!
+  getLightningAddressInfo(address: String!): PayRequest!
   getLightningAddresses: [LightningAddress!]!
   getNetworkInfo: NetworkInfo!
   getNode(publicKey: String!, withoutChannels: Boolean!): Node!
@@ -249,4 +278,13 @@ type Wallet {
   is_walletrpc_enabled: Boolean!
   is_watchtowerrpc_enabled: Boolean!
   is_wtclientrpc_enabled: Boolean!
+}
+
+type WithdrawRequest {
+  callback: String
+  defaultDescription: String
+  k1: String
+  maxWithdrawable: String
+  minWithdrawable: String
+  tag: String
 }

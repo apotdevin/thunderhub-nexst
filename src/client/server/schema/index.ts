@@ -4,8 +4,6 @@ import { generalTypes, queryTypes, mutationTypes } from './types';
 import { routeResolvers } from './route/resolvers';
 import { chatTypes } from './chat/types';
 import { chatResolvers } from './chat/resolvers';
-import { widgetResolvers } from './widgets/resolvers';
-import { widgetTypes } from './widgets/types';
 import { invoiceResolvers } from './invoice/resolvers';
 import { channelResolvers } from './channel/resolvers';
 import { transactionResolvers } from './transactions/resolvers';
@@ -17,8 +15,6 @@ import { healthTypes } from './health/types';
 import { routeTypes } from './route/types';
 import { bosResolvers } from './bos/resolvers';
 import { bosTypes } from './bos/types';
-import { lnUrlResolvers } from './lnurl/resolvers';
-import { lnUrlTypes } from './lnurl/types';
 import { lnMarketsResolvers } from './lnmarkets/resolvers';
 import { lnMarketsTypes } from './lnmarkets/types';
 import { boltzResolvers } from './boltz/resolvers';
@@ -32,14 +28,12 @@ const typeDefs = [
   queryTypes,
   mutationTypes,
   chatTypes,
-  widgetTypes,
   channelTypes,
   invoiceTypes,
   transactionTypes,
   healthTypes,
   routeTypes,
   bosTypes,
-  lnUrlTypes,
   lnMarketsTypes,
   boltzTypes,
   ambossTypes,
@@ -48,13 +42,11 @@ const typeDefs = [
 const resolvers = merge(
   routeResolvers,
   chatResolvers,
-  widgetResolvers,
   invoiceResolvers,
   channelResolvers,
   transactionResolvers,
   healthResolvers,
   bosResolvers,
-  lnUrlResolvers,
   lnMarketsResolvers,
   boltzResolvers,
   forwardsResolver,
