@@ -21,6 +21,7 @@ import {
   PendingChannel,
   SingleChannel,
   SingleChannelParentType,
+  UpdateRoutingFeesParams,
 } from './channels.types';
 
 @Resolver(Channel)
@@ -261,5 +262,115 @@ export class ChannelsResolver {
       transactionId: info.transaction_id,
       transactionOutputIndex: info.transaction_vout,
     };
+  }
+
+  @Mutation(() => Boolean)
+  async updateFees(
+    @CurrentUser() user: UserId,
+    @Args('transaction_id') transaction_id: string,
+    @Args('transaction_vout') transaction_vout: number,
+    @Args('base_fee_tokens') base_fee_tokens: number,
+    @Args('fee_rate') fee_rate: number,
+    @Args('cltv_delta') cltv_delta: number,
+    @Args('max_htlc_mtokens') max_htlc_mtokens: string,
+    @Args('min_htlc_mtokens') min_htlc_mtokens: string
+  ) {
+    const hasBaseFee = base_fee_tokens >= 0;
+    const hasFee = fee_rate >= 0;
+
+    if (
+      !hasBaseFee &&
+      !hasFee &&
+      !cltv_delta &&
+      !max_htlc_mtokens &&
+      !min_htlc_mtokens
+    ) {
+      throw new Error('NoDetailsToUpdateChannel');
+    }
+
+    const baseFee =
+      base_fee_tokens === 0
+        ? { base_fee_tokens: 0 }
+        : { base_fee_mtokens: `${Math.trunc((base_fee_tokens || 0) * 1000)}` };
+
+    const props = {
+      transaction_id,
+      transaction_vout,
+      ...(hasBaseFee && baseFee),
+      ...(hasFee && { fee_rate }),
+      ...(cltv_delta && { cltv_delta }),
+      ...(max_htlc_mtokens && { max_htlc_mtokens }),
+      ...(min_htlc_mtokens && { min_htlc_mtokens }),
+    };
+
+    this.logger.debug('Updating channel details with props: %o', props);
+
+    await this.nodeService.updateRoutingFees(user.id, props);
+
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  async updateMultipleFees(
+    @CurrentUser() user: UserId,
+    @Args('channels', { type: () => [UpdateRoutingFeesParams] })
+    channels: UpdateRoutingFeesParams[]
+  ) {
+    let errors = 0;
+
+    for (let i = 0; i < channels.length; i++) {
+      const channel = channels[i];
+
+      const {
+        transaction_id,
+        transaction_vout,
+        base_fee_tokens,
+        fee_rate,
+        cltv_delta,
+        max_htlc_mtokens,
+        min_htlc_mtokens,
+      } = channel;
+
+      const hasBaseFee = base_fee_tokens >= 0;
+      const hasFee = fee_rate >= 0;
+
+      if (
+        !hasBaseFee &&
+        !hasFee &&
+        !cltv_delta &&
+        !max_htlc_mtokens &&
+        !min_htlc_mtokens
+      ) {
+        throw new Error('NoDetailsToUpdateChannel');
+      }
+
+      const baseFee =
+        base_fee_tokens === 0
+          ? { base_fee_tokens: 0 }
+          : {
+              base_fee_mtokens: `${Math.trunc((base_fee_tokens || 0) * 1000)}`,
+            };
+
+      const props = {
+        transaction_id,
+        transaction_vout,
+        ...(hasBaseFee && baseFee),
+        ...(hasFee && { fee_rate }),
+        ...(cltv_delta && { cltv_delta }),
+        ...(max_htlc_mtokens && { max_htlc_mtokens }),
+        ...(min_htlc_mtokens && { min_htlc_mtokens }),
+      };
+
+      const [, error] = await toWithError(
+        this.nodeService.updateRoutingFees(user.id, props)
+      );
+
+      if (error) {
+        this.logger.error('Error updating channel: %o', error);
+        errors = errors + 1;
+      }
+    }
+
+    return errors ? false : true;
   }
 }

@@ -284,3 +284,27 @@ export type OpenChannelParams = {
   chain_fee_tokens_per_vbyte: number;
   give_tokens: number;
 };
+
+export type UpdateRoutingFeeFailure = {
+  failure: string;
+  is_pending_channel: boolean;
+  is_unknown_channel: boolean;
+  is_invalid_policy: boolean;
+  transaction_id: string;
+  transaction_vout: number;
+};
+
+export type UpdateRoutingFees = {
+  failures: UpdateRoutingFeeFailure[];
+};
+
+export type UpdateRoutingFeesParams = {
+  transaction_id?: string;
+  transaction_vout?: number;
+  base_fee_mtokens?: string;
+  base_fee_tokens?: number;
+  cltv_delta?: number;
+  fee_rate?: number;
+  max_htlc_mtokens?: string;
+  min_htlc_mtokens?: string;
+};

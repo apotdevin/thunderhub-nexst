@@ -5,9 +5,7 @@ import { routeResolvers } from './route/resolvers';
 import { chatTypes } from './chat/types';
 import { chatResolvers } from './chat/resolvers';
 import { invoiceResolvers } from './invoice/resolvers';
-import { channelResolvers } from './channel/resolvers';
 import { transactionResolvers } from './transactions/resolvers';
-import { channelTypes } from './channel/types';
 import { invoiceTypes } from './invoice/types';
 import { transactionTypes } from './transactions/types';
 import { healthResolvers } from './health/resolvers';
@@ -26,7 +24,6 @@ const typeDefs = [
   queryTypes,
   mutationTypes,
   chatTypes,
-  channelTypes,
   invoiceTypes,
   transactionTypes,
   healthTypes,
@@ -40,7 +37,6 @@ const resolvers = merge(
   routeResolvers,
   chatResolvers,
   invoiceResolvers,
-  channelResolvers,
   transactionResolvers,
   healthResolvers,
   bosResolvers,

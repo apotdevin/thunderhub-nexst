@@ -170,6 +170,8 @@ type Mutation {
   openChannel(amount: Float!, isPrivate: Boolean, partnerPublicKey: String!, pushTokens: Float = 0, tokensPerVByte: Float): OpenOrCloseChannel!
   removePeer(publicKey: String): Boolean!
   sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): String!
+  updateFees(base_fee_tokens: Float!, cltv_delta: Float!, fee_rate: Float!, max_htlc_mtokens: String!, min_htlc_mtokens: String!, transaction_id: String!, transaction_vout: Float!): Boolean!
+  updateMultipleFees(channels: [UpdateRoutingFeesParams!]!): Boolean!
 }
 
 type NetworkInfo {
@@ -397,6 +399,17 @@ type SingleChannel {
   transaction_id: String!
   transaction_vout: Float!
   updated_at: String
+}
+
+input UpdateRoutingFeesParams {
+  base_fee_mtokens: String
+  base_fee_tokens: Float
+  cltv_delta: Float
+  fee_rate: Float
+  max_htlc_mtokens: String
+  min_htlc_mtokens: String
+  transaction_id: String
+  transaction_vout: Float
 }
 
 type Wallet {

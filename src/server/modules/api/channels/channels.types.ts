@@ -1,4 +1,4 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { BosScore } from '../amboss/amboss.types';
 import { Node } from '../node/node.types';
 
@@ -241,4 +241,24 @@ export class OpenOrCloseChannel {
   transactionId: string;
   @Field()
   transactionOutputIndex: string;
+}
+
+@InputType()
+export class UpdateRoutingFeesParams {
+  @Field({ nullable: true })
+  transaction_id?: string;
+  @Field({ nullable: true })
+  transaction_vout?: number;
+  @Field({ nullable: true })
+  base_fee_mtokens?: string;
+  @Field({ nullable: true })
+  base_fee_tokens?: number;
+  @Field({ nullable: true })
+  cltv_delta?: number;
+  @Field({ nullable: true })
+  fee_rate?: number;
+  @Field({ nullable: true })
+  max_htlc_mtokens?: string;
+  @Field({ nullable: true })
+  min_htlc_mtokens?: string;
 }

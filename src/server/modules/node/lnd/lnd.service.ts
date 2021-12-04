@@ -31,6 +31,8 @@ import {
   SendToChainAddressType,
   SendToChainParams,
   SignMessage,
+  UpdateRoutingFees,
+  UpdateRoutingFeesParams,
   VerifyMessage,
 } from './lnd.types';
 import {
@@ -63,6 +65,7 @@ import {
   getChannel,
   closeChannel,
   openChannel,
+  updateRoutingFees,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -280,5 +283,14 @@ export class LndService {
 
   async openChannel(account: EnrichedAccount, options: OpenChannelParams) {
     return to<OpenChannel>(openChannel({ lnd: account.lnd, ...options }));
+  }
+
+  async updateRoutingFees(
+    account: EnrichedAccount,
+    options: UpdateRoutingFeesParams
+  ) {
+    return to<UpdateRoutingFees>(
+      updateRoutingFees({ lnd: account.lnd, ...options })
+    );
   }
 }

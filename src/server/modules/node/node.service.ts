@@ -11,6 +11,7 @@ import {
   PayInvoiceParams,
   Permissions,
   SendToChainParams,
+  UpdateRoutingFeesParams,
 } from './lnd/lnd.types';
 
 @Injectable()
@@ -206,5 +207,11 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.openChannel(account, options);
+  }
+
+  async updateRoutingFees(id: string, options: UpdateRoutingFeesParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.updateRoutingFees(account, options);
   }
 }
