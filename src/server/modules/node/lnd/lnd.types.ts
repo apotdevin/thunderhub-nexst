@@ -308,3 +308,24 @@ export type UpdateRoutingFeesParams = {
   max_htlc_mtokens?: string;
   min_htlc_mtokens?: string;
 };
+
+export type Forward = {
+  created_at: string;
+  fee: number;
+  fee_mtokens: string;
+  incoming_channel: string;
+  mtokens: string;
+  outgoing_channel: string;
+  tokens: number;
+};
+
+export type GetForwards = {
+  forwards: Forward[];
+  next?: string;
+};
+
+export type GetForwardsParams = {
+  after?: string;
+  before?: string;
+  token?: string;
+};

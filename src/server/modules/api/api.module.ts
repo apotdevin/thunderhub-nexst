@@ -16,6 +16,7 @@ import { ChainModule } from './chain/chain.module';
 import { EdgeModule } from './edge/edge.module';
 import { LnUrlModule } from './lnurl/lnurl.module';
 import { ChannelsModule } from './channels/channels.module';
+import { ForwardsModule } from './forwards/forwards.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { ChannelsModule } from './channels/channels.module';
     EdgeModule,
     LnUrlModule,
     ChannelsModule,
+    ForwardsModule,
   ],
 })
 export class ApiModule {}

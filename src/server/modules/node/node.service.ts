@@ -7,6 +7,7 @@ import {
   CreateInvoiceParams,
   DiffieHellmanComputeSecretParams,
   GetChannelsParams,
+  GetForwardsParams,
   OpenChannelParams,
   PayInvoiceParams,
   Permissions,
@@ -213,5 +214,11 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.updateRoutingFees(account, options);
+  }
+
+  async getForwards(id: string, options: GetForwardsParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.getForwards(account, options);
   }
 }

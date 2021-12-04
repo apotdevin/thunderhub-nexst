@@ -133,6 +133,16 @@ type CreateMacaroon {
   hex: String!
 }
 
+type Forward {
+  created_at: String!
+  fee: Float!
+  fee_mtokens: String!
+  incoming_channel: String!
+  mtokens: String!
+  outgoing_channel: String!
+  tokens: Float!
+}
+
 type LightningAddress {
   lightning_address: String!
   pubkey: String!
@@ -362,6 +372,7 @@ type Query {
   getChannelReport: ChannelReport!
   getChannels(active: Boolean): [Channel!]!
   getClosedChannels: [ClosedChannel!]!
+  getForwards(days: Float!): [Forward!]!
   getHello: String!
   getLatestVersion: String!
   getLightningAddressInfo(address: String!): PayRequest!

@@ -17,7 +17,6 @@ import { lnMarketsResolvers } from './lnmarkets/resolvers';
 import { lnMarketsTypes } from './lnmarkets/types';
 import { boltzResolvers } from './boltz/resolvers';
 import { boltzTypes } from './boltz/types';
-import { forwardsResolver } from './forwards/resolvers';
 
 const typeDefs = [
   generalTypes,
@@ -41,8 +40,7 @@ const resolvers = merge(
   healthResolvers,
   bosResolvers,
   lnMarketsResolvers,
-  boltzResolvers,
-  forwardsResolver
+  boltzResolvers
 );
 
 export const schema = makeExecutableSchema({ typeDefs, resolvers });

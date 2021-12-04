@@ -15,6 +15,8 @@ import {
   GetChannelsType,
   GetChannelType,
   GetClosedChannelsType,
+  GetForwards,
+  GetForwardsParams,
   GetNodeType,
   GetPeers,
   GetPendingChainBalanceType,
@@ -66,6 +68,7 @@ import {
   closeChannel,
   openChannel,
   updateRoutingFees,
+  getForwards,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
@@ -292,5 +295,9 @@ export class LndService {
     return to<UpdateRoutingFees>(
       updateRoutingFees({ lnd: account.lnd, ...options })
     );
+  }
+
+  async getForwards(account: EnrichedAccount, options: GetForwardsParams) {
+    return to<GetForwards>(getForwards({ lnd: account.lnd, ...options }));
   }
 }
