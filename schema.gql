@@ -91,6 +91,21 @@ type Channel {
   unsettled_balance: Float!
 }
 
+type ChannelFeeHealth {
+  id: String!
+  mySide: FeeHealth!
+  partner: Node!
+  partnerSide: FeeHealth!
+}
+
+type ChannelHealth {
+  averageVolumeNormalized: String!
+  id: String!
+  partner: Node!
+  score: Float!
+  volumeNormalized: String!
+}
+
 type ChannelReport {
   commit: Float!
   incomingPendingHtlc: Float!
@@ -107,6 +122,31 @@ type ChannelRequest {
   k1: String
   tag: String
   uri: String
+}
+
+type ChannelTimeHealth {
+  id: String!
+  monitoredDowntime: Float!
+  monitoredTime: Float!
+  monitoredUptime: Float!
+  partner: Node!
+  score: Float!
+  significant: Boolean!
+}
+
+type ChannelsFeeHealth {
+  channels: ChannelFeeHealth!
+  score: Float!
+}
+
+type ChannelsHealth {
+  channels: ChannelHealth!
+  score: Float!
+}
+
+type ChannelsTimeHealth {
+  channels: ChannelTimeHealth!
+  score: Float!
 }
 
 type ClosedChannel {
@@ -131,6 +171,16 @@ type ClosedChannel {
 type CreateMacaroon {
   base: String!
   hex: String!
+}
+
+type FeeHealth {
+  base: String!
+  baseOver: Boolean!
+  baseScore: Float!
+  rate: Float!
+  rateOver: Boolean!
+  rateScore: Float!
+  score: Float!
 }
 
 type Forward {
@@ -372,6 +422,7 @@ type Query {
   getChannelReport: ChannelReport!
   getChannels(active: Boolean): [Channel!]!
   getClosedChannels: [ClosedChannel!]!
+  getFeeHealth: ChannelsHealth!
   getForwards(days: Float!): [Forward!]!
   getHello: String!
   getLatestVersion: String!
@@ -386,7 +437,9 @@ type Query {
   getPeers: [Peer!]!
   getPendingChannels: [PendingChannel!]!
   getServerAccounts: [ServerAccount!]!
+  getTimeHealth: ChannelsTimeHealth!
   getUtxos: String!
+  getVolumeHealth: ChannelsFeeHealth!
   getWalletInfo: Wallet!
   recoverFunds(backup: String!): Boolean!
   signMessage(message: String!): String!

@@ -1,15 +1,15 @@
 import { groupBy } from 'lodash';
-import { ForwardType } from '../../../server/types/ln-service.types';
+import { Forward } from '../../node/lnd/lnd.types';
 
 type GroupedObject = {
-  [key: string]: ForwardType[];
+  [key: string]: Forward[];
 };
 
 type TotalGroupedObject = {
   [key: string]: { tokens: number }[];
 };
 
-export const getChannelVolume = (forwards: ForwardType[]) => {
+export const getChannelVolume = (forwards: Forward[]) => {
   const orderedIncoming = groupBy(forwards, f => f.incoming_channel);
   const orderedOutgoing = groupBy(forwards, f => f.outgoing_channel);
 
