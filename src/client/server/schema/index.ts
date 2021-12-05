@@ -5,11 +5,7 @@ import { routeResolvers } from './route/resolvers';
 import { chatTypes } from './chat/types';
 import { chatResolvers } from './chat/resolvers';
 import { invoiceResolvers } from './invoice/resolvers';
-import { transactionResolvers } from './transactions/resolvers';
 import { invoiceTypes } from './invoice/types';
-import { transactionTypes } from './transactions/types';
-import { healthResolvers } from './health/resolvers';
-import { healthTypes } from './health/types';
 import { routeTypes } from './route/types';
 import { bosResolvers } from './bos/resolvers';
 import { bosTypes } from './bos/types';
@@ -24,8 +20,6 @@ const typeDefs = [
   mutationTypes,
   chatTypes,
   invoiceTypes,
-  transactionTypes,
-  healthTypes,
   routeTypes,
   bosTypes,
   lnMarketsTypes,
@@ -36,8 +30,6 @@ const resolvers = merge(
   routeResolvers,
   chatResolvers,
   invoiceResolvers,
-  transactionResolvers,
-  healthResolvers,
   bosResolvers,
   lnMarketsResolvers,
   boltzResolvers
