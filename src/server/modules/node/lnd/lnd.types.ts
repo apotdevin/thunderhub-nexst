@@ -72,7 +72,7 @@ export type OpenChannelType = {
   transaction_vout: number;
 };
 
-export type InvoiceType = {
+export type Invoice = {
   id: string;
   created_at: string;
   confirmed_at: string;
@@ -82,7 +82,7 @@ export type InvoiceType = {
   payments: { messages: [{ type: string; value: string }] }[];
 };
 
-export type PaymentType = {
+export type Payment = {
   created_at: string;
   is_confirmed: boolean;
   tokens: number;
@@ -133,9 +133,9 @@ export type GetChannelsParams = { is_active?: boolean };
 
 export type GetForwardsType = { forwards: ForwardType[]; next?: string };
 
-export type GetInvoicesType = { invoices: InvoiceType[]; next?: string };
+export type GetInvoices = { invoices: Invoice[]; next?: string };
 
-export type GetPaymentsType = { payments: PaymentType[]; next?: string };
+export type GetPayments = { payments: Payment[]; next?: string };
 
 export type GetChainBalanceType = { chain_balance: number };
 
@@ -327,5 +327,10 @@ export type GetForwards = {
 export type GetForwardsParams = {
   after?: string;
   before?: string;
+  token?: string;
+};
+
+export type GetPaymentsParams = {
+  limit?: number;
   token?: string;
 };

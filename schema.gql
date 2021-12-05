@@ -193,6 +193,39 @@ type Forward {
   tokens: Float!
 }
 
+type GetResumeType {
+  offset: Float!
+  resume: [Transaction!]!
+}
+
+type InvoicePayment {
+  in_channel: String!
+  messages: MessageType!
+}
+
+type InvoiceType {
+  chain_address: String
+  confirmed_at: String
+  created_at: String!
+  date: String!
+  description: String!
+  description_hash: String
+  expires_at: String!
+  id: String!
+  is_canceled: Boolean
+  is_confirmed: Boolean!
+  is_held: Boolean
+  is_private: Boolean!
+  is_push: Boolean
+  payments: [InvoicePayment!]!
+  received: Float
+  received_mtokens: String!
+  request: String
+  secret: String!
+  tokens: String!
+  type: String!
+}
+
 type LightningAddress {
   lightning_address: String!
   pubkey: String!
@@ -210,6 +243,10 @@ type LightningNodeSocialInfo {
 }
 
 union LnUrlRequest = ChannelRequest | PayRequest | WithdrawRequest
+
+type MessageType {
+  message: String!
+}
 
 type Mutation {
   addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
@@ -345,6 +382,27 @@ type PayRequest {
   tag: String
 }
 
+type PaymentType {
+  created_at: String
+  date: String!
+  destination: String!
+  destination_node: Node!
+  fee: Float!
+  fee_mtokens: String!
+  hops: [Node!]!
+  id: String!
+  index: Float
+  is_confirmed: Boolean!
+  is_outgoing: Boolean!
+  mtokens: String!
+  request: String
+  safe_fee: Float!
+  safe_tokens: Float
+  secret: String!
+  tokens: String!
+  type: String!
+}
+
 type Peer {
   bytes_received: Float!
   bytes_sent: Float!
@@ -436,6 +494,7 @@ type Query {
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getPeers: [Peer!]!
   getPendingChannels: [PendingChannel!]!
+  getResume(limit: Float!, offset: Float!): GetResumeType!
   getServerAccounts: [ServerAccount!]!
   getTimeHealth: ChannelsTimeHealth!
   getUtxos: String!
@@ -464,6 +523,8 @@ type SingleChannel {
   transaction_vout: Float!
   updated_at: String
 }
+
+union Transaction = InvoiceType | PaymentType
 
 input UpdateRoutingFeesParams {
   base_fee_mtokens: String

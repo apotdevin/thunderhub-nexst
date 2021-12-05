@@ -18,6 +18,7 @@ import { LnUrlModule } from './lnurl/lnurl.module';
 import { ChannelsModule } from './channels/channels.module';
 import { ForwardsModule } from './forwards/forwards.module';
 import { HealthModule } from './health/health.module';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { HealthModule } from './health/health.module';
     ChannelsModule,
     ForwardsModule,
     HealthModule,
+    TransactionsModule,
   ],
 })
 export class ApiModule {}
