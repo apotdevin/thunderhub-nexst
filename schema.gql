@@ -46,6 +46,28 @@ type BitcoinFee {
   minimum: Float!
 }
 
+type BoltzInfoType {
+  feePercent: Float!
+  max: Float!
+  min: Float!
+}
+
+type BoltzSwap {
+  boltz: BoltzSwapStatus
+  id: String
+}
+
+type BoltzSwapStatus {
+  status: String!
+  transaction: BoltzSwapTransaction
+}
+
+type BoltzSwapTransaction {
+  eta: Float
+  hex: String
+  id: String
+}
+
 type BosScore {
   alias: String!
   position: Float!
@@ -166,6 +188,22 @@ type ClosedChannel {
   partner_public_key: String!
   transaction_id: String!
   transaction_vout: Float!
+}
+
+type CreateBoltzReverseSwapType {
+  decodedInvoice: DecodeInvoice
+  id: String!
+  invoice: String!
+  lockupAddress: String!
+  minerFeeInvoice: String
+  onchainAmount: Float!
+  preimage: String
+  preimageHash: String
+  privateKey: String
+  publicKey: String
+  receivingAddress: String!
+  redeemScript: String!
+  timeoutBlockHeight: Float!
 }
 
 type CreateInvoice {
@@ -301,9 +339,11 @@ type MessageType {
 
 type Mutation {
   addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
+  claimBoltzTransaction(destination: String!, fee: Float!, preimage: String!, privateKey: String!, redeem: String!, transaction: String!): String!
   closeChannel(forceClose: Boolean!, id: String!, targetConfirmations: Float!, tokensPerVByte: Float!): OpenOrCloseChannel!
   createAddress: String!
   createBaseInvoice(amount: Float!): BaseInvoice!
+  createBoltzReverseSwap(address: String, amount: Float!): CreateBoltzReverseSwapType!
   createInvoice(amount: Float!, description: String, includePrivate: Boolean, secondsUntil: Float): CreateInvoice!
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
@@ -544,6 +584,8 @@ type Query {
   getBasePoints: [BasePoints!]!
   getBitcoinFees: BitcoinFee!
   getBitcoinPrice: String!
+  getBoltzInfo: BoltzInfoType!
+  getBoltzSwapStatus(ids: [String!]!): [BoltzSwap!]!
   getBosScores: [BosScore!]!
   getChainTransactions: String!
   getChannel(id: String!, pubkey: String!): SingleChannel!

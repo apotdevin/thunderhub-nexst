@@ -243,12 +243,16 @@ export class LndService {
     return to<GetUtxosType>(getUtxos({ lnd: account.lnd }));
   }
 
-  async createChainAddress(account: EnrichedAccount) {
+  async createChainAddress(
+    account: EnrichedAccount,
+    is_unused: boolean,
+    format: string
+  ) {
     return to<{ address: string }>(
       createChainAddress({
         lnd: account.lnd,
-        is_unused: true,
-        format: 'p2wpkh',
+        is_unused,
+        format,
       })
     );
   }

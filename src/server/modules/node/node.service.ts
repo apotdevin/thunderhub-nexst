@@ -156,10 +156,10 @@ export class NodeService {
     return this.lndService.getUtxos(account);
   }
 
-  async createChainAddress(id: string) {
+  async createChainAddress(id: string, is_unused = true, format = 'p2wpkh') {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
-    return this.lndService.createChainAddress(account);
+    return this.lndService.createChainAddress(account, is_unused, format);
   }
 
   async sendToChainAddress(id: string, options: SendToChainParams) {

@@ -21,6 +21,7 @@ import { HealthModule } from './health/health.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { InvoicesModule } from './invoices/invoices.module';
 import { ChatModule } from './chat/chat.module';
+import { BoltzModule } from './boltz/boltz.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { ChatModule } from './chat/chat.module';
     TransactionsModule,
     InvoicesModule,
     ChatModule,
+    BoltzModule,
   ],
 })
 export class ApiModule {}
