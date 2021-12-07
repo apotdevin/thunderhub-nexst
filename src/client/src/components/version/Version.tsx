@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useGetLatestVersionQuery } from '../../../src/graphql/queries/__generated__/getLatestVersion.generated';
 import getConfig from 'next/config';
 import styled from 'styled-components';
-import { appUrls } from '../../../server/utils/appUrls';
 import { Link } from '../link/Link';
+import { appUrls } from '../../utils/appUrls';
 
 const VersionBox = styled.div`
   width: 100%;

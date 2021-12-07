@@ -8,7 +8,6 @@ import {
 import { X, Copy } from 'react-feather';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { toast } from 'react-toastify';
-import { appUrls } from '../../../server/utils/appUrls';
 import getConfig from 'next/config';
 import {
   SmallLink,
@@ -18,6 +17,7 @@ import {
   CopyIcon,
 } from './Styled';
 import { StatusDot, DetailLine } from './CardGeneric';
+import { appUrls } from '../../utils/appUrls';
 
 const { publicRuntimeConfig } = getConfig();
 const { disableLinks } = publicRuntimeConfig;

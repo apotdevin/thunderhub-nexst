@@ -1,7 +1,4 @@
-import getConfig from 'next/config';
-
-const { publicRuntimeConfig } = getConfig() || {};
-const { mempoolUrl } = publicRuntimeConfig || {};
+const mempoolUrl = process.env.MEMPOOL_URL || 'https://mempool.space';
 
 const tbase =
   process.env.NODE_ENV === 'development'
