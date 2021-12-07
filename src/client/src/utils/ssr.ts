@@ -1,7 +1,7 @@
 import { NextPageContext } from 'next';
 import { parseCookies } from '../utils/cookies';
-import { appConstants } from '../../server/utils/appConstants';
 import getConfig from 'next/config';
+import { appConstants } from './appConstants';
 
 const { publicRuntimeConfig } = getConfig();
 const { logoutUrl, basePath } = publicRuntimeConfig;
