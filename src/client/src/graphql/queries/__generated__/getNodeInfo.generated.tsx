@@ -1,32 +1,45 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetNodeInfoQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetNodeInfoQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type GetNodeInfoQuery = { __typename?: 'Query', getNodeInfo: { __typename?: 'NodeInfo', alias: string, public_key: string, uris: Array<string>, chains: Array<string>, color: string, is_synced_to_chain: boolean, peers_count: number, version: string, active_channels_count: number, closed_channels_count: number, pending_channels_count: number } };
-
+export type GetNodeInfoQuery = {
+  __typename?: 'Query';
+  getNodeInfo: {
+    __typename?: 'NodeInfo';
+    alias: string;
+    public_key: string;
+    uris: Array<string>;
+    chains: Array<string>;
+    color: string;
+    is_synced_to_chain: boolean;
+    peers_count: number;
+    version: string;
+    active_channels_count: number;
+    closed_channels_count: number;
+    pending_channels_count: number;
+  };
+};
 
 export const GetNodeInfoDocument = gql`
-    query GetNodeInfo {
-  getNodeInfo {
-    alias
-    public_key
-    uris
-    chains
-    color
-    is_synced_to_chain
-    peers_count
-    version
-    active_channels_count
-    closed_channels_count
-    pending_channels_count
+  query GetNodeInfo {
+    getNodeInfo {
+      alias
+      public_key
+      uris
+      chains
+      color
+      is_synced_to_chain
+      peers_count
+      version
+      active_channels_count
+      closed_channels_count
+      pending_channels_count
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetNodeInfoQuery__
@@ -43,14 +56,35 @@ export const GetNodeInfoDocument = gql`
  *   },
  * });
  */
-export function useGetNodeInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetNodeInfoQuery, GetNodeInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetNodeInfoQuery, GetNodeInfoQueryVariables>(GetNodeInfoDocument, options);
-      }
-export function useGetNodeInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetNodeInfoQuery, GetNodeInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetNodeInfoQuery, GetNodeInfoQueryVariables>(GetNodeInfoDocument, options);
-        }
+export function useGetNodeInfoQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetNodeInfoQuery,
+    GetNodeInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetNodeInfoQuery, GetNodeInfoQueryVariables>(
+    GetNodeInfoDocument,
+    options
+  );
+}
+export function useGetNodeInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetNodeInfoQuery,
+    GetNodeInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetNodeInfoQuery, GetNodeInfoQueryVariables>(
+    GetNodeInfoDocument,
+    options
+  );
+}
 export type GetNodeInfoQueryHookResult = ReturnType<typeof useGetNodeInfoQuery>;
-export type GetNodeInfoLazyQueryHookResult = ReturnType<typeof useGetNodeInfoLazyQuery>;
-export type GetNodeInfoQueryResult = Apollo.QueryResult<GetNodeInfoQuery, GetNodeInfoQueryVariables>;
+export type GetNodeInfoLazyQueryHookResult = ReturnType<
+  typeof useGetNodeInfoLazyQuery
+>;
+export type GetNodeInfoQueryResult = Apollo.QueryResult<
+  GetNodeInfoQuery,
+  GetNodeInfoQueryVariables
+>;

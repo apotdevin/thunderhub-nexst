@@ -1,21 +1,26 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type LoginAmbossMutationVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type LoginAmbossMutationVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type LoginAmbossMutation = { __typename?: 'Mutation', loginAmboss: boolean };
-
+export type LoginAmbossMutation = {
+  __typename?: 'Mutation';
+  loginAmboss: boolean;
+};
 
 export const LoginAmbossDocument = gql`
-    mutation LoginAmboss {
-  loginAmboss
-}
-    `;
-export type LoginAmbossMutationFn = Apollo.MutationFunction<LoginAmbossMutation, LoginAmbossMutationVariables>;
+  mutation LoginAmboss {
+    loginAmboss
+  }
+`;
+export type LoginAmbossMutationFn = Apollo.MutationFunction<
+  LoginAmbossMutation,
+  LoginAmbossMutationVariables
+>;
 
 /**
  * __useLoginAmbossMutation__
@@ -33,10 +38,24 @@ export type LoginAmbossMutationFn = Apollo.MutationFunction<LoginAmbossMutation,
  *   },
  * });
  */
-export function useLoginAmbossMutation(baseOptions?: Apollo.MutationHookOptions<LoginAmbossMutation, LoginAmbossMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LoginAmbossMutation, LoginAmbossMutationVariables>(LoginAmbossDocument, options);
-      }
-export type LoginAmbossMutationHookResult = ReturnType<typeof useLoginAmbossMutation>;
-export type LoginAmbossMutationResult = Apollo.MutationResult<LoginAmbossMutation>;
-export type LoginAmbossMutationOptions = Apollo.BaseMutationOptions<LoginAmbossMutation, LoginAmbossMutationVariables>;
+export function useLoginAmbossMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    LoginAmbossMutation,
+    LoginAmbossMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LoginAmbossMutation, LoginAmbossMutationVariables>(
+    LoginAmbossDocument,
+    options
+  );
+}
+export type LoginAmbossMutationHookResult = ReturnType<
+  typeof useLoginAmbossMutation
+>;
+export type LoginAmbossMutationResult =
+  Apollo.MutationResult<LoginAmbossMutation>;
+export type LoginAmbossMutationOptions = Apollo.BaseMutationOptions<
+  LoginAmbossMutation,
+  LoginAmbossMutationVariables
+>;

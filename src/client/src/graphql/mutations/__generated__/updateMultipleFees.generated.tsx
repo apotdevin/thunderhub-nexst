@@ -1,23 +1,28 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type UpdateMultipleFeesMutationVariables = Types.Exact<{
-  channels: Array<Types.UpdateRoutingFeesParams> | Types.UpdateRoutingFeesParams;
+  channels:
+    | Array<Types.UpdateRoutingFeesParams>
+    | Types.UpdateRoutingFeesParams;
 }>;
 
-
-export type UpdateMultipleFeesMutation = { __typename?: 'Mutation', updateMultipleFees: boolean };
-
+export type UpdateMultipleFeesMutation = {
+  __typename?: 'Mutation';
+  updateMultipleFees: boolean;
+};
 
 export const UpdateMultipleFeesDocument = gql`
-    mutation UpdateMultipleFees($channels: [UpdateRoutingFeesParams!]!) {
-  updateMultipleFees(channels: $channels)
-}
-    `;
-export type UpdateMultipleFeesMutationFn = Apollo.MutationFunction<UpdateMultipleFeesMutation, UpdateMultipleFeesMutationVariables>;
+  mutation UpdateMultipleFees($channels: [UpdateRoutingFeesParams!]!) {
+    updateMultipleFees(channels: $channels)
+  }
+`;
+export type UpdateMultipleFeesMutationFn = Apollo.MutationFunction<
+  UpdateMultipleFeesMutation,
+  UpdateMultipleFeesMutationVariables
+>;
 
 /**
  * __useUpdateMultipleFeesMutation__
@@ -36,10 +41,24 @@ export type UpdateMultipleFeesMutationFn = Apollo.MutationFunction<UpdateMultipl
  *   },
  * });
  */
-export function useUpdateMultipleFeesMutation(baseOptions?: Apollo.MutationHookOptions<UpdateMultipleFeesMutation, UpdateMultipleFeesMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateMultipleFeesMutation, UpdateMultipleFeesMutationVariables>(UpdateMultipleFeesDocument, options);
-      }
-export type UpdateMultipleFeesMutationHookResult = ReturnType<typeof useUpdateMultipleFeesMutation>;
-export type UpdateMultipleFeesMutationResult = Apollo.MutationResult<UpdateMultipleFeesMutation>;
-export type UpdateMultipleFeesMutationOptions = Apollo.BaseMutationOptions<UpdateMultipleFeesMutation, UpdateMultipleFeesMutationVariables>;
+export function useUpdateMultipleFeesMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateMultipleFeesMutation,
+    UpdateMultipleFeesMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    UpdateMultipleFeesMutation,
+    UpdateMultipleFeesMutationVariables
+  >(UpdateMultipleFeesDocument, options);
+}
+export type UpdateMultipleFeesMutationHookResult = ReturnType<
+  typeof useUpdateMultipleFeesMutation
+>;
+export type UpdateMultipleFeesMutationResult =
+  Apollo.MutationResult<UpdateMultipleFeesMutation>;
+export type UpdateMultipleFeesMutationOptions = Apollo.BaseMutationOptions<
+  UpdateMultipleFeesMutation,
+  UpdateMultipleFeesMutationVariables
+>;

@@ -1,29 +1,41 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetChainTransactionsQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetChainTransactionsQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetChainTransactionsQuery = { __typename?: 'Query', getChainTransactions: Array<{ __typename?: 'ChainTransaction', block_id?: string | null | undefined, confirmation_count?: number | null | undefined, confirmation_height?: number | null | undefined, created_at: string, fee?: number | null | undefined, id: string, output_addresses: Array<string>, tokens: number }> };
-
+export type GetChainTransactionsQuery = {
+  __typename?: 'Query';
+  getChainTransactions: Array<{
+    __typename?: 'ChainTransaction';
+    block_id?: string | null | undefined;
+    confirmation_count?: number | null | undefined;
+    confirmation_height?: number | null | undefined;
+    created_at: string;
+    fee?: number | null | undefined;
+    id: string;
+    output_addresses: Array<string>;
+    tokens: number;
+  }>;
+};
 
 export const GetChainTransactionsDocument = gql`
-    query GetChainTransactions {
-  getChainTransactions {
-    block_id
-    confirmation_count
-    confirmation_height
-    created_at
-    fee
-    id
-    output_addresses
-    tokens
+  query GetChainTransactions {
+    getChainTransactions {
+      block_id
+      confirmation_count
+      confirmation_height
+      created_at
+      fee
+      id
+      output_addresses
+      tokens
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetChainTransactionsQuery__
@@ -40,14 +52,37 @@ export const GetChainTransactionsDocument = gql`
  *   },
  * });
  */
-export function useGetChainTransactionsQuery(baseOptions?: Apollo.QueryHookOptions<GetChainTransactionsQuery, GetChainTransactionsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetChainTransactionsQuery, GetChainTransactionsQueryVariables>(GetChainTransactionsDocument, options);
-      }
-export function useGetChainTransactionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetChainTransactionsQuery, GetChainTransactionsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetChainTransactionsQuery, GetChainTransactionsQueryVariables>(GetChainTransactionsDocument, options);
-        }
-export type GetChainTransactionsQueryHookResult = ReturnType<typeof useGetChainTransactionsQuery>;
-export type GetChainTransactionsLazyQueryHookResult = ReturnType<typeof useGetChainTransactionsLazyQuery>;
-export type GetChainTransactionsQueryResult = Apollo.QueryResult<GetChainTransactionsQuery, GetChainTransactionsQueryVariables>;
+export function useGetChainTransactionsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetChainTransactionsQuery,
+    GetChainTransactionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetChainTransactionsQuery,
+    GetChainTransactionsQueryVariables
+  >(GetChainTransactionsDocument, options);
+}
+export function useGetChainTransactionsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetChainTransactionsQuery,
+    GetChainTransactionsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetChainTransactionsQuery,
+    GetChainTransactionsQueryVariables
+  >(GetChainTransactionsDocument, options);
+}
+export type GetChainTransactionsQueryHookResult = ReturnType<
+  typeof useGetChainTransactionsQuery
+>;
+export type GetChainTransactionsLazyQueryHookResult = ReturnType<
+  typeof useGetChainTransactionsLazyQuery
+>;
+export type GetChainTransactionsQueryResult = Apollo.QueryResult<
+  GetChainTransactionsQuery,
+  GetChainTransactionsQueryVariables
+>;

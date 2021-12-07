@@ -1,45 +1,75 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetClosedChannelsQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetClosedChannelsQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetClosedChannelsQuery = { __typename?: 'Query', getClosedChannels: Array<{ __typename?: 'ClosedChannel', capacity: number, close_confirm_height?: number | null | undefined, close_transaction_id?: string | null | undefined, final_local_balance: number, final_time_locked_balance: number, id?: string | null | undefined, is_breach_close: boolean, is_cooperative_close: boolean, is_funding_cancel: boolean, is_local_force_close: boolean, is_remote_force_close: boolean, partner_public_key: string, transaction_id: string, transaction_vout: number, channel_age: number, partner_node_info: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string, capacity?: string | null | undefined, channel_count?: number | null | undefined, color?: string | null | undefined, updated_at?: string | null | undefined } } }> };
-
+export type GetClosedChannelsQuery = {
+  __typename?: 'Query';
+  getClosedChannels: Array<{
+    __typename?: 'ClosedChannel';
+    capacity: number;
+    close_confirm_height?: number | null | undefined;
+    close_transaction_id?: string | null | undefined;
+    final_local_balance: number;
+    final_time_locked_balance: number;
+    id?: string | null | undefined;
+    is_breach_close: boolean;
+    is_cooperative_close: boolean;
+    is_funding_cancel: boolean;
+    is_local_force_close: boolean;
+    is_remote_force_close: boolean;
+    partner_public_key: string;
+    transaction_id: string;
+    transaction_vout: number;
+    channel_age: number;
+    partner_node_info: {
+      __typename?: 'Node';
+      node: {
+        __typename?: 'NodeType';
+        alias: string;
+        capacity?: string | null | undefined;
+        channel_count?: number | null | undefined;
+        color?: string | null | undefined;
+        updated_at?: string | null | undefined;
+      };
+    };
+  }>;
+};
 
 export const GetClosedChannelsDocument = gql`
-    query GetClosedChannels {
-  getClosedChannels {
-    capacity
-    close_confirm_height
-    close_transaction_id
-    final_local_balance
-    final_time_locked_balance
-    id
-    is_breach_close
-    is_cooperative_close
-    is_funding_cancel
-    is_local_force_close
-    is_remote_force_close
-    partner_public_key
-    transaction_id
-    transaction_vout
-    partner_node_info {
-      node {
-        alias
-        capacity
-        channel_count
-        color
-        updated_at
+  query GetClosedChannels {
+    getClosedChannels {
+      capacity
+      close_confirm_height
+      close_transaction_id
+      final_local_balance
+      final_time_locked_balance
+      id
+      is_breach_close
+      is_cooperative_close
+      is_funding_cancel
+      is_local_force_close
+      is_remote_force_close
+      partner_public_key
+      transaction_id
+      transaction_vout
+      partner_node_info {
+        node {
+          alias
+          capacity
+          channel_count
+          color
+          updated_at
+        }
       }
+      channel_age
     }
-    channel_age
   }
-}
-    `;
+`;
 
 /**
  * __useGetClosedChannelsQuery__
@@ -56,14 +86,37 @@ export const GetClosedChannelsDocument = gql`
  *   },
  * });
  */
-export function useGetClosedChannelsQuery(baseOptions?: Apollo.QueryHookOptions<GetClosedChannelsQuery, GetClosedChannelsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetClosedChannelsQuery, GetClosedChannelsQueryVariables>(GetClosedChannelsDocument, options);
-      }
-export function useGetClosedChannelsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetClosedChannelsQuery, GetClosedChannelsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetClosedChannelsQuery, GetClosedChannelsQueryVariables>(GetClosedChannelsDocument, options);
-        }
-export type GetClosedChannelsQueryHookResult = ReturnType<typeof useGetClosedChannelsQuery>;
-export type GetClosedChannelsLazyQueryHookResult = ReturnType<typeof useGetClosedChannelsLazyQuery>;
-export type GetClosedChannelsQueryResult = Apollo.QueryResult<GetClosedChannelsQuery, GetClosedChannelsQueryVariables>;
+export function useGetClosedChannelsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetClosedChannelsQuery,
+    GetClosedChannelsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetClosedChannelsQuery,
+    GetClosedChannelsQueryVariables
+  >(GetClosedChannelsDocument, options);
+}
+export function useGetClosedChannelsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetClosedChannelsQuery,
+    GetClosedChannelsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetClosedChannelsQuery,
+    GetClosedChannelsQueryVariables
+  >(GetClosedChannelsDocument, options);
+}
+export type GetClosedChannelsQueryHookResult = ReturnType<
+  typeof useGetClosedChannelsQuery
+>;
+export type GetClosedChannelsLazyQueryHookResult = ReturnType<
+  typeof useGetClosedChannelsLazyQuery
+>;
+export type GetClosedChannelsQueryResult = Apollo.QueryResult<
+  GetClosedChannelsQuery,
+  GetClosedChannelsQueryVariables
+>;

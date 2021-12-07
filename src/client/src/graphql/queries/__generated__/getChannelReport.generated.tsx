@@ -1,29 +1,41 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetLiquidReportQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetLiquidReportQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetLiquidReportQuery = { __typename?: 'Query', getChannelReport: { __typename?: 'ChannelReport', local: number, remote: number, maxIn: number, maxOut: number, commit: number, totalPendingHtlc: number, outgoingPendingHtlc: number, incomingPendingHtlc: number } };
-
+export type GetLiquidReportQuery = {
+  __typename?: 'Query';
+  getChannelReport: {
+    __typename?: 'ChannelReport';
+    local: number;
+    remote: number;
+    maxIn: number;
+    maxOut: number;
+    commit: number;
+    totalPendingHtlc: number;
+    outgoingPendingHtlc: number;
+    incomingPendingHtlc: number;
+  };
+};
 
 export const GetLiquidReportDocument = gql`
-    query GetLiquidReport {
-  getChannelReport {
-    local
-    remote
-    maxIn
-    maxOut
-    commit
-    totalPendingHtlc
-    outgoingPendingHtlc
-    incomingPendingHtlc
+  query GetLiquidReport {
+    getChannelReport {
+      local
+      remote
+      maxIn
+      maxOut
+      commit
+      totalPendingHtlc
+      outgoingPendingHtlc
+      incomingPendingHtlc
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetLiquidReportQuery__
@@ -40,14 +52,37 @@ export const GetLiquidReportDocument = gql`
  *   },
  * });
  */
-export function useGetLiquidReportQuery(baseOptions?: Apollo.QueryHookOptions<GetLiquidReportQuery, GetLiquidReportQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetLiquidReportQuery, GetLiquidReportQueryVariables>(GetLiquidReportDocument, options);
-      }
-export function useGetLiquidReportLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLiquidReportQuery, GetLiquidReportQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetLiquidReportQuery, GetLiquidReportQueryVariables>(GetLiquidReportDocument, options);
-        }
-export type GetLiquidReportQueryHookResult = ReturnType<typeof useGetLiquidReportQuery>;
-export type GetLiquidReportLazyQueryHookResult = ReturnType<typeof useGetLiquidReportLazyQuery>;
-export type GetLiquidReportQueryResult = Apollo.QueryResult<GetLiquidReportQuery, GetLiquidReportQueryVariables>;
+export function useGetLiquidReportQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLiquidReportQuery,
+    GetLiquidReportQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetLiquidReportQuery, GetLiquidReportQueryVariables>(
+    GetLiquidReportDocument,
+    options
+  );
+}
+export function useGetLiquidReportLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLiquidReportQuery,
+    GetLiquidReportQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLiquidReportQuery,
+    GetLiquidReportQueryVariables
+  >(GetLiquidReportDocument, options);
+}
+export type GetLiquidReportQueryHookResult = ReturnType<
+  typeof useGetLiquidReportQuery
+>;
+export type GetLiquidReportLazyQueryHookResult = ReturnType<
+  typeof useGetLiquidReportLazyQuery
+>;
+export type GetLiquidReportQueryResult = Apollo.QueryResult<
+  GetLiquidReportQuery,
+  GetLiquidReportQueryVariables
+>;

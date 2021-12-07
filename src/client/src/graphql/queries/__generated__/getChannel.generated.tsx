@@ -1,31 +1,46 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type GetChannelQueryVariables = Types.Exact<{
   id: Types.Scalars['String'];
   pubkey?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
-
-export type GetChannelQuery = { __typename?: 'Query', getChannel: { __typename?: 'SingleChannel', partner_node_policies?: { __typename?: 'NodePolicy', node?: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } } | null | undefined } | null | undefined } };
-
+export type GetChannelQuery = {
+  __typename?: 'Query';
+  getChannel: {
+    __typename?: 'SingleChannel';
+    partner_node_policies?:
+      | {
+          __typename?: 'NodePolicy';
+          node?:
+            | {
+                __typename?: 'Node';
+                node: { __typename?: 'NodeType'; alias: string };
+              }
+            | null
+            | undefined;
+        }
+      | null
+      | undefined;
+  };
+};
 
 export const GetChannelDocument = gql`
-    query GetChannel($id: String!, $pubkey: String) {
-  getChannel(id: $id, pubkey: $pubkey) {
-    partner_node_policies {
-      node {
+  query GetChannel($id: String!, $pubkey: String) {
+    getChannel(id: $id, pubkey: $pubkey) {
+      partner_node_policies {
         node {
-          alias
+          node {
+            alias
+          }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useGetChannelQuery__
@@ -44,14 +59,35 @@ export const GetChannelDocument = gql`
  *   },
  * });
  */
-export function useGetChannelQuery(baseOptions: Apollo.QueryHookOptions<GetChannelQuery, GetChannelQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetChannelQuery, GetChannelQueryVariables>(GetChannelDocument, options);
-      }
-export function useGetChannelLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetChannelQuery, GetChannelQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetChannelQuery, GetChannelQueryVariables>(GetChannelDocument, options);
-        }
+export function useGetChannelQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetChannelQuery,
+    GetChannelQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetChannelQuery, GetChannelQueryVariables>(
+    GetChannelDocument,
+    options
+  );
+}
+export function useGetChannelLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetChannelQuery,
+    GetChannelQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetChannelQuery, GetChannelQueryVariables>(
+    GetChannelDocument,
+    options
+  );
+}
 export type GetChannelQueryHookResult = ReturnType<typeof useGetChannelQuery>;
-export type GetChannelLazyQueryHookResult = ReturnType<typeof useGetChannelLazyQuery>;
-export type GetChannelQueryResult = Apollo.QueryResult<GetChannelQuery, GetChannelQueryVariables>;
+export type GetChannelLazyQueryHookResult = ReturnType<
+  typeof useGetChannelLazyQuery
+>;
+export type GetChannelQueryResult = Apollo.QueryResult<
+  GetChannelQuery,
+  GetChannelQueryVariables
+>;

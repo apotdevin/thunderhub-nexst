@@ -1,9 +1,8 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type CloseChannelMutationVariables = Types.Exact<{
   id: Types.Scalars['String'];
   forceClose?: Types.InputMaybe<Types.Scalars['Boolean']>;
@@ -11,24 +10,37 @@ export type CloseChannelMutationVariables = Types.Exact<{
   tokens?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
-
-export type CloseChannelMutation = { __typename?: 'Mutation', closeChannel: { __typename?: 'OpenOrCloseChannel', transactionId: string, transactionOutputIndex: string } };
-
+export type CloseChannelMutation = {
+  __typename?: 'Mutation';
+  closeChannel: {
+    __typename?: 'OpenOrCloseChannel';
+    transactionId: string;
+    transactionOutputIndex: string;
+  };
+};
 
 export const CloseChannelDocument = gql`
-    mutation CloseChannel($id: String!, $forceClose: Boolean, $target: Float, $tokens: Float) {
-  closeChannel(
-    id: $id
-    forceClose: $forceClose
-    targetConfirmations: $target
-    tokensPerVByte: $tokens
+  mutation CloseChannel(
+    $id: String!
+    $forceClose: Boolean
+    $target: Float
+    $tokens: Float
   ) {
-    transactionId
-    transactionOutputIndex
+    closeChannel(
+      id: $id
+      forceClose: $forceClose
+      targetConfirmations: $target
+      tokensPerVByte: $tokens
+    ) {
+      transactionId
+      transactionOutputIndex
+    }
   }
-}
-    `;
-export type CloseChannelMutationFn = Apollo.MutationFunction<CloseChannelMutation, CloseChannelMutationVariables>;
+`;
+export type CloseChannelMutationFn = Apollo.MutationFunction<
+  CloseChannelMutation,
+  CloseChannelMutationVariables
+>;
 
 /**
  * __useCloseChannelMutation__
@@ -50,10 +62,24 @@ export type CloseChannelMutationFn = Apollo.MutationFunction<CloseChannelMutatio
  *   },
  * });
  */
-export function useCloseChannelMutation(baseOptions?: Apollo.MutationHookOptions<CloseChannelMutation, CloseChannelMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CloseChannelMutation, CloseChannelMutationVariables>(CloseChannelDocument, options);
-      }
-export type CloseChannelMutationHookResult = ReturnType<typeof useCloseChannelMutation>;
-export type CloseChannelMutationResult = Apollo.MutationResult<CloseChannelMutation>;
-export type CloseChannelMutationOptions = Apollo.BaseMutationOptions<CloseChannelMutation, CloseChannelMutationVariables>;
+export function useCloseChannelMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CloseChannelMutation,
+    CloseChannelMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CloseChannelMutation,
+    CloseChannelMutationVariables
+  >(CloseChannelDocument, options);
+}
+export type CloseChannelMutationHookResult = ReturnType<
+  typeof useCloseChannelMutation
+>;
+export type CloseChannelMutationResult =
+  Apollo.MutationResult<CloseChannelMutation>;
+export type CloseChannelMutationOptions = Apollo.BaseMutationOptions<
+  CloseChannelMutation,
+  CloseChannelMutationVariables
+>;

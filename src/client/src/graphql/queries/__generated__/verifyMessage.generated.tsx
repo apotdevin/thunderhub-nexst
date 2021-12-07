@@ -1,23 +1,23 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type VerifyMessageQueryVariables = Types.Exact<{
   message: Types.Scalars['String'];
   signature: Types.Scalars['String'];
 }>;
 
-
-export type VerifyMessageQuery = { __typename?: 'Query', verifyMessage: string };
-
+export type VerifyMessageQuery = {
+  __typename?: 'Query';
+  verifyMessage: string;
+};
 
 export const VerifyMessageDocument = gql`
-    query VerifyMessage($message: String!, $signature: String!) {
-  verifyMessage(message: $message, signature: $signature)
-}
-    `;
+  query VerifyMessage($message: String!, $signature: String!) {
+    verifyMessage(message: $message, signature: $signature)
+  }
+`;
 
 /**
  * __useVerifyMessageQuery__
@@ -36,14 +36,37 @@ export const VerifyMessageDocument = gql`
  *   },
  * });
  */
-export function useVerifyMessageQuery(baseOptions: Apollo.QueryHookOptions<VerifyMessageQuery, VerifyMessageQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<VerifyMessageQuery, VerifyMessageQueryVariables>(VerifyMessageDocument, options);
-      }
-export function useVerifyMessageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VerifyMessageQuery, VerifyMessageQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<VerifyMessageQuery, VerifyMessageQueryVariables>(VerifyMessageDocument, options);
-        }
-export type VerifyMessageQueryHookResult = ReturnType<typeof useVerifyMessageQuery>;
-export type VerifyMessageLazyQueryHookResult = ReturnType<typeof useVerifyMessageLazyQuery>;
-export type VerifyMessageQueryResult = Apollo.QueryResult<VerifyMessageQuery, VerifyMessageQueryVariables>;
+export function useVerifyMessageQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    VerifyMessageQuery,
+    VerifyMessageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<VerifyMessageQuery, VerifyMessageQueryVariables>(
+    VerifyMessageDocument,
+    options
+  );
+}
+export function useVerifyMessageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    VerifyMessageQuery,
+    VerifyMessageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<VerifyMessageQuery, VerifyMessageQueryVariables>(
+    VerifyMessageDocument,
+    options
+  );
+}
+export type VerifyMessageQueryHookResult = ReturnType<
+  typeof useVerifyMessageQuery
+>;
+export type VerifyMessageLazyQueryHookResult = ReturnType<
+  typeof useVerifyMessageLazyQuery
+>;
+export type VerifyMessageQueryResult = Apollo.QueryResult<
+  VerifyMessageQuery,
+  VerifyMessageQueryVariables
+>;

@@ -1,43 +1,70 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type DecodeRequestQueryVariables = Types.Exact<{
   request: Types.Scalars['String'];
 }>;
 
-
-export type DecodeRequestQuery = { __typename?: 'Query', decodeRequest: { __typename?: 'DecodeInvoice', chain_address?: string | null | undefined, cltv_delta?: number | null | undefined, description: string, description_hash?: string | null | undefined, destination: string, expires_at: string, id: string, tokens: number, destination_node?: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } } | null | undefined, routes: Array<Array<{ __typename?: 'Route', base_fee_mtokens?: string | null | undefined, channel?: string | null | undefined, cltv_delta?: number | null | undefined, fee_rate?: number | null | undefined, public_key: string }>> } };
-
+export type DecodeRequestQuery = {
+  __typename?: 'Query';
+  decodeRequest: {
+    __typename?: 'DecodeInvoice';
+    chain_address?: string | null | undefined;
+    cltv_delta?: number | null | undefined;
+    description: string;
+    description_hash?: string | null | undefined;
+    destination: string;
+    expires_at: string;
+    id: string;
+    tokens: number;
+    destination_node?:
+      | {
+          __typename?: 'Node';
+          node: { __typename?: 'NodeType'; alias: string };
+        }
+      | null
+      | undefined;
+    routes: Array<
+      Array<{
+        __typename?: 'Route';
+        base_fee_mtokens?: string | null | undefined;
+        channel?: string | null | undefined;
+        cltv_delta?: number | null | undefined;
+        fee_rate?: number | null | undefined;
+        public_key: string;
+      }>
+    >;
+  };
+};
 
 export const DecodeRequestDocument = gql`
-    query DecodeRequest($request: String!) {
-  decodeRequest(request: $request) {
-    chain_address
-    cltv_delta
-    description
-    description_hash
-    destination
-    destination_node {
-      node {
-        alias
-      }
-    }
-    expires_at
-    id
-    routes {
-      base_fee_mtokens
-      channel
+  query DecodeRequest($request: String!) {
+    decodeRequest(request: $request) {
+      chain_address
       cltv_delta
-      fee_rate
-      public_key
+      description
+      description_hash
+      destination
+      destination_node {
+        node {
+          alias
+        }
+      }
+      expires_at
+      id
+      routes {
+        base_fee_mtokens
+        channel
+        cltv_delta
+        fee_rate
+        public_key
+      }
+      tokens
     }
-    tokens
   }
-}
-    `;
+`;
 
 /**
  * __useDecodeRequestQuery__
@@ -55,14 +82,37 @@ export const DecodeRequestDocument = gql`
  *   },
  * });
  */
-export function useDecodeRequestQuery(baseOptions: Apollo.QueryHookOptions<DecodeRequestQuery, DecodeRequestQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<DecodeRequestQuery, DecodeRequestQueryVariables>(DecodeRequestDocument, options);
-      }
-export function useDecodeRequestLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DecodeRequestQuery, DecodeRequestQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<DecodeRequestQuery, DecodeRequestQueryVariables>(DecodeRequestDocument, options);
-        }
-export type DecodeRequestQueryHookResult = ReturnType<typeof useDecodeRequestQuery>;
-export type DecodeRequestLazyQueryHookResult = ReturnType<typeof useDecodeRequestLazyQuery>;
-export type DecodeRequestQueryResult = Apollo.QueryResult<DecodeRequestQuery, DecodeRequestQueryVariables>;
+export function useDecodeRequestQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    DecodeRequestQuery,
+    DecodeRequestQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<DecodeRequestQuery, DecodeRequestQueryVariables>(
+    DecodeRequestDocument,
+    options
+  );
+}
+export function useDecodeRequestLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    DecodeRequestQuery,
+    DecodeRequestQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<DecodeRequestQuery, DecodeRequestQueryVariables>(
+    DecodeRequestDocument,
+    options
+  );
+}
+export type DecodeRequestQueryHookResult = ReturnType<
+  typeof useDecodeRequestQuery
+>;
+export type DecodeRequestLazyQueryHookResult = ReturnType<
+  typeof useDecodeRequestLazyQuery
+>;
+export type DecodeRequestQueryResult = Apollo.QueryResult<
+  DecodeRequestQuery,
+  DecodeRequestQueryVariables
+>;

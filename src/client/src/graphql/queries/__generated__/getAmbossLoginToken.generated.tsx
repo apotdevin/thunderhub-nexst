@@ -1,20 +1,22 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetAmbossLoginTokenQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetAmbossLoginTokenQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetAmbossLoginTokenQuery = { __typename?: 'Query', getAmbossLoginToken: string };
-
+export type GetAmbossLoginTokenQuery = {
+  __typename?: 'Query';
+  getAmbossLoginToken: string;
+};
 
 export const GetAmbossLoginTokenDocument = gql`
-    query GetAmbossLoginToken {
-  getAmbossLoginToken
-}
-    `;
+  query GetAmbossLoginToken {
+    getAmbossLoginToken
+  }
+`;
 
 /**
  * __useGetAmbossLoginTokenQuery__
@@ -31,14 +33,37 @@ export const GetAmbossLoginTokenDocument = gql`
  *   },
  * });
  */
-export function useGetAmbossLoginTokenQuery(baseOptions?: Apollo.QueryHookOptions<GetAmbossLoginTokenQuery, GetAmbossLoginTokenQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAmbossLoginTokenQuery, GetAmbossLoginTokenQueryVariables>(GetAmbossLoginTokenDocument, options);
-      }
-export function useGetAmbossLoginTokenLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAmbossLoginTokenQuery, GetAmbossLoginTokenQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAmbossLoginTokenQuery, GetAmbossLoginTokenQueryVariables>(GetAmbossLoginTokenDocument, options);
-        }
-export type GetAmbossLoginTokenQueryHookResult = ReturnType<typeof useGetAmbossLoginTokenQuery>;
-export type GetAmbossLoginTokenLazyQueryHookResult = ReturnType<typeof useGetAmbossLoginTokenLazyQuery>;
-export type GetAmbossLoginTokenQueryResult = Apollo.QueryResult<GetAmbossLoginTokenQuery, GetAmbossLoginTokenQueryVariables>;
+export function useGetAmbossLoginTokenQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetAmbossLoginTokenQuery,
+    GetAmbossLoginTokenQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetAmbossLoginTokenQuery,
+    GetAmbossLoginTokenQueryVariables
+  >(GetAmbossLoginTokenDocument, options);
+}
+export function useGetAmbossLoginTokenLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetAmbossLoginTokenQuery,
+    GetAmbossLoginTokenQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetAmbossLoginTokenQuery,
+    GetAmbossLoginTokenQueryVariables
+  >(GetAmbossLoginTokenDocument, options);
+}
+export type GetAmbossLoginTokenQueryHookResult = ReturnType<
+  typeof useGetAmbossLoginTokenQuery
+>;
+export type GetAmbossLoginTokenLazyQueryHookResult = ReturnType<
+  typeof useGetAmbossLoginTokenLazyQuery
+>;
+export type GetAmbossLoginTokenQueryResult = Apollo.QueryResult<
+  GetAmbossLoginTokenQuery,
+  GetAmbossLoginTokenQueryVariables
+>;

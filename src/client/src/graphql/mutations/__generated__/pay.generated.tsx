@@ -1,26 +1,33 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type PayMutationVariables = Types.Exact<{
   max_fee: Types.Scalars['Float'];
   max_paths: Types.Scalars['Float'];
-  out?: Types.InputMaybe<Array<Types.Scalars['String']> | Types.Scalars['String']>;
+  out?: Types.InputMaybe<
+    Array<Types.Scalars['String']> | Types.Scalars['String']
+  >;
   request: Types.Scalars['String'];
 }>;
 
-
-export type PayMutation = { __typename?: 'Mutation', pay: boolean };
-
+export type PayMutation = { __typename?: 'Mutation'; pay: boolean };
 
 export const PayDocument = gql`
-    mutation Pay($max_fee: Float!, $max_paths: Float!, $out: [String!], $request: String!) {
-  pay(max_fee: $max_fee, max_paths: $max_paths, out: $out, request: $request)
-}
-    `;
-export type PayMutationFn = Apollo.MutationFunction<PayMutation, PayMutationVariables>;
+  mutation Pay(
+    $max_fee: Float!
+    $max_paths: Float!
+    $out: [String!]
+    $request: String!
+  ) {
+    pay(max_fee: $max_fee, max_paths: $max_paths, out: $out, request: $request)
+  }
+`;
+export type PayMutationFn = Apollo.MutationFunction<
+  PayMutation,
+  PayMutationVariables
+>;
 
 /**
  * __usePayMutation__
@@ -42,10 +49,18 @@ export type PayMutationFn = Apollo.MutationFunction<PayMutation, PayMutationVari
  *   },
  * });
  */
-export function usePayMutation(baseOptions?: Apollo.MutationHookOptions<PayMutation, PayMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<PayMutation, PayMutationVariables>(PayDocument, options);
-      }
+export function usePayMutation(
+  baseOptions?: Apollo.MutationHookOptions<PayMutation, PayMutationVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<PayMutation, PayMutationVariables>(
+    PayDocument,
+    options
+  );
+}
 export type PayMutationHookResult = ReturnType<typeof usePayMutation>;
 export type PayMutationResult = Apollo.MutationResult<PayMutation>;
-export type PayMutationOptions = Apollo.BaseMutationOptions<PayMutation, PayMutationVariables>;
+export type PayMutationOptions = Apollo.BaseMutationOptions<
+  PayMutation,
+  PayMutationVariables
+>;

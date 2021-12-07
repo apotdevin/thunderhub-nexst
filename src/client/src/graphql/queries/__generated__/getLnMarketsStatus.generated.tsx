@@ -1,20 +1,22 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetLnMarketsStatusQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetLnMarketsStatusQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetLnMarketsStatusQuery = { __typename?: 'Query', getLnMarketsStatus: string };
-
+export type GetLnMarketsStatusQuery = {
+  __typename?: 'Query';
+  getLnMarketsStatus: string;
+};
 
 export const GetLnMarketsStatusDocument = gql`
-    query GetLnMarketsStatus {
-  getLnMarketsStatus
-}
-    `;
+  query GetLnMarketsStatus {
+    getLnMarketsStatus
+  }
+`;
 
 /**
  * __useGetLnMarketsStatusQuery__
@@ -31,14 +33,37 @@ export const GetLnMarketsStatusDocument = gql`
  *   },
  * });
  */
-export function useGetLnMarketsStatusQuery(baseOptions?: Apollo.QueryHookOptions<GetLnMarketsStatusQuery, GetLnMarketsStatusQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetLnMarketsStatusQuery, GetLnMarketsStatusQueryVariables>(GetLnMarketsStatusDocument, options);
-      }
-export function useGetLnMarketsStatusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLnMarketsStatusQuery, GetLnMarketsStatusQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetLnMarketsStatusQuery, GetLnMarketsStatusQueryVariables>(GetLnMarketsStatusDocument, options);
-        }
-export type GetLnMarketsStatusQueryHookResult = ReturnType<typeof useGetLnMarketsStatusQuery>;
-export type GetLnMarketsStatusLazyQueryHookResult = ReturnType<typeof useGetLnMarketsStatusLazyQuery>;
-export type GetLnMarketsStatusQueryResult = Apollo.QueryResult<GetLnMarketsStatusQuery, GetLnMarketsStatusQueryVariables>;
+export function useGetLnMarketsStatusQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLnMarketsStatusQuery,
+    GetLnMarketsStatusQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLnMarketsStatusQuery,
+    GetLnMarketsStatusQueryVariables
+  >(GetLnMarketsStatusDocument, options);
+}
+export function useGetLnMarketsStatusLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLnMarketsStatusQuery,
+    GetLnMarketsStatusQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLnMarketsStatusQuery,
+    GetLnMarketsStatusQueryVariables
+  >(GetLnMarketsStatusDocument, options);
+}
+export type GetLnMarketsStatusQueryHookResult = ReturnType<
+  typeof useGetLnMarketsStatusQuery
+>;
+export type GetLnMarketsStatusLazyQueryHookResult = ReturnType<
+  typeof useGetLnMarketsStatusLazyQuery
+>;
+export type GetLnMarketsStatusQueryResult = Apollo.QueryResult<
+  GetLnMarketsStatusQuery,
+  GetLnMarketsStatusQueryVariables
+>;

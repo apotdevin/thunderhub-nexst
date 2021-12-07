@@ -1,29 +1,41 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetNetworkInfoQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetNetworkInfoQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetNetworkInfoQuery = { __typename?: 'Query', getNetworkInfo: { __typename?: 'NetworkInfo', averageChannelSize: number, channelCount: number, maxChannelSize: number, medianChannelSize: number, minChannelSize: number, nodeCount: number, notRecentlyUpdatedPolicyCount: number, totalCapacity: number } };
-
+export type GetNetworkInfoQuery = {
+  __typename?: 'Query';
+  getNetworkInfo: {
+    __typename?: 'NetworkInfo';
+    averageChannelSize: number;
+    channelCount: number;
+    maxChannelSize: number;
+    medianChannelSize: number;
+    minChannelSize: number;
+    nodeCount: number;
+    notRecentlyUpdatedPolicyCount: number;
+    totalCapacity: number;
+  };
+};
 
 export const GetNetworkInfoDocument = gql`
-    query GetNetworkInfo {
-  getNetworkInfo {
-    averageChannelSize
-    channelCount
-    maxChannelSize
-    medianChannelSize
-    minChannelSize
-    nodeCount
-    notRecentlyUpdatedPolicyCount
-    totalCapacity
+  query GetNetworkInfo {
+    getNetworkInfo {
+      averageChannelSize
+      channelCount
+      maxChannelSize
+      medianChannelSize
+      minChannelSize
+      nodeCount
+      notRecentlyUpdatedPolicyCount
+      totalCapacity
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetNetworkInfoQuery__
@@ -40,14 +52,37 @@ export const GetNetworkInfoDocument = gql`
  *   },
  * });
  */
-export function useGetNetworkInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>(GetNetworkInfoDocument, options);
-      }
-export function useGetNetworkInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>(GetNetworkInfoDocument, options);
-        }
-export type GetNetworkInfoQueryHookResult = ReturnType<typeof useGetNetworkInfoQuery>;
-export type GetNetworkInfoLazyQueryHookResult = ReturnType<typeof useGetNetworkInfoLazyQuery>;
-export type GetNetworkInfoQueryResult = Apollo.QueryResult<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>;
+export function useGetNetworkInfoQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetNetworkInfoQuery,
+    GetNetworkInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>(
+    GetNetworkInfoDocument,
+    options
+  );
+}
+export function useGetNetworkInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetNetworkInfoQuery,
+    GetNetworkInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetNetworkInfoQuery, GetNetworkInfoQueryVariables>(
+    GetNetworkInfoDocument,
+    options
+  );
+}
+export type GetNetworkInfoQueryHookResult = ReturnType<
+  typeof useGetNetworkInfoQuery
+>;
+export type GetNetworkInfoLazyQueryHookResult = ReturnType<
+  typeof useGetNetworkInfoLazyQuery
+>;
+export type GetNetworkInfoQueryResult = Apollo.QueryResult<
+  GetNetworkInfoQuery,
+  GetNetworkInfoQueryVariables
+>;

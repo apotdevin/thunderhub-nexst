@@ -1,41 +1,71 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type GetNodeBosHistoryQueryVariables = Types.Exact<{
   pubkey: Types.Scalars['String'];
 }>;
 
-
-export type GetNodeBosHistoryQuery = { __typename?: 'Query', getNodeBosHistory: { __typename?: 'NodeBosHistory', info: { __typename?: 'BosScoreInfo', count: number, first?: { __typename?: 'BosScore', position: number, score: number, updated: string } | null | undefined, last?: { __typename?: 'BosScore', position: number, score: number, updated: string } | null | undefined }, scores: Array<{ __typename?: 'BosScore', position: number, score: number, updated: string }> } };
-
+export type GetNodeBosHistoryQuery = {
+  __typename?: 'Query';
+  getNodeBosHistory: {
+    __typename?: 'NodeBosHistory';
+    info: {
+      __typename?: 'BosScoreInfo';
+      count: number;
+      first?:
+        | {
+            __typename?: 'BosScore';
+            position: number;
+            score: number;
+            updated: string;
+          }
+        | null
+        | undefined;
+      last?:
+        | {
+            __typename?: 'BosScore';
+            position: number;
+            score: number;
+            updated: string;
+          }
+        | null
+        | undefined;
+    };
+    scores: Array<{
+      __typename?: 'BosScore';
+      position: number;
+      score: number;
+      updated: string;
+    }>;
+  };
+};
 
 export const GetNodeBosHistoryDocument = gql`
-    query GetNodeBosHistory($pubkey: String!) {
-  getNodeBosHistory(pubkey: $pubkey) {
-    info {
-      count
-      first {
+  query GetNodeBosHistory($pubkey: String!) {
+    getNodeBosHistory(pubkey: $pubkey) {
+      info {
+        count
+        first {
+          position
+          score
+          updated
+        }
+        last {
+          position
+          score
+          updated
+        }
+      }
+      scores {
         position
         score
         updated
       }
-      last {
-        position
-        score
-        updated
-      }
-    }
-    scores {
-      position
-      score
-      updated
     }
   }
-}
-    `;
+`;
 
 /**
  * __useGetNodeBosHistoryQuery__
@@ -53,14 +83,37 @@ export const GetNodeBosHistoryDocument = gql`
  *   },
  * });
  */
-export function useGetNodeBosHistoryQuery(baseOptions: Apollo.QueryHookOptions<GetNodeBosHistoryQuery, GetNodeBosHistoryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetNodeBosHistoryQuery, GetNodeBosHistoryQueryVariables>(GetNodeBosHistoryDocument, options);
-      }
-export function useGetNodeBosHistoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetNodeBosHistoryQuery, GetNodeBosHistoryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetNodeBosHistoryQuery, GetNodeBosHistoryQueryVariables>(GetNodeBosHistoryDocument, options);
-        }
-export type GetNodeBosHistoryQueryHookResult = ReturnType<typeof useGetNodeBosHistoryQuery>;
-export type GetNodeBosHistoryLazyQueryHookResult = ReturnType<typeof useGetNodeBosHistoryLazyQuery>;
-export type GetNodeBosHistoryQueryResult = Apollo.QueryResult<GetNodeBosHistoryQuery, GetNodeBosHistoryQueryVariables>;
+export function useGetNodeBosHistoryQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetNodeBosHistoryQuery,
+    GetNodeBosHistoryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetNodeBosHistoryQuery,
+    GetNodeBosHistoryQueryVariables
+  >(GetNodeBosHistoryDocument, options);
+}
+export function useGetNodeBosHistoryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetNodeBosHistoryQuery,
+    GetNodeBosHistoryQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetNodeBosHistoryQuery,
+    GetNodeBosHistoryQueryVariables
+  >(GetNodeBosHistoryDocument, options);
+}
+export type GetNodeBosHistoryQueryHookResult = ReturnType<
+  typeof useGetNodeBosHistoryQuery
+>;
+export type GetNodeBosHistoryLazyQueryHookResult = ReturnType<
+  typeof useGetNodeBosHistoryLazyQuery
+>;
+export type GetNodeBosHistoryQueryResult = Apollo.QueryResult<
+  GetNodeBosHistoryQuery,
+  GetNodeBosHistoryQueryVariables
+>;

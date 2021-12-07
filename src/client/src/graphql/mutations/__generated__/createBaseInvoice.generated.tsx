@@ -1,26 +1,33 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type CreateBaseInvoiceMutationVariables = Types.Exact<{
   amount: Types.Scalars['Float'];
 }>;
 
-
-export type CreateBaseInvoiceMutation = { __typename?: 'Mutation', createBaseInvoice: { __typename?: 'BaseInvoice', request: string, id: string } };
-
+export type CreateBaseInvoiceMutation = {
+  __typename?: 'Mutation';
+  createBaseInvoice: {
+    __typename?: 'BaseInvoice';
+    request: string;
+    id: string;
+  };
+};
 
 export const CreateBaseInvoiceDocument = gql`
-    mutation CreateBaseInvoice($amount: Float!) {
-  createBaseInvoice(amount: $amount) {
-    request
-    id
+  mutation CreateBaseInvoice($amount: Float!) {
+    createBaseInvoice(amount: $amount) {
+      request
+      id
+    }
   }
-}
-    `;
-export type CreateBaseInvoiceMutationFn = Apollo.MutationFunction<CreateBaseInvoiceMutation, CreateBaseInvoiceMutationVariables>;
+`;
+export type CreateBaseInvoiceMutationFn = Apollo.MutationFunction<
+  CreateBaseInvoiceMutation,
+  CreateBaseInvoiceMutationVariables
+>;
 
 /**
  * __useCreateBaseInvoiceMutation__
@@ -39,10 +46,24 @@ export type CreateBaseInvoiceMutationFn = Apollo.MutationFunction<CreateBaseInvo
  *   },
  * });
  */
-export function useCreateBaseInvoiceMutation(baseOptions?: Apollo.MutationHookOptions<CreateBaseInvoiceMutation, CreateBaseInvoiceMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateBaseInvoiceMutation, CreateBaseInvoiceMutationVariables>(CreateBaseInvoiceDocument, options);
-      }
-export type CreateBaseInvoiceMutationHookResult = ReturnType<typeof useCreateBaseInvoiceMutation>;
-export type CreateBaseInvoiceMutationResult = Apollo.MutationResult<CreateBaseInvoiceMutation>;
-export type CreateBaseInvoiceMutationOptions = Apollo.BaseMutationOptions<CreateBaseInvoiceMutation, CreateBaseInvoiceMutationVariables>;
+export function useCreateBaseInvoiceMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateBaseInvoiceMutation,
+    CreateBaseInvoiceMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateBaseInvoiceMutation,
+    CreateBaseInvoiceMutationVariables
+  >(CreateBaseInvoiceDocument, options);
+}
+export type CreateBaseInvoiceMutationHookResult = ReturnType<
+  typeof useCreateBaseInvoiceMutation
+>;
+export type CreateBaseInvoiceMutationResult =
+  Apollo.MutationResult<CreateBaseInvoiceMutation>;
+export type CreateBaseInvoiceMutationOptions = Apollo.BaseMutationOptions<
+  CreateBaseInvoiceMutation,
+  CreateBaseInvoiceMutationVariables
+>;

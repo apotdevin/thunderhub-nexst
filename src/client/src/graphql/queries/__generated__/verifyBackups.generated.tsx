@@ -1,22 +1,22 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type VerifyBackupsQueryVariables = Types.Exact<{
   backup: Types.Scalars['String'];
 }>;
 
-
-export type VerifyBackupsQuery = { __typename?: 'Query', verifyBackups: boolean };
-
+export type VerifyBackupsQuery = {
+  __typename?: 'Query';
+  verifyBackups: boolean;
+};
 
 export const VerifyBackupsDocument = gql`
-    query VerifyBackups($backup: String!) {
-  verifyBackups(backup: $backup)
-}
-    `;
+  query VerifyBackups($backup: String!) {
+    verifyBackups(backup: $backup)
+  }
+`;
 
 /**
  * __useVerifyBackupsQuery__
@@ -34,14 +34,37 @@ export const VerifyBackupsDocument = gql`
  *   },
  * });
  */
-export function useVerifyBackupsQuery(baseOptions: Apollo.QueryHookOptions<VerifyBackupsQuery, VerifyBackupsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<VerifyBackupsQuery, VerifyBackupsQueryVariables>(VerifyBackupsDocument, options);
-      }
-export function useVerifyBackupsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VerifyBackupsQuery, VerifyBackupsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<VerifyBackupsQuery, VerifyBackupsQueryVariables>(VerifyBackupsDocument, options);
-        }
-export type VerifyBackupsQueryHookResult = ReturnType<typeof useVerifyBackupsQuery>;
-export type VerifyBackupsLazyQueryHookResult = ReturnType<typeof useVerifyBackupsLazyQuery>;
-export type VerifyBackupsQueryResult = Apollo.QueryResult<VerifyBackupsQuery, VerifyBackupsQueryVariables>;
+export function useVerifyBackupsQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    VerifyBackupsQuery,
+    VerifyBackupsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<VerifyBackupsQuery, VerifyBackupsQueryVariables>(
+    VerifyBackupsDocument,
+    options
+  );
+}
+export function useVerifyBackupsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    VerifyBackupsQuery,
+    VerifyBackupsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<VerifyBackupsQuery, VerifyBackupsQueryVariables>(
+    VerifyBackupsDocument,
+    options
+  );
+}
+export type VerifyBackupsQueryHookResult = ReturnType<
+  typeof useVerifyBackupsQuery
+>;
+export type VerifyBackupsLazyQueryHookResult = ReturnType<
+  typeof useVerifyBackupsLazyQuery
+>;
+export type VerifyBackupsQueryResult = Apollo.QueryResult<
+  VerifyBackupsQuery,
+  VerifyBackupsQueryVariables
+>;

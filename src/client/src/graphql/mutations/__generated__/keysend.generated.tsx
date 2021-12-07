@@ -1,26 +1,29 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type KeysendMutationVariables = Types.Exact<{
   destination: Types.Scalars['String'];
   tokens: Types.Scalars['Float'];
 }>;
 
-
-export type KeysendMutation = { __typename?: 'Mutation', keysend: { __typename?: 'PayInvoice', is_confirmed: boolean } };
-
+export type KeysendMutation = {
+  __typename?: 'Mutation';
+  keysend: { __typename?: 'PayInvoice'; is_confirmed: boolean };
+};
 
 export const KeysendDocument = gql`
-    mutation Keysend($destination: String!, $tokens: Float!) {
-  keysend(destination: $destination, tokens: $tokens) {
-    is_confirmed
+  mutation Keysend($destination: String!, $tokens: Float!) {
+    keysend(destination: $destination, tokens: $tokens) {
+      is_confirmed
+    }
   }
-}
-    `;
-export type KeysendMutationFn = Apollo.MutationFunction<KeysendMutation, KeysendMutationVariables>;
+`;
+export type KeysendMutationFn = Apollo.MutationFunction<
+  KeysendMutation,
+  KeysendMutationVariables
+>;
 
 /**
  * __useKeysendMutation__
@@ -40,10 +43,21 @@ export type KeysendMutationFn = Apollo.MutationFunction<KeysendMutation, Keysend
  *   },
  * });
  */
-export function useKeysendMutation(baseOptions?: Apollo.MutationHookOptions<KeysendMutation, KeysendMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<KeysendMutation, KeysendMutationVariables>(KeysendDocument, options);
-      }
+export function useKeysendMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    KeysendMutation,
+    KeysendMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<KeysendMutation, KeysendMutationVariables>(
+    KeysendDocument,
+    options
+  );
+}
 export type KeysendMutationHookResult = ReturnType<typeof useKeysendMutation>;
 export type KeysendMutationResult = Apollo.MutationResult<KeysendMutation>;
-export type KeysendMutationOptions = Apollo.BaseMutationOptions<KeysendMutation, KeysendMutationVariables>;
+export type KeysendMutationOptions = Apollo.BaseMutationOptions<
+  KeysendMutation,
+  KeysendMutationVariables
+>;

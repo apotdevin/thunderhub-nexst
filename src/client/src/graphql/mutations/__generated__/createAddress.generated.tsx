@@ -1,21 +1,26 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type CreateAddressMutationVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type CreateAddressMutationVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type CreateAddressMutation = { __typename?: 'Mutation', createAddress: string };
-
+export type CreateAddressMutation = {
+  __typename?: 'Mutation';
+  createAddress: string;
+};
 
 export const CreateAddressDocument = gql`
-    mutation CreateAddress {
-  createAddress
-}
-    `;
-export type CreateAddressMutationFn = Apollo.MutationFunction<CreateAddressMutation, CreateAddressMutationVariables>;
+  mutation CreateAddress {
+    createAddress
+  }
+`;
+export type CreateAddressMutationFn = Apollo.MutationFunction<
+  CreateAddressMutation,
+  CreateAddressMutationVariables
+>;
 
 /**
  * __useCreateAddressMutation__
@@ -33,10 +38,24 @@ export type CreateAddressMutationFn = Apollo.MutationFunction<CreateAddressMutat
  *   },
  * });
  */
-export function useCreateAddressMutation(baseOptions?: Apollo.MutationHookOptions<CreateAddressMutation, CreateAddressMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateAddressMutation, CreateAddressMutationVariables>(CreateAddressDocument, options);
-      }
-export type CreateAddressMutationHookResult = ReturnType<typeof useCreateAddressMutation>;
-export type CreateAddressMutationResult = Apollo.MutationResult<CreateAddressMutation>;
-export type CreateAddressMutationOptions = Apollo.BaseMutationOptions<CreateAddressMutation, CreateAddressMutationVariables>;
+export function useCreateAddressMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateAddressMutation,
+    CreateAddressMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateAddressMutation,
+    CreateAddressMutationVariables
+  >(CreateAddressDocument, options);
+}
+export type CreateAddressMutationHookResult = ReturnType<
+  typeof useCreateAddressMutation
+>;
+export type CreateAddressMutationResult =
+  Apollo.MutationResult<CreateAddressMutation>;
+export type CreateAddressMutationOptions = Apollo.BaseMutationOptions<
+  CreateAddressMutation,
+  CreateAddressMutationVariables
+>;

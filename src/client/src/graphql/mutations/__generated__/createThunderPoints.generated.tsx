@@ -1,9 +1,8 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type CreateThunderPointsMutationVariables = Types.Exact<{
   id: Types.Scalars['String'];
   alias: Types.Scalars['String'];
@@ -11,21 +10,30 @@ export type CreateThunderPointsMutationVariables = Types.Exact<{
   public_key: Types.Scalars['String'];
 }>;
 
-
-export type CreateThunderPointsMutation = { __typename?: 'Mutation', createThunderPoints: boolean };
-
+export type CreateThunderPointsMutation = {
+  __typename?: 'Mutation';
+  createThunderPoints: boolean;
+};
 
 export const CreateThunderPointsDocument = gql`
-    mutation CreateThunderPoints($id: String!, $alias: String!, $uris: [String!]!, $public_key: String!) {
-  createThunderPoints(
-    id: $id
-    alias: $alias
-    uris: $uris
-    public_key: $public_key
-  )
-}
-    `;
-export type CreateThunderPointsMutationFn = Apollo.MutationFunction<CreateThunderPointsMutation, CreateThunderPointsMutationVariables>;
+  mutation CreateThunderPoints(
+    $id: String!
+    $alias: String!
+    $uris: [String!]!
+    $public_key: String!
+  ) {
+    createThunderPoints(
+      id: $id
+      alias: $alias
+      uris: $uris
+      public_key: $public_key
+    )
+  }
+`;
+export type CreateThunderPointsMutationFn = Apollo.MutationFunction<
+  CreateThunderPointsMutation,
+  CreateThunderPointsMutationVariables
+>;
 
 /**
  * __useCreateThunderPointsMutation__
@@ -47,10 +55,24 @@ export type CreateThunderPointsMutationFn = Apollo.MutationFunction<CreateThunde
  *   },
  * });
  */
-export function useCreateThunderPointsMutation(baseOptions?: Apollo.MutationHookOptions<CreateThunderPointsMutation, CreateThunderPointsMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateThunderPointsMutation, CreateThunderPointsMutationVariables>(CreateThunderPointsDocument, options);
-      }
-export type CreateThunderPointsMutationHookResult = ReturnType<typeof useCreateThunderPointsMutation>;
-export type CreateThunderPointsMutationResult = Apollo.MutationResult<CreateThunderPointsMutation>;
-export type CreateThunderPointsMutationOptions = Apollo.BaseMutationOptions<CreateThunderPointsMutation, CreateThunderPointsMutationVariables>;
+export function useCreateThunderPointsMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateThunderPointsMutation,
+    CreateThunderPointsMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateThunderPointsMutation,
+    CreateThunderPointsMutationVariables
+  >(CreateThunderPointsDocument, options);
+}
+export type CreateThunderPointsMutationHookResult = ReturnType<
+  typeof useCreateThunderPointsMutation
+>;
+export type CreateThunderPointsMutationResult =
+  Apollo.MutationResult<CreateThunderPointsMutation>;
+export type CreateThunderPointsMutationOptions = Apollo.BaseMutationOptions<
+  CreateThunderPointsMutation,
+  CreateThunderPointsMutationVariables
+>;

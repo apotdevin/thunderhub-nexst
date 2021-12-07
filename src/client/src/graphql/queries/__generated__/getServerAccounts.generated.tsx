@@ -1,25 +1,33 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetServerAccountsQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetServerAccountsQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetServerAccountsQuery = { __typename?: 'Query', getServerAccounts: Array<{ __typename?: 'ServerAccount', name: string, id: string, loggedIn: boolean, type: string }> };
-
+export type GetServerAccountsQuery = {
+  __typename?: 'Query';
+  getServerAccounts: Array<{
+    __typename?: 'ServerAccount';
+    name: string;
+    id: string;
+    loggedIn: boolean;
+    type: string;
+  }>;
+};
 
 export const GetServerAccountsDocument = gql`
-    query GetServerAccounts {
-  getServerAccounts {
-    name
-    id
-    loggedIn
-    type
+  query GetServerAccounts {
+    getServerAccounts {
+      name
+      id
+      loggedIn
+      type
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetServerAccountsQuery__
@@ -36,14 +44,37 @@ export const GetServerAccountsDocument = gql`
  *   },
  * });
  */
-export function useGetServerAccountsQuery(baseOptions?: Apollo.QueryHookOptions<GetServerAccountsQuery, GetServerAccountsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetServerAccountsQuery, GetServerAccountsQueryVariables>(GetServerAccountsDocument, options);
-      }
-export function useGetServerAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetServerAccountsQuery, GetServerAccountsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetServerAccountsQuery, GetServerAccountsQueryVariables>(GetServerAccountsDocument, options);
-        }
-export type GetServerAccountsQueryHookResult = ReturnType<typeof useGetServerAccountsQuery>;
-export type GetServerAccountsLazyQueryHookResult = ReturnType<typeof useGetServerAccountsLazyQuery>;
-export type GetServerAccountsQueryResult = Apollo.QueryResult<GetServerAccountsQuery, GetServerAccountsQueryVariables>;
+export function useGetServerAccountsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetServerAccountsQuery,
+    GetServerAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetServerAccountsQuery,
+    GetServerAccountsQueryVariables
+  >(GetServerAccountsDocument, options);
+}
+export function useGetServerAccountsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetServerAccountsQuery,
+    GetServerAccountsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetServerAccountsQuery,
+    GetServerAccountsQueryVariables
+  >(GetServerAccountsDocument, options);
+}
+export type GetServerAccountsQueryHookResult = ReturnType<
+  typeof useGetServerAccountsQuery
+>;
+export type GetServerAccountsLazyQueryHookResult = ReturnType<
+  typeof useGetServerAccountsLazyQuery
+>;
+export type GetServerAccountsQueryResult = Apollo.QueryResult<
+  GetServerAccountsQuery,
+  GetServerAccountsQueryVariables
+>;

@@ -1,6 +1,9 @@
 overwrite: true
 schema: 'http://localhost:3000/graphql'
 documents: 'src/client/src/graphql/**/*.ts'
+hooks:
+  afterAllFileWrite:
+    - prettier --write
 generates:
   src/client/src/graphql/fragmentTypes.json:
     plugins:
@@ -8,8 +11,6 @@ generates:
   src/client/src/graphql/types.ts:
     plugins:
       - typescript
-      - add:
-          content: '/* eslint-disable */'
   src/client/src/graphql/:
     preset: near-operation-file
     presetConfig:
@@ -24,5 +25,3 @@ generates:
     plugins:
       - 'typescript-operations'
       - 'typescript-react-apollo'
-      - add:
-          content: '/* eslint-disable */'

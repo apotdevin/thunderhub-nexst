@@ -1,9 +1,8 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type ClaimBoltzTransactionMutationVariables = Types.Exact<{
   redeem: Types.Scalars['String'];
   transaction: Types.Scalars['String'];
@@ -13,23 +12,34 @@ export type ClaimBoltzTransactionMutationVariables = Types.Exact<{
   fee: Types.Scalars['Float'];
 }>;
 
-
-export type ClaimBoltzTransactionMutation = { __typename?: 'Mutation', claimBoltzTransaction: string };
-
+export type ClaimBoltzTransactionMutation = {
+  __typename?: 'Mutation';
+  claimBoltzTransaction: string;
+};
 
 export const ClaimBoltzTransactionDocument = gql`
-    mutation ClaimBoltzTransaction($redeem: String!, $transaction: String!, $preimage: String!, $privateKey: String!, $destination: String!, $fee: Float!) {
-  claimBoltzTransaction(
-    redeem: $redeem
-    transaction: $transaction
-    preimage: $preimage
-    privateKey: $privateKey
-    destination: $destination
-    fee: $fee
-  )
-}
-    `;
-export type ClaimBoltzTransactionMutationFn = Apollo.MutationFunction<ClaimBoltzTransactionMutation, ClaimBoltzTransactionMutationVariables>;
+  mutation ClaimBoltzTransaction(
+    $redeem: String!
+    $transaction: String!
+    $preimage: String!
+    $privateKey: String!
+    $destination: String!
+    $fee: Float!
+  ) {
+    claimBoltzTransaction(
+      redeem: $redeem
+      transaction: $transaction
+      preimage: $preimage
+      privateKey: $privateKey
+      destination: $destination
+      fee: $fee
+    )
+  }
+`;
+export type ClaimBoltzTransactionMutationFn = Apollo.MutationFunction<
+  ClaimBoltzTransactionMutation,
+  ClaimBoltzTransactionMutationVariables
+>;
 
 /**
  * __useClaimBoltzTransactionMutation__
@@ -53,10 +63,24 @@ export type ClaimBoltzTransactionMutationFn = Apollo.MutationFunction<ClaimBoltz
  *   },
  * });
  */
-export function useClaimBoltzTransactionMutation(baseOptions?: Apollo.MutationHookOptions<ClaimBoltzTransactionMutation, ClaimBoltzTransactionMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ClaimBoltzTransactionMutation, ClaimBoltzTransactionMutationVariables>(ClaimBoltzTransactionDocument, options);
-      }
-export type ClaimBoltzTransactionMutationHookResult = ReturnType<typeof useClaimBoltzTransactionMutation>;
-export type ClaimBoltzTransactionMutationResult = Apollo.MutationResult<ClaimBoltzTransactionMutation>;
-export type ClaimBoltzTransactionMutationOptions = Apollo.BaseMutationOptions<ClaimBoltzTransactionMutation, ClaimBoltzTransactionMutationVariables>;
+export function useClaimBoltzTransactionMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    ClaimBoltzTransactionMutation,
+    ClaimBoltzTransactionMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    ClaimBoltzTransactionMutation,
+    ClaimBoltzTransactionMutationVariables
+  >(ClaimBoltzTransactionDocument, options);
+}
+export type ClaimBoltzTransactionMutationHookResult = ReturnType<
+  typeof useClaimBoltzTransactionMutation
+>;
+export type ClaimBoltzTransactionMutationResult =
+  Apollo.MutationResult<ClaimBoltzTransactionMutation>;
+export type ClaimBoltzTransactionMutationOptions = Apollo.BaseMutationOptions<
+  ClaimBoltzTransactionMutation,
+  ClaimBoltzTransactionMutationVariables
+>;

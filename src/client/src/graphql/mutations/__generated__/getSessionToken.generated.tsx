@@ -1,24 +1,27 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type GetSessionTokenMutationVariables = Types.Exact<{
   id: Types.Scalars['String'];
   password: Types.Scalars['String'];
 }>;
 
-
-export type GetSessionTokenMutation = { __typename?: 'Mutation', getSessionToken: string };
-
+export type GetSessionTokenMutation = {
+  __typename?: 'Mutation';
+  getSessionToken: string;
+};
 
 export const GetSessionTokenDocument = gql`
-    mutation GetSessionToken($id: String!, $password: String!) {
-  getSessionToken(id: $id, password: $password)
-}
-    `;
-export type GetSessionTokenMutationFn = Apollo.MutationFunction<GetSessionTokenMutation, GetSessionTokenMutationVariables>;
+  mutation GetSessionToken($id: String!, $password: String!) {
+    getSessionToken(id: $id, password: $password)
+  }
+`;
+export type GetSessionTokenMutationFn = Apollo.MutationFunction<
+  GetSessionTokenMutation,
+  GetSessionTokenMutationVariables
+>;
 
 /**
  * __useGetSessionTokenMutation__
@@ -38,10 +41,24 @@ export type GetSessionTokenMutationFn = Apollo.MutationFunction<GetSessionTokenM
  *   },
  * });
  */
-export function useGetSessionTokenMutation(baseOptions?: Apollo.MutationHookOptions<GetSessionTokenMutation, GetSessionTokenMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<GetSessionTokenMutation, GetSessionTokenMutationVariables>(GetSessionTokenDocument, options);
-      }
-export type GetSessionTokenMutationHookResult = ReturnType<typeof useGetSessionTokenMutation>;
-export type GetSessionTokenMutationResult = Apollo.MutationResult<GetSessionTokenMutation>;
-export type GetSessionTokenMutationOptions = Apollo.BaseMutationOptions<GetSessionTokenMutation, GetSessionTokenMutationVariables>;
+export function useGetSessionTokenMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    GetSessionTokenMutation,
+    GetSessionTokenMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    GetSessionTokenMutation,
+    GetSessionTokenMutationVariables
+  >(GetSessionTokenDocument, options);
+}
+export type GetSessionTokenMutationHookResult = ReturnType<
+  typeof useGetSessionTokenMutation
+>;
+export type GetSessionTokenMutationResult =
+  Apollo.MutationResult<GetSessionTokenMutation>;
+export type GetSessionTokenMutationOptions = Apollo.BaseMutationOptions<
+  GetSessionTokenMutation,
+  GetSessionTokenMutationVariables
+>;

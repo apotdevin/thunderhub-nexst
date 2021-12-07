@@ -1,26 +1,29 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type CreateMacaroonMutationVariables = Types.Exact<{
   permissions: Types.NetworkInfoInput;
 }>;
 
-
-export type CreateMacaroonMutation = { __typename?: 'Mutation', createMacaroon: { __typename?: 'CreateMacaroon', base: string, hex: string } };
-
+export type CreateMacaroonMutation = {
+  __typename?: 'Mutation';
+  createMacaroon: { __typename?: 'CreateMacaroon'; base: string; hex: string };
+};
 
 export const CreateMacaroonDocument = gql`
-    mutation CreateMacaroon($permissions: NetworkInfoInput!) {
-  createMacaroon(permissions: $permissions) {
-    base
-    hex
+  mutation CreateMacaroon($permissions: NetworkInfoInput!) {
+    createMacaroon(permissions: $permissions) {
+      base
+      hex
+    }
   }
-}
-    `;
-export type CreateMacaroonMutationFn = Apollo.MutationFunction<CreateMacaroonMutation, CreateMacaroonMutationVariables>;
+`;
+export type CreateMacaroonMutationFn = Apollo.MutationFunction<
+  CreateMacaroonMutation,
+  CreateMacaroonMutationVariables
+>;
 
 /**
  * __useCreateMacaroonMutation__
@@ -39,10 +42,24 @@ export type CreateMacaroonMutationFn = Apollo.MutationFunction<CreateMacaroonMut
  *   },
  * });
  */
-export function useCreateMacaroonMutation(baseOptions?: Apollo.MutationHookOptions<CreateMacaroonMutation, CreateMacaroonMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateMacaroonMutation, CreateMacaroonMutationVariables>(CreateMacaroonDocument, options);
-      }
-export type CreateMacaroonMutationHookResult = ReturnType<typeof useCreateMacaroonMutation>;
-export type CreateMacaroonMutationResult = Apollo.MutationResult<CreateMacaroonMutation>;
-export type CreateMacaroonMutationOptions = Apollo.BaseMutationOptions<CreateMacaroonMutation, CreateMacaroonMutationVariables>;
+export function useCreateMacaroonMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateMacaroonMutation,
+    CreateMacaroonMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateMacaroonMutation,
+    CreateMacaroonMutationVariables
+  >(CreateMacaroonDocument, options);
+}
+export type CreateMacaroonMutationHookResult = ReturnType<
+  typeof useCreateMacaroonMutation
+>;
+export type CreateMacaroonMutationResult =
+  Apollo.MutationResult<CreateMacaroonMutation>;
+export type CreateMacaroonMutationOptions = Apollo.BaseMutationOptions<
+  CreateMacaroonMutation,
+  CreateMacaroonMutationVariables
+>;

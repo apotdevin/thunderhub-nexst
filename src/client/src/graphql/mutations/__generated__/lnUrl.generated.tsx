@@ -1,22 +1,50 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type FetchLnUrlMutationVariables = Types.Exact<{
   url: Types.Scalars['String'];
 }>;
 
-
-export type FetchLnUrlMutation = { __typename?: 'Mutation', fetchLnUrl: { __typename?: 'ChannelRequest', tag?: string | null | undefined, k1?: string | null | undefined, callback?: string | null | undefined, uri?: string | null | undefined } | { __typename?: 'PayRequest', callback?: string | null | undefined, maxSendable?: string | null | undefined, minSendable?: string | null | undefined, metadata?: string | null | undefined, commentAllowed?: number | null | undefined, tag?: string | null | undefined } | { __typename?: 'WithdrawRequest', callback?: string | null | undefined, k1?: string | null | undefined, maxWithdrawable?: string | null | undefined, defaultDescription?: string | null | undefined, minWithdrawable?: string | null | undefined, tag?: string | null | undefined } };
+export type FetchLnUrlMutation = {
+  __typename?: 'Mutation';
+  fetchLnUrl:
+    | {
+        __typename?: 'ChannelRequest';
+        tag?: string | null | undefined;
+        k1?: string | null | undefined;
+        callback?: string | null | undefined;
+        uri?: string | null | undefined;
+      }
+    | {
+        __typename?: 'PayRequest';
+        callback?: string | null | undefined;
+        maxSendable?: string | null | undefined;
+        minSendable?: string | null | undefined;
+        metadata?: string | null | undefined;
+        commentAllowed?: number | null | undefined;
+        tag?: string | null | undefined;
+      }
+    | {
+        __typename?: 'WithdrawRequest';
+        callback?: string | null | undefined;
+        k1?: string | null | undefined;
+        maxWithdrawable?: string | null | undefined;
+        defaultDescription?: string | null | undefined;
+        minWithdrawable?: string | null | undefined;
+        tag?: string | null | undefined;
+      };
+};
 
 export type AuthLnUrlMutationVariables = Types.Exact<{
   url: Types.Scalars['String'];
 }>;
 
-
-export type AuthLnUrlMutation = { __typename?: 'Mutation', lnUrlAuth: { __typename?: 'AuthResponse', status: string, message: string } };
+export type AuthLnUrlMutation = {
+  __typename?: 'Mutation';
+  lnUrlAuth: { __typename?: 'AuthResponse'; status: string; message: string };
+};
 
 export type PayLnUrlMutationVariables = Types.Exact<{
   callback: Types.Scalars['String'];
@@ -24,8 +52,18 @@ export type PayLnUrlMutationVariables = Types.Exact<{
   comment?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
-
-export type PayLnUrlMutation = { __typename?: 'Mutation', lnUrlPay: { __typename?: 'PaySuccess', tag?: string | null | undefined, description?: string | null | undefined, url?: string | null | undefined, message?: string | null | undefined, ciphertext?: string | null | undefined, iv?: string | null | undefined } };
+export type PayLnUrlMutation = {
+  __typename?: 'Mutation';
+  lnUrlPay: {
+    __typename?: 'PaySuccess';
+    tag?: string | null | undefined;
+    description?: string | null | undefined;
+    url?: string | null | undefined;
+    message?: string | null | undefined;
+    ciphertext?: string | null | undefined;
+    iv?: string | null | undefined;
+  };
+};
 
 export type WithdrawLnUrlMutationVariables = Types.Exact<{
   callback: Types.Scalars['String'];
@@ -34,8 +72,10 @@ export type WithdrawLnUrlMutationVariables = Types.Exact<{
   description?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
-
-export type WithdrawLnUrlMutation = { __typename?: 'Mutation', lnUrlWithdraw: string };
+export type WithdrawLnUrlMutation = {
+  __typename?: 'Mutation';
+  lnUrlWithdraw: string;
+};
 
 export type ChannelLnUrlMutationVariables = Types.Exact<{
   callback: Types.Scalars['String'];
@@ -43,39 +83,43 @@ export type ChannelLnUrlMutationVariables = Types.Exact<{
   uri: Types.Scalars['String'];
 }>;
 
-
-export type ChannelLnUrlMutation = { __typename?: 'Mutation', lnUrlChannel: string };
-
+export type ChannelLnUrlMutation = {
+  __typename?: 'Mutation';
+  lnUrlChannel: string;
+};
 
 export const FetchLnUrlDocument = gql`
-    mutation FetchLnUrl($url: String!) {
-  fetchLnUrl(url: $url) {
-    ... on WithdrawRequest {
-      callback
-      k1
-      maxWithdrawable
-      defaultDescription
-      minWithdrawable
-      tag
-    }
-    ... on PayRequest {
-      callback
-      maxSendable
-      minSendable
-      metadata
-      commentAllowed
-      tag
-    }
-    ... on ChannelRequest {
-      tag
-      k1
-      callback
-      uri
+  mutation FetchLnUrl($url: String!) {
+    fetchLnUrl(url: $url) {
+      ... on WithdrawRequest {
+        callback
+        k1
+        maxWithdrawable
+        defaultDescription
+        minWithdrawable
+        tag
+      }
+      ... on PayRequest {
+        callback
+        maxSendable
+        minSendable
+        metadata
+        commentAllowed
+        tag
+      }
+      ... on ChannelRequest {
+        tag
+        k1
+        callback
+        uri
+      }
     }
   }
-}
-    `;
-export type FetchLnUrlMutationFn = Apollo.MutationFunction<FetchLnUrlMutation, FetchLnUrlMutationVariables>;
+`;
+export type FetchLnUrlMutationFn = Apollo.MutationFunction<
+  FetchLnUrlMutation,
+  FetchLnUrlMutationVariables
+>;
 
 /**
  * __useFetchLnUrlMutation__
@@ -94,22 +138,39 @@ export type FetchLnUrlMutationFn = Apollo.MutationFunction<FetchLnUrlMutation, F
  *   },
  * });
  */
-export function useFetchLnUrlMutation(baseOptions?: Apollo.MutationHookOptions<FetchLnUrlMutation, FetchLnUrlMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<FetchLnUrlMutation, FetchLnUrlMutationVariables>(FetchLnUrlDocument, options);
-      }
-export type FetchLnUrlMutationHookResult = ReturnType<typeof useFetchLnUrlMutation>;
-export type FetchLnUrlMutationResult = Apollo.MutationResult<FetchLnUrlMutation>;
-export type FetchLnUrlMutationOptions = Apollo.BaseMutationOptions<FetchLnUrlMutation, FetchLnUrlMutationVariables>;
-export const AuthLnUrlDocument = gql`
-    mutation AuthLnUrl($url: String!) {
-  lnUrlAuth(url: $url) {
-    status
-    message
-  }
+export function useFetchLnUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    FetchLnUrlMutation,
+    FetchLnUrlMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<FetchLnUrlMutation, FetchLnUrlMutationVariables>(
+    FetchLnUrlDocument,
+    options
+  );
 }
-    `;
-export type AuthLnUrlMutationFn = Apollo.MutationFunction<AuthLnUrlMutation, AuthLnUrlMutationVariables>;
+export type FetchLnUrlMutationHookResult = ReturnType<
+  typeof useFetchLnUrlMutation
+>;
+export type FetchLnUrlMutationResult =
+  Apollo.MutationResult<FetchLnUrlMutation>;
+export type FetchLnUrlMutationOptions = Apollo.BaseMutationOptions<
+  FetchLnUrlMutation,
+  FetchLnUrlMutationVariables
+>;
+export const AuthLnUrlDocument = gql`
+  mutation AuthLnUrl($url: String!) {
+    lnUrlAuth(url: $url) {
+      status
+      message
+    }
+  }
+`;
+export type AuthLnUrlMutationFn = Apollo.MutationFunction<
+  AuthLnUrlMutation,
+  AuthLnUrlMutationVariables
+>;
 
 /**
  * __useAuthLnUrlMutation__
@@ -128,26 +189,42 @@ export type AuthLnUrlMutationFn = Apollo.MutationFunction<AuthLnUrlMutation, Aut
  *   },
  * });
  */
-export function useAuthLnUrlMutation(baseOptions?: Apollo.MutationHookOptions<AuthLnUrlMutation, AuthLnUrlMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<AuthLnUrlMutation, AuthLnUrlMutationVariables>(AuthLnUrlDocument, options);
-      }
-export type AuthLnUrlMutationHookResult = ReturnType<typeof useAuthLnUrlMutation>;
-export type AuthLnUrlMutationResult = Apollo.MutationResult<AuthLnUrlMutation>;
-export type AuthLnUrlMutationOptions = Apollo.BaseMutationOptions<AuthLnUrlMutation, AuthLnUrlMutationVariables>;
-export const PayLnUrlDocument = gql`
-    mutation PayLnUrl($callback: String!, $amount: Float!, $comment: String) {
-  lnUrlPay(callback: $callback, amount: $amount, comment: $comment) {
-    tag
-    description
-    url
-    message
-    ciphertext
-    iv
-  }
+export function useAuthLnUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AuthLnUrlMutation,
+    AuthLnUrlMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<AuthLnUrlMutation, AuthLnUrlMutationVariables>(
+    AuthLnUrlDocument,
+    options
+  );
 }
-    `;
-export type PayLnUrlMutationFn = Apollo.MutationFunction<PayLnUrlMutation, PayLnUrlMutationVariables>;
+export type AuthLnUrlMutationHookResult = ReturnType<
+  typeof useAuthLnUrlMutation
+>;
+export type AuthLnUrlMutationResult = Apollo.MutationResult<AuthLnUrlMutation>;
+export type AuthLnUrlMutationOptions = Apollo.BaseMutationOptions<
+  AuthLnUrlMutation,
+  AuthLnUrlMutationVariables
+>;
+export const PayLnUrlDocument = gql`
+  mutation PayLnUrl($callback: String!, $amount: Float!, $comment: String) {
+    lnUrlPay(callback: $callback, amount: $amount, comment: $comment) {
+      tag
+      description
+      url
+      message
+      ciphertext
+      iv
+    }
+  }
+`;
+export type PayLnUrlMutationFn = Apollo.MutationFunction<
+  PayLnUrlMutation,
+  PayLnUrlMutationVariables
+>;
 
 /**
  * __usePayLnUrlMutation__
@@ -168,24 +245,43 @@ export type PayLnUrlMutationFn = Apollo.MutationFunction<PayLnUrlMutation, PayLn
  *   },
  * });
  */
-export function usePayLnUrlMutation(baseOptions?: Apollo.MutationHookOptions<PayLnUrlMutation, PayLnUrlMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<PayLnUrlMutation, PayLnUrlMutationVariables>(PayLnUrlDocument, options);
-      }
+export function usePayLnUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    PayLnUrlMutation,
+    PayLnUrlMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<PayLnUrlMutation, PayLnUrlMutationVariables>(
+    PayLnUrlDocument,
+    options
+  );
+}
 export type PayLnUrlMutationHookResult = ReturnType<typeof usePayLnUrlMutation>;
 export type PayLnUrlMutationResult = Apollo.MutationResult<PayLnUrlMutation>;
-export type PayLnUrlMutationOptions = Apollo.BaseMutationOptions<PayLnUrlMutation, PayLnUrlMutationVariables>;
+export type PayLnUrlMutationOptions = Apollo.BaseMutationOptions<
+  PayLnUrlMutation,
+  PayLnUrlMutationVariables
+>;
 export const WithdrawLnUrlDocument = gql`
-    mutation WithdrawLnUrl($callback: String!, $amount: Float!, $k1: String!, $description: String) {
-  lnUrlWithdraw(
-    callback: $callback
-    amount: $amount
-    k1: $k1
-    description: $description
-  )
-}
-    `;
-export type WithdrawLnUrlMutationFn = Apollo.MutationFunction<WithdrawLnUrlMutation, WithdrawLnUrlMutationVariables>;
+  mutation WithdrawLnUrl(
+    $callback: String!
+    $amount: Float!
+    $k1: String!
+    $description: String
+  ) {
+    lnUrlWithdraw(
+      callback: $callback
+      amount: $amount
+      k1: $k1
+      description: $description
+    )
+  }
+`;
+export type WithdrawLnUrlMutationFn = Apollo.MutationFunction<
+  WithdrawLnUrlMutation,
+  WithdrawLnUrlMutationVariables
+>;
 
 /**
  * __useWithdrawLnUrlMutation__
@@ -207,19 +303,36 @@ export type WithdrawLnUrlMutationFn = Apollo.MutationFunction<WithdrawLnUrlMutat
  *   },
  * });
  */
-export function useWithdrawLnUrlMutation(baseOptions?: Apollo.MutationHookOptions<WithdrawLnUrlMutation, WithdrawLnUrlMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<WithdrawLnUrlMutation, WithdrawLnUrlMutationVariables>(WithdrawLnUrlDocument, options);
-      }
-export type WithdrawLnUrlMutationHookResult = ReturnType<typeof useWithdrawLnUrlMutation>;
-export type WithdrawLnUrlMutationResult = Apollo.MutationResult<WithdrawLnUrlMutation>;
-export type WithdrawLnUrlMutationOptions = Apollo.BaseMutationOptions<WithdrawLnUrlMutation, WithdrawLnUrlMutationVariables>;
-export const ChannelLnUrlDocument = gql`
-    mutation ChannelLnUrl($callback: String!, $k1: String!, $uri: String!) {
-  lnUrlChannel(callback: $callback, k1: $k1, uri: $uri)
+export function useWithdrawLnUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    WithdrawLnUrlMutation,
+    WithdrawLnUrlMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    WithdrawLnUrlMutation,
+    WithdrawLnUrlMutationVariables
+  >(WithdrawLnUrlDocument, options);
 }
-    `;
-export type ChannelLnUrlMutationFn = Apollo.MutationFunction<ChannelLnUrlMutation, ChannelLnUrlMutationVariables>;
+export type WithdrawLnUrlMutationHookResult = ReturnType<
+  typeof useWithdrawLnUrlMutation
+>;
+export type WithdrawLnUrlMutationResult =
+  Apollo.MutationResult<WithdrawLnUrlMutation>;
+export type WithdrawLnUrlMutationOptions = Apollo.BaseMutationOptions<
+  WithdrawLnUrlMutation,
+  WithdrawLnUrlMutationVariables
+>;
+export const ChannelLnUrlDocument = gql`
+  mutation ChannelLnUrl($callback: String!, $k1: String!, $uri: String!) {
+    lnUrlChannel(callback: $callback, k1: $k1, uri: $uri)
+  }
+`;
+export type ChannelLnUrlMutationFn = Apollo.MutationFunction<
+  ChannelLnUrlMutation,
+  ChannelLnUrlMutationVariables
+>;
 
 /**
  * __useChannelLnUrlMutation__
@@ -240,10 +353,24 @@ export type ChannelLnUrlMutationFn = Apollo.MutationFunction<ChannelLnUrlMutatio
  *   },
  * });
  */
-export function useChannelLnUrlMutation(baseOptions?: Apollo.MutationHookOptions<ChannelLnUrlMutation, ChannelLnUrlMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<ChannelLnUrlMutation, ChannelLnUrlMutationVariables>(ChannelLnUrlDocument, options);
-      }
-export type ChannelLnUrlMutationHookResult = ReturnType<typeof useChannelLnUrlMutation>;
-export type ChannelLnUrlMutationResult = Apollo.MutationResult<ChannelLnUrlMutation>;
-export type ChannelLnUrlMutationOptions = Apollo.BaseMutationOptions<ChannelLnUrlMutation, ChannelLnUrlMutationVariables>;
+export function useChannelLnUrlMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    ChannelLnUrlMutation,
+    ChannelLnUrlMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    ChannelLnUrlMutation,
+    ChannelLnUrlMutationVariables
+  >(ChannelLnUrlDocument, options);
+}
+export type ChannelLnUrlMutationHookResult = ReturnType<
+  typeof useChannelLnUrlMutation
+>;
+export type ChannelLnUrlMutationResult =
+  Apollo.MutationResult<ChannelLnUrlMutation>;
+export type ChannelLnUrlMutationOptions = Apollo.BaseMutationOptions<
+  ChannelLnUrlMutation,
+  ChannelLnUrlMutationVariables
+>;

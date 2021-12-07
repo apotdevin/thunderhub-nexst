@@ -1,9 +1,8 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type AddPeerMutationVariables = Types.Exact<{
   url?: Types.InputMaybe<Types.Scalars['String']>;
   publicKey?: Types.InputMaybe<Types.Scalars['String']>;
@@ -11,21 +10,27 @@ export type AddPeerMutationVariables = Types.Exact<{
   isTemporary?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
-
-export type AddPeerMutation = { __typename?: 'Mutation', addPeer: boolean };
-
+export type AddPeerMutation = { __typename?: 'Mutation'; addPeer: boolean };
 
 export const AddPeerDocument = gql`
-    mutation AddPeer($url: String, $publicKey: String, $socket: String, $isTemporary: Boolean) {
-  addPeer(
-    url: $url
-    publicKey: $publicKey
-    socket: $socket
-    isTemporary: $isTemporary
-  )
-}
-    `;
-export type AddPeerMutationFn = Apollo.MutationFunction<AddPeerMutation, AddPeerMutationVariables>;
+  mutation AddPeer(
+    $url: String
+    $publicKey: String
+    $socket: String
+    $isTemporary: Boolean
+  ) {
+    addPeer(
+      url: $url
+      publicKey: $publicKey
+      socket: $socket
+      isTemporary: $isTemporary
+    )
+  }
+`;
+export type AddPeerMutationFn = Apollo.MutationFunction<
+  AddPeerMutation,
+  AddPeerMutationVariables
+>;
 
 /**
  * __useAddPeerMutation__
@@ -47,10 +52,21 @@ export type AddPeerMutationFn = Apollo.MutationFunction<AddPeerMutation, AddPeer
  *   },
  * });
  */
-export function useAddPeerMutation(baseOptions?: Apollo.MutationHookOptions<AddPeerMutation, AddPeerMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<AddPeerMutation, AddPeerMutationVariables>(AddPeerDocument, options);
-      }
+export function useAddPeerMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    AddPeerMutation,
+    AddPeerMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<AddPeerMutation, AddPeerMutationVariables>(
+    AddPeerDocument,
+    options
+  );
+}
 export type AddPeerMutationHookResult = ReturnType<typeof useAddPeerMutation>;
 export type AddPeerMutationResult = Apollo.MutationResult<AddPeerMutation>;
-export type AddPeerMutationOptions = Apollo.BaseMutationOptions<AddPeerMutation, AddPeerMutationVariables>;
+export type AddPeerMutationOptions = Apollo.BaseMutationOptions<
+  AddPeerMutation,
+  AddPeerMutationVariables
+>;

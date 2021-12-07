@@ -1,30 +1,41 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetWalletInfoQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetWalletInfoQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type GetWalletInfoQuery = { __typename?: 'Query', getWalletInfo: { __typename?: 'Wallet', build_tags: Array<string>, commit_hash: string, is_autopilotrpc_enabled: boolean, is_chainrpc_enabled: boolean, is_invoicesrpc_enabled: boolean, is_signrpc_enabled: boolean, is_walletrpc_enabled: boolean, is_watchtowerrpc_enabled: boolean, is_wtclientrpc_enabled: boolean } };
-
+export type GetWalletInfoQuery = {
+  __typename?: 'Query';
+  getWalletInfo: {
+    __typename?: 'Wallet';
+    build_tags: Array<string>;
+    commit_hash: string;
+    is_autopilotrpc_enabled: boolean;
+    is_chainrpc_enabled: boolean;
+    is_invoicesrpc_enabled: boolean;
+    is_signrpc_enabled: boolean;
+    is_walletrpc_enabled: boolean;
+    is_watchtowerrpc_enabled: boolean;
+    is_wtclientrpc_enabled: boolean;
+  };
+};
 
 export const GetWalletInfoDocument = gql`
-    query GetWalletInfo {
-  getWalletInfo {
-    build_tags
-    commit_hash
-    is_autopilotrpc_enabled
-    is_chainrpc_enabled
-    is_invoicesrpc_enabled
-    is_signrpc_enabled
-    is_walletrpc_enabled
-    is_watchtowerrpc_enabled
-    is_wtclientrpc_enabled
+  query GetWalletInfo {
+    getWalletInfo {
+      build_tags
+      commit_hash
+      is_autopilotrpc_enabled
+      is_chainrpc_enabled
+      is_invoicesrpc_enabled
+      is_signrpc_enabled
+      is_walletrpc_enabled
+      is_watchtowerrpc_enabled
+      is_wtclientrpc_enabled
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetWalletInfoQuery__
@@ -41,14 +52,37 @@ export const GetWalletInfoDocument = gql`
  *   },
  * });
  */
-export function useGetWalletInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetWalletInfoQuery, GetWalletInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetWalletInfoQuery, GetWalletInfoQueryVariables>(GetWalletInfoDocument, options);
-      }
-export function useGetWalletInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetWalletInfoQuery, GetWalletInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetWalletInfoQuery, GetWalletInfoQueryVariables>(GetWalletInfoDocument, options);
-        }
-export type GetWalletInfoQueryHookResult = ReturnType<typeof useGetWalletInfoQuery>;
-export type GetWalletInfoLazyQueryHookResult = ReturnType<typeof useGetWalletInfoLazyQuery>;
-export type GetWalletInfoQueryResult = Apollo.QueryResult<GetWalletInfoQuery, GetWalletInfoQueryVariables>;
+export function useGetWalletInfoQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetWalletInfoQuery,
+    GetWalletInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetWalletInfoQuery, GetWalletInfoQueryVariables>(
+    GetWalletInfoDocument,
+    options
+  );
+}
+export function useGetWalletInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetWalletInfoQuery,
+    GetWalletInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetWalletInfoQuery, GetWalletInfoQueryVariables>(
+    GetWalletInfoDocument,
+    options
+  );
+}
+export type GetWalletInfoQueryHookResult = ReturnType<
+  typeof useGetWalletInfoQuery
+>;
+export type GetWalletInfoLazyQueryHookResult = ReturnType<
+  typeof useGetWalletInfoLazyQuery
+>;
+export type GetWalletInfoQueryResult = Apollo.QueryResult<
+  GetWalletInfoQuery,
+  GetWalletInfoQueryVariables
+>;

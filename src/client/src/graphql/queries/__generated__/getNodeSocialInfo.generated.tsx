@@ -1,33 +1,53 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type GetNodeSocialInfoQueryVariables = Types.Exact<{
   pubkey: Types.Scalars['String'];
 }>;
 
-
-export type GetNodeSocialInfoQuery = { __typename?: 'Query', getNodeSocialInfo: { __typename?: 'LightningNodeSocialInfo', socials?: { __typename?: 'NodeSocial', info?: { __typename?: 'NodeSocialInfo', private?: boolean | null | undefined, telegram?: string | null | undefined, twitter?: string | null | undefined, twitter_verified?: boolean | null | undefined, website?: string | null | undefined, email?: string | null | undefined } | null | undefined } | null | undefined } };
-
+export type GetNodeSocialInfoQuery = {
+  __typename?: 'Query';
+  getNodeSocialInfo: {
+    __typename?: 'LightningNodeSocialInfo';
+    socials?:
+      | {
+          __typename?: 'NodeSocial';
+          info?:
+            | {
+                __typename?: 'NodeSocialInfo';
+                private?: boolean | null | undefined;
+                telegram?: string | null | undefined;
+                twitter?: string | null | undefined;
+                twitter_verified?: boolean | null | undefined;
+                website?: string | null | undefined;
+                email?: string | null | undefined;
+              }
+            | null
+            | undefined;
+        }
+      | null
+      | undefined;
+  };
+};
 
 export const GetNodeSocialInfoDocument = gql`
-    query GetNodeSocialInfo($pubkey: String!) {
-  getNodeSocialInfo(pubkey: $pubkey) {
-    socials {
-      info {
-        private
-        telegram
-        twitter
-        twitter_verified
-        website
-        email
+  query GetNodeSocialInfo($pubkey: String!) {
+    getNodeSocialInfo(pubkey: $pubkey) {
+      socials {
+        info {
+          private
+          telegram
+          twitter
+          twitter_verified
+          website
+          email
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useGetNodeSocialInfoQuery__
@@ -45,14 +65,37 @@ export const GetNodeSocialInfoDocument = gql`
  *   },
  * });
  */
-export function useGetNodeSocialInfoQuery(baseOptions: Apollo.QueryHookOptions<GetNodeSocialInfoQuery, GetNodeSocialInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetNodeSocialInfoQuery, GetNodeSocialInfoQueryVariables>(GetNodeSocialInfoDocument, options);
-      }
-export function useGetNodeSocialInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetNodeSocialInfoQuery, GetNodeSocialInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetNodeSocialInfoQuery, GetNodeSocialInfoQueryVariables>(GetNodeSocialInfoDocument, options);
-        }
-export type GetNodeSocialInfoQueryHookResult = ReturnType<typeof useGetNodeSocialInfoQuery>;
-export type GetNodeSocialInfoLazyQueryHookResult = ReturnType<typeof useGetNodeSocialInfoLazyQuery>;
-export type GetNodeSocialInfoQueryResult = Apollo.QueryResult<GetNodeSocialInfoQuery, GetNodeSocialInfoQueryVariables>;
+export function useGetNodeSocialInfoQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetNodeSocialInfoQuery,
+    GetNodeSocialInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetNodeSocialInfoQuery,
+    GetNodeSocialInfoQueryVariables
+  >(GetNodeSocialInfoDocument, options);
+}
+export function useGetNodeSocialInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetNodeSocialInfoQuery,
+    GetNodeSocialInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetNodeSocialInfoQuery,
+    GetNodeSocialInfoQueryVariables
+  >(GetNodeSocialInfoDocument, options);
+}
+export type GetNodeSocialInfoQueryHookResult = ReturnType<
+  typeof useGetNodeSocialInfoQuery
+>;
+export type GetNodeSocialInfoLazyQueryHookResult = ReturnType<
+  typeof useGetNodeSocialInfoLazyQuery
+>;
+export type GetNodeSocialInfoQueryResult = Apollo.QueryResult<
+  GetNodeSocialInfoQuery,
+  GetNodeSocialInfoQueryVariables
+>;

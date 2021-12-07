@@ -147,7 +147,7 @@ export class Channel {
   pending_payments: PendingPayment[];
   @Field(() => PendingResume)
   pending_resume: PendingResume;
-  @Field(() => BosScore)
+  @Field(() => BosScore, { nullable: true })
   bosScore: BosScore;
 }
 

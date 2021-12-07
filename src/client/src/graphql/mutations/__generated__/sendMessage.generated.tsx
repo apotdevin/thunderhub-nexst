@@ -1,9 +1,8 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type SendMessageMutationVariables = Types.Exact<{
   publicKey: Types.Scalars['String'];
   message: Types.Scalars['String'];
@@ -12,22 +11,32 @@ export type SendMessageMutationVariables = Types.Exact<{
   maxFee?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
-
-export type SendMessageMutation = { __typename?: 'Mutation', sendMessage: number };
-
+export type SendMessageMutation = {
+  __typename?: 'Mutation';
+  sendMessage: number;
+};
 
 export const SendMessageDocument = gql`
-    mutation SendMessage($publicKey: String!, $message: String!, $messageType: String, $tokens: Float, $maxFee: Float) {
-  sendMessage(
-    publicKey: $publicKey
-    message: $message
-    messageType: $messageType
-    tokens: $tokens
-    maxFee: $maxFee
-  )
-}
-    `;
-export type SendMessageMutationFn = Apollo.MutationFunction<SendMessageMutation, SendMessageMutationVariables>;
+  mutation SendMessage(
+    $publicKey: String!
+    $message: String!
+    $messageType: String
+    $tokens: Float
+    $maxFee: Float
+  ) {
+    sendMessage(
+      publicKey: $publicKey
+      message: $message
+      messageType: $messageType
+      tokens: $tokens
+      maxFee: $maxFee
+    )
+  }
+`;
+export type SendMessageMutationFn = Apollo.MutationFunction<
+  SendMessageMutation,
+  SendMessageMutationVariables
+>;
 
 /**
  * __useSendMessageMutation__
@@ -50,10 +59,24 @@ export type SendMessageMutationFn = Apollo.MutationFunction<SendMessageMutation,
  *   },
  * });
  */
-export function useSendMessageMutation(baseOptions?: Apollo.MutationHookOptions<SendMessageMutation, SendMessageMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<SendMessageMutation, SendMessageMutationVariables>(SendMessageDocument, options);
-      }
-export type SendMessageMutationHookResult = ReturnType<typeof useSendMessageMutation>;
-export type SendMessageMutationResult = Apollo.MutationResult<SendMessageMutation>;
-export type SendMessageMutationOptions = Apollo.BaseMutationOptions<SendMessageMutation, SendMessageMutationVariables>;
+export function useSendMessageMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    SendMessageMutation,
+    SendMessageMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<SendMessageMutation, SendMessageMutationVariables>(
+    SendMessageDocument,
+    options
+  );
+}
+export type SendMessageMutationHookResult = ReturnType<
+  typeof useSendMessageMutation
+>;
+export type SendMessageMutationResult =
+  Apollo.MutationResult<SendMessageMutation>;
+export type SendMessageMutationOptions = Apollo.BaseMutationOptions<
+  SendMessageMutation,
+  SendMessageMutationVariables
+>;

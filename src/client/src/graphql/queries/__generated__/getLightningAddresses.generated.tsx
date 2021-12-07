@@ -1,23 +1,29 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetLightningAddressesQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetLightningAddressesQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetLightningAddressesQuery = { __typename?: 'Query', getLightningAddresses: Array<{ __typename?: 'LightningAddress', pubkey: string, lightning_address: string }> };
-
+export type GetLightningAddressesQuery = {
+  __typename?: 'Query';
+  getLightningAddresses: Array<{
+    __typename?: 'LightningAddress';
+    pubkey: string;
+    lightning_address: string;
+  }>;
+};
 
 export const GetLightningAddressesDocument = gql`
-    query GetLightningAddresses {
-  getLightningAddresses {
-    pubkey
-    lightning_address
+  query GetLightningAddresses {
+    getLightningAddresses {
+      pubkey
+      lightning_address
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetLightningAddressesQuery__
@@ -34,14 +40,37 @@ export const GetLightningAddressesDocument = gql`
  *   },
  * });
  */
-export function useGetLightningAddressesQuery(baseOptions?: Apollo.QueryHookOptions<GetLightningAddressesQuery, GetLightningAddressesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetLightningAddressesQuery, GetLightningAddressesQueryVariables>(GetLightningAddressesDocument, options);
-      }
-export function useGetLightningAddressesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLightningAddressesQuery, GetLightningAddressesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetLightningAddressesQuery, GetLightningAddressesQueryVariables>(GetLightningAddressesDocument, options);
-        }
-export type GetLightningAddressesQueryHookResult = ReturnType<typeof useGetLightningAddressesQuery>;
-export type GetLightningAddressesLazyQueryHookResult = ReturnType<typeof useGetLightningAddressesLazyQuery>;
-export type GetLightningAddressesQueryResult = Apollo.QueryResult<GetLightningAddressesQuery, GetLightningAddressesQueryVariables>;
+export function useGetLightningAddressesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLightningAddressesQuery,
+    GetLightningAddressesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLightningAddressesQuery,
+    GetLightningAddressesQueryVariables
+  >(GetLightningAddressesDocument, options);
+}
+export function useGetLightningAddressesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLightningAddressesQuery,
+    GetLightningAddressesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLightningAddressesQuery,
+    GetLightningAddressesQueryVariables
+  >(GetLightningAddressesDocument, options);
+}
+export type GetLightningAddressesQueryHookResult = ReturnType<
+  typeof useGetLightningAddressesQuery
+>;
+export type GetLightningAddressesLazyQueryHookResult = ReturnType<
+  typeof useGetLightningAddressesLazyQuery
+>;
+export type GetLightningAddressesQueryResult = Apollo.QueryResult<
+  GetLightningAddressesQuery,
+  GetLightningAddressesQueryVariables
+>;

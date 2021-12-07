@@ -1,9 +1,8 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type OpenChannelMutationVariables = Types.Exact<{
   amount: Types.Scalars['Float'];
   partnerPublicKey: Types.Scalars['String'];
@@ -12,25 +11,39 @@ export type OpenChannelMutationVariables = Types.Exact<{
   pushTokens?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
-
-export type OpenChannelMutation = { __typename?: 'Mutation', openChannel: { __typename?: 'OpenOrCloseChannel', transactionId: string, transactionOutputIndex: string } };
-
+export type OpenChannelMutation = {
+  __typename?: 'Mutation';
+  openChannel: {
+    __typename?: 'OpenOrCloseChannel';
+    transactionId: string;
+    transactionOutputIndex: string;
+  };
+};
 
 export const OpenChannelDocument = gql`
-    mutation OpenChannel($amount: Float!, $partnerPublicKey: String!, $tokensPerVByte: Float, $isPrivate: Boolean, $pushTokens: Float) {
-  openChannel(
-    amount: $amount
-    partnerPublicKey: $partnerPublicKey
-    tokensPerVByte: $tokensPerVByte
-    isPrivate: $isPrivate
-    pushTokens: $pushTokens
+  mutation OpenChannel(
+    $amount: Float!
+    $partnerPublicKey: String!
+    $tokensPerVByte: Float
+    $isPrivate: Boolean
+    $pushTokens: Float
   ) {
-    transactionId
-    transactionOutputIndex
+    openChannel(
+      amount: $amount
+      partnerPublicKey: $partnerPublicKey
+      tokensPerVByte: $tokensPerVByte
+      isPrivate: $isPrivate
+      pushTokens: $pushTokens
+    ) {
+      transactionId
+      transactionOutputIndex
+    }
   }
-}
-    `;
-export type OpenChannelMutationFn = Apollo.MutationFunction<OpenChannelMutation, OpenChannelMutationVariables>;
+`;
+export type OpenChannelMutationFn = Apollo.MutationFunction<
+  OpenChannelMutation,
+  OpenChannelMutationVariables
+>;
 
 /**
  * __useOpenChannelMutation__
@@ -53,10 +66,24 @@ export type OpenChannelMutationFn = Apollo.MutationFunction<OpenChannelMutation,
  *   },
  * });
  */
-export function useOpenChannelMutation(baseOptions?: Apollo.MutationHookOptions<OpenChannelMutation, OpenChannelMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<OpenChannelMutation, OpenChannelMutationVariables>(OpenChannelDocument, options);
-      }
-export type OpenChannelMutationHookResult = ReturnType<typeof useOpenChannelMutation>;
-export type OpenChannelMutationResult = Apollo.MutationResult<OpenChannelMutation>;
-export type OpenChannelMutationOptions = Apollo.BaseMutationOptions<OpenChannelMutation, OpenChannelMutationVariables>;
+export function useOpenChannelMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    OpenChannelMutation,
+    OpenChannelMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<OpenChannelMutation, OpenChannelMutationVariables>(
+    OpenChannelDocument,
+    options
+  );
+}
+export type OpenChannelMutationHookResult = ReturnType<
+  typeof useOpenChannelMutation
+>;
+export type OpenChannelMutationResult =
+  Apollo.MutationResult<OpenChannelMutation>;
+export type OpenChannelMutationOptions = Apollo.BaseMutationOptions<
+  OpenChannelMutation,
+  OpenChannelMutationVariables
+>;

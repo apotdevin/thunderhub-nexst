@@ -1,27 +1,37 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetLnMarketsUserInfoQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetLnMarketsUserInfoQueryVariables = Types.Exact<{
+  [key: string]: never;
+}>;
 
-
-export type GetLnMarketsUserInfoQuery = { __typename?: 'Query', getLnMarketsUserInfo: { __typename?: 'LnMarketsUserInfo', uid?: string | null | undefined, balance?: string | null | undefined, account_type?: string | null | undefined, username?: string | null | undefined, linkingpublickey?: string | null | undefined, last_ip?: string | null | undefined } };
-
+export type GetLnMarketsUserInfoQuery = {
+  __typename?: 'Query';
+  getLnMarketsUserInfo: {
+    __typename?: 'LnMarketsUserInfo';
+    uid?: string | null | undefined;
+    balance?: string | null | undefined;
+    account_type?: string | null | undefined;
+    username?: string | null | undefined;
+    linkingpublickey?: string | null | undefined;
+    last_ip?: string | null | undefined;
+  };
+};
 
 export const GetLnMarketsUserInfoDocument = gql`
-    query GetLnMarketsUserInfo {
-  getLnMarketsUserInfo {
-    uid
-    balance
-    account_type
-    username
-    linkingpublickey
-    last_ip
+  query GetLnMarketsUserInfo {
+    getLnMarketsUserInfo {
+      uid
+      balance
+      account_type
+      username
+      linkingpublickey
+      last_ip
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetLnMarketsUserInfoQuery__
@@ -38,14 +48,37 @@ export const GetLnMarketsUserInfoDocument = gql`
  *   },
  * });
  */
-export function useGetLnMarketsUserInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetLnMarketsUserInfoQuery, GetLnMarketsUserInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetLnMarketsUserInfoQuery, GetLnMarketsUserInfoQueryVariables>(GetLnMarketsUserInfoDocument, options);
-      }
-export function useGetLnMarketsUserInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLnMarketsUserInfoQuery, GetLnMarketsUserInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetLnMarketsUserInfoQuery, GetLnMarketsUserInfoQueryVariables>(GetLnMarketsUserInfoDocument, options);
-        }
-export type GetLnMarketsUserInfoQueryHookResult = ReturnType<typeof useGetLnMarketsUserInfoQuery>;
-export type GetLnMarketsUserInfoLazyQueryHookResult = ReturnType<typeof useGetLnMarketsUserInfoLazyQuery>;
-export type GetLnMarketsUserInfoQueryResult = Apollo.QueryResult<GetLnMarketsUserInfoQuery, GetLnMarketsUserInfoQueryVariables>;
+export function useGetLnMarketsUserInfoQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLnMarketsUserInfoQuery,
+    GetLnMarketsUserInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLnMarketsUserInfoQuery,
+    GetLnMarketsUserInfoQueryVariables
+  >(GetLnMarketsUserInfoDocument, options);
+}
+export function useGetLnMarketsUserInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLnMarketsUserInfoQuery,
+    GetLnMarketsUserInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLnMarketsUserInfoQuery,
+    GetLnMarketsUserInfoQueryVariables
+  >(GetLnMarketsUserInfoDocument, options);
+}
+export type GetLnMarketsUserInfoQueryHookResult = ReturnType<
+  typeof useGetLnMarketsUserInfoQuery
+>;
+export type GetLnMarketsUserInfoLazyQueryHookResult = ReturnType<
+  typeof useGetLnMarketsUserInfoLazyQuery
+>;
+export type GetLnMarketsUserInfoQueryResult = Apollo.QueryResult<
+  GetLnMarketsUserInfoQuery,
+  GetLnMarketsUserInfoQueryVariables
+>;

@@ -1,25 +1,31 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetBaseNodesQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetBaseNodesQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type GetBaseNodesQuery = { __typename?: 'Query', getBaseNodes: Array<{ __typename?: 'BaseNode', _id?: string | null | undefined, name?: string | null | undefined, public_key: string, socket: string }> };
-
+export type GetBaseNodesQuery = {
+  __typename?: 'Query';
+  getBaseNodes: Array<{
+    __typename?: 'BaseNode';
+    _id?: string | null | undefined;
+    name?: string | null | undefined;
+    public_key: string;
+    socket: string;
+  }>;
+};
 
 export const GetBaseNodesDocument = gql`
-    query GetBaseNodes {
-  getBaseNodes {
-    _id
-    name
-    public_key
-    socket
+  query GetBaseNodes {
+    getBaseNodes {
+      _id
+      name
+      public_key
+      socket
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetBaseNodesQuery__
@@ -36,14 +42,37 @@ export const GetBaseNodesDocument = gql`
  *   },
  * });
  */
-export function useGetBaseNodesQuery(baseOptions?: Apollo.QueryHookOptions<GetBaseNodesQuery, GetBaseNodesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetBaseNodesQuery, GetBaseNodesQueryVariables>(GetBaseNodesDocument, options);
-      }
-export function useGetBaseNodesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetBaseNodesQuery, GetBaseNodesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetBaseNodesQuery, GetBaseNodesQueryVariables>(GetBaseNodesDocument, options);
-        }
-export type GetBaseNodesQueryHookResult = ReturnType<typeof useGetBaseNodesQuery>;
-export type GetBaseNodesLazyQueryHookResult = ReturnType<typeof useGetBaseNodesLazyQuery>;
-export type GetBaseNodesQueryResult = Apollo.QueryResult<GetBaseNodesQuery, GetBaseNodesQueryVariables>;
+export function useGetBaseNodesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetBaseNodesQuery,
+    GetBaseNodesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetBaseNodesQuery, GetBaseNodesQueryVariables>(
+    GetBaseNodesDocument,
+    options
+  );
+}
+export function useGetBaseNodesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetBaseNodesQuery,
+    GetBaseNodesQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetBaseNodesQuery, GetBaseNodesQueryVariables>(
+    GetBaseNodesDocument,
+    options
+  );
+}
+export type GetBaseNodesQueryHookResult = ReturnType<
+  typeof useGetBaseNodesQuery
+>;
+export type GetBaseNodesLazyQueryHookResult = ReturnType<
+  typeof useGetBaseNodesLazyQuery
+>;
+export type GetBaseNodesQueryResult = Apollo.QueryResult<
+  GetBaseNodesQuery,
+  GetBaseNodesQueryVariables
+>;

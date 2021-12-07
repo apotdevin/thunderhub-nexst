@@ -1,28 +1,37 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
-export type GetUtxosQueryVariables = Types.Exact<{ [key: string]: never; }>;
+const defaultOptions = {};
+export type GetUtxosQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type GetUtxosQuery = { __typename?: 'Query', getUtxos: Array<{ __typename?: 'Utxo', address: string, address_format: string, confirmation_count: number, output_script: string, tokens: number, transaction_id: string, transaction_vout: number }> };
-
+export type GetUtxosQuery = {
+  __typename?: 'Query';
+  getUtxos: Array<{
+    __typename?: 'Utxo';
+    address: string;
+    address_format: string;
+    confirmation_count: number;
+    output_script: string;
+    tokens: number;
+    transaction_id: string;
+    transaction_vout: number;
+  }>;
+};
 
 export const GetUtxosDocument = gql`
-    query GetUtxos {
-  getUtxos {
-    address
-    address_format
-    confirmation_count
-    output_script
-    tokens
-    transaction_id
-    transaction_vout
+  query GetUtxos {
+    getUtxos {
+      address
+      address_format
+      confirmation_count
+      output_script
+      tokens
+      transaction_id
+      transaction_vout
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetUtxosQuery__
@@ -39,14 +48,32 @@ export const GetUtxosDocument = gql`
  *   },
  * });
  */
-export function useGetUtxosQuery(baseOptions?: Apollo.QueryHookOptions<GetUtxosQuery, GetUtxosQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetUtxosQuery, GetUtxosQueryVariables>(GetUtxosDocument, options);
-      }
-export function useGetUtxosLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUtxosQuery, GetUtxosQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetUtxosQuery, GetUtxosQueryVariables>(GetUtxosDocument, options);
-        }
+export function useGetUtxosQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetUtxosQuery, GetUtxosQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetUtxosQuery, GetUtxosQueryVariables>(
+    GetUtxosDocument,
+    options
+  );
+}
+export function useGetUtxosLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetUtxosQuery,
+    GetUtxosQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetUtxosQuery, GetUtxosQueryVariables>(
+    GetUtxosDocument,
+    options
+  );
+}
 export type GetUtxosQueryHookResult = ReturnType<typeof useGetUtxosQuery>;
-export type GetUtxosLazyQueryHookResult = ReturnType<typeof useGetUtxosLazyQuery>;
-export type GetUtxosQueryResult = Apollo.QueryResult<GetUtxosQuery, GetUtxosQueryVariables>;
+export type GetUtxosLazyQueryHookResult = ReturnType<
+  typeof useGetUtxosLazyQuery
+>;
+export type GetUtxosQueryResult = Apollo.QueryResult<
+  GetUtxosQuery,
+  GetUtxosQueryVariables
+>;

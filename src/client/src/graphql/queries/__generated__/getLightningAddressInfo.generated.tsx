@@ -1,29 +1,37 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type GetLightningAddressInfoQueryVariables = Types.Exact<{
   address: Types.Scalars['String'];
 }>;
 
-
-export type GetLightningAddressInfoQuery = { __typename?: 'Query', getLightningAddressInfo: { __typename?: 'PayRequest', callback?: string | null | undefined, maxSendable?: string | null | undefined, minSendable?: string | null | undefined, metadata?: string | null | undefined, commentAllowed?: number | null | undefined, tag?: string | null | undefined } };
-
+export type GetLightningAddressInfoQuery = {
+  __typename?: 'Query';
+  getLightningAddressInfo: {
+    __typename?: 'PayRequest';
+    callback?: string | null | undefined;
+    maxSendable?: string | null | undefined;
+    minSendable?: string | null | undefined;
+    metadata?: string | null | undefined;
+    commentAllowed?: number | null | undefined;
+    tag?: string | null | undefined;
+  };
+};
 
 export const GetLightningAddressInfoDocument = gql`
-    query GetLightningAddressInfo($address: String!) {
-  getLightningAddressInfo(address: $address) {
-    callback
-    maxSendable
-    minSendable
-    metadata
-    commentAllowed
-    tag
+  query GetLightningAddressInfo($address: String!) {
+    getLightningAddressInfo(address: $address) {
+      callback
+      maxSendable
+      minSendable
+      metadata
+      commentAllowed
+      tag
+    }
   }
-}
-    `;
+`;
 
 /**
  * __useGetLightningAddressInfoQuery__
@@ -41,14 +49,37 @@ export const GetLightningAddressInfoDocument = gql`
  *   },
  * });
  */
-export function useGetLightningAddressInfoQuery(baseOptions: Apollo.QueryHookOptions<GetLightningAddressInfoQuery, GetLightningAddressInfoQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetLightningAddressInfoQuery, GetLightningAddressInfoQueryVariables>(GetLightningAddressInfoDocument, options);
-      }
-export function useGetLightningAddressInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLightningAddressInfoQuery, GetLightningAddressInfoQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetLightningAddressInfoQuery, GetLightningAddressInfoQueryVariables>(GetLightningAddressInfoDocument, options);
-        }
-export type GetLightningAddressInfoQueryHookResult = ReturnType<typeof useGetLightningAddressInfoQuery>;
-export type GetLightningAddressInfoLazyQueryHookResult = ReturnType<typeof useGetLightningAddressInfoLazyQuery>;
-export type GetLightningAddressInfoQueryResult = Apollo.QueryResult<GetLightningAddressInfoQuery, GetLightningAddressInfoQueryVariables>;
+export function useGetLightningAddressInfoQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetLightningAddressInfoQuery,
+    GetLightningAddressInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetLightningAddressInfoQuery,
+    GetLightningAddressInfoQueryVariables
+  >(GetLightningAddressInfoDocument, options);
+}
+export function useGetLightningAddressInfoLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLightningAddressInfoQuery,
+    GetLightningAddressInfoQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetLightningAddressInfoQuery,
+    GetLightningAddressInfoQueryVariables
+  >(GetLightningAddressInfoDocument, options);
+}
+export type GetLightningAddressInfoQueryHookResult = ReturnType<
+  typeof useGetLightningAddressInfoQuery
+>;
+export type GetLightningAddressInfoLazyQueryHookResult = ReturnType<
+  typeof useGetLightningAddressInfoLazyQuery
+>;
+export type GetLightningAddressInfoQueryResult = Apollo.QueryResult<
+  GetLightningAddressInfoQuery,
+  GetLightningAddressInfoQueryVariables
+>;

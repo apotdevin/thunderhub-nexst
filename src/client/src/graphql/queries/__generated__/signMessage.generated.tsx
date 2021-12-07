@@ -1,22 +1,19 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type SignMessageQueryVariables = Types.Exact<{
   message: Types.Scalars['String'];
 }>;
 
-
-export type SignMessageQuery = { __typename?: 'Query', signMessage: string };
-
+export type SignMessageQuery = { __typename?: 'Query'; signMessage: string };
 
 export const SignMessageDocument = gql`
-    query SignMessage($message: String!) {
-  signMessage(message: $message)
-}
-    `;
+  query SignMessage($message: String!) {
+    signMessage(message: $message)
+  }
+`;
 
 /**
  * __useSignMessageQuery__
@@ -34,14 +31,35 @@ export const SignMessageDocument = gql`
  *   },
  * });
  */
-export function useSignMessageQuery(baseOptions: Apollo.QueryHookOptions<SignMessageQuery, SignMessageQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<SignMessageQuery, SignMessageQueryVariables>(SignMessageDocument, options);
-      }
-export function useSignMessageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SignMessageQuery, SignMessageQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<SignMessageQuery, SignMessageQueryVariables>(SignMessageDocument, options);
-        }
+export function useSignMessageQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    SignMessageQuery,
+    SignMessageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<SignMessageQuery, SignMessageQueryVariables>(
+    SignMessageDocument,
+    options
+  );
+}
+export function useSignMessageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    SignMessageQuery,
+    SignMessageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<SignMessageQuery, SignMessageQueryVariables>(
+    SignMessageDocument,
+    options
+  );
+}
 export type SignMessageQueryHookResult = ReturnType<typeof useSignMessageQuery>;
-export type SignMessageLazyQueryHookResult = ReturnType<typeof useSignMessageLazyQuery>;
-export type SignMessageQueryResult = Apollo.QueryResult<SignMessageQuery, SignMessageQueryVariables>;
+export type SignMessageLazyQueryHookResult = ReturnType<
+  typeof useSignMessageLazyQuery
+>;
+export type SignMessageQueryResult = Apollo.QueryResult<
+  SignMessageQuery,
+  SignMessageQueryVariables
+>;

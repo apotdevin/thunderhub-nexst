@@ -1,50 +1,86 @@
-/* eslint-disable */
 import * as Types from '../../types';
 
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
-const defaultOptions =  {}
+const defaultOptions = {};
 export type CreateBoltzReverseSwapMutationVariables = Types.Exact<{
   amount: Types.Scalars['Float'];
   address?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
-
-export type CreateBoltzReverseSwapMutation = { __typename?: 'Mutation', createBoltzReverseSwap: { __typename?: 'CreateBoltzReverseSwapType', id: string, invoice: string, redeemScript: string, onchainAmount: number, timeoutBlockHeight: number, lockupAddress: string, minerFeeInvoice?: string | null | undefined, receivingAddress: string, preimage?: string | null | undefined, preimageHash?: string | null | undefined, privateKey?: string | null | undefined, publicKey?: string | null | undefined, decodedInvoice?: { __typename?: 'DecodeInvoice', description: string, destination: string, expires_at: string, id: string, safe_tokens: number, tokens: number, destination_node?: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } } | null | undefined } | null | undefined } };
-
+export type CreateBoltzReverseSwapMutation = {
+  __typename?: 'Mutation';
+  createBoltzReverseSwap: {
+    __typename?: 'CreateBoltzReverseSwapType';
+    id: string;
+    invoice: string;
+    redeemScript: string;
+    onchainAmount: number;
+    timeoutBlockHeight: number;
+    lockupAddress: string;
+    minerFeeInvoice?: string | null | undefined;
+    receivingAddress: string;
+    preimage?: string | null | undefined;
+    preimageHash?: string | null | undefined;
+    privateKey?: string | null | undefined;
+    publicKey?: string | null | undefined;
+    decodedInvoice?:
+      | {
+          __typename?: 'DecodeInvoice';
+          description: string;
+          destination: string;
+          expires_at: string;
+          id: string;
+          safe_tokens: number;
+          tokens: number;
+          destination_node?:
+            | {
+                __typename?: 'Node';
+                node: { __typename?: 'NodeType'; alias: string };
+              }
+            | null
+            | undefined;
+        }
+      | null
+      | undefined;
+  };
+};
 
 export const CreateBoltzReverseSwapDocument = gql`
-    mutation CreateBoltzReverseSwap($amount: Float!, $address: String) {
-  createBoltzReverseSwap(amount: $amount, address: $address) {
-    id
-    invoice
-    redeemScript
-    onchainAmount
-    timeoutBlockHeight
-    lockupAddress
-    minerFeeInvoice
-    receivingAddress
-    preimage
-    preimageHash
-    privateKey
-    publicKey
-    decodedInvoice {
-      description
-      destination
-      expires_at
+  mutation CreateBoltzReverseSwap($amount: Float!, $address: String) {
+    createBoltzReverseSwap(amount: $amount, address: $address) {
       id
-      safe_tokens
-      tokens
-      destination_node {
-        node {
-          alias
+      invoice
+      redeemScript
+      onchainAmount
+      timeoutBlockHeight
+      lockupAddress
+      minerFeeInvoice
+      receivingAddress
+      preimage
+      preimageHash
+      privateKey
+      publicKey
+      decodedInvoice {
+        description
+        destination
+        expires_at
+        id
+        safe_tokens
+        tokens
+        destination_node {
+          node {
+            alias
+          }
         }
       }
     }
   }
-}
-    `;
-export type CreateBoltzReverseSwapMutationFn = Apollo.MutationFunction<CreateBoltzReverseSwapMutation, CreateBoltzReverseSwapMutationVariables>;
+`;
+export type CreateBoltzReverseSwapMutationFn = Apollo.MutationFunction<
+  CreateBoltzReverseSwapMutation,
+  CreateBoltzReverseSwapMutationVariables
+>;
 
 /**
  * __useCreateBoltzReverseSwapMutation__
@@ -64,10 +100,24 @@ export type CreateBoltzReverseSwapMutationFn = Apollo.MutationFunction<CreateBol
  *   },
  * });
  */
-export function useCreateBoltzReverseSwapMutation(baseOptions?: Apollo.MutationHookOptions<CreateBoltzReverseSwapMutation, CreateBoltzReverseSwapMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateBoltzReverseSwapMutation, CreateBoltzReverseSwapMutationVariables>(CreateBoltzReverseSwapDocument, options);
-      }
-export type CreateBoltzReverseSwapMutationHookResult = ReturnType<typeof useCreateBoltzReverseSwapMutation>;
-export type CreateBoltzReverseSwapMutationResult = Apollo.MutationResult<CreateBoltzReverseSwapMutation>;
-export type CreateBoltzReverseSwapMutationOptions = Apollo.BaseMutationOptions<CreateBoltzReverseSwapMutation, CreateBoltzReverseSwapMutationVariables>;
+export function useCreateBoltzReverseSwapMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateBoltzReverseSwapMutation,
+    CreateBoltzReverseSwapMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateBoltzReverseSwapMutation,
+    CreateBoltzReverseSwapMutationVariables
+  >(CreateBoltzReverseSwapDocument, options);
+}
+export type CreateBoltzReverseSwapMutationHookResult = ReturnType<
+  typeof useCreateBoltzReverseSwapMutation
+>;
+export type CreateBoltzReverseSwapMutationResult =
+  Apollo.MutationResult<CreateBoltzReverseSwapMutation>;
+export type CreateBoltzReverseSwapMutationOptions = Apollo.BaseMutationOptions<
+  CreateBoltzReverseSwapMutation,
+  CreateBoltzReverseSwapMutationVariables
+>;
