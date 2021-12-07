@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import EventEmitter from 'events';
 import { AccountsService } from '../accounts/accounts.service';
 import { LndService } from './lnd/lnd.service';
 import {
@@ -11,6 +12,7 @@ import {
   GetPaymentsParams,
   OpenChannelParams,
   PayInvoiceParams,
+  PayViaPaymentDetailsParams,
   Permissions,
   SendToChainParams,
   UpdateRoutingFeesParams,
@@ -233,5 +235,17 @@ export class NodeService {
     const account = this.accountsService.getAccount(id);
     if (!account) throw new Error('Node account not found');
     return this.lndService.getInvoices(account, options);
+  }
+
+  async payViaPaymentDetails(id: string, options: PayViaPaymentDetailsParams) {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.payViaPaymentDetails(account, options);
+  }
+
+  subscribeToInvoice(id: string, invoice: string): EventEmitter {
+    const account = this.accountsService.getAccount(id);
+    if (!account) throw new Error('Node account not found');
+    return this.lndService.subscribeToInvoice(account, invoice);
   }
 }

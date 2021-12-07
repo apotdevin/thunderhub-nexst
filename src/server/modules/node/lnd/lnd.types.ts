@@ -334,3 +334,15 @@ export type GetPaymentsParams = {
   limit?: number;
   token?: string;
 };
+
+type PaymentDetailMessages = {
+  type: string;
+  value: string;
+};
+
+export type PayViaPaymentDetailsParams = {
+  id: string;
+  tokens: number;
+  destination: string;
+  messages: PaymentDetailMessages[];
+};

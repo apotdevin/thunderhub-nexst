@@ -32,6 +32,7 @@ import {
   OpenChannelParams,
   PayInvoiceParams,
   PayInvoiceType,
+  PayViaPaymentDetailsParams,
   Permissions,
   SendToChainAddressType,
   SendToChainParams,
@@ -66,6 +67,7 @@ import {
   sendToChainAddress,
   decodePaymentRequest,
   pay,
+  payViaPaymentDetails,
   createInvoice,
   getChannel,
   closeChannel,
@@ -74,9 +76,11 @@ import {
   getForwards,
   getPayments,
   getInvoices,
+  subscribeToInvoice,
 } from 'ln-service';
 import { EnrichedAccount } from '../../accounts/accounts.types';
 import { to } from './lnd.helpers';
+import EventEmitter from 'events';
 
 @Injectable()
 export class LndService {
@@ -312,5 +316,18 @@ export class LndService {
 
   async getInvoices(account: EnrichedAccount, options: GetPaymentsParams) {
     return to<GetInvoices>(getInvoices({ lnd: account.lnd, ...options }));
+  }
+
+  async payViaPaymentDetails(
+    account: EnrichedAccount,
+    options: PayViaPaymentDetailsParams
+  ) {
+    return to<PayInvoiceType>(
+      payViaPaymentDetails({ lnd: account.lnd, ...options })
+    );
+  }
+
+  subscribeToInvoice(account: EnrichedAccount, id: string): EventEmitter {
+    return subscribeToInvoice({ lnd: account.lnd, id });
   }
 }

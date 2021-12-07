@@ -168,9 +168,36 @@ type ClosedChannel {
   transaction_vout: Float!
 }
 
+type CreateInvoice {
+  chain_address: String
+  created_at: String!
+  description: String!
+  id: String!
+  mtokens: String
+  request: String!
+  secret: String!
+  tokens: Float
+}
+
 type CreateMacaroon {
   base: String!
   hex: String!
+}
+
+type DecodeInvoice {
+  chain_address: String
+  cltv_delta: Float
+  description: String!
+  description_hash: String
+  destination: String!
+  destination_node: Node
+  expires_at: String!
+  id: String!
+  mtokens: String!
+  payment: String
+  routes: [[Route!]!]!
+  safe_tokens: Float!
+  tokens: Float!
 }
 
 type FeeHealth {
@@ -196,6 +223,14 @@ type Forward {
 type GetResumeType {
   offset: Float!
   resume: [Transaction!]!
+}
+
+type Hops {
+  channel: String!
+  channel_capacity: Float!
+  fee_mtokens: String!
+  forward_mtokens: String!
+  timeout: Float!
 }
 
 type InvoicePayment {
@@ -253,11 +288,13 @@ type Mutation {
   closeChannel(forceClose: Boolean!, id: String!, targetConfirmations: Float!, tokensPerVByte: Float!): OpenOrCloseChannel!
   createAddress: String!
   createBaseInvoice(amount: Float!): BaseInvoice!
+  createInvoice(amount: Float!, description: String, includePrivate: Boolean, secondsUntil: Float): CreateInvoice!
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
   fetchLnUrl(url: String!): LnUrlRequest!
   getAuthToken(cookie: String!): Boolean!
   getSessionToken(id: String!, password: String!): String!
+  keysend(destination: String, tokens: Float!): PayInvoice!
   lnUrlAuth(url: String!): AuthResponse!
   lnUrlChannel(callback: String!, k1: String!, uri: String!): String!
   lnUrlPay(amount: Float!, callback: String!, comment: String!): String!
@@ -265,6 +302,7 @@ type Mutation {
   loginAmboss: Boolean!
   logout: Boolean!
   openChannel(amount: Float!, isPrivate: Boolean, partnerPublicKey: String!, pushTokens: Float = 0, tokensPerVByte: Float): OpenOrCloseChannel!
+  pay(max_fee: Float!, max_paths: Float!, out: [String!], request: String!): PayInvoice!
   removePeer(publicKey: String): Boolean!
   sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): String!
   updateFees(base_fee_tokens: Float!, cltv_delta: Float!, fee_rate: Float!, max_htlc_mtokens: String!, min_htlc_mtokens: String!, transaction_id: String!, transaction_vout: Float!): Boolean!
@@ -373,6 +411,20 @@ type OpenOrCloseChannel {
   transactionOutputIndex: String!
 }
 
+type PayInvoice {
+  fee: Float!
+  fee_mtokens: String!
+  hops: [Hops!]!
+  id: String!
+  is_confirmed: Boolean!
+  is_outgoing: Boolean!
+  mtokens: String!
+  safe_fee: Float!
+  safe_tokens: Float!
+  secret: String!
+  tokens: Float!
+}
+
 type PayRequest {
   callback: String
   commentAllowed: Float
@@ -465,6 +517,7 @@ type Policy {
 }
 
 type Query {
+  decodeRequest(request: String!): DecodeInvoice!
   getAccount: ServerAccount!
   getAmbossLoginToken: String!
   getAmbossUser: AmbossUser!
@@ -483,6 +536,7 @@ type Query {
   getFeeHealth: ChannelsHealth!
   getForwards(days: Float!): [Forward!]!
   getHello: String!
+  getInvoiceStatusChange(id: String!): String!
   getLatestVersion: String!
   getLightningAddressInfo(address: String!): PayRequest!
   getLightningAddresses: [LightningAddress!]!
@@ -504,6 +558,14 @@ type Query {
   signMessage(message: String!): String!
   verifyBackups(backup: String!): Boolean!
   verifyMessage(message: String!, signature: String!): String!
+}
+
+type Route {
+  base_fee_mtokens: String
+  channel: String
+  cltv_delta: Float
+  fee_rate: Float
+  public_key: String!
 }
 
 type ServerAccount {
