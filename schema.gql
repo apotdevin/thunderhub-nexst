@@ -220,6 +220,11 @@ type Forward {
   tokens: Float!
 }
 
+type GetMessages {
+  messages: [Message!]!
+  token: String
+}
+
 type GetResumeType {
   offset: Float!
   resume: [Transaction!]!
@@ -279,6 +284,17 @@ type LightningNodeSocialInfo {
 
 union LnUrlRequest = ChannelRequest | PayRequest | WithdrawRequest
 
+type Message {
+  alias: String
+  contentType: String
+  date: String!
+  id: String!
+  message: String
+  sender: String
+  tokens: Float
+  verified: Boolean!
+}
+
 type MessageType {
   message: String!
 }
@@ -304,6 +320,7 @@ type Mutation {
   openChannel(amount: Float!, isPrivate: Boolean, partnerPublicKey: String!, pushTokens: Float = 0, tokensPerVByte: Float): OpenOrCloseChannel!
   pay(max_fee: Float!, max_paths: Float!, out: [String!], request: String!): PayInvoice!
   removePeer(publicKey: String): Boolean!
+  sendMessage(maxFee: Float, message: String!, messageType: String, publicKey: String!, tokens: Float): Float!
   sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): String!
   updateFees(base_fee_tokens: Float!, cltv_delta: Float!, fee_rate: Float!, max_htlc_mtokens: String!, min_htlc_mtokens: String!, transaction_id: String!, transaction_vout: Float!): Boolean!
   updateMultipleFees(channels: [UpdateRoutingFeesParams!]!): Boolean!
@@ -540,6 +557,7 @@ type Query {
   getLatestVersion: String!
   getLightningAddressInfo(address: String!): PayRequest!
   getLightningAddresses: [LightningAddress!]!
+  getMessages(initialize: Float!): GetMessages!
   getNetworkInfo: NetworkInfo!
   getNode(publicKey: String!, withoutChannels: Boolean!): Node!
   getNodeBalances: Balances!

@@ -2,8 +2,6 @@ import { merge } from 'lodash';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { generalTypes, queryTypes, mutationTypes } from './types';
 import { routeResolvers } from './route/resolvers';
-import { chatTypes } from './chat/types';
-import { chatResolvers } from './chat/resolvers';
 import { routeTypes } from './route/types';
 import { bosResolvers } from './bos/resolvers';
 import { bosTypes } from './bos/types';
@@ -16,7 +14,6 @@ const typeDefs = [
   generalTypes,
   queryTypes,
   mutationTypes,
-  chatTypes,
   routeTypes,
   bosTypes,
   lnMarketsTypes,
@@ -25,7 +22,6 @@ const typeDefs = [
 
 const resolvers = merge(
   routeResolvers,
-  chatResolvers,
   bosResolvers,
   lnMarketsResolvers,
   boltzResolvers

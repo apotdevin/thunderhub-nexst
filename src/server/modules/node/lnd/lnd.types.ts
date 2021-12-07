@@ -344,5 +344,6 @@ export type PayViaPaymentDetailsParams = {
   id: string;
   tokens: number;
   destination: string;
+  max_fee?: number;
   messages: PaymentDetailMessages[];
 };

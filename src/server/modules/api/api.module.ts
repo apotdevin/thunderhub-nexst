@@ -20,6 +20,7 @@ import { ForwardsModule } from './forwards/forwards.module';
 import { HealthModule } from './health/health.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { InvoicesModule } from './invoices/invoices.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { InvoicesModule } from './invoices/invoices.module';
     HealthModule,
     TransactionsModule,
     InvoicesModule,
+    ChatModule,
   ],
 })
 export class ApiModule {}
