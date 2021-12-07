@@ -150,7 +150,7 @@ export class AmbossResolver {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger
   ) {}
 
-  @Query(() => AmbossUser)
+  @Query(() => AmbossUser, { nullable: true })
   async getAmbossUser(@Context() { ambossAuth }: ContextType) {
     const { data, error } = await this.fetchService.graphqlFetchWithProxy(
       appUrls.amboss,

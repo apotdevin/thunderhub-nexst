@@ -332,7 +332,7 @@ type Hops {
 
 type InvoicePayment {
   in_channel: String!
-  messages: MessageType!
+  messages: MessageType
 }
 
 type InvoiceType {
@@ -397,7 +397,7 @@ type Message {
 }
 
 type MessageType {
-  message: String!
+  message: String
 }
 
 type Mutation {
@@ -655,7 +655,7 @@ type Query {
   getAccount: ServerAccount!
   getAccountingReport(category: String, currency: String, fiat: String, month: String, year: String): String!
   getAmbossLoginToken: String!
-  getAmbossUser: AmbossUser!
+  getAmbossUser: AmbossUser
   getBackups: String!
   getBaseCanConnect: Boolean!
   getBaseNodes: [BaseNode!]!

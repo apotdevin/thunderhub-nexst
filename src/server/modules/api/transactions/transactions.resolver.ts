@@ -32,11 +32,11 @@ export class TransactionsResolver {
 
     const mappedPayments = payments.map(payment => ({
       ...payment,
+      __typename: 'PaymentType',
       type: 'payment',
       date: payment.created_at,
       destination_node: { publicKey: payment.destination },
       hops: [...payment.hops.map(hop => ({ publicKey: hop }))],
-      isTypeOf: 'PaymentType',
     }));
 
     const invoices = await this.transactionsService.getInvoicesBetweenDates(
@@ -46,10 +46,10 @@ export class TransactionsResolver {
     );
 
     const mappedInvoices = invoices.map(invoice => ({
+      ...invoice,
+      __typename: 'InvoiceType',
       type: 'invoice',
       date: invoice.confirmed_at || invoice.created_at,
-      ...invoice,
-      isTypeOf: 'InvoiceType',
       payments: invoice.payments.map(p => ({
         ...p,
         messages: decodeMessages(p.messages),

@@ -3,7 +3,7 @@ import { Node } from '../node/node.types';
 
 @ObjectType()
 export class MessageType {
-  @Field()
+  @Field({ nullable: true })
   message: string;
 }
 
@@ -11,7 +11,7 @@ export class MessageType {
 export class InvoicePayment {
   @Field()
   in_channel: string;
-  @Field()
+  @Field({ nullable: true })
   messages: MessageType;
 }
 
@@ -109,5 +109,5 @@ export class GetResumeType {
   @Field()
   offset: number;
   @Field(() => [Transaction])
-  resume: typeof Transaction[];
+  resume: Array<typeof Transaction>;
 }
