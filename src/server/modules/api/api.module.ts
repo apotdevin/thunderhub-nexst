@@ -22,6 +22,7 @@ import { TransactionsModule } from './transactions/transactions.module';
 import { InvoicesModule } from './invoices/invoices.module';
 import { ChatModule } from './chat/chat.module';
 import { BoltzModule } from './boltz/boltz.module';
+import { LnMarketsModule } from './lnmarkets/lnmarkets.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { BoltzModule } from './boltz/boltz.module';
     InvoicesModule,
     ChatModule,
     BoltzModule,
+    LnMarketsModule,
   ],
 })
 export class ApiModule {}

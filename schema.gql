@@ -320,6 +320,15 @@ type LightningNodeSocialInfo {
   socials: NodeSocial
 }
 
+type LnMarketsUserInfo {
+  account_type: String
+  balance: String
+  last_ip: String
+  linkingpublickey: String
+  uid: String
+  username: String
+}
+
 union LnUrlRequest = ChannelRequest | PayRequest | WithdrawRequest
 
 type Message {
@@ -351,6 +360,10 @@ type Mutation {
   getAuthToken(cookie: String!): Boolean!
   getSessionToken(id: String!, password: String!): String!
   keysend(destination: String, tokens: Float!): PayInvoice!
+  lnMarketsDeposit(amount: Float!): Boolean!
+  lnMarketsLogin: AuthResponse!
+  lnMarketsLogout: Boolean!
+  lnMarketsWithdraw(amount: Float!): Boolean!
   lnUrlAuth(url: String!): AuthResponse!
   lnUrlChannel(callback: String!, k1: String!, uri: String!): String!
   lnUrlPay(amount: Float!, callback: String!, comment: String!): String!
@@ -599,6 +612,9 @@ type Query {
   getLatestVersion: String!
   getLightningAddressInfo(address: String!): PayRequest!
   getLightningAddresses: [LightningAddress!]!
+  getLnMarketsStatus: String!
+  getLnMarketsUrl: String!
+  getLnMarketsUserInfo: LnMarketsUserInfo!
   getMessages(initialize: Float!): GetMessages!
   getNetworkInfo: NetworkInfo!
   getNode(publicKey: String!, withoutChannels: Boolean!): Node!
