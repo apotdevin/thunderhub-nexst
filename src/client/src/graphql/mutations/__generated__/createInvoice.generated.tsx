@@ -5,18 +5,18 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type CreateInvoiceMutationVariables = Types.Exact<{
-  amount: Types.Scalars['Int'];
-  description?: Types.Maybe<Types.Scalars['String']>;
-  secondsUntil?: Types.Maybe<Types.Scalars['Int']>;
-  includePrivate?: Types.Maybe<Types.Scalars['Boolean']>;
+  amount: Types.Scalars['Float'];
+  description?: Types.InputMaybe<Types.Scalars['String']>;
+  secondsUntil?: Types.InputMaybe<Types.Scalars['Float']>;
+  includePrivate?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
 
-export type CreateInvoiceMutation = { __typename?: 'Mutation', createInvoice?: { __typename?: 'newInvoiceType', request: string, id: string } | null | undefined };
+export type CreateInvoiceMutation = { __typename?: 'Mutation', createInvoice: { __typename?: 'CreateInvoice', request: string, id: string } };
 
 
 export const CreateInvoiceDocument = gql`
-    mutation CreateInvoice($amount: Int!, $description: String, $secondsUntil: Int, $includePrivate: Boolean) {
+    mutation CreateInvoice($amount: Float!, $description: String, $secondsUntil: Float, $includePrivate: Boolean) {
   createInvoice(
     amount: $amount
     description: $description

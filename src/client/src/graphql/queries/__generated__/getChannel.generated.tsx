@@ -6,11 +6,11 @@ import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type GetChannelQueryVariables = Types.Exact<{
   id: Types.Scalars['String'];
-  pubkey?: Types.Maybe<Types.Scalars['String']>;
+  pubkey?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 
-export type GetChannelQuery = { __typename?: 'Query', getChannel: { __typename?: 'singleChannelType', partner_node_policies?: { __typename?: 'nodePolicyType', node?: { __typename?: 'Node', node: { __typename?: 'nodeType', alias: string } } | null | undefined } | null | undefined } };
+export type GetChannelQuery = { __typename?: 'Query', getChannel: { __typename?: 'SingleChannel', partner_node_policies?: { __typename?: 'NodePolicy', node?: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } } | null | undefined } | null | undefined } };
 
 
 export const GetChannelDocument = gql`

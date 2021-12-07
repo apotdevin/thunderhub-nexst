@@ -5,15 +5,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type UpdateMultipleFeesMutationVariables = Types.Exact<{
-  channels: Array<Types.ChannelDetailInput> | Types.ChannelDetailInput;
+  channels: Array<Types.UpdateRoutingFeesParams> | Types.UpdateRoutingFeesParams;
 }>;
 
 
-export type UpdateMultipleFeesMutation = { __typename?: 'Mutation', updateMultipleFees?: boolean | null | undefined };
+export type UpdateMultipleFeesMutation = { __typename?: 'Mutation', updateMultipleFees: boolean };
 
 
 export const UpdateMultipleFeesDocument = gql`
-    mutation UpdateMultipleFees($channels: [channelDetailInput!]!) {
+    mutation UpdateMultipleFees($channels: [UpdateRoutingFeesParams!]!) {
   updateMultipleFees(channels: $channels)
 }
     `;

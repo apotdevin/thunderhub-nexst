@@ -3,10 +3,10 @@ import { gql } from '@apollo/client';
 export const UPDATE_FEES = gql`
   mutation UpdateFees(
     $transaction_id: String
-    $transaction_vout: Int
+    $transaction_vout: Float
     $base_fee_tokens: Float
-    $fee_rate: Int
-    $cltv_delta: Int
+    $fee_rate: Float
+    $cltv_delta: Float
     $max_htlc_mtokens: String
     $min_htlc_mtokens: String
   ) {

@@ -5,8 +5,8 @@ export const SEND_MESSAGE = gql`
     $publicKey: String!
     $message: String!
     $messageType: String
-    $tokens: Int
-    $maxFee: Int
+    $tokens: Float
+    $maxFee: Float
   ) {
     sendMessage(
       publicKey: $publicKey

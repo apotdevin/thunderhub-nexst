@@ -23,7 +23,7 @@ export class ChatResolver {
   @Query(() => GetMessages)
   async getMessages(
     @CurrentUser() user: UserId,
-    @Args('initialize') initialize: number
+    @Args('initialize', { nullable: true }) initialize: boolean
   ) {
     const invoiceList = await this.nodeService.getInvoices(user.id, {
       limit: initialize ? 100 : 5,

@@ -5,15 +5,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type GetBoltzSwapStatusQueryVariables = Types.Exact<{
-  ids: Array<Types.Maybe<Types.Scalars['String']>> | Types.Maybe<Types.Scalars['String']>;
+  ids: Array<Types.Scalars['String']> | Types.Scalars['String'];
 }>;
 
 
-export type GetBoltzSwapStatusQuery = { __typename?: 'Query', getBoltzSwapStatus: Array<{ __typename?: 'BoltzSwap', id?: string | null | undefined, boltz?: { __typename?: 'BoltzSwapStatus', status: string, transaction?: { __typename?: 'BoltzSwapTransaction', id?: string | null | undefined, hex?: string | null | undefined, eta?: number | null | undefined } | null | undefined } | null | undefined } | null | undefined> };
+export type GetBoltzSwapStatusQuery = { __typename?: 'Query', getBoltzSwapStatus: Array<{ __typename?: 'BoltzSwap', id?: string | null | undefined, boltz?: { __typename?: 'BoltzSwapStatus', status: string, transaction?: { __typename?: 'BoltzSwapTransaction', id?: string | null | undefined, hex?: string | null | undefined, eta?: number | null | undefined } | null | undefined } | null | undefined }> };
 
 
 export const GetBoltzSwapStatusDocument = gql`
-    query GetBoltzSwapStatus($ids: [String]!) {
+    query GetBoltzSwapStatus($ids: [String!]!) {
   getBoltzSwapStatus(ids: $ids) {
     id
     boltz {

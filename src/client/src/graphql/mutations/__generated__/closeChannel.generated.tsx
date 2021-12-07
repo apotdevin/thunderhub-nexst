@@ -6,17 +6,17 @@ import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type CloseChannelMutationVariables = Types.Exact<{
   id: Types.Scalars['String'];
-  forceClose?: Types.Maybe<Types.Scalars['Boolean']>;
-  target?: Types.Maybe<Types.Scalars['Int']>;
-  tokens?: Types.Maybe<Types.Scalars['Int']>;
+  forceClose?: Types.InputMaybe<Types.Scalars['Boolean']>;
+  target?: Types.InputMaybe<Types.Scalars['Float']>;
+  tokens?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
 
-export type CloseChannelMutation = { __typename?: 'Mutation', closeChannel?: { __typename?: 'closeChannelType', transactionId?: string | null | undefined, transactionOutputIndex?: string | null | undefined } | null | undefined };
+export type CloseChannelMutation = { __typename?: 'Mutation', closeChannel: { __typename?: 'OpenOrCloseChannel', transactionId: string, transactionOutputIndex: string } };
 
 
 export const CloseChannelDocument = gql`
-    mutation CloseChannel($id: String!, $forceClose: Boolean, $target: Int, $tokens: Int) {
+    mutation CloseChannel($id: String!, $forceClose: Boolean, $target: Float, $tokens: Float) {
   closeChannel(
     id: $id
     forceClose: $forceClose

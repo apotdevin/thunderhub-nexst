@@ -9,7 +9,7 @@ export type SignMessageQueryVariables = Types.Exact<{
 }>;
 
 
-export type SignMessageQuery = { __typename?: 'Query', signMessage?: string | null | undefined };
+export type SignMessageQuery = { __typename?: 'Query', signMessage: string };
 
 
 export const SignMessageDocument = gql`

@@ -7,17 +7,17 @@ const defaultOptions =  {}
 export type SendMessageMutationVariables = Types.Exact<{
   publicKey: Types.Scalars['String'];
   message: Types.Scalars['String'];
-  messageType?: Types.Maybe<Types.Scalars['String']>;
-  tokens?: Types.Maybe<Types.Scalars['Int']>;
-  maxFee?: Types.Maybe<Types.Scalars['Int']>;
+  messageType?: Types.InputMaybe<Types.Scalars['String']>;
+  tokens?: Types.InputMaybe<Types.Scalars['Float']>;
+  maxFee?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
 
-export type SendMessageMutation = { __typename?: 'Mutation', sendMessage?: number | null | undefined };
+export type SendMessageMutation = { __typename?: 'Mutation', sendMessage: number };
 
 
 export const SendMessageDocument = gql`
-    mutation SendMessage($publicKey: String!, $message: String!, $messageType: String, $tokens: Int, $maxFee: Int) {
+    mutation SendMessage($publicKey: String!, $message: String!, $messageType: String, $tokens: Float, $maxFee: Float) {
   sendMessage(
     publicKey: $publicKey
     message: $message

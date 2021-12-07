@@ -5,7 +5,7 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type CreateMacaroonMutationVariables = Types.Exact<{
-  permissions: Types.PermissionsType;
+  permissions: Types.NetworkInfoInput;
 }>;
 
 
@@ -13,7 +13,7 @@ export type CreateMacaroonMutation = { __typename?: 'Mutation', createMacaroon: 
 
 
 export const CreateMacaroonDocument = gql`
-    mutation CreateMacaroon($permissions: permissionsType!) {
+    mutation CreateMacaroon($permissions: NetworkInfoInput!) {
   createMacaroon(permissions: $permissions) {
     base
     hex

@@ -105,7 +105,7 @@ export class NodeResolver {
 
   @Query(() => Node)
   async getNode(
-    @Args('withoutChannels') withoutChannels: boolean,
+    @Args('withoutChannels', { nullable: true }) withoutChannels: boolean,
     @Args('publicKey') publicKey: string
   ) {
     return { publicKey, withoutChannels };

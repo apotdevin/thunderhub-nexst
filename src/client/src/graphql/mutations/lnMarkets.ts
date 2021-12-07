@@ -10,13 +10,13 @@ export const LN_MARKETS_LOGIN = gql`
 `;
 
 export const LN_MARKETS_WITHDRAW = gql`
-  mutation LnMarketsWithdraw($amount: Int!) {
+  mutation LnMarketsWithdraw($amount: Float!) {
     lnMarketsWithdraw(amount: $amount)
   }
 `;
 
 export const LN_MARKETS_DEPOSIT = gql`
-  mutation LnMarketsDeposit($amount: Int!) {
+  mutation LnMarketsDeposit($amount: Float!) {
     lnMarketsDeposit(amount: $amount)
   }
 `;

@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_RESUME = gql`
-  query GetResume($offset: Int, $limit: Int) {
+  query GetResume($offset: Float, $limit: Float) {
     getResume(offset: $offset, limit: $limit) {
       offset
       resume {

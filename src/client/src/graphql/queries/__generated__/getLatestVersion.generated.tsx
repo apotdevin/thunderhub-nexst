@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetLatestVersionQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetLatestVersionQuery = { __typename?: 'Query', getLatestVersion?: string | null | undefined };
+export type GetLatestVersionQuery = { __typename?: 'Query', getLatestVersion: string };
 
 
 export const GetLatestVersionDocument = gql`

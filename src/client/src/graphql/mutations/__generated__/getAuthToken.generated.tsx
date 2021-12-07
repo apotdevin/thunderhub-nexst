@@ -5,7 +5,7 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type GetAuthTokenMutationVariables = Types.Exact<{
-  cookie?: Types.Maybe<Types.Scalars['String']>;
+  cookie?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 

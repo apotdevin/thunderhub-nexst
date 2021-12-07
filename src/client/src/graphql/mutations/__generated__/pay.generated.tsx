@@ -5,18 +5,18 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type PayMutationVariables = Types.Exact<{
-  max_fee: Types.Scalars['Int'];
-  max_paths: Types.Scalars['Int'];
-  out?: Types.Maybe<Array<Types.Maybe<Types.Scalars['String']>> | Types.Maybe<Types.Scalars['String']>>;
+  max_fee: Types.Scalars['Float'];
+  max_paths: Types.Scalars['Float'];
+  out?: Types.InputMaybe<Array<Types.Scalars['String']> | Types.Scalars['String']>;
   request: Types.Scalars['String'];
 }>;
 
 
-export type PayMutation = { __typename?: 'Mutation', pay?: boolean | null | undefined };
+export type PayMutation = { __typename?: 'Mutation', pay: boolean };
 
 
 export const PayDocument = gql`
-    mutation Pay($max_fee: Int!, $max_paths: Int!, $out: [String], $request: String!) {
+    mutation Pay($max_fee: Float!, $max_paths: Float!, $out: [String!], $request: String!) {
   pay(max_fee: $max_fee, max_paths: $max_paths, out: $out, request: $request)
 }
     `;

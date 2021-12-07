@@ -4,17 +4,15 @@ import * as Types from '../../types';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
-export type CreateAddressMutationVariables = Types.Exact<{
-  nested?: Types.Maybe<Types.Scalars['Boolean']>;
-}>;
+export type CreateAddressMutationVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type CreateAddressMutation = { __typename?: 'Mutation', createAddress?: string | null | undefined };
+export type CreateAddressMutation = { __typename?: 'Mutation', createAddress: string };
 
 
 export const CreateAddressDocument = gql`
-    mutation CreateAddress($nested: Boolean) {
-  createAddress(nested: $nested)
+    mutation CreateAddress {
+  createAddress
 }
     `;
 export type CreateAddressMutationFn = Apollo.MutationFunction<CreateAddressMutation, CreateAddressMutationVariables>;
@@ -32,7 +30,6 @@ export type CreateAddressMutationFn = Apollo.MutationFunction<CreateAddressMutat
  * @example
  * const [createAddressMutation, { data, loading, error }] = useCreateAddressMutation({
  *   variables: {
- *      nested: // value for 'nested'
  *   },
  * });
  */

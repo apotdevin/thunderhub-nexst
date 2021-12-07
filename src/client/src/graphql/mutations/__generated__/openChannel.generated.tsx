@@ -5,19 +5,19 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type OpenChannelMutationVariables = Types.Exact<{
-  amount: Types.Scalars['Int'];
+  amount: Types.Scalars['Float'];
   partnerPublicKey: Types.Scalars['String'];
-  tokensPerVByte?: Types.Maybe<Types.Scalars['Int']>;
-  isPrivate?: Types.Maybe<Types.Scalars['Boolean']>;
-  pushTokens?: Types.Maybe<Types.Scalars['Int']>;
+  tokensPerVByte?: Types.InputMaybe<Types.Scalars['Float']>;
+  isPrivate?: Types.InputMaybe<Types.Scalars['Boolean']>;
+  pushTokens?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
 
-export type OpenChannelMutation = { __typename?: 'Mutation', openChannel?: { __typename?: 'openChannelType', transactionId?: string | null | undefined, transactionOutputIndex?: string | null | undefined } | null | undefined };
+export type OpenChannelMutation = { __typename?: 'Mutation', openChannel: { __typename?: 'OpenOrCloseChannel', transactionId: string, transactionOutputIndex: string } };
 
 
 export const OpenChannelDocument = gql`
-    mutation OpenChannel($amount: Int!, $partnerPublicKey: String!, $tokensPerVByte: Int, $isPrivate: Boolean, $pushTokens: Int) {
+    mutation OpenChannel($amount: Float!, $partnerPublicKey: String!, $tokensPerVByte: Float, $isPrivate: Boolean, $pushTokens: Float) {
   openChannel(
     amount: $amount
     partnerPublicKey: $partnerPublicKey

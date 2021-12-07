@@ -39,7 +39,7 @@ export const AUTH_LN_URL = gql`
 `;
 
 export const PAY_LN_URL = gql`
-  mutation PayLnUrl($callback: String!, $amount: Int!, $comment: String) {
+  mutation PayLnUrl($callback: String!, $amount: Float!, $comment: String) {
     lnUrlPay(callback: $callback, amount: $amount, comment: $comment) {
       tag
       description
@@ -54,7 +54,7 @@ export const PAY_LN_URL = gql`
 export const WITHDRAW_LN_URL = gql`
   mutation WithdrawLnUrl(
     $callback: String!
-    $amount: Int!
+    $amount: Float!
     $k1: String!
     $description: String
   ) {

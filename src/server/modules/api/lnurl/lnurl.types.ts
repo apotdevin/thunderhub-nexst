@@ -63,3 +63,19 @@ export type LnUrlPayResponseType = {
   status?: string;
   reason?: string;
 };
+
+@ObjectType()
+export class PaySuccess {
+  @Field({ nullable: true })
+  tag: string;
+  @Field({ nullable: true })
+  description: string;
+  @Field({ nullable: true })
+  url: string;
+  @Field({ nullable: true })
+  message: string;
+  @Field({ nullable: true })
+  ciphertext: string;
+  @Field({ nullable: true })
+  iv: string;
+}

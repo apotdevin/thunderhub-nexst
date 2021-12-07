@@ -6,18 +6,18 @@ import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type PayAddressMutationVariables = Types.Exact<{
   address: Types.Scalars['String'];
-  tokens?: Types.Maybe<Types.Scalars['Int']>;
-  fee?: Types.Maybe<Types.Scalars['Int']>;
-  target?: Types.Maybe<Types.Scalars['Int']>;
-  sendAll?: Types.Maybe<Types.Scalars['Boolean']>;
+  tokens?: Types.InputMaybe<Types.Scalars['Float']>;
+  fee?: Types.InputMaybe<Types.Scalars['Float']>;
+  target?: Types.InputMaybe<Types.Scalars['Float']>;
+  sendAll?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
 
-export type PayAddressMutation = { __typename?: 'Mutation', sendToAddress?: { __typename?: 'sendToType', confirmationCount: string, id: string, isConfirmed: boolean, isOutgoing: boolean, tokens?: number | null | undefined } | null | undefined };
+export type PayAddressMutation = { __typename?: 'Mutation', sendToAddress: { __typename?: 'ChainAddressSend', confirmationCount: number, id: string, isConfirmed: boolean, isOutgoing: boolean, tokens?: number | null | undefined } };
 
 
 export const PayAddressDocument = gql`
-    mutation PayAddress($address: String!, $tokens: Int, $fee: Int, $target: Int, $sendAll: Boolean) {
+    mutation PayAddress($address: String!, $tokens: Float, $fee: Float, $target: Float, $sendAll: Boolean) {
   sendToAddress(
     address: $address
     tokens: $tokens

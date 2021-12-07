@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetBitcoinPriceQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetBitcoinPriceQuery = { __typename?: 'Query', getBitcoinPrice?: string | null | undefined };
+export type GetBitcoinPriceQuery = { __typename?: 'Query', getBitcoinPrice: string };
 
 
 export const GetBitcoinPriceDocument = gql`

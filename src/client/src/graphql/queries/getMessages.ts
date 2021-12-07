@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_MESSAGES = gql`
-  query GetMessages($initialize: Boolean, $lastMessage: String) {
-    getMessages(initialize: $initialize, lastMessage: $lastMessage) {
+  query GetMessages($initialize: Boolean) {
+    getMessages(initialize: $initialize) {
       token
       messages {
         date

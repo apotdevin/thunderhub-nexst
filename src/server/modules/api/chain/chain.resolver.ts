@@ -3,12 +3,13 @@ import { NodeService } from '../../node/node.service';
 import { CurrentUser } from '../../security/security.decorators';
 import { UserId } from '../../security/security.types';
 import { sortBy } from 'lodash';
+import { ChainAddressSend, ChainTransaction, Utxo } from './chain.types';
 
 @Resolver()
 export class ChainResolver {
   constructor(private nodeService: NodeService) {}
 
-  @Query(() => String)
+  @Query(() => [ChainTransaction])
   async getChainTransactions(@CurrentUser() { id }: UserId) {
     const transactionList = await this.nodeService.getChainTransactions(id);
 
@@ -20,7 +21,7 @@ export class ChainResolver {
     return transactions;
   }
 
-  @Query(() => String)
+  @Query(() => [Utxo])
   async getUtxos(@CurrentUser() { id }: UserId) {
     const info = await this.nodeService.getUtxos(id);
     return info?.utxos;
@@ -32,7 +33,7 @@ export class ChainResolver {
     return address.address;
   }
 
-  @Mutation(() => String)
+  @Mutation(() => ChainAddressSend)
   async sendToAddress(
     @Args('address') address: string,
     @Args('tokens', { nullable: true }) tokens: number,

@@ -5,15 +5,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type CreateBaseInvoiceMutationVariables = Types.Exact<{
-  amount: Types.Scalars['Int'];
+  amount: Types.Scalars['Float'];
 }>;
 
 
-export type CreateBaseInvoiceMutation = { __typename?: 'Mutation', createBaseInvoice?: { __typename?: 'baseInvoiceType', request: string, id: string } | null | undefined };
+export type CreateBaseInvoiceMutation = { __typename?: 'Mutation', createBaseInvoice: { __typename?: 'BaseInvoice', request: string, id: string } };
 
 
 export const CreateBaseInvoiceDocument = gql`
-    mutation CreateBaseInvoice($amount: Int!) {
+    mutation CreateBaseInvoice($amount: Float!) {
   createBaseInvoice(amount: $amount) {
     request
     id

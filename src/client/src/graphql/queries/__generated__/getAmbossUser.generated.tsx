@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetAmbossUserQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetAmbossUserQuery = { __typename?: 'Query', getAmbossUser?: { __typename?: 'AmbossUserType', subscription?: { __typename?: 'AmbossSubscriptionType', end_date: string, subscribed: boolean, upgradable: boolean } | null | undefined } | null | undefined };
+export type GetAmbossUserQuery = { __typename?: 'Query', getAmbossUser: { __typename?: 'AmbossUser', subscription?: { __typename?: 'AmbossSubscription', end_date: string, subscribed: boolean, upgradable: boolean } | null | undefined } };
 
 
 export const GetAmbossUserDocument = gql`

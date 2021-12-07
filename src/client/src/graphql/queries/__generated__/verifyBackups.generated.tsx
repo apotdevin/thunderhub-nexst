@@ -9,7 +9,7 @@ export type VerifyBackupsQueryVariables = Types.Exact<{
 }>;
 
 
-export type VerifyBackupsQuery = { __typename?: 'Query', verifyBackups?: boolean | null | undefined };
+export type VerifyBackupsQuery = { __typename?: 'Query', verifyBackups: boolean };
 
 
 export const VerifyBackupsDocument = gql`

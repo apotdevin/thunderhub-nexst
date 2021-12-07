@@ -9,7 +9,7 @@ export type DecodeRequestQueryVariables = Types.Exact<{
 }>;
 
 
-export type DecodeRequestQuery = { __typename?: 'Query', decodeRequest?: { __typename?: 'decodeType', chain_address?: string | null | undefined, cltv_delta?: number | null | undefined, description: string, description_hash?: string | null | undefined, destination: string, expires_at: string, id: string, tokens: number, destination_node: { __typename?: 'Node', node: { __typename?: 'nodeType', alias: string } }, routes: Array<Array<{ __typename?: 'RouteType', base_fee_mtokens?: string | null | undefined, channel?: string | null | undefined, cltv_delta?: number | null | undefined, fee_rate?: number | null | undefined, public_key: string } | null | undefined> | null | undefined>, probe_route?: { __typename?: 'ProbeRoute', route?: { __typename?: 'probedRoute', confidence: number, fee: number, fee_mtokens: string, mtokens: string, safe_fee: number, safe_tokens: number, timeout: number, tokens: number, hops: Array<{ __typename?: 'probedRouteHop', channel: string, channel_capacity: number, fee: number, fee_mtokens: string, forward: number, forward_mtokens: string, public_key: string, timeout: number, node: { __typename?: 'Node', node: { __typename?: 'nodeType', alias: string } } }> } | null | undefined } | null | undefined } | null | undefined };
+export type DecodeRequestQuery = { __typename?: 'Query', decodeRequest: { __typename?: 'DecodeInvoice', chain_address?: string | null | undefined, cltv_delta?: number | null | undefined, description: string, description_hash?: string | null | undefined, destination: string, expires_at: string, id: string, tokens: number, destination_node?: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } } | null | undefined, routes: Array<Array<{ __typename?: 'Route', base_fee_mtokens?: string | null | undefined, channel?: string | null | undefined, cltv_delta?: number | null | undefined, fee_rate?: number | null | undefined, public_key: string }>> } };
 
 
 export const DecodeRequestDocument = gql`
@@ -35,33 +35,6 @@ export const DecodeRequestDocument = gql`
       public_key
     }
     tokens
-    probe_route {
-      route {
-        confidence
-        fee
-        fee_mtokens
-        hops {
-          channel
-          channel_capacity
-          fee
-          fee_mtokens
-          forward
-          forward_mtokens
-          public_key
-          timeout
-          node {
-            node {
-              alias
-            }
-          }
-        }
-        mtokens
-        safe_fee
-        safe_tokens
-        timeout
-        tokens
-      }
-    }
   }
 }
     `;

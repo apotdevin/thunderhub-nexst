@@ -5,14 +5,14 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type AddPeerMutationVariables = Types.Exact<{
-  url?: Types.Maybe<Types.Scalars['String']>;
-  publicKey?: Types.Maybe<Types.Scalars['String']>;
-  socket?: Types.Maybe<Types.Scalars['String']>;
-  isTemporary?: Types.Maybe<Types.Scalars['Boolean']>;
+  url?: Types.InputMaybe<Types.Scalars['String']>;
+  publicKey?: Types.InputMaybe<Types.Scalars['String']>;
+  socket?: Types.InputMaybe<Types.Scalars['String']>;
+  isTemporary?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
 
-export type AddPeerMutation = { __typename?: 'Mutation', addPeer?: boolean | null | undefined };
+export type AddPeerMutation = { __typename?: 'Mutation', addPeer: boolean };
 
 
 export const AddPeerDocument = gql`

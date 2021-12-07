@@ -5,17 +5,16 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type GetMessagesQueryVariables = Types.Exact<{
-  initialize?: Types.Maybe<Types.Scalars['Boolean']>;
-  lastMessage?: Types.Maybe<Types.Scalars['String']>;
+  initialize?: Types.InputMaybe<Types.Scalars['Boolean']>;
 }>;
 
 
-export type GetMessagesQuery = { __typename?: 'Query', getMessages?: { __typename?: 'getMessagesType', token?: string | null | undefined, messages: Array<{ __typename?: 'messagesType', date: string, contentType?: string | null | undefined, alias?: string | null | undefined, message?: string | null | undefined, id: string, sender?: string | null | undefined, verified: boolean, tokens?: number | null | undefined } | null | undefined> } | null | undefined };
+export type GetMessagesQuery = { __typename?: 'Query', getMessages: { __typename?: 'GetMessages', token?: string | null | undefined, messages: Array<{ __typename?: 'Message', date: string, contentType?: string | null | undefined, alias?: string | null | undefined, message?: string | null | undefined, id: string, sender?: string | null | undefined, verified: boolean, tokens?: number | null | undefined }> } };
 
 
 export const GetMessagesDocument = gql`
-    query GetMessages($initialize: Boolean, $lastMessage: String) {
-  getMessages(initialize: $initialize, lastMessage: $lastMessage) {
+    query GetMessages($initialize: Boolean) {
+  getMessages(initialize: $initialize) {
     token
     messages {
       date
@@ -44,7 +43,6 @@ export const GetMessagesDocument = gql`
  * const { data, loading, error } = useGetMessagesQuery({
  *   variables: {
  *      initialize: // value for 'initialize'
- *      lastMessage: // value for 'lastMessage'
  *   },
  * });
  */

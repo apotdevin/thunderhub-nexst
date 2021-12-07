@@ -111,9 +111,30 @@ export type DiffieHellmanComputeSecretType = {
 
 export type GetNodeType = { alias: string; color: string };
 
-export type UtxoType = any;
+export type UtxoType = {
+  address: string;
+  address_format: string;
+  confirmation_count: number;
+  output_script: string;
+  tokens: number;
+  transaction_id: string;
+  transaction_vout: number;
+};
 
-export type ChainTransaction = any;
+export type ChainTransaction = {
+  block_id?: string;
+  confirmation_count?: number;
+  confirmation_height?: number;
+  created_at: string;
+  description?: string;
+  fee?: number;
+  id: string;
+  is_confirmed: boolean;
+  is_outgoing: boolean;
+  output_addresses: string[];
+  tokens: number;
+  transaction?: string;
+};
 
 export type ProbeForRouteType = { route?: { hops: [{ public_key: string }] } };
 

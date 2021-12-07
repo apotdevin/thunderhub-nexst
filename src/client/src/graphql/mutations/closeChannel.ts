@@ -4,8 +4,8 @@ export const CLOSE_CHANNEL = gql`
   mutation CloseChannel(
     $id: String!
     $forceClose: Boolean
-    $target: Int
-    $tokens: Int
+    $target: Float
+    $tokens: Float
   ) {
     closeChannel(
       id: $id

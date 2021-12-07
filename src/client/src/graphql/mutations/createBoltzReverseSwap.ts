@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_BOLTZ_INFO = gql`
-  mutation CreateBoltzReverseSwap($amount: Int!, $address: String) {
+  mutation CreateBoltzReverseSwap($amount: Float!, $address: String) {
     createBoltzReverseSwap(amount: $amount, address: $address) {
       id
       invoice

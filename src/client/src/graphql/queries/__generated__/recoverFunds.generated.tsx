@@ -9,7 +9,7 @@ export type RecoverFundsQueryVariables = Types.Exact<{
 }>;
 
 
-export type RecoverFundsQuery = { __typename?: 'Query', recoverFunds?: boolean | null | undefined };
+export type RecoverFundsQuery = { __typename?: 'Query', recoverFunds: boolean };
 
 
 export const RecoverFundsDocument = gql`

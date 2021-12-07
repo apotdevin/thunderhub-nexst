@@ -21,7 +21,7 @@ export class InvoiceType {
   chain_address: string;
   @Field({ nullable: true })
   confirmed_at: string;
-  @Field()
+  @Field({ nullable: true })
   created_at: string;
   @Field()
   description: string;

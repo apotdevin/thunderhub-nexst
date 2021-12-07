@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetChainTransactionsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetChainTransactionsQuery = { __typename?: 'Query', getChainTransactions?: Array<{ __typename?: 'getTransactionsType', block_id?: string | null | undefined, confirmation_count?: number | null | undefined, confirmation_height?: number | null | undefined, created_at: string, fee?: number | null | undefined, id: string, output_addresses: Array<string | null | undefined>, tokens: number } | null | undefined> | null | undefined };
+export type GetChainTransactionsQuery = { __typename?: 'Query', getChainTransactions: Array<{ __typename?: 'ChainTransaction', block_id?: string | null | undefined, confirmation_count?: number | null | undefined, confirmation_height?: number | null | undefined, created_at: string, fee?: number | null | undefined, id: string, output_addresses: Array<string>, tokens: number }> };
 
 
 export const GetChainTransactionsDocument = gql`

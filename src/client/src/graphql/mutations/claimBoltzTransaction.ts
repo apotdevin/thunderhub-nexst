@@ -7,7 +7,7 @@ export const CLAIM_BOLTZ_TRANSACTION = gql`
     $preimage: String!
     $privateKey: String!
     $destination: String!
-    $fee: Int!
+    $fee: Float!
   ) {
     claimBoltzTransaction(
       redeem: $redeem

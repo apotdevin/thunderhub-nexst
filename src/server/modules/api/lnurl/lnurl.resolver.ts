@@ -10,6 +10,7 @@ import {
   LnUrlPayResponseType,
   LnUrlRequestUnion,
   PayRequest,
+  PaySuccess,
 } from './lnurl.types';
 import { Logger } from 'winston';
 import { randomBytes } from 'crypto';
@@ -91,12 +92,12 @@ export class LnUrlResolver {
     }
   }
 
-  @Mutation(() => String)
+  @Mutation(() => PaySuccess)
   async lnUrlPay(
     @CurrentUser() { id }: UserId,
     @Args('callback') callback: string,
     @Args('amount') amount: number,
-    @Args('comment') comment: string
+    @Args('comment', { nullable: true }) comment: string
   ) {
     this.logger.debug('LnUrlPay initiated with params %o', {
       callback,
@@ -179,7 +180,7 @@ export class LnUrlResolver {
     @CurrentUser() { id }: UserId,
     @Args('callback') callback: string,
     @Args('amount') amount: number,
-    @Args('description') description: string,
+    @Args('description', { nullable: true }) description: string,
     @Args('k1') k1: string
   ) {
     this.logger.debug('LnUrlWithdraw initiated with params: %o', {

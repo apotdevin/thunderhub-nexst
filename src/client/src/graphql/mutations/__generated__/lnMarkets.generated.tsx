@@ -10,14 +10,14 @@ export type LnMarketsLoginMutationVariables = Types.Exact<{ [key: string]: never
 export type LnMarketsLoginMutation = { __typename?: 'Mutation', lnMarketsLogin: { __typename?: 'AuthResponse', status: string, message: string } };
 
 export type LnMarketsWithdrawMutationVariables = Types.Exact<{
-  amount: Types.Scalars['Int'];
+  amount: Types.Scalars['Float'];
 }>;
 
 
 export type LnMarketsWithdrawMutation = { __typename?: 'Mutation', lnMarketsWithdraw: boolean };
 
 export type LnMarketsDepositMutationVariables = Types.Exact<{
-  amount: Types.Scalars['Int'];
+  amount: Types.Scalars['Float'];
 }>;
 
 
@@ -63,7 +63,7 @@ export type LnMarketsLoginMutationHookResult = ReturnType<typeof useLnMarketsLog
 export type LnMarketsLoginMutationResult = Apollo.MutationResult<LnMarketsLoginMutation>;
 export type LnMarketsLoginMutationOptions = Apollo.BaseMutationOptions<LnMarketsLoginMutation, LnMarketsLoginMutationVariables>;
 export const LnMarketsWithdrawDocument = gql`
-    mutation LnMarketsWithdraw($amount: Int!) {
+    mutation LnMarketsWithdraw($amount: Float!) {
   lnMarketsWithdraw(amount: $amount)
 }
     `;
@@ -94,7 +94,7 @@ export type LnMarketsWithdrawMutationHookResult = ReturnType<typeof useLnMarkets
 export type LnMarketsWithdrawMutationResult = Apollo.MutationResult<LnMarketsWithdrawMutation>;
 export type LnMarketsWithdrawMutationOptions = Apollo.BaseMutationOptions<LnMarketsWithdrawMutation, LnMarketsWithdrawMutationVariables>;
 export const LnMarketsDepositDocument = gql`
-    mutation LnMarketsDeposit($amount: Int!) {
+    mutation LnMarketsDeposit($amount: Float!) {
   lnMarketsDeposit(amount: $amount)
 }
     `;

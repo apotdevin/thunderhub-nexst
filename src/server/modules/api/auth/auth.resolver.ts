@@ -27,7 +27,7 @@ export class AuthResolver {
   @Public()
   @Mutation(() => Boolean)
   async getAuthToken(
-    @Args('cookie') cookie: string,
+    @Args('cookie', { nullable: true }) cookie: string,
     @Context() { res }: ContextType
   ) {
     const dangerousNoSSOAuth = this.configService.get('sso.dangerousNoSSOAuth');

@@ -2,15 +2,15 @@ import { gql } from '@apollo/client';
 
 export const BOS_REBALANCE = gql`
   mutation BosRebalance(
-    $avoid: [String]
+    $avoid: [String!]
     $in_through: String
-    $max_fee: Int
-    $max_fee_rate: Int
-    $max_rebalance: Int
-    $timeout_minutes: Int
+    $max_fee: Float
+    $max_fee_rate: Float
+    $max_rebalance: Float
+    $timeout_minutes: Float
     $node: String
     $out_through: String
-    $out_inbound: Int
+    $out_inbound: Float
   ) {
     bosRebalance(
       avoid: $avoid

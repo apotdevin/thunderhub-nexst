@@ -2,11 +2,11 @@ import { gql } from '@apollo/client';
 
 export const OPEN_CHANNEL = gql`
   mutation OpenChannel(
-    $amount: Int!
+    $amount: Float!
     $partnerPublicKey: String!
-    $tokensPerVByte: Int
+    $tokensPerVByte: Float
     $isPrivate: Boolean
-    $pushTokens: Int
+    $pushTokens: Float
   ) {
     openChannel(
       amount: $amount

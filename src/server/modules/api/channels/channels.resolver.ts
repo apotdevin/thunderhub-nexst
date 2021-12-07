@@ -119,7 +119,7 @@ export class ChannelsResolver {
   @Query(() => SingleChannel)
   async getChannel(
     @CurrentUser() user: UserId,
-    @Args('pubkey') pubkey: string,
+    @Args('pubkey', { nullable: true }) pubkey: string,
     @Args('id') id: string
   ) {
     const channel = await this.nodeService.getChannel(user.id, id);
@@ -203,9 +203,10 @@ export class ChannelsResolver {
   async closeChannel(
     @CurrentUser() user: UserId,
     @Args('id') id: string,
-    @Args('targetConfirmations') target_confirmations: number,
-    @Args('tokensPerVByte') tokens_per_vbyte: number,
-    @Args('forceClose') is_force_close: boolean
+    @Args('targetConfirmations', { nullable: true })
+    target_confirmations: number,
+    @Args('tokensPerVByte', { nullable: true }) tokens_per_vbyte: number,
+    @Args('forceClose', { nullable: true }) is_force_close: boolean
   ) {
     const closeParams = {
       id,
@@ -267,13 +268,13 @@ export class ChannelsResolver {
   @Mutation(() => Boolean)
   async updateFees(
     @CurrentUser() user: UserId,
-    @Args('transaction_id') transaction_id: string,
-    @Args('transaction_vout') transaction_vout: number,
-    @Args('base_fee_tokens') base_fee_tokens: number,
-    @Args('fee_rate') fee_rate: number,
-    @Args('cltv_delta') cltv_delta: number,
-    @Args('max_htlc_mtokens') max_htlc_mtokens: string,
-    @Args('min_htlc_mtokens') min_htlc_mtokens: string
+    @Args('transaction_id', { nullable: true }) transaction_id: string,
+    @Args('transaction_vout', { nullable: true }) transaction_vout: number,
+    @Args('base_fee_tokens', { nullable: true }) base_fee_tokens: number,
+    @Args('fee_rate', { nullable: true }) fee_rate: number,
+    @Args('cltv_delta', { nullable: true }) cltv_delta: number,
+    @Args('max_htlc_mtokens', { nullable: true }) max_htlc_mtokens: string,
+    @Args('min_htlc_mtokens', { nullable: true }) min_htlc_mtokens: string
   ) {
     const hasBaseFee = base_fee_tokens >= 0;
     const hasFee = fee_rate >= 0;

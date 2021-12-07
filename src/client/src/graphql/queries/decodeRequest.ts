@@ -23,33 +23,6 @@ export const DECODE_REQUEST = gql`
         public_key
       }
       tokens
-      probe_route {
-        route {
-          confidence
-          fee
-          fee_mtokens
-          hops {
-            channel
-            channel_capacity
-            fee
-            fee_mtokens
-            forward
-            forward_mtokens
-            public_key
-            timeout
-            node {
-              node {
-                alias
-              }
-            }
-          }
-          mtokens
-          safe_fee
-          safe_tokens
-          timeout
-          tokens
-        }
-      }
     }
   }
 `;

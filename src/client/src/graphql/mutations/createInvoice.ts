@@ -2,9 +2,9 @@ import { gql } from '@apollo/client';
 
 export const CREATE_INVOICE = gql`
   mutation CreateInvoice(
-    $amount: Int!
+    $amount: Float!
     $description: String
-    $secondsUntil: Int
+    $secondsUntil: Float
     $includePrivate: Boolean
   ) {
     createInvoice(

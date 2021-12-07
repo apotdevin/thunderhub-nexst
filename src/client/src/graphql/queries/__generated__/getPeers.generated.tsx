@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetPeersQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetPeersQuery = { __typename?: 'Query', getPeers?: Array<{ __typename?: 'peerType', bytes_received: number, bytes_sent: number, is_inbound: boolean, is_sync_peer?: boolean | null | undefined, ping_time: number, public_key: string, socket: string, tokens_received: number, tokens_sent: number, partner_node_info: { __typename?: 'Node', node: { __typename?: 'nodeType', alias: string, capacity?: string | null | undefined, channel_count?: number | null | undefined, color?: string | null | undefined, updated_at?: string | null | undefined } } } | null | undefined> | null | undefined };
+export type GetPeersQuery = { __typename?: 'Query', getPeers: Array<{ __typename?: 'Peer', bytes_received: number, bytes_sent: number, is_inbound: boolean, is_sync_peer?: boolean | null | undefined, ping_time: number, public_key: string, socket: string, tokens_received: number, tokens_sent: number, partner_node_info: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string, capacity?: string | null | undefined, channel_count?: number | null | undefined, color?: string | null | undefined, updated_at?: string | null | undefined } } }> };
 
 
 export const GetPeersDocument = gql`

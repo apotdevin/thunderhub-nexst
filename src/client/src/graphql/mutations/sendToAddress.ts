@@ -3,9 +3,9 @@ import { gql } from '@apollo/client';
 export const PAY_ADDRESS = gql`
   mutation PayAddress(
     $address: String!
-    $tokens: Int
-    $fee: Int
-    $target: Int
+    $tokens: Float
+    $fee: Float
+    $target: Float
     $sendAll: Boolean
   ) {
     sendToAddress(

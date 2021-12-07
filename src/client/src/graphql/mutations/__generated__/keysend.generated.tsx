@@ -6,15 +6,15 @@ import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type KeysendMutationVariables = Types.Exact<{
   destination: Types.Scalars['String'];
-  tokens: Types.Scalars['Int'];
+  tokens: Types.Scalars['Float'];
 }>;
 
 
-export type KeysendMutation = { __typename?: 'Mutation', keysend?: { __typename?: 'payType', is_confirmed?: boolean | null | undefined } | null | undefined };
+export type KeysendMutation = { __typename?: 'Mutation', keysend: { __typename?: 'PayInvoice', is_confirmed: boolean } };
 
 
 export const KeysendDocument = gql`
-    mutation Keysend($destination: String!, $tokens: Int!) {
+    mutation Keysend($destination: String!, $tokens: Float!) {
   keysend(destination: $destination, tokens: $tokens) {
     is_confirmed
   }

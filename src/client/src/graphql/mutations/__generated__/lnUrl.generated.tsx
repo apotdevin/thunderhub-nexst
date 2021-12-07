@@ -9,7 +9,7 @@ export type FetchLnUrlMutationVariables = Types.Exact<{
 }>;
 
 
-export type FetchLnUrlMutation = { __typename?: 'Mutation', fetchLnUrl?: { __typename?: 'ChannelRequest', tag?: string | null | undefined, k1?: string | null | undefined, callback?: string | null | undefined, uri?: string | null | undefined } | { __typename?: 'PayRequest', callback?: string | null | undefined, maxSendable?: string | null | undefined, minSendable?: string | null | undefined, metadata?: string | null | undefined, commentAllowed?: number | null | undefined, tag?: string | null | undefined } | { __typename?: 'WithdrawRequest', callback?: string | null | undefined, k1?: string | null | undefined, maxWithdrawable?: string | null | undefined, defaultDescription?: string | null | undefined, minWithdrawable?: string | null | undefined, tag?: string | null | undefined } | null | undefined };
+export type FetchLnUrlMutation = { __typename?: 'Mutation', fetchLnUrl: { __typename?: 'ChannelRequest', tag?: string | null | undefined, k1?: string | null | undefined, callback?: string | null | undefined, uri?: string | null | undefined } | { __typename?: 'PayRequest', callback?: string | null | undefined, maxSendable?: string | null | undefined, minSendable?: string | null | undefined, metadata?: string | null | undefined, commentAllowed?: number | null | undefined, tag?: string | null | undefined } | { __typename?: 'WithdrawRequest', callback?: string | null | undefined, k1?: string | null | undefined, maxWithdrawable?: string | null | undefined, defaultDescription?: string | null | undefined, minWithdrawable?: string | null | undefined, tag?: string | null | undefined } };
 
 export type AuthLnUrlMutationVariables = Types.Exact<{
   url: Types.Scalars['String'];
@@ -20,8 +20,8 @@ export type AuthLnUrlMutation = { __typename?: 'Mutation', lnUrlAuth: { __typena
 
 export type PayLnUrlMutationVariables = Types.Exact<{
   callback: Types.Scalars['String'];
-  amount: Types.Scalars['Int'];
-  comment?: Types.Maybe<Types.Scalars['String']>;
+  amount: Types.Scalars['Float'];
+  comment?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 
@@ -29,9 +29,9 @@ export type PayLnUrlMutation = { __typename?: 'Mutation', lnUrlPay: { __typename
 
 export type WithdrawLnUrlMutationVariables = Types.Exact<{
   callback: Types.Scalars['String'];
-  amount: Types.Scalars['Int'];
+  amount: Types.Scalars['Float'];
   k1: Types.Scalars['String'];
-  description?: Types.Maybe<Types.Scalars['String']>;
+  description?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 
@@ -136,7 +136,7 @@ export type AuthLnUrlMutationHookResult = ReturnType<typeof useAuthLnUrlMutation
 export type AuthLnUrlMutationResult = Apollo.MutationResult<AuthLnUrlMutation>;
 export type AuthLnUrlMutationOptions = Apollo.BaseMutationOptions<AuthLnUrlMutation, AuthLnUrlMutationVariables>;
 export const PayLnUrlDocument = gql`
-    mutation PayLnUrl($callback: String!, $amount: Int!, $comment: String) {
+    mutation PayLnUrl($callback: String!, $amount: Float!, $comment: String) {
   lnUrlPay(callback: $callback, amount: $amount, comment: $comment) {
     tag
     description
@@ -176,7 +176,7 @@ export type PayLnUrlMutationHookResult = ReturnType<typeof usePayLnUrlMutation>;
 export type PayLnUrlMutationResult = Apollo.MutationResult<PayLnUrlMutation>;
 export type PayLnUrlMutationOptions = Apollo.BaseMutationOptions<PayLnUrlMutation, PayLnUrlMutationVariables>;
 export const WithdrawLnUrlDocument = gql`
-    mutation WithdrawLnUrl($callback: String!, $amount: Int!, $k1: String!, $description: String) {
+    mutation WithdrawLnUrl($callback: String!, $amount: Float!, $k1: String!, $description: String) {
   lnUrlWithdraw(
     callback: $callback
     amount: $amount

@@ -10,7 +10,7 @@ export type ClaimBoltzTransactionMutationVariables = Types.Exact<{
   preimage: Types.Scalars['String'];
   privateKey: Types.Scalars['String'];
   destination: Types.Scalars['String'];
-  fee: Types.Scalars['Int'];
+  fee: Types.Scalars['Float'];
 }>;
 
 
@@ -18,7 +18,7 @@ export type ClaimBoltzTransactionMutation = { __typename?: 'Mutation', claimBolt
 
 
 export const ClaimBoltzTransactionDocument = gql`
-    mutation ClaimBoltzTransaction($redeem: String!, $transaction: String!, $preimage: String!, $privateKey: String!, $destination: String!, $fee: Int!) {
+    mutation ClaimBoltzTransaction($redeem: String!, $transaction: String!, $preimage: String!, $privateKey: String!, $destination: String!, $fee: Float!) {
   claimBoltzTransaction(
     redeem: $redeem
     transaction: $transaction

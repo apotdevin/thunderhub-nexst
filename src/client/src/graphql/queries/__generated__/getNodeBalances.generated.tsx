@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetNodeBalancesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetNodeBalancesQuery = { __typename?: 'Query', getNodeBalances: { __typename?: 'BalancesType', onchain: { __typename?: 'OnChainBalanceType', confirmed: string, pending: string, closing: string }, lightning: { __typename?: 'LightningBalanceType', confirmed: string, active: string, commit: string, pending: string } } };
+export type GetNodeBalancesQuery = { __typename?: 'Query', getNodeBalances: { __typename?: 'Balances', onchain: { __typename?: 'OnChainBalance', confirmed: string, pending: string, closing: string }, lightning: { __typename?: 'LightningBalance', confirmed: string, active: string, commit: string, pending: string } } };
 
 
 export const GetNodeBalancesDocument = gql`

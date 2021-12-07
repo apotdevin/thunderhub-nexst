@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetBitcoinFeesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetBitcoinFeesQuery = { __typename?: 'Query', getBitcoinFees?: { __typename?: 'bitcoinFeeType', fast?: number | null | undefined, halfHour?: number | null | undefined, hour?: number | null | undefined, minimum?: number | null | undefined } | null | undefined };
+export type GetBitcoinFeesQuery = { __typename?: 'Query', getBitcoinFees: { __typename?: 'BitcoinFee', fast: number, halfHour: number, hour: number, minimum: number } };
 
 
 export const GetBitcoinFeesDocument = gql`

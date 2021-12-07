@@ -14,8 +14,8 @@ export class TransactionsResolver {
   @Query(() => GetResumeType)
   async getResume(
     @CurrentUser() user: UserId,
-    @Args('offset') offset: number,
-    @Args('limit') limit: number
+    @Args('offset', { nullable: true }) offset: number,
+    @Args('limit', { nullable: true }) limit: number
   ) {
     const start = offset || 0;
     const end = (offset || 0) + (limit || 7);

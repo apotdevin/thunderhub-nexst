@@ -113,7 +113,7 @@ export class InvoicesResolver {
     });
   }
 
-  @Mutation(() => PayInvoice)
+  @Mutation(() => Boolean)
   async pay(
     @CurrentUser() user: UserId,
     @Args('max_fee') max_fee: number,

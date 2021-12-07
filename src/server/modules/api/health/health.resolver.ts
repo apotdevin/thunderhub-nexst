@@ -32,7 +32,7 @@ export class HealthResolver {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger
   ) {}
 
-  @Query(() => ChannelsHealth)
+  @Query(() => ChannelsFeeHealth)
   async getFeeHealth(@CurrentUser() user: UserId) {
     const { public_key } = await this.nodeService.getWalletInfo(user.id);
     const { channels } = await this.nodeService.getChannels(user.id);
@@ -184,7 +184,7 @@ export class HealthResolver {
     };
   }
 
-  @Query(() => ChannelsFeeHealth)
+  @Query(() => ChannelsHealth)
   async getVolumeHealth(@CurrentUser() user: UserId) {
     const before = new Date().toISOString();
     const after = subMonths(new Date(), 1).toISOString();

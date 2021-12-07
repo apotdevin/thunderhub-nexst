@@ -10,7 +10,7 @@ export type VerifyMessageQueryVariables = Types.Exact<{
 }>;
 
 
-export type VerifyMessageQuery = { __typename?: 'Query', verifyMessage?: string | null | undefined };
+export type VerifyMessageQuery = { __typename?: 'Query', verifyMessage: string };
 
 
 export const VerifyMessageDocument = gql`

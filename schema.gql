@@ -113,6 +113,29 @@ type BosScoreInfo {
   last: BosScore
 }
 
+type ChainAddressSend {
+  confirmationCount: Float!
+  id: String!
+  isConfirmed: Boolean!
+  isOutgoing: Boolean!
+  tokens: Float
+}
+
+type ChainTransaction {
+  block_id: String
+  confirmation_count: Float
+  confirmation_height: Float
+  created_at: String!
+  description: String
+  fee: Float
+  id: String!
+  is_confirmed: Boolean!
+  is_outgoing: Boolean!
+  output_addresses: [String!]!
+  tokens: Float!
+  transaction: String
+}
+
 type Channel {
   bosScore: BosScore!
   capacity: Float!
@@ -315,7 +338,7 @@ type InvoicePayment {
 type InvoiceType {
   chain_address: String
   confirmed_at: String
-  created_at: String!
+  created_at: String
   date: String!
   description: String!
   description_hash: String
@@ -381,7 +404,7 @@ type Mutation {
   addPeer(isTemporary: Boolean, publicKey: String, socket: String, url: String): Boolean!
   bosRebalance(avoid: [String!], in_through: String, max_fee: Float, max_fee_rate: Float, max_rebalance: Float, node: String, out_inbound: Float, out_through: String, timeout_minutes: Float): BosRebalanceResult!
   claimBoltzTransaction(destination: String!, fee: Float!, preimage: String!, privateKey: String!, redeem: String!, transaction: String!): String!
-  closeChannel(forceClose: Boolean!, id: String!, targetConfirmations: Float!, tokensPerVByte: Float!): OpenOrCloseChannel!
+  closeChannel(forceClose: Boolean, id: String!, targetConfirmations: Float, tokensPerVByte: Float): OpenOrCloseChannel!
   createAddress: String!
   createBaseInvoice(amount: Float!): BaseInvoice!
   createBoltzReverseSwap(address: String, amount: Float!): CreateBoltzReverseSwapType!
@@ -389,7 +412,7 @@ type Mutation {
   createMacaroon(permissions: NetworkInfoInput!): CreateMacaroon!
   createThunderPoints(alias: String!, id: String!, public_key: String!, uris: [String!]!): Boolean!
   fetchLnUrl(url: String!): LnUrlRequest!
-  getAuthToken(cookie: String!): Boolean!
+  getAuthToken(cookie: String): Boolean!
   getSessionToken(id: String!, password: String!): String!
   keysend(destination: String, tokens: Float!): PayInvoice!
   lnMarketsDeposit(amount: Float!): Boolean!
@@ -398,16 +421,16 @@ type Mutation {
   lnMarketsWithdraw(amount: Float!): Boolean!
   lnUrlAuth(url: String!): AuthResponse!
   lnUrlChannel(callback: String!, k1: String!, uri: String!): String!
-  lnUrlPay(amount: Float!, callback: String!, comment: String!): String!
-  lnUrlWithdraw(amount: Float!, callback: String!, description: String!, k1: String!): String!
+  lnUrlPay(amount: Float!, callback: String!, comment: String): PaySuccess!
+  lnUrlWithdraw(amount: Float!, callback: String!, description: String, k1: String!): String!
   loginAmboss: Boolean!
   logout: Boolean!
   openChannel(amount: Float!, isPrivate: Boolean, partnerPublicKey: String!, pushTokens: Float = 0, tokensPerVByte: Float): OpenOrCloseChannel!
-  pay(max_fee: Float!, max_paths: Float!, out: [String!], request: String!): PayInvoice!
+  pay(max_fee: Float!, max_paths: Float!, out: [String!], request: String!): Boolean!
   removePeer(publicKey: String): Boolean!
   sendMessage(maxFee: Float, message: String!, messageType: String, publicKey: String!, tokens: Float): Float!
-  sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): String!
-  updateFees(base_fee_tokens: Float!, cltv_delta: Float!, fee_rate: Float!, max_htlc_mtokens: String!, min_htlc_mtokens: String!, transaction_id: String!, transaction_vout: Float!): Boolean!
+  sendToAddress(address: String!, fee: Float, sendAll: Boolean, target: Float, tokens: Float): ChainAddressSend!
+  updateFees(base_fee_tokens: Float, cltv_delta: Float, fee_rate: Float, max_htlc_mtokens: String, min_htlc_mtokens: String, transaction_id: String, transaction_vout: Float): Boolean!
   updateMultipleFees(channels: [UpdateRoutingFeesParams!]!): Boolean!
 }
 
@@ -536,6 +559,15 @@ type PayRequest {
   tag: String
 }
 
+type PaySuccess {
+  ciphertext: String
+  description: String
+  iv: String
+  message: String
+  tag: String
+  url: String
+}
+
 type PaymentType {
   created_at: String
   date: String!
@@ -633,12 +665,12 @@ type Query {
   getBoltzInfo: BoltzInfoType!
   getBoltzSwapStatus(ids: [String!]!): [BoltzSwap!]!
   getBosScores: [BosScore!]!
-  getChainTransactions: String!
-  getChannel(id: String!, pubkey: String!): SingleChannel!
+  getChainTransactions: [ChainTransaction!]!
+  getChannel(id: String!, pubkey: String): SingleChannel!
   getChannelReport: ChannelReport!
   getChannels(active: Boolean): [Channel!]!
   getClosedChannels: [ClosedChannel!]!
-  getFeeHealth: ChannelsHealth!
+  getFeeHealth: ChannelsFeeHealth!
   getForwards(days: Float!): [Forward!]!
   getHello: String!
   getInvoiceStatusChange(id: String!): String!
@@ -648,20 +680,20 @@ type Query {
   getLnMarketsStatus: String!
   getLnMarketsUrl: String!
   getLnMarketsUserInfo: LnMarketsUserInfo!
-  getMessages(initialize: Float!): GetMessages!
+  getMessages(initialize: Boolean): GetMessages!
   getNetworkInfo: NetworkInfo!
-  getNode(publicKey: String!, withoutChannels: Boolean!): Node!
+  getNode(publicKey: String!, withoutChannels: Boolean): Node!
   getNodeBalances: Balances!
   getNodeBosHistory(pubkey: String!): NodeBosHistory!
   getNodeInfo: NodeInfo!
   getNodeSocialInfo(pubkey: String!): LightningNodeSocialInfo!
   getPeers: [Peer!]!
   getPendingChannels: [PendingChannel!]!
-  getResume(limit: Float!, offset: Float!): GetResumeType!
+  getResume(limit: Float, offset: Float): GetResumeType!
   getServerAccounts: [ServerAccount!]!
   getTimeHealth: ChannelsTimeHealth!
-  getUtxos: String!
-  getVolumeHealth: ChannelsFeeHealth!
+  getUtxos: [Utxo!]!
+  getVolumeHealth: ChannelsHealth!
   getWalletInfo: Wallet!
   recoverFunds(backup: String!): Boolean!
   signMessage(message: String!): String!
@@ -706,6 +738,16 @@ input UpdateRoutingFeesParams {
   min_htlc_mtokens: String
   transaction_id: String
   transaction_vout: Float
+}
+
+type Utxo {
+  address: String!
+  address_format: String!
+  confirmation_count: Float!
+  output_script: String!
+  tokens: Float!
+  transaction_id: String!
+  transaction_vout: Float!
 }
 
 type Wallet {

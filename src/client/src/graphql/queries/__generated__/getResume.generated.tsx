@@ -5,16 +5,16 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type GetResumeQueryVariables = Types.Exact<{
-  offset?: Types.Maybe<Types.Scalars['Int']>;
-  limit?: Types.Maybe<Types.Scalars['Int']>;
+  offset?: Types.InputMaybe<Types.Scalars['Float']>;
+  limit?: Types.InputMaybe<Types.Scalars['Float']>;
 }>;
 
 
-export type GetResumeQuery = { __typename?: 'Query', getResume: { __typename?: 'getResumeType', offset?: number | null | undefined, resume: Array<{ __typename?: 'InvoiceType', chain_address?: string | null | undefined, confirmed_at?: string | null | undefined, created_at: string, description: string, description_hash?: string | null | undefined, expires_at: string, id: string, is_canceled?: boolean | null | undefined, is_confirmed: boolean, is_held?: boolean | null | undefined, is_private: boolean, is_push?: boolean | null | undefined, received: number, received_mtokens: string, request?: string | null | undefined, secret: string, tokens: string, type: string, date: string, payments: Array<{ __typename?: 'InvoicePayment', in_channel: string, messages?: { __typename?: 'MessageType', message?: string | null | undefined } | null | undefined } | null | undefined> } | { __typename?: 'PaymentType', created_at: string, destination: string, fee: number, fee_mtokens: string, id: string, index?: number | null | undefined, is_confirmed: boolean, is_outgoing: boolean, mtokens: string, request?: string | null | undefined, safe_fee: number, safe_tokens?: number | null | undefined, secret: string, tokens: string, type: string, date: string, destination_node?: { __typename?: 'Node', node: { __typename?: 'nodeType', alias: string } } | null | undefined, hops: Array<{ __typename?: 'Node', node: { __typename?: 'nodeType', alias: string, public_key?: string | null | undefined } }> } | null | undefined> } };
+export type GetResumeQuery = { __typename?: 'Query', getResume: { __typename?: 'GetResumeType', offset: number, resume: Array<{ __typename?: 'InvoiceType', chain_address?: string | null | undefined, confirmed_at?: string | null | undefined, created_at?: string | null | undefined, description: string, description_hash?: string | null | undefined, expires_at: string, id: string, is_canceled?: boolean | null | undefined, is_confirmed: boolean, is_held?: boolean | null | undefined, is_private: boolean, is_push?: boolean | null | undefined, received?: number | null | undefined, received_mtokens: string, request?: string | null | undefined, secret: string, tokens: string, type: string, date: string, payments: Array<{ __typename?: 'InvoicePayment', in_channel: string, messages: { __typename?: 'MessageType', message: string } }> } | { __typename?: 'PaymentType', created_at?: string | null | undefined, destination: string, fee: number, fee_mtokens: string, id: string, index?: number | null | undefined, is_confirmed: boolean, is_outgoing: boolean, mtokens: string, request?: string | null | undefined, safe_fee: number, safe_tokens?: number | null | undefined, secret: string, tokens: string, type: string, date: string, destination_node: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } }, hops: Array<{ __typename?: 'Node', node: { __typename?: 'NodeType', alias: string, public_key?: string | null | undefined } }> }> } };
 
 
 export const GetResumeDocument = gql`
-    query GetResume($offset: Int, $limit: Int) {
+    query GetResume($offset: Float, $limit: Float) {
   getResume(offset: $offset, limit: $limit) {
     offset
     resume {

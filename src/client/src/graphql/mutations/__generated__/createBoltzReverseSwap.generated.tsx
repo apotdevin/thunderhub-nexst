@@ -5,16 +5,16 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type CreateBoltzReverseSwapMutationVariables = Types.Exact<{
-  amount: Types.Scalars['Int'];
-  address?: Types.Maybe<Types.Scalars['String']>;
+  amount: Types.Scalars['Float'];
+  address?: Types.InputMaybe<Types.Scalars['String']>;
 }>;
 
 
-export type CreateBoltzReverseSwapMutation = { __typename?: 'Mutation', createBoltzReverseSwap: { __typename?: 'CreateBoltzReverseSwapType', id: string, invoice: string, redeemScript: string, onchainAmount: number, timeoutBlockHeight: number, lockupAddress: string, minerFeeInvoice?: string | null | undefined, receivingAddress: string, preimage?: string | null | undefined, preimageHash?: string | null | undefined, privateKey?: string | null | undefined, publicKey?: string | null | undefined, decodedInvoice?: { __typename?: 'decodeType', description: string, destination: string, expires_at: string, id: string, safe_tokens: number, tokens: number, destination_node: { __typename?: 'Node', node: { __typename?: 'nodeType', alias: string } } } | null | undefined } };
+export type CreateBoltzReverseSwapMutation = { __typename?: 'Mutation', createBoltzReverseSwap: { __typename?: 'CreateBoltzReverseSwapType', id: string, invoice: string, redeemScript: string, onchainAmount: number, timeoutBlockHeight: number, lockupAddress: string, minerFeeInvoice?: string | null | undefined, receivingAddress: string, preimage?: string | null | undefined, preimageHash?: string | null | undefined, privateKey?: string | null | undefined, publicKey?: string | null | undefined, decodedInvoice?: { __typename?: 'DecodeInvoice', description: string, destination: string, expires_at: string, id: string, safe_tokens: number, tokens: number, destination_node?: { __typename?: 'Node', node: { __typename?: 'NodeType', alias: string } } | null | undefined } | null | undefined } };
 
 
 export const CreateBoltzReverseSwapDocument = gql`
-    mutation CreateBoltzReverseSwap($amount: Int!, $address: String) {
+    mutation CreateBoltzReverseSwap($amount: Float!, $address: String) {
   createBoltzReverseSwap(amount: $amount, address: $address) {
     id
     invoice

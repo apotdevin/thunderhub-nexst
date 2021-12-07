@@ -5,15 +5,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions =  {}
 export type GetForwardsQueryVariables = Types.Exact<{
-  days: Types.Scalars['Int'];
+  days: Types.Scalars['Float'];
 }>;
 
 
-export type GetForwardsQuery = { __typename?: 'Query', getForwards: Array<{ __typename?: 'Forward', created_at: string, fee: number, fee_mtokens: string, incoming_channel: string, mtokens: string, outgoing_channel: string, tokens: number } | null | undefined> };
+export type GetForwardsQuery = { __typename?: 'Query', getForwards: Array<{ __typename?: 'Forward', created_at: string, fee: number, fee_mtokens: string, incoming_channel: string, mtokens: string, outgoing_channel: string, tokens: number }> };
 
 
 export const GetForwardsDocument = gql`
-    query GetForwards($days: Int!) {
+    query GetForwards($days: Float!) {
   getForwards(days: $days) {
     created_at
     fee

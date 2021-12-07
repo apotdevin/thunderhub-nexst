@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetLnMarketsUserInfoQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetLnMarketsUserInfoQuery = { __typename?: 'Query', getLnMarketsUserInfo?: { __typename?: 'LnMarketsUserInfo', uid?: string | null | undefined, balance?: string | null | undefined, account_type?: string | null | undefined, username?: string | null | undefined, linkingpublickey?: string | null | undefined, last_ip?: string | null | undefined } | null | undefined };
+export type GetLnMarketsUserInfoQuery = { __typename?: 'Query', getLnMarketsUserInfo: { __typename?: 'LnMarketsUserInfo', uid?: string | null | undefined, balance?: string | null | undefined, account_type?: string | null | undefined, username?: string | null | undefined, linkingpublickey?: string | null | undefined, last_ip?: string | null | undefined } };
 
 
 export const GetLnMarketsUserInfoDocument = gql`

@@ -7,7 +7,7 @@ const defaultOptions =  {}
 export type GetNetworkInfoQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetNetworkInfoQuery = { __typename?: 'Query', getNetworkInfo?: { __typename?: 'networkInfoType', averageChannelSize?: string | null | undefined, channelCount?: number | null | undefined, maxChannelSize?: number | null | undefined, medianChannelSize?: number | null | undefined, minChannelSize?: number | null | undefined, nodeCount?: number | null | undefined, notRecentlyUpdatedPolicyCount?: number | null | undefined, totalCapacity?: string | null | undefined } | null | undefined };
+export type GetNetworkInfoQuery = { __typename?: 'Query', getNetworkInfo: { __typename?: 'NetworkInfo', averageChannelSize: number, channelCount: number, maxChannelSize: number, medianChannelSize: number, minChannelSize: number, nodeCount: number, notRecentlyUpdatedPolicyCount: number, totalCapacity: number } };
 
 
 export const GetNetworkInfoDocument = gql`
