@@ -4,6 +4,7 @@ documents: 'src/client/src/graphql/**/*.ts'
 hooks:
   afterAllFileWrite:
     - prettier --write
+    - eslint --fix
 generates:
   src/client/src/graphql/fragmentTypes.json:
     plugins:
