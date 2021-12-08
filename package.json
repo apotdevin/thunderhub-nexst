@@ -1,9 +1,8 @@
 {
-  "name": "nexst",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Nest + Next starter repository",
-  "license": "UNLICENSED",
+  "name": "thunderhub",
+  "version": "0.12.31",
+  "description": "Lightning Node Manager",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "npm run build:nest && npm run build:next",
@@ -21,7 +20,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "upgrade-latest": "npx npm-check -u"
+    "upgrade-latest": "npx npm-check -u",
+    "update": "sh ./scripts/updateToLatest.sh",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@apollo/client": "^3.4.16",
@@ -170,5 +171,11 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "standard-version": {
+    "skip": {
+      "commit": true,
+      "tag": true
+    }
   }
 }
