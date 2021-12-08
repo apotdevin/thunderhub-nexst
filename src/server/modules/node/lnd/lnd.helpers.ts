@@ -2,7 +2,6 @@ export const to = async <T>(promise: Promise<T>) => {
   return promise
     .then(data => data)
     .catch(err => {
-      console.log('%o', err);
       throw new Error(getErrorMsg(err));
     });
 };

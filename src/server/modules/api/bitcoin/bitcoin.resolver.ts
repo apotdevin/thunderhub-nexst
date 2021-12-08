@@ -21,7 +21,7 @@ export class BitcoinResolver {
 
       return JSON.stringify(json);
     } catch (error: any) {
-      this.logger.error('Error getting bitcoin price: %o', error);
+      this.logger.error('Error getting bitcoin price', { error });
       throw new Error('Problem getting Bitcoin price.');
     }
   }
@@ -43,7 +43,7 @@ export class BitcoinResolver {
       }
       throw new Error('Problem getting Bitcoin fees.');
     } catch (error: any) {
-      this.logger.error('Error getting bitcoin fees: %o', error);
+      this.logger.error('Error getting bitcoin fees', { error });
       throw new Error('Problem getting Bitcoin fees.');
     }
   }

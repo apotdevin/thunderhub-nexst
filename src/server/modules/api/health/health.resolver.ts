@@ -47,10 +47,9 @@ export class HealthResolver {
             );
 
             if (channelError || !channelInfo) {
-              this.logger.debug(
-                `Error getting channel with id ${id}: %o`,
-                channelError
-              );
+              this.logger.debug(`Error getting channel with id ${id}`, {
+                error: channelError,
+              });
               return null;
             }
 

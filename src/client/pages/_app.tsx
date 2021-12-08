@@ -1,4 +1,4 @@
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { ModalProvider, BaseModalBackground } from 'styled-react-modal';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -13,13 +13,48 @@ import { GlobalStyles } from '../src/styles/GlobalStyle';
 import { Header } from '../src/layouts/header/Header';
 import { Footer } from '../src/layouts/footer/Footer';
 import { PageWrapper, HeaderBodyWrapper } from '../src/layouts/Layout.styled';
+import getConfig from 'next/config';
 
 import 'react-toastify/dist/ReactToastify.min.css';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import 'react-circular-progressbar/dist/styles.css';
+import { useEffect } from 'react';
 
-const Wrapper: React.FC = ({ children }) => {
+const { publicRuntimeConfig } = getConfig();
+const { logoutUrl, basePath } = publicRuntimeConfig;
+
+const S = {
+  center: styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  `,
+};
+
+const NotAuthenticated: React.FC = () => {
+  const { push } = useRouter();
+
+  useEffect(() => {
+    const timeout = setTimeout(
+      () => push(logoutUrl || `${basePath}/login`),
+      5000
+    );
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [push]);
+
+  return <S.center>You do not have permission to view this page.</S.center>;
+};
+
+const Wrapper: React.FC<{ authenticated: boolean }> = ({
+  children,
+  authenticated,
+}) => {
   const { theme } = useConfigState();
   const { pathname } = useRouter();
 
@@ -32,7 +67,7 @@ const Wrapper: React.FC = ({ children }) => {
         <PageWrapper>
           <HeaderBodyWrapper>
             <Header />
-            {children}
+            {authenticated ? children : <NotAuthenticated />}
           </HeaderBodyWrapper>
           <Footer />
         </PageWrapper>
@@ -42,7 +77,13 @@ const Wrapper: React.FC = ({ children }) => {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { initialApolloState, initialConfig, hasToken, authToken } = pageProps;
+  const {
+    initialApolloState,
+    initialConfig,
+    hasToken,
+    authToken,
+    authenticated,
+  } = pageProps;
 
   const apolloClient = useApollo(authToken, initialApolloState);
 
@@ -54,7 +95,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ConfigProvider initialConfig={initialConfig}>
         <BaseProvider initialHasToken={hasToken}>
           <ContextProvider>
-            <Wrapper>
+            <Wrapper authenticated={authenticated}>
               <Component {...pageProps} />
             </Wrapper>
           </ContextProvider>

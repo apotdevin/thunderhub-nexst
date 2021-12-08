@@ -18,7 +18,7 @@ export class BoltzService {
       );
       return response.json();
     } catch (error: any) {
-      this.logger.error('Error getting pairs from Boltz: %o', error);
+      this.logger.error('Error getting pairs from Boltz', { error });
       throw new Error('ErrorGettingBoltzPairs');
     }
   }
@@ -30,7 +30,7 @@ export class BoltzService {
       );
       return response.json();
     } catch (error: any) {
-      this.logger.error('Error getting fee estimations from Boltz: %o', error);
+      this.logger.error('Error getting fee estimations from Boltz', { error });
       throw new Error(error);
     }
   }
@@ -48,7 +48,7 @@ export class BoltzService {
       );
       return response.json();
     } catch (error: any) {
-      this.logger.error('Error getting fee estimations from Boltz: %o', error);
+      this.logger.error('Error getting fee estimations from Boltz', { error });
       throw new Error(error);
     }
   }
@@ -78,7 +78,7 @@ export class BoltzService {
       );
       return response.json();
     } catch (error: any) {
-      this.logger.error('Error getting fee estimations from Boltz: %o', error);
+      this.logger.error('Error getting fee estimations from Boltz', { error });
       throw new Error(error);
     }
   }
@@ -99,7 +99,7 @@ export class BoltzService {
       );
       return response.json();
     } catch (error: any) {
-      this.logger.error('Error broadcasting transaction from Boltz: %o', error);
+      this.logger.error('Error broadcasting transaction from Boltz', { error });
       throw new Error(error);
     }
   }

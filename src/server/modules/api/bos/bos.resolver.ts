@@ -81,7 +81,7 @@ export class BosResolver {
         : {}),
     };
 
-    this.logger.info('Rebalance Params: %o', filteredParams);
+    this.logger.info('Rebalance Params', { filteredParams });
 
     const response = await to<RebalanceResponseType>(
       rebalance({

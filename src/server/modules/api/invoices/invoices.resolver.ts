@@ -85,7 +85,7 @@ export class InvoicesResolver {
       ...(includePrivate && { is_including_private_channels: true }),
     };
 
-    this.logger.info('Creating invoice with params: %o', invoiceParams);
+    this.logger.info('Creating invoice with params', invoiceParams);
 
     return await this.nodeService.createInvoice(user.id, invoiceParams);
   }
@@ -128,11 +128,11 @@ export class InvoicesResolver {
       out,
     };
 
-    this.logger.debug('Paying invoice with params: %o', props);
+    this.logger.debug('Paying invoice with params', props);
 
     const response = await this.nodeService.pay(user.id, props);
 
-    this.logger.debug('Paid invoice: %o', response);
+    this.logger.debug('Paid invoice', response);
     return true;
   }
 }

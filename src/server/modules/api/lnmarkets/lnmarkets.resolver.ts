@@ -46,7 +46,7 @@ export class LnMarketsResolver {
 
     const json = await this.lnmarketsService.getUser(lnMarketsAuth);
 
-    this.logger.debug('Get userInfo from LnMarkets: %o', json);
+    this.logger.debug('Get userInfo from LnMarkets', { json });
 
     if (json?.code === 'jwtExpired') {
       return 'out';
@@ -64,7 +64,7 @@ export class LnMarketsResolver {
 
     const json = await this.lnmarketsService.getUser(lnMarketsAuth);
 
-    this.logger.debug('Get userInfo from LnMarkets: %o', json);
+    this.logger.debug('Get userInfo from LnMarkets', { json });
 
     if (json?.code === 'jwtExpired') {
       this.logger.debug('Token for LnMarkets is expired');
@@ -95,7 +95,7 @@ export class LnMarketsResolver {
       amount
     );
 
-    this.logger.debug('Response from lnmarkets: %o', info);
+    this.logger.debug('Response from lnmarkets', { info });
 
     if (!info?.paymentRequest) {
       this.logger.error('Error getting deposit invoice from lnmarkets');
@@ -107,7 +107,7 @@ export class LnMarketsResolver {
       info.paymentRequest
     );
 
-    this.logger.debug('Decoded invoice from lnMarkets: %o', decoded);
+    this.logger.debug('Decoded invoice from lnMarkets', { decoded });
 
     if (amount !== decoded.tokens) {
       this.logger.error(
@@ -148,7 +148,7 @@ export class LnMarketsResolver {
       invoice.request
     );
 
-    this.logger.debug('Withdraw request from LnMarkets: %o', response);
+    this.logger.debug('Withdraw request from LnMarkets', { response });
 
     return true;
   }

@@ -79,7 +79,7 @@ export class AuthResolver {
       console.log(info);
 
       if (error) {
-        this.logger.error('Unable to connect to this node: %o', error);
+        this.logger.error('Unable to connect to this node', { error });
         throw new Error('UnableToConnectToThisNode');
       }
 
@@ -149,7 +149,7 @@ export class AuthResolver {
     );
 
     if (error) {
-      this.logger.error('Unable to connect to this node: %o', error);
+      this.logger.error('Unable to connect to this node', { error });
       throw new Error('UnableToConnectToThisNode');
     }
 

@@ -44,17 +44,16 @@ export class BoltzSwapResolver {
     );
 
     if (error || info?.error) {
-      this.logger.error(
-        `Error getting status for swap with id: ${parent}. Error: %o`,
-        error || info.error
-      );
+      this.logger.error(`Error getting status for swap with id: ${parent}`, {
+        error: error || info.error,
+      });
       return null;
     }
 
     if (!info?.status) {
       this.logger.debug(
-        `No status in Boltz response for swap with id: ${parent}. Response: %o`,
-        info
+        `No status in Boltz response for swap with id: ${parent}`,
+        { info }
       );
       return null;
     }
@@ -97,10 +96,9 @@ export class BoltzResolver {
     const info = await this.boltzService.getPairs();
 
     if (info?.error) {
-      this.logger.error(
-        'Error getting swap information from Boltz. Error: %o',
-        info.error
-      );
+      this.logger.error('Error getting swap information from Boltz', {
+        error: info.error,
+      });
       throw new Error(info.error);
     }
 
@@ -146,7 +144,7 @@ export class BoltzResolver {
 
     if (info?.vout === undefined || info?.type === undefined) {
       this.logger.error('Cannot get vout or type from Boltz');
-      this.logger.debug('Swap info: %o', {
+      this.logger.debug('Swap info', {
         redeemScript,
         lockupTransaction,
         info,
@@ -175,13 +173,13 @@ export class BoltzResolver {
       fee
     );
 
-    this.logger.debug('Final transaction: %o', finalTransaction);
+    this.logger.debug('Final transaction', { finalTransaction });
 
     const response = await this.boltzService.broadcastTransaction(
       finalTransaction.toHex()
     );
 
-    this.logger.debug('Response from Boltz: %o', { response });
+    this.logger.debug('Response from Boltz', { response });
 
     if (!response?.transactionId) {
       this.logger.error('Did not receive a transaction id from Boltz');
@@ -218,7 +216,7 @@ export class BoltzResolver {
       btcAddress = info.address;
     }
 
-    this.logger.debug('Creating swap with these params: %o', {
+    this.logger.debug('Creating swap with these params', {
       amount,
       hash,
       publicKey,
@@ -231,10 +229,7 @@ export class BoltzResolver {
     );
 
     if (info?.error) {
-      this.logger.error(
-        'Error creating reverse swap with Boltz: %o',
-        info.error
-      );
+      this.logger.error('Error creating reverse swap with Boltz', info.error);
       throw new Error(info.error);
     }
 
@@ -247,7 +242,7 @@ export class BoltzResolver {
       publicKey,
     };
 
-    this.logger.debug('Swap info: %o', { finalInfo });
+    this.logger.debug('Swap info', { finalInfo });
 
     return finalInfo;
   }

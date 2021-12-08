@@ -55,7 +55,7 @@ export class FetchService {
         };
       })
       .catch(error => {
-        this.logger.error('Error doing graphql fetch: %o', error);
+        this.logger.error('Error doing graphql fetch', { error });
         return { data: undefined, error };
       });
   }

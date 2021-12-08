@@ -21,10 +21,9 @@ export class MacaroonResolver {
     const { macaroon, permissions: permissionList } =
       await this.nodeService.grantAccess(id, permissions);
 
-    this.logger.debug(
-      'Macaroon created with the following permissions: %o',
-      permissionList.join(', ')
-    );
+    this.logger.debug('Macaroon created with the following permissions', {
+      permissions: permissionList.join(', '),
+    });
 
     const hex = Buffer.from(macaroon, 'base64').toString('hex');
 

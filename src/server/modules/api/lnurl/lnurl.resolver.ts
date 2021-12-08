@@ -62,7 +62,7 @@ export class LnUrlResolver {
       const response = await this.fetchService.fetchWithProxy(finalUrl);
       const json = (await response.json()) as any;
 
-      this.logger.debug('LnUrlAuth response: %o', json);
+      this.logger.debug('LnUrlAuth response', { json });
 
       if (json.status === 'ERROR') {
         return { ...json, message: json.reason || 'LnServiceError' };
@@ -70,7 +70,7 @@ export class LnUrlResolver {
 
       return { ...json, message: json.event || 'LnServiceSuccess' };
     } catch (error: any) {
-      this.logger.error('Error authenticating with LnUrl service: %o', error);
+      this.logger.error('Error authenticating with LnUrl service', { error });
       throw new Error('ProblemAuthenticatingWithLnUrlService');
     }
   }
@@ -87,7 +87,7 @@ export class LnUrlResolver {
 
       return json;
     } catch (error: any) {
-      this.logger.error('Error fetching from LnUrl service: %o', error);
+      this.logger.error('Error fetching from LnUrl service', { error });
       throw new Error('ProblemFetchingFromLnUrlService');
     }
   }
@@ -99,7 +99,7 @@ export class LnUrlResolver {
     @Args('amount') amount: number,
     @Args('comment', { nullable: true }) comment: string
   ) {
-    this.logger.debug('LnUrlPay initiated with params %o', {
+    this.logger.debug('LnUrlPay initiated with params', {
       callback,
       amount,
       comment,
@@ -127,11 +127,11 @@ export class LnUrlResolver {
         throw new Error(lnServiceResponse.reason || 'LnServiceError');
       }
     } catch (error: any) {
-      this.logger.error('Error paying to LnUrl service: %o', error);
+      this.logger.error('Error paying to LnUrl service', { error });
       throw new Error('ProblemPayingLnUrlService');
     }
 
-    this.logger.debug('LnUrlPay response: %o', lnServiceResponse);
+    this.logger.debug('LnUrlPay response', { response: lnServiceResponse });
 
     if (!lnServiceResponse.pr) {
       this.logger.error('No invoice in response from LnUrlService');
@@ -141,7 +141,7 @@ export class LnUrlResolver {
     if (lnServiceResponse.successAction) {
       const { tag } = lnServiceResponse.successAction;
       if (tag !== 'url' && tag !== 'message' && tag !== 'aes') {
-        this.logger.error('LnUrlService provided an invalid tag: %o', tag);
+        this.logger.error('LnUrlService provided an invalid tag', { tag });
         throw new Error('InvalidTagFromLnUrlService');
       }
     }
@@ -183,7 +183,7 @@ export class LnUrlResolver {
     @Args('description', { nullable: true }) description: string,
     @Args('k1') k1: string
   ) {
-    this.logger.debug('LnUrlWithdraw initiated with params: %o', {
+    this.logger.debug('LnUrlWithdraw initiated with params', {
       callback,
       amount,
       k1,
@@ -205,7 +205,7 @@ export class LnUrlResolver {
       const response = await this.fetchService.fetchWithProxy(finalUrl);
       const json = (await response.json()) as any;
 
-      this.logger.debug('LnUrlWithdraw response: %o', json);
+      this.logger.debug('LnUrlWithdraw response', { json });
 
       if (json.status === 'ERROR') {
         throw new Error(json.reason || 'LnServiceError');
@@ -214,7 +214,7 @@ export class LnUrlResolver {
       // Return invoice id to check status
       return info.id;
     } catch (error: any) {
-      this.logger.error('Error withdrawing from LnUrl service: %o', error);
+      this.logger.error('Error withdrawing from LnUrl service', { error });
       throw new Error('ProblemWithdrawingFromLnUrlService');
     }
   }
@@ -226,7 +226,7 @@ export class LnUrlResolver {
     @Args('uri') uri: string,
     @Args('k1') k1: string
   ) {
-    this.logger.debug('LnUrlChannel initiated with params: %o', {
+    this.logger.debug('LnUrlChannel initiated with params', {
       callback,
       uri,
       k1,
@@ -247,7 +247,7 @@ export class LnUrlResolver {
       const response = await this.fetchService.fetchWithProxy(finalUrl);
       const json = (await response.json()) as any;
 
-      this.logger.debug('LnUrlChannel response: %o', json);
+      this.logger.debug('LnUrlChannel response', { json });
 
       if (json.status === 'ERROR') {
         throw new Error(json.reason || 'LnServiceError');
@@ -255,10 +255,9 @@ export class LnUrlResolver {
 
       return 'Successfully requested a channel open';
     } catch (error: any) {
-      this.logger.error(
-        'Error requesting channel from LnUrl service: %o',
-        error
-      );
+      this.logger.error('Error requesting channel from LnUrl service', {
+        error,
+      });
       throw new Error(`Error requesting channel from LnUrl service: ${error}`);
     }
   }

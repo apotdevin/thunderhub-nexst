@@ -1,10 +1,6 @@
 import { NextPageContext } from 'next';
 import { parseCookies } from '../utils/cookies';
-import getConfig from 'next/config';
 import { appConstants } from './appConstants';
-
-const { publicRuntimeConfig } = getConfig();
-const { logoutUrl, basePath } = publicRuntimeConfig;
 
 const cookieProps = (
   context: NextPageContext,
@@ -28,9 +24,6 @@ const cookieProps = (
   const hasToken = !!cookies[appConstants.tokenCookieName];
 
   if (!cookies[appConstants.cookieName] && !noAuth) {
-    context.res?.writeHead(302, { Location: logoutUrl || `${basePath}/login` });
-    context.res?.end();
-
     return { theme: 'dark', authenticated: false, hasToken, authToken: '' };
   }
 

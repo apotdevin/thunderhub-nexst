@@ -48,8 +48,8 @@ export class LnMarketsService {
       return (await response.json()) as any;
     } catch (error: any) {
       this.logger.error(
-        `Error getting user info from ${appUrls.lnMarkets}/user. Error: %o`,
-        error
+        `Error getting user info from ${appUrls.lnMarkets}/user`,
+        { error }
       );
       throw new Error('ProblemAuthenticatingWithLnMarkets');
     }
@@ -71,10 +71,9 @@ export class LnMarketsService {
       );
       return (await response.json()) as any;
     } catch (error: any) {
-      this.logger.error(
-        `Error getting invoice to deposit from LnMarkets. Error: %o`,
-        error
-      );
+      this.logger.error(`Error getting invoice to deposit from LnMarkets`, {
+        error,
+      });
       throw new Error('ProblemGettingDepositInvoice');
     }
   }
@@ -95,7 +94,7 @@ export class LnMarketsService {
       );
       return (await response.json()) as any;
     } catch (error: any) {
-      this.logger.error(`Error withdrawing from LnMarkets. Error: %o`, error);
+      this.logger.error(`Error withdrawing from LnMarkets`, { error });
       throw new Error('ProblemWithdrawingFromLnMarkets');
     }
   }
@@ -107,7 +106,7 @@ export class LnMarketsService {
     const k1 = domainUrl.searchParams.get('k1');
 
     if (!host || !k1) {
-      this.logger.error('Missing host or k1 in url: %o', url);
+      this.logger.error('Missing host or k1 in url', { url });
       throw new Error('WrongUrlFormat');
     }
 
@@ -141,7 +140,7 @@ export class LnMarketsService {
     const linkingKey = derived.publicKey.toString('hex');
 
     if (!privateKey || !linkingKey) {
-      this.logger.error('Error deriving private or public key: %o', url);
+      this.logger.error('Error deriving private or public key', { url });
       throw new Error('ErrorDerivingPrivateKey');
     }
 
@@ -190,14 +189,13 @@ export class LnMarketsService {
       );
       const json = (await response.json()) as any;
 
-      this.logger.debug('Get lnUrl from LnMarkets response: %o', json);
+      this.logger.debug('Get lnUrl from LnMarkets response', { json });
       lnUrl = json?.lnurl;
       if (!lnUrl) throw new Error();
     } catch (error: any) {
-      this.logger.error(
-        `Error getting lnAuth url from ${appUrls.lnMarkets}. Error: %o`,
-        error
-      );
+      this.logger.error(`Error getting lnAuth url from ${appUrls.lnMarkets}`, {
+        error,
+      });
       throw new Error('ProblemAuthenticatingWithLnMarkets');
     }
 
@@ -212,7 +210,7 @@ export class LnMarketsService {
       );
       const json = (await response.json()) as any;
 
-      this.logger.debug('LnUrlAuth response: %o', json);
+      this.logger.debug('LnUrlAuth response', { json });
 
       if (!json?.token) {
         throw new Error('No token in response');
@@ -220,7 +218,7 @@ export class LnMarketsService {
 
       return { newCookie: true, cookieString: json.token, json };
     } catch (error: any) {
-      this.logger.error('Error authenticating with LnUrl service: %o', error);
+      this.logger.error('Error authenticating with LnUrl service', { error });
       throw new Error('ProblemAuthenticatingWithLnUrlService');
     }
   }

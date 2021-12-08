@@ -22,7 +22,7 @@ export class ToolsResolver {
     try {
       backupObj = JSON.parse(backupString);
     } catch (error: any) {
-      this.logger.error('Corrupt backup file: %o', error);
+      this.logger.error('Corrupt backup file', { error });
       throw new Error('Corrupt backup file');
     }
 
@@ -45,7 +45,7 @@ export class ToolsResolver {
     try {
       backupObj = JSON.parse(backupString);
     } catch (error: any) {
-      this.logger.error('Corrupt backup file: %o', error);
+      this.logger.error('Corrupt backup file', { error });
       throw new Error('Corrupt backup file');
     }
 

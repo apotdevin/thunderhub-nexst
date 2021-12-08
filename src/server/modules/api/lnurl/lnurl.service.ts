@@ -31,7 +31,7 @@ export class LnUrlService {
     const k1 = domainUrl.searchParams.get('k1');
 
     if (!host || !k1) {
-      this.logger.error('Missing host or k1 in url: %o', url);
+      this.logger.error('Missing host or k1 in url', { url });
       throw new Error('WrongUrlFormat');
     }
 
@@ -65,7 +65,7 @@ export class LnUrlService {
     const linkingKey = derived.publicKey.toString('hex');
 
     if (!privateKey || !linkingKey) {
-      this.logger.error('Error deriving private or public key: %o', url);
+      this.logger.error('Error deriving private or public key', { url });
       throw new Error('ErrorDerivingPrivateKey');
     }
 

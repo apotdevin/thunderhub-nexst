@@ -78,7 +78,7 @@ export class ChannelResolver {
     );
 
     if (error) {
-      this.logger.debug(`Error getting channel with id ${id}: %o`, error);
+      this.logger.debug(`Error getting channel with id ${id}`, { error });
       return null;
     }
 
@@ -215,11 +215,11 @@ export class ChannelsResolver {
       is_force_close,
     };
 
-    this.logger.info('Closing channel with params: %o', closeParams);
+    this.logger.info('Closing channel with params', { closeParams });
 
     const info = await this.nodeService.closeChannel(user.id, closeParams);
 
-    this.logger.info('Channel closed: %o', id);
+    this.logger.info('Channel closed', { id });
 
     return {
       transactionId: info.transaction_id,
@@ -253,7 +253,7 @@ export class ChannelsResolver {
       give_tokens: Math.min(pushTokens, local_tokens),
     };
 
-    this.logger.info('Opening channel with params: %o', openParams);
+    this.logger.info('Opening channel with params', { openParams });
 
     const info = await this.nodeService.openChannel(user.id, openParams);
 
@@ -304,7 +304,7 @@ export class ChannelsResolver {
       ...(min_htlc_mtokens && { min_htlc_mtokens }),
     };
 
-    this.logger.debug('Updating channel details with props: %o', props);
+    this.logger.debug('Updating channel details with props', props);
 
     await this.nodeService.updateRoutingFees(user.id, props);
 
@@ -367,7 +367,7 @@ export class ChannelsResolver {
       );
 
       if (error) {
-        this.logger.error('Error updating channel: %o', error);
+        this.logger.error('Error updating channel', { error });
         errors = errors + 1;
       }
     }
