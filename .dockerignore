@@ -1,0 +1,18 @@
+.git
+.gitignore
+.cache
+*.md
+!README*.md
+/node_modules
+/.next
+/docs
+/.github
+.vscode
+CHANGELOG.md
+
+# all env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
